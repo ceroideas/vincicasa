@@ -1,0 +1,35 @@
+#tools{
+	--background: #FF8633;
+	--color: white;
+}
+#contenedor{
+	width: 100%;
+	height: 80%;
+	background: #FF8633;
+}
+#seleccion{
+	width: 100%;
+	height: 25%;
+	background: white;
+	margin-top: 10%;
+}
+#numero{
+	z-index: 100;
+	margin: 0;
+	margin-top: 30%;
+	position: absolute;
+	left: 37.5%;
+}
+#numero2{
+	z-index: 1;
+	margin: 0;
+	margin-top: -80%;
+	margin-left: 37.5%;
+}
+#seleccionar{
+	--color: white;
+	--border-radius: 20px !important;
+	--box-shadow: 0px 5px 10px lightgray;
+	margin-top: 40%;
+	--background: -webkit-linear-gradient(left, #f99e45, #ffb751);
+}

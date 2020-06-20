@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar id="tools">
+  	<ion-back-button slot="start"></ion-back-button>
+    <ion-title slot="end">Mis números</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div id="contenedor">
+		<ion-row>
+			<ion-col>
+				<ion-row *ngFor="let columna of columna1">
+					<img src="../assets/circulo-rojo.png">
+					<ion-label id="numero">{{ columna }}</ion-label>
+				</ion-row>
+			</ion-col>
+			<ion-col>
+				<ion-row *ngFor="let columnad of columna2">
+					<img src="../assets/circulo-azul.png">
+					<ion-label id="numero">{{ columnad }}</ion-label>
+				</ion-row>
+			</ion-col>
+			<ion-col>
+				<ion-row *ngFor="let columnat of columna3">
+					<img src="../assets/circulo-rojo.png">
+					<ion-label id="numero">{{ columnat }}</ion-label>
+				</ion-row>
+			</ion-col>
+			<ion-col>
+				<ion-row *ngFor="let columnac of columna4">
+					<img src="../assets/circulo-azul.png">
+					<ion-label id="numero">{{ columnac }}</ion-label>
+				</ion-row>
+			</ion-col>
+			<ion-col>
+				<ion-row *ngFor="let columnaf of columna5">
+					<img src="../assets/circulo-rojo.png">
+					<ion-label id="numero">{{ columnaf }}</ion-label>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+	</div>
+	<form id="seleccion" #f="ngForm" (ngSubmit)="configuraciones(f)">
+		<ion-row>
+			<ion-col></ion-col>
+			<ion-col>
+				<img src="../assets/circulo-rojo.png">
+				<ion-input id="numero2" value="{{ inc1 }}"></ion-input>
+			</ion-col>
+			<ion-col>
+				<img src="../assets/circulo-azul.png">
+				<ion-input id="numero2" value="{{ inc2 }}"></ion-input>
+			</ion-col>
+			<ion-col></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col></ion-col>
+			<ion-col>
+				<ion-button expand="block" type="submit" id="seleccionar">Guardar</ion-button>
+			</ion-col>
+			<ion-col></ion-col>
+		</ion-row>
+	</form>
+</ion-content>

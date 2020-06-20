@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar id="tools" fill="clear">
+    <ion-buttons>
+    	<ion-button (click)="toggle()">
+    		<ion-icon name="list-outline"></ion-icon>
+    	</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="body">
+	<img src="../assets/millionday.png" id="fondo">
+	<ion-list id="menu">
+		<ion-item slot="start" id="i1" routerLink="/feed">
+			<ion-button id="b1" fill="clear">
+				<ion-icon name="home-outline"></ion-icon>
+			</ion-button>
+			Inicio
+		</ion-item>
+		<ion-item slot="start" id="i2" routerLink="/manual">
+			<ion-button id="b2" fill="clear">
+				<ion-icon name="school-outline"></ion-icon>
+			</ion-button>
+			Tutorial
+		</ion-item>
+		<ion-item slot="start" id="i3">
+			<ion-button id="b3" fill="clear">
+				<ion-icon name="newspaper-outline"></ion-icon>
+			</ion-button>
+			Historial
+		</ion-item>
+		<ion-item slot="start" id="i4">
+			<ion-button id="b4" fill="clear">
+				<ion-icon name="journal-outline"></ion-icon>
+			</ion-button>
+			Donaciones
+		</ion-item>
+		<ion-item slot="start" id="i5">
+			<ion-button id="b5" fill="clear">
+				<ion-icon name="settings-outline"></ion-icon>
+			</ion-button>
+			Ajustes
+		</ion-item>
+		<ion-item slot="start" id="i6">
+			<ion-button id="b6" fill="clear">
+				<ion-icon name="stats-chart-outline"></ion-icon>
+			</ion-button>
+			Estadísticas
+		</ion-item>
+		<ion-item slot="start" id="i7" (click)="salir()">
+			<ion-button id="b7" fill="clear">
+				<ion-icon name="exit-outline"></ion-icon>
+			</ion-button>
+			Salir
+		</ion-item>
+	</ion-list>
+	<ion-row>
+		<ion-col></ion-col>
+		<ion-col>
+			<div id="restante"></div>
+		</ion-col>
+		<ion-col></ion-col>
+	</ion-row>
+	<div id="game">
+		<p id="fecha">Fecha de combinación {{ fecha }}</p>
+		<div id="numbers">
+			<ion-row>
+				<ion-col>
+					<img src="../assets/circulo-rojo.png">
+					<ion-label id="numero">{{ resultado[0] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<img src="../assets/circulo-azul.png">
+					<ion-label id="numero">{{ resultado[1] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<img src="../assets/circulo-rojo.png">
+					<ion-label id="numero">{{ resultado[2] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<img src="../assets/circulo-azul.png">
+					<ion-label id="numero">{{ resultado[3] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<img src="../assets/circulo-rojo.png">
+					<ion-label id="numero">{{ resultado[4] }}</ion-label>
+				</ion-col>
+			</ion-row>
+		</div>
+		<ion-row id="botones">
+			<ion-col id="s1">
+				<ion-button size="large" expand="block" id="misn" (click)="desplegar" routerLink="/mnumeros">Mis números</ion-button>
+			</ion-col>
+			<ion-col id="s1">
+				<ion-button size="large" expand="block" id="combina" (click)="desplegar" (click)="validar()">Prueba tú combinación</ion-button>
+			</ion-col>
+		</ion-row>
+		<div id="rvalidacion">
+			<ion-row>
+				<ion-col></ion-col>
+				<ion-col>
+					<img src="../assets/semaforo.png">
+				</ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col></ion-col>
+				<ion-col>
+					<ion-label>{{ colores }}</ion-label>
+				</ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+		</div>
+	</div>
+</ion-content>

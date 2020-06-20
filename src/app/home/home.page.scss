@@ -1,0 +1,78 @@
+#container{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+#register{
+  text-align: center;
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  top: 55%;
+  background: #33D0FF;
+}
+#entrada{
+  margin-top: 5%;
+  --background: transparent;
+  --color: white;
+}
+#botones{
+  margin-top: 12.5%;
+  --background: #FF8633;
+  --color: white;
+  --border-radius: 20px;
+}
+#tools{
+  --background: #FF8633;
+  --color: white; 
+}
+#container2 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+#sesionb{
+  margin-top: 1.5%;
+}
+#million{
+  background: #FF8633;
+  margin-top: 0%;
+}
+#million2{
+  background: #33D0FF;
+}
+#presentacion{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 50%;
+  width: 100%;
+}
+#fsesion{
+  position: absolute;
+  top: 55%;
+  left: 0%;
+  height: 45%;
+  width: 100%;
+}
+#psesion, #csesion{
+  --background: lightgray;
+  border-radius: 10px;
+  --placeholder-color: white;
+  --padding-start: 2.5%;
+}
+#recuperar{
+  margin-top: 5%;
+  font-size: 67.5%;
+  text-align: center;
+}
+a{
+  color: gray;
+  text-decoration: none;
+}

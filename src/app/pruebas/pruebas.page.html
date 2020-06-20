@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar id="tools">
+  	<ion-back-button slot="start"></ion-back-button>
+    <ion-title slot="end">Pruebas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div id="contenedor">
+		<img src="../assets/bingo3.png">
+		<form #f="ngForm" (ngSubmit)="validar(f)">
+			<ion-row>
+				<ion-col>
+					<ion-item id="n1">
+						<ion-input [(ngModel)]="n1" name="n1"></ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item id="n2">
+						<ion-input [(ngModel)]="n2" name="n2"></ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item id="n3">
+						<ion-input [(ngModel)]="n3" name="n3"></ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item id="n4">
+						<ion-input [(ngModel)]="n4" name="n4"></ion-input>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item id="n5">
+						<ion-input [(ngModel)]="n5" name="n5"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col></ion-col>
+				<ion-col>
+					<ion-button type="submit" id="prueba">Probar combinación</ion-button>
+				</ion-col>
+				<ion-col></ion-col>
+			</ion-row>
+		</form>
+	</div>
+</ion-content>

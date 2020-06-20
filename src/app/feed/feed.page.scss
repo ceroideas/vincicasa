@@ -1,0 +1,97 @@
+#tools{
+	--background: #FF8633;
+	--color: white;
+}
+#menu{
+	background: #FF8633;
+	color: white;
+	width: 60%;
+	height: 100%;
+	animation-name: slide;
+	animation-duration: 200ms;
+	display: none;
+	z-index: 2;
+}
+@keyframes slide{
+	from{
+		width: 0%;
+	}
+	to{
+		width: 60%;
+	}
+}
+#b1, #b2, #b3, #b4, #b5, #b6, #b7{
+	margin-right: 7.5%;
+}
+#i1, #i2, #i3, #i4, #i5, #i6{
+	margin-bottom: 5%;
+}
+#i1, #i2, #i3, #i4, #i5, #i6, #i7, #b1, #b2, #b3, #b4, #b5, #b6, #b7{
+	--background: transparent;
+	--color: white;
+	--border: none;
+}
+#fondo{
+	height: 45%;
+	width: 100%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	background: #FF8633;
+}
+#game, #seleccion{
+	position: absolute;
+	top: 45%;
+	left: 0;
+	height: 55%;
+	width: 100%;
+}
+#combina, #misn{
+	--color: white;
+	--border-radius: 20px !important;
+	--box-shadow: 0px 10px 5px lightgray;
+	margin-bottom: 5%;
+}
+#combina{
+	--background: -webkit-linear-gradient(left, #18cbe1, #01e4b6);
+}
+#misn{
+	--background: -webkit-linear-gradient(left, #f99e45, #ffb751);
+}
+#seleccionar{
+	height: 90%;
+	width: 95%;
+	background: white;
+	position: absolute;
+	top: 5%;
+	left: 2.5%;
+	opacity: 0.5;
+	display: none;
+}
+#seleccion{
+	display: none;
+}
+#botones{
+	position: absolute;
+	margin-top: 5%;
+}
+#numbers{
+	margin-top: 25%;
+}
+#fecha{
+	position: absolute;
+	top: 5%;
+	left: 5%;
+}
+#numero{
+	position: absolute;
+	top: 37.5%;
+	left: 40%;
+	z-index: 100;
+	margin: 0;
+}
+#rvalidacion{
+	display: none;
+	margin-top: 50%; 
+	color: black;
+}
