@@ -164,10 +164,10 @@ export class NautomaticosPage implements OnInit {
 					let y = 0;
 					let z = 0;
 
-					i = parseInt(this.getRandomArbitrary(1,41));
-					y = parseInt(this.getRandomArbitrary(1,41));
-					x = parseInt(this.getRandomArbitrary(1,41));
-					z = parseInt(this.getRandomArbitrary(1,41));
+					i = parseInt(this.getRandomArbitrary(1,55));
+					y = parseInt(this.getRandomArbitrary(1,55));
+					x = parseInt(this.getRandomArbitrary(1,55));
+					z = parseInt(this.getRandomArbitrary(1,55));
 
 					resultado.push(i, x, y, z);
 					let indice = resultado.length, temporaryValue, randomIndex;
@@ -196,10 +196,10 @@ export class NautomaticosPage implements OnInit {
 					let y = 0;
 					let z = 0;
 
-					i = parseInt(this.getRandomArbitrary(1,41));
-					y = parseInt(this.getRandomArbitrary(1,41));
-					x = parseInt(this.getRandomArbitrary(1,41));
-					z = parseInt(this.getRandomArbitrary(1,41));
+					i = parseInt(this.getRandomArbitrary(1,55));
+					y = parseInt(this.getRandomArbitrary(1,55));
+					x = parseInt(this.getRandomArbitrary(1,55));
+					z = parseInt(this.getRandomArbitrary(1,55));
 
 					resultado.push(i, x, y, z);
 					let indice = resultado.length, temporaryValue, randomIndex;
@@ -231,11 +231,11 @@ export class NautomaticosPage implements OnInit {
 				let y = 0;
 				let z = 0;
 
-				a = parseInt(this.getRandomArbitrary(1,41));
-				i = parseInt(this.getRandomArbitrary(1,41));
-				y = parseInt(this.getRandomArbitrary(1,41));
-				x = parseInt(this.getRandomArbitrary(1,41));
-				z = parseInt(this.getRandomArbitrary(1,41));
+				a = parseInt(this.getRandomArbitrary(1,55));
+				i = parseInt(this.getRandomArbitrary(1,55));
+				y = parseInt(this.getRandomArbitrary(1,55));
+				x = parseInt(this.getRandomArbitrary(1,55));
+				z = parseInt(this.getRandomArbitrary(1,55));
 
 				resultado.push(a,i, x, y, a);
 
@@ -253,9 +253,9 @@ export class NautomaticosPage implements OnInit {
 				let x = 0;
 				let y = 0;
 
-				i = parseInt(this.getRandomArbitrary(1,41));
-				y = parseInt(this.getRandomArbitrary(1,41));
-				x = parseInt(this.getRandomArbitrary(1,41));
+				i = parseInt(this.getRandomArbitrary(1,55));
+				y = parseInt(this.getRandomArbitrary(1,55));
+				x = parseInt(this.getRandomArbitrary(1,55));
 				resultado.push(i, x, y);
 
 				let indice = resultado.length, temporaryValue, randomIndex;

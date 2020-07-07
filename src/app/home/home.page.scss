@@ -12,16 +12,27 @@
   width: 100%;
   position: absolute;
   left: 0%;
-  top: 55%;
+  top: 50%;
   background: #33D0FF;
 }
-#entrada{
+#entrada2{
   margin-top: 5%;
   --background: transparent;
   --color: white;
 }
-#botones{
+#entrada{
+  margin-top: 7.5%;
+  --background: transparent;
+  --color: white;
+}
+#botones2{
   margin-top: 12.5%;
+  --background: #FF8633;
+  --color: white;
+  --border-radius: 20px;
+}
+#botones{
+  margin-top: 10%;
   --background: #FF8633;
   --color: white;
   --border-radius: 20px;

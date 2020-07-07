@@ -39,6 +39,14 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
+  {
+    path: 'estadisticas',
+    loadChildren: () => import('./estadisticas/estadisticas.module').then( m => m.EstadisticasPageModule)
+  },
+  {
+    path: 'historial',
+    loadChildren: () => import('./historial/historial.module').then( m => m.HistorialPageModule)
+  },
 ];
 
 @NgModule({

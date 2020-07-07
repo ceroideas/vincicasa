@@ -1,0 +1,60 @@
+#tools{
+	--background: #FF8633;
+	--color: white;
+}
+#semana, #umes{
+	border-top: 0%;
+	border-right: 0%;
+	margin-left: 5%;
+	width: 90%;
+	height: 80%;
+}
+#datos, #datos2{
+	margin-top: 0%;
+	height: 12.5%;
+	width: 100%;
+	border: 2px solid #6ED7FC;
+}
+#datos tr, #datos2 tr{
+	width: 100%;
+	position: relative;
+	left: 0%;
+}
+span b{
+	color: #FF8633;
+}
+#titulo, #titulo2{
+	height: 12.5%;
+	width: 100%;
+	color: white;
+	background: #6ED7FC;
+	text-align: center;
+}
+#titulo{
+	margin-top: 5%;
+}
+#titulo2{
+	margin-top: 5%;
+}
+#title, #title2{
+	border-bottom: 3px solid #E4F55B;
+}
+#datos #date, #date2{
+	padding: 0 0 0 2.5%;
+	width: 35%;
+	position: relative;
+	left: 0%;
+}
+#datos, #datos2{
+	position: relative;
+	right: 0%;
+	width: 100%;
+}
+#datos #numbers0, #numbers1, #numbers2, #numbers3, #numbers4{
+	width: 10%;
+	text-align: center;
+}
+#datos2 #numeros0, #numeros1, #numeros2, #numeros3, #numeros4{
+	width: 10%;
+	text-align: center;
+}

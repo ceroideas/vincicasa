@@ -39,4 +39,14 @@ export class ComunicacionService {
     return this.http.get(url);
   }
 
+  tabla(): Observable<any>{
+    const url = 'http://localhost:5000/scrapper';
+    return this.http.get(url);
+  }
+
+  tabla2(): Observable<any>{
+    const url = 'http://localhost:5000/scrapper2';
+    return this.http.get(url);
+  }
+  
 }
