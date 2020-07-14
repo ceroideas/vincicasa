@@ -1,40 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar id="tools">
-    <ion-title>
-      MillionDay
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="cambio()" id="sesion">Iniciar sesión</ion-button>
-      <ion-button (click)="cambio2()" id="registro">Registro</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Inicio de sesión</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content [fullscreen]="true" id="contenedor">
   <div id="container">
     <div id="presentacion">
-      <img src="../assets/millionday-02.png" id="million2">
+      <h2>CHANCE MILLIONDAY</h2>
+      <img src="../assets/Group 2706.png" id="million">
     </div>
+    <br><br>
     <form method="POST" #f="ngForm" (ngSubmit)="registrarse(f)" id="register">
         <ion-row>
           <ion-col>
-            <ion-item id="entrada">
+            <ion-item id="entrada2" lines="none">
               <ion-input placeholder="Nombre completo" type="text" name="formulario.nombre" [(ngModel)]="formulario.nombre"></ion-input>
             </ion-item>
           </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col>
-            <ion-item id="entrada">
+            <ion-item id="entrada2" lines="none">
               <ion-input placeholder="Correo" type="text" name="formulario.correo" [(ngModel)]="formulario.correo"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
-        <ion-item id="entrada">
+        <ion-item id="entrada" lines="none">
           <ion-row>
             <ion-col>
               <h6>Fecha de nacimiento: </h6>
@@ -46,47 +32,71 @@
         </ion-item>
         <ion-row>
           <ion-col>
-            <ion-item id="entrada">
+            <ion-item id="entrada2" lines="none">
               <ion-input placeholder="Contraseña" name="formulario.password" type="password" [(ngModel)]="formulario.password"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item id="entrada">
-              <ion-input placeholder="Confirmar contraseña" name="confirmar" type="password" [(ngModel)]="confirmar"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-button type="submit" expand="full" id="botones">Registrate</ion-button>
+            <ion-item id="entrada2" lines="none">
+              <ion-input placeholder="Confirmar contraseña" name="confirmar" type="password" [(ngModel)]="confirmar"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row id="ir">
+        <ion-col>
+          <a (click)="cambio()">¿Ya tienes una cuenta? <p>Inicia sesión</p></a>
+        </ion-col>
+        </ion-row>
+        <ion-row id="ir">
+          <ion-col>
+            <a routerLink="/">Recuperar <p>contraseña</p></a>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button shape="round" type="submit" expand="full" id="botones">Registrate</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button type="reset" expand="full" id="botones">Limpiar</ion-button>
+            <ion-button shape="round" type="reset" expand="full" id="botones">Limpiar</ion-button>
           </ion-col>
         </ion-row>
     </form>
   </div>
   <div id="container2">
     <div id="presentacion">
-      <img src="../assets/millionday-02.png" id="million">
+      <h2>CHANCE MILLIONDAY</h2>
+      <img src="../assets/Group 2706.png" id="million">
     </div>
     <form method="POST" (ngSubmit)="sesion(f)" id="fsesion">
-      <ion-item id="entrada2" lines="none">
-          <ion-input placeholder="Correo" [(ngModel)]="isesion.correo" name="isesion.correo" type="email" id="csesion" autocomplete="off"></ion-input>
-        </ion-item>
-        <ion-item id="entrada2" lines="none">
-          <ion-input placeholder="Contraseña" [(ngModel)]="isesion.password" name="isesion.password" type="password" id="psesion" autocomplete="off"></ion-input>
-        </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-item id="entrada2" lines="none">
+            <ion-input placeholder="Correo" [(ngModel)]="isesion.correo" name="isesion.correo" type="email" id="csesion" autocomplete="off"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item id="entrada2" lines="none">
+            <ion-input placeholder="Contraseña" [(ngModel)]="isesion.password" name="isesion.password" type="password" id="psesion" autocomplete="off"></ion-input>
+          </ion-item>
+        </ion-col> 
+      </ion-row>
+      <ion-row id="ir">
+        <ion-col>
+          <a (click)="cambio2()">¿No tienes una cuenta? <p>regístrate</p></a>
+        </ion-col>
+      </ion-row>
+      <ion-row id="ir">
+        <ion-col>
+          <a routerLink="/">Recuperar <p>contraseña</p></a>
+        </ion-col>
+      </ion-row>
       <ion-row id=sesionb>
         <ion-col></ion-col>
-        <ion-button type="submit" expand="full" id="botones2">Iniciar sesión</ion-button>
-        <ion-col></ion-col>
-      </ion-row>
-      <ion-row id="recuperar">
-        <ion-col></ion-col>
-        <ion-col>
-          <a routerLink="/">Recuperar contraseña</a>
-        </ion-col>
+        <ion-button type="submit" shape="round" expand="block" size="large" id="botones2">OK</ion-button>
         <ion-col></ion-col>
       </ion-row>
     </form>

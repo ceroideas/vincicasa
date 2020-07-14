@@ -21,7 +21,8 @@ export class HomePage {
   constructor(private comunicacion: ComunicacionService, private router: Router){}
 
   ngOnInit(){
-    localStorage.removeItem('usuario');
+   /* localStorage.removeItem('usuario');
+    moment(time, format).tz(zone).format(format);*/
   }
 
   registrarse(f: NgForm){

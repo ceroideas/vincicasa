@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ComunicacionService } from '../comunicacion.service';
 import { Numeros } from '../numeros';
 import { Router } from  '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-feed',
@@ -22,11 +23,14 @@ export class FeedPage implements OnInit {
   inc2: number = +this.n4;
   resultado: any = [];
   colores: string;
-
+  hour: any;
+  minute: any;
+  second: any;
+ 
   constructor(private comunicacion: ComunicacionService, private router: Router) { }
 
-  ngOnInit() {
-    this.random();
+  ngOnInit() { 
+    this.reloj();
   }
 
   getRandomArbitrary(min, max){
@@ -330,6 +334,38 @@ export class FeedPage implements OnInit {
     }, Error => {
       console.log(Error);
     });
+  }
+
+  reloj(){
+
+    let mins8 = moment(moment().format('YYYY-MM-DD 20:00'));
+    let intervalo = setInterval(mostrar_hora, 1000);
+
+    function mostrar_hora() {
+
+      var now = moment();
+      var seconds = mins8.diff(now,'seconds');
+
+      this.hour = Math.floor(seconds / 3600);
+
+      this.hour = (this.hour < 10)? '0' + this.hour : this.hour;
+
+      this.minute = Math.floor((seconds / 60) % 60);
+
+      this.minute = (this.minute < 10)? '0' + this.minute : this.minute;
+
+      this.second = seconds % 60;
+
+      this.second = (this.second < 10)? '0' + this.second : this.second;
+
+      document.getElementById("hh1").innerHTML = this.hour;
+      document.getElementById("mh1").innerHTML = this.minute;
+      document.getElementById("sh1").innerHTML = this.second;
+
+      if (this.minute == 0 && this.second == 0) {
+        clearInterval(intervalo);
+       }
+    }
   }
 
   salir(event){
