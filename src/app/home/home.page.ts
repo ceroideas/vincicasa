@@ -5,6 +5,7 @@ import * as CryptoJS from 'crypto-js';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../comunicacion.service';
 import { Router } from  '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -21,8 +22,8 @@ export class HomePage {
   constructor(private comunicacion: ComunicacionService, private router: Router){}
 
   ngOnInit(){
-   /* localStorage.removeItem('usuario');
-    moment(time, format).tz(zone).format(format);*/
+    localStorage.removeItem('usuario');
+    
   }
 
   registrarse(f: NgForm){

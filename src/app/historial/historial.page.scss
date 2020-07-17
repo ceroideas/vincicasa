@@ -1,60 +1,122 @@
-#tools{
-	--background: #FF8633;
-	--color: white;
+#body{
+	--background: #09B7DA; 
 }
-#semana, #umes{
-	border-top: 0%;
-	border-right: 0%;
-	margin-left: 5%;
-	width: 90%;
-	height: 80%;
+#head{
+	--background: #09B7DA; 
 }
-#datos, #datos2{
-	margin-top: 0%;
-	height: 12.5%;
-	width: 100%;
-	border: 2px solid #6ED7FC;
-}
-#datos tr, #datos2 tr{
-	width: 100%;
-	position: relative;
-	left: 0%;
-}
-span b{
-	color: #FF8633;
-}
-#titulo, #titulo2{
-	height: 12.5%;
-	width: 100%;
+#ue{
+	text-align: center;
+	font-weight: 200;
 	color: white;
-	background: #6ED7FC;
+	background: #09B7DA; 
+}
+.datos{
+	width: 70%;
+	margin-top: 0%;
+	margin-left: 15%;
+	height: 10%;
+}
+.datos, #number {
+	[id*="ultime"] {
+		width: 20%;
+		height: 70px;
+		text-align: center;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 90% 70%;
+		float: left;
+	}
+}
+.datos:before {
+	content: "";
+	clear: both;
+}
+.datos #ultime0 b, #ultime1 b, #ultime2 b, #ultime3 b, #ultime4 b, #number #ultime0 b, #ultime1 b, #ultime2 b, #ultime3 b, #ultime4 b{
+	position: relative;
+	top: 37.5%;
+}
+#ultime0, #ultime2, #ultime4{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+#ultime1, #ultime3{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+#uc{
+	margin-left: 15%;
+	height: 5%;
+	width: 70%;
+	margin-bottom: 0%;
+	text-align: center;
+	background: white;
+	color: #09B7DA;
+}
+#ucc{
+	height: 100%;
+	width: 100%;
+	position: relative;
+	top: 15%;
+}
+#ucp{
+	height: 100%;
+	width: 33.33%;
+	position: relative;
+	top: 15%;
+}
+#vincite{
+	color: white;
+	margin-top: 5%;
+	width: 85%;
+	margin-left: 6.5%;
+	height: 90%;
+}
+#resultados{
+	--background: #09B7DA;
+	width: 90%;
+	margin-left: 5%;
+	border-bottom: 1px solid white; 
+	margin-bottom: 5%;
+}
+#v{
+	width: 33.33%;
 	text-align: center;
 }
-#titulo{
-	margin-top: 5%;
+#estrazioni{
+	width: 90%;
+	height: 20%;
+	--background: #09B7DA;
 }
-#titulo2{
-	margin-top: 5%;
-}
-#title, #title2{
-	border-bottom: 3px solid #E4F55B;
-}
-#datos #date, #date2{
-	padding: 0 0 0 2.5%;
-	width: 35%;
-	position: relative;
-	left: 0%;
-}
-#datos, #datos2{
-	position: relative;
-	right: 0%;
+#fecha, #dia, #number{
+	margin: auto;
 	width: 100%;
 }
-#datos #numbers0, #numbers1, #numbers2, #numbers3, #numbers4{
-	width: 10%;
+#fecha{
+	height: 30%;
+	color: white;
+	font-weight: 100;
 	text-align: center;
+	border: 1px solid white;
+	margin-top: 5%;
+	background: #09B7DA;
+	width: 100%;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
-#datos2 #numeros0, #numeros1, #numeros2, #numeros3, #numeros4{
-	width: 10%;
+#dia{
+	color: white;
+	height: 20%;
+	background: #0591AC;
+}
+#number{
+	background: white;
+	border-radius: 10px;
+	height: 130px;
+	width: 90%;
+	margin-left: 5%;
+}
+#fecha p{
 	text-align: center;
+	width: 100%;
+}
+#tab{
+	width: 100%;
 }

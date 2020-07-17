@@ -12,7 +12,7 @@ import * as moment from 'moment';
 })
 export class FeedPage implements OnInit {
 
-  data = new Numeros();
+  /*data = new Numeros();
   n1: string = localStorage.getItem('excluir');
   exc1: number = +this.n1;
   n2: string = localStorage.getItem('excluir2');
@@ -22,22 +22,29 @@ export class FeedPage implements OnInit {
   n4: string = localStorage.getItem('incluir2');
   inc2: number = +this.n4;
   resultado: any = [];
-  colores: string;
+  colores: string;*/
   hour: any;
   minute: any;
   second: any;
  
-  constructor(private comunicacion: ComunicacionService, private router: Router) { }
+  constructor(private comunicacion: ComunicacionService, private router: Router) {
+  }
 
-  ngOnInit() { 
+  ngOnInit() {
+
     this.reloj();
+    
+    if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined) {
+      this.scrapping();
+    }
+
   }
 
-  getRandomArbitrary(min, max){
+  /*getRandomArbitrary(min, max){
     return Math.random() * (max - min) + min;
-  }
+  }*/
 
-  validar(event, array = this.resultado){
+  /*validar(event, array = this.resultado){
 
     const semaforo = document.getElementById("rvalidacion");
     const colores = ['Combinación probable: Verde', 'Combinación poco probable: Amarillo', 'Combinación difícilmente probable: Rojo'];
@@ -164,9 +171,9 @@ export class FeedPage implements OnInit {
 
     }
 
-  }
+  }*/
 
-  random(){
+  /*random(){
 
     let resultado = [];
     let omitir = [];
@@ -289,7 +296,7 @@ export class FeedPage implements OnInit {
         this.resultado.push(array[0], array[1], array[2], array[3], array[4]);
 
       }
-  }
+  }*/
 
   toggle(event){
 
@@ -309,7 +316,98 @@ export class FeedPage implements OnInit {
   	}
   }
 
-  numeros(event){
+  scrapping(){
+    this.comunicacion.tabla().subscribe((data: any) => {
+
+      let info = [data['dias'][0]];
+      let info2 = [data['fechas'][0]];
+      let info3:any = [data['numeros'][0]];
+      let dias = [];
+      let fechas = [];
+      let numeros = [];
+      let ultimos = [];
+      // console.log(data);
+
+      for (let i = 7; i >= 0; i--) {
+
+        let obj = info[i];
+
+        for (let key in obj) {
+
+          dias.push(obj[key]);
+
+        }
+
+      }
+
+      localStorage.setItem('dias', JSON.stringify(dias));
+
+      for (let i = 7; i >= 0; i--) {
+
+        let obj = info2[i];
+
+        for (let key in obj) {
+
+          fechas.push(obj[key]);
+
+        }
+
+      }
+
+      localStorage.setItem('fechas', JSON.stringify(fechas));
+
+      /*let _keys = Object.keys(info3[0]);
+
+      for (let k in _keys) {
+
+        let info = info3[0][_keys[k]];
+
+        // console.log(info);
+
+        for (var l = 0; l < info.length; l++) {
+          numeros.push( info[l] );
+        }
+
+        // console.log(this.numeros);
+        
+        ultimos.push(numeros);
+      }*/
+
+      //localStorage.setItem('ultimos', JSON.stringify(ultimos));
+      
+      for (let i = 0; i <= 7; i++) {
+
+        let obj = info3[i];
+
+        for (let key in obj) {
+
+          numeros.push(obj[key]);
+
+        }
+
+        /*for (let key in info3[i].dia1) {
+
+          console.log('key',key);
+          numeros.push(info3[i].dia1[key]);
+
+        }*/
+
+      }
+      
+      
+      localStorage.setItem('numeros', JSON.stringify(numeros));
+
+      // console.log(this.ultimes);
+      //console.log(data['numeros'][0].dia1);
+
+      // console.log(this.ultimes);
+
+    }, Error => {
+      console.log(Error)
+    });
+
+  }
+  /*numeros(event){
 
     this.data.numero = localStorage.getItem('numero');
     this.data.correo = localStorage.getItem('correo');
@@ -334,27 +432,34 @@ export class FeedPage implements OnInit {
     }, Error => {
       console.log(Error);
     });
-  }
+  }*/
 
   reloj(){
 
-    let mins8 = moment(moment().format('YYYY-MM-DD 20:00'));
-    let intervalo = setInterval(mostrar_hora, 1000);
+    let mostrar_hora = () => {
 
-    function mostrar_hora() {
+      let mins8 = moment(moment().format('YYYY-MM-DD 20:00'));
+      let now;
 
-      var now = moment();
-      var seconds = mins8.diff(now,'seconds');
+      let restante = mins8.diff(moment(),'seconds');
 
-      this.hour = Math.floor(seconds / 3600);
+      if (restante < 0) {
+        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 20:00'));
+      }else{
+        now = moment(moment().format('YYYY-MM-DD 20:00'));
+      }
+      
+      let seconds = now.diff(moment(),'seconds');
+
+      this.hour = Math.floor(Math.abs(seconds) / 3600);
 
       this.hour = (this.hour < 10)? '0' + this.hour : this.hour;
 
-      this.minute = Math.floor((seconds / 60) % 60);
+      this.minute = Math.floor((Math.abs(seconds) / 60) % 60);
 
       this.minute = (this.minute < 10)? '0' + this.minute : this.minute;
 
-      this.second = seconds % 60;
+      this.second = Math.abs(seconds) % 60;
 
       this.second = (this.second < 10)? '0' + this.second : this.second;
 
@@ -362,10 +467,20 @@ export class FeedPage implements OnInit {
       document.getElementById("mh1").innerHTML = this.minute;
       document.getElementById("sh1").innerHTML = this.second;
 
-      if (this.minute == 0 && this.second == 0) {
-        clearInterval(intervalo);
+      if (this.hour == 0 && this.minute == 0 && this.second == 0) {
+
+        console.log('El sorteo ha finalizado');
+        localStorage.removeItem('numeros');
+        localStorage.removeItem('fechas');
+        localStorage.removeItem('dias');
+        localStorage.removeItem('ultimos');
+        this.scrapping();
+
        }
     }
+
+    let intervalo = setInterval(mostrar_hora, 1000);
+
   }
 
   salir(event){

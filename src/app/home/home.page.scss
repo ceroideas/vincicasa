@@ -45,7 +45,7 @@ a{
   left: 0%;
   --background: #09B7DA;
   font-family: arial;
-  z-index: 0;
+  z-index: -2;
 }
 h2{
   color: #FFF100;
@@ -56,11 +56,14 @@ h2{
 #million{
   height: 40%;
   width: 80%;
-  margin-top: 5%;
-  margin-left: 10%;
+  position: relative;
+  top: 15%;
+  left: 10%;
+  z-index: 1;
+  margin-top: 10%;
 }
 #fsesion{
-  margin-top: 17.5%;
+  margin-top: 10%;
 }
 #botones2{
   margin-top: 10%;
@@ -95,4 +98,12 @@ a{
 a p{
   color: black;
   display: inline;
+}
+#fondo{
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 55%;
+  z-index: 0;
 }

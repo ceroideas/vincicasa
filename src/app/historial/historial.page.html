@@ -1,16 +1,9 @@
-<ion-header>
-  <ion-toolbar id="tools">
-    <ion-title slot="end">historial</ion-title>
-    <ion-back-button slot="start"></ion-back-button>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-	<div id="semana">
+	<!--<div id="semana">
 		<table id="titulo">
 			<tr>
 				<td>
-					<b id="title">ULTIME ESTRAZIONI</b>
+					<b id="title">ULTIME 7 ESTRAZIONI</b>
 				</td>
 			</tr>
 		</table>
@@ -24,7 +17,7 @@
 					<b>{{ fechas[i] }}</b>
 				</td>
 				<td *ngFor="let n of numeros[i]; let x = index" id="numbers{{ x }}">
-					<b>{{ n }}</b>
+					<b id="numeri">{{ n }}</b>
 				</td>
 			</tr>
 		</table>
@@ -51,5 +44,115 @@
 				</td>
 			</tr>
 		</table>
+	</div>-->
+<ion-content id="body">
+	<ion-toolbar id="head">
+		<ion-button slot="start"></ion-button>
+		<ion-row id="ue">
+			<ion-col>
+				<p>ULTIME ESTRAZIONI</p>
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+	<ion-row id="uc">
+		<ion-col>
+			<b id="ucc">ULTIMO CONCORSO</b>
+		</ion-col>
+	</ion-row>
+	<div class="datos">
+		<div *ngFor="let ultime of numeros[0]; let i = index">
+			<div [id]="'ultime'+i">
+				<b>{{ ultime }}</b>
+			</div>
+		</div>
 	</div>
+	<ion-row id="uc">
+		<ion-col>
+			<b id="ucp">VINCITE</b>
+		</ion-col>
+		<ion-col>
+			<b id="ucp">CATEGORIE</b>
+		</ion-col>
+		<ion-col>
+			<b id="ucp">EURO</b>
+		</ion-col>
+	</ion-row>
+	<ion-item id="resultados">
+		<table id="vincite">
+			<td id="v">
+				<tr>1</tr>
+				<tr>2</tr>
+				<tr>3</tr>
+				<tr>4</tr>
+			</td>
+			<td id="v">
+				<tr>Punti 5</tr>
+				<tr>Punti 4</tr>
+				<tr>Punti 3</tr>
+				<tr>Punti 1</tr>
+			</td>
+			<td id="v">
+				<tr>250,00€</tr>
+				<tr>250,00€</tr>
+				<tr>250,00€</tr>
+				<tr>250,00€</tr>
+			</td>
+		</table>
+	</ion-item>
+	<ion-row id="uc">
+		<ion-col>
+			<b id="ucc">ULTIME 7 ESTRAZIONI</b>
+		</ion-col>
+	</ion-row>
+	<div id="estrazioni" id="number" *ngFor="let d of dias; let i = index">
+		<ion-row id="fecha">
+			<p>ESTRAZIONE {{ d }} {{ fechas[i] }}</p>
+		</ion-row>
+		<ion-row id="dia">
+			<ion-col>
+				<b>LUN</b>
+			</ion-col>
+			<ion-col>
+				<b>MAR</b>
+			</ion-col>
+			<ion-col>
+				<b>MER</b>
+			</ion-col>
+			<ion-col>
+				<b>GIO</b>
+			</ion-col>
+			<ion-col>
+				<b>VEN</b>
+			</ion-col>
+			<ion-col>
+				<b>SAB</b>
+			</ion-col>
+			<ion-col>
+				<b>DOM</b>
+			</ion-col>
+		</ion-row>
+		<div class="datos">
+			<ion-row id="tab">
+				<ion-col id="ultime{{ x }}" *ngFor="let n of numeros[i]; let x = index">
+					<b>{{ n }}</b>
+				</ion-col>
+					<!--<ion-col id="ultime0">
+						<b>5</b>
+					</ion-col>
+					<ion-col id="ultime1">
+						<b>10</b>
+					</ion-col>
+					<ion-col id="ultime2">
+						<b>15</b>
+					</ion-col>
+					<ion-col id="ultime3">
+						<b>20</b>
+					</ion-col>
+					<ion-col id="ultime4">
+						<b>25</b>
+					</ion-col>-->
+			</ion-row>
+		</div>
+	</div>
+
 </ion-content>
