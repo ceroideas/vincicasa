@@ -1,0 +1,26 @@
+#menu, .items, #lista, #header, #tools, #menup, #main{
+	--background: #09B7DA;
+	margin: 0;
+	--border: none;
+}
+.items{
+	--color: #FFF100;
+	-webkit-text-stroke: 1px black;
+	font-weight: bolder;
+	margin-bottom: 2.5%;
+}
+#profile{
+	height: 90%;
+	width: 50%;
+}
+#salir{
+	--color: white;
+	width: 100%;
+	margin: auto;
+}
+.label{
+	padding: 0 0 0 5%;
+}
+#lista{
+	background: transparent;
+}

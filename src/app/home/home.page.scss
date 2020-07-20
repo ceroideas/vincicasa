@@ -18,7 +18,7 @@
   margin-top: 10%;
   --background: white;
   --color: #50CBE4;
-  box-shadow: 0px 15px 15px #0898B5;
+  --box-shadow: 0px 15px 15px #0898B5;
   margin-bottom: 7.5%;
 }
 #container2 {
@@ -70,7 +70,7 @@ h2{
   --color: #50CBE4;
   width: 80%;
   font-weight: bolder;
-  box-shadow: 0px 15px 15px #0898B5;
+  --box-shadow: 0px 15px 15px #0898B5;
   border-radius: 100px;
   --background: white;
   margin-bottom: 7.5%;

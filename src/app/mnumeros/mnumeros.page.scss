@@ -1,35 +1,66 @@
-#tools{
-	--background: #FF8633;
-	--color: white;
+.toolbar-container, #body, #tools, #head{
+	--background: #09B7DA;
+	color: white;
+}
+#fila{
+	.n1, .n2{
+		text-align: center;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100% 80%;
+		height: 12.5%;
+		width: 100%;
+	}
+} 
+ .n1, .n2{
+	b{
+		position: relative;
+		top: 35%;
+	}
+ } 
+.n1{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+.n2{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+.n1, .n2{
+	[id*="numero"]{
+		height: 100%;
+	}
 }
 #contenedor{
+	width: 95%;
+	height: 60%;
+	margin-left: 2.5%;
+	border-bottom: 1.5px solid white;
+}
+#fila{
+	margin: none;
+	height: 100%;
 	width: 100%;
-	height: 80%;
-	background: #FF8633;
+	position: relative;
+	left: 0%;
 }
-#seleccion{
-	width: 100%;
-	height: 25%;
-	background: white;
-	margin-top: 10%;
+#columna{
+	height: 100%;
+	border: solid;
 }
-#numero{
-	z-index: 100;
-	margin: 0;
-	margin-top: 30%;
-	position: absolute;
-	left: 37.5%;
+#verifica{
+	margin-top: 5%;
+	width: 75%;
+	margin-left: 12.5%;
+	--background: white;
+	--color: #50CBE4;
+	font-weight: bolder;
+	--box-shadow: 0px 15px 15px #0898B5;
 }
-#numero2{
-	z-index: 1;
-	margin: 0;
-	margin-top: -80%;
-	margin-left: 37.5%;
-}
-#seleccionar{
-	--color: white;
-	--border-radius: 20px !important;
-	--box-shadow: 0px 5px 10px lightgray;
-	margin-top: 40%;
-	--background: -webkit-linear-gradient(left, #f99e45, #ffb751);
+#n1, #n2{
+	#valores{
+		position: relative;
+		top: 0%;
+		left: 0%;
+		height: 100%;
+		width: 100%;
+	}
 }

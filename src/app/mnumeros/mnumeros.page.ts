@@ -29,6 +29,9 @@ export class MnumerosPage implements OnInit {
   numeros5: any = [5, 12, 19, 26, 33, 39, 47, 54];
   numeros6: any = [6, 13, 20, 27, 34, 40, 48, 55];
   numeros7: any = [7, 14, 21, 28, 35, 41, 49];
+  combinacion: any = [];
+  final: any = [];
+  colores: string;
 
   constructor() { }
 
@@ -206,5 +209,231 @@ export class MnumerosPage implements OnInit {
   	}
 
   }*/
+
+  seleccionar (numero){
+
+    let seleccion = numero;
+    let valor = 'numero' + numero.toString();
+    let elemento = document.getElementById(valor);
+
+    if (elemento.style.backgroundImage == 'none') {
+
+
+      if (this.combinacion.length < 5) {
+
+        elemento.style.backgroundImage = 'url(' +  '/assets/fondo-numero-rojo-verde.png' + ')';
+        elemento.style.backgroundPosition = 'center';
+        elemento.style.backgroundRepeat = 'no-repeat';
+        elemento.style.backgroundSize = '40px' + ' ' + '40px';
+        elemento.style.height = '100%';
+        this.combinacion.push(seleccion);
+        console.log(this.combinacion);
+
+      }
+
+    }else{
+
+      elemento.style.backgroundImage = 'none';
+
+      const index = this.combinacion.indexOf(seleccion);
+
+      if (index > -1) {
+        this.combinacion.splice(index, 1);
+        console.log(this.combinacion);
+      }
+
+    }
+    
+  }
+
+  seleccionar2 (numero){
+
+    let seleccion = numero;
+    let valor = 'numero' + numero.toString();
+    let elemento = document.getElementById(valor);
+
+    if (elemento.style.backgroundImage == 'none') {
+
+      if (this.combinacion.length < 5) {
+
+        elemento.style.backgroundImage = 'url(' +  '/assets/fondo-numero-azul-verde.png' + ')';
+        elemento.style.backgroundPosition = 'center';
+        elemento.style.backgroundRepeat = 'no-repeat';
+        elemento.style.backgroundSize = '40px' + ' ' + '40px';
+        elemento.style.height = '100%';
+
+        this.combinacion.push(seleccion);
+        console.log(this.combinacion);
+
+      }
+
+    }else{
+
+      elemento.style.backgroundImage = 'none';
+      
+      const index = this.combinacion.indexOf(seleccion);
+
+      if (index > -1) {
+        this.combinacion.splice(index, 1);
+        console.log(this.combinacion);
+      }
+
+    }
+    
+  }
+
+  validar(){
+
+    console.log(this.combinacion);
+    const combinazione = this.combinacion.sort((a, b) => a - b);
+    console.log(combinazione);
+    let array;
+    array.push(combinazione[0], combinazione[1], combinazione[2], combinazione[3], combinazione[4]);
+    const semaforo = document.getElementById("rvalidacion");
+    const colores = ['Combinación probable: Verde', 'Combinación poco probable: Amarillo', 'Combinación difícilmente probable: Rojo'];
+    const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
+    let nprimos;
+
+    for (let i = 0; i <= this.combinacion.length; i++) {
+
+      let numero = this.combinacion[i];
+
+      for (let x = 0; x <= primos.length; x++) {
+
+        let primo = primos[x];
+
+        if (numero == primo) {
+          nprimos++;
+        }
+      }
+    }
+
+    if (semaforo.style.display = 'none') {
+      semaforo.style.display = 'block';
+    }
+
+    if (array[1] == array[0] + 1 && array[2] == array[1] + 1 || array[2] == array[1] + 1 && array[3] == array[2] + 1 || array[3] == array[2] + 1 && array[4] == array[3] + 1) {
+      
+      this.colores = colores[1];
+
+    }else if (array[1] == array[0] + 1 && array[2] == array[1] + 1 && array[3] == array[2] + 1  || array[2] == array[1] + 1 && array[3] == array[2] + 1 && array[4] == array[3] + 1) {
+      
+      this.colores = colores[1];
+
+    }else if (array[1] == array[0] + 1 && array[2] == array[1] + 1 && array[4] == array[3] + 1 || array[4] == array[3] + 1 && array[3] == array[2] + 1 && array[1] == array[0] + 1) {
+
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 1 && array[2] == array[1] + 1 && array[3] == array[2] + 1 || array[4] == array[3] + 1 && array[3] == array[2] + 1 && array[2] == array[1] + 1) {
+            
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 2 && array[2] == array[1] + 2 && array[3] == array[2] + 2 || array[4] == array[3] + 2 && array[3] == array[2] + 2 && array[2] == array[1] + 2) {
+            
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 3 && array[2] == array[1] + 3 || array[4] == array[3] + 3 && array[3] == array[2] + 3) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 4 && array[2] == array[1] + 4 && array[3] == array[2] + 4 || array[4] == array[3] + 4 && array[3] == array[2] + 4 && array[2] == array[1] + 4) {
+
+      this.colores = colores[2];
+      
+    }else if (array[1] == array[0] + 5 && array[2] == array[1] + 5 && array[3] == array[2] + 5 || array[4] == array[3] + 5 && array[3] == array[2] + 5 && array[2] == array[1] + 5) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 6 && array[2] == array[1] + 6 && array[3] == array[2] + 6 || array[4] == array[3] + 6 && array[3] == array[2] + 6 && array[2] == array[1] + 6) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 7 && array[2] == array[1] + 7 && array[3] == array[2] + 7 || array[4] == array[3] + 7 && array[3] == array[2] + 7 && array[2] == array[1] + 7) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 8 && array[2] == array[1] + 8 && array[3] == array[2] + 8 || array[4] == array[3] + 8 && array[3] == array[2] + 8 && array[2] == array[1] + 8) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 9 && array[2] == array[1] + 9 && array[3] == array[2] + 9 || array[4] == array[3] + 9 && array[3] == array[2] + 9 && array[2] == array[1] + 9) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 10 && array[2] == array[1] + 10 && array[3] == array[2] + 10 || array[4] == array[3] + 10 && array[3] == array[2] + 10 && array[2] == array[1] + 10) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 11 && array[2] == array[1] + 11 && array[3] == array[2] + 11 || array[4] == array[3] + 11 && array[3] == array[2] + 11 && array[2] == array[1] + 11) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 12 && array[2] == array[1] + 12 && array[3] == array[2] + 12 || array[4] == array[3] + 12 && array[3] == array[2] + 12 && array[2] == array[1] + 12) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 13 && array[2] == array[1] + 13 && array[3] == array[2] + 13 || array[4] == array[3] + 13 && array[3] == array[2] + 13 && array[2] == array[1] + 13) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 2 && array[2] == array[1] + 2 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 3 && array[2] == array[1] + 3 && array[3] == array[2] + 1) {
+
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 4 && array[2] == array[1] + 4 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 5 && array[2] == array[1] + 5 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 6 && array[2] == array[1] + 6 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 7 && array[2] == array[1] + 7 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 8 && array[2] == array[1] + 8 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 9 && array[2] == array[1] + 9 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 10 && array[2] == array[1] + 10 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 11 && array[2] == array[1] + 11 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 12 && array[2] == array[1] + 12 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if (array[1] == array[0] + 13 && array[2] == array[1] + 13 && array[3] == array[2] + 1) {
+      
+      this.colores = colores[2];
+
+    }else if(nprimos >= 4){
+
+      this.colores = colores[1];
+
+    }else{
+
+      this.colores = colores[0];
+
+    }
+
+  }
 
 }

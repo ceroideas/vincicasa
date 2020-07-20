@@ -6,6 +6,7 @@ import { MenuController } from '@ionic/angular';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,19 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppModule {
 
-  constructor(private menu: MenuController) { }
-  
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
+  usuario: string;
+
+   ngOnInit() {
+       this.usuario = localStorage.getItem('correo'); 
   }
 
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
-  }
 }

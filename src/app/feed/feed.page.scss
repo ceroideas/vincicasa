@@ -34,17 +34,6 @@
 		width: 60%;
 	}
 }
-#b1, #b2, #b3, #b4, #b5, #b6, #b7{
-	margin-right: 7.5%;
-}
-#i1, #i2, #i3, #i4, #i5, #i6{
-	margin-bottom: 5%;
-}
-#i1, #i2, #i3, #i4, #i5, #i6, #i7, #b1, #b2, #b3, #b4, #b5, #b6, #b7{
-	--background: transparent;
-	--color: white;
-	--border: none;
-}
 #tools p{
 	display: inline;
 	text-align: center;
@@ -91,7 +80,7 @@ h5{
 	text-align: center;
 	display: inline-block;
 }
-#millionday{
+#millionday, a{
 	color: #FFF100;
 	-webkit-text-stroke: 1px black;
 	font-weight: bolder;

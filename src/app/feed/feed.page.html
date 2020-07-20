@@ -1,83 +1,10 @@
 <ion-content id="body">
 	<div id="header">
 	  <ion-toolbar id="tools">
-	    <ion-buttons slot="start">
-	    	<ion-button (click)="toggle()">
-	    		<ion-icon name="list-outline"></ion-icon>
-	    	</ion-button>
-	    </ion-buttons>
+	    <ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
 	    <p id="millionday">CHANCE MILLIONDAY</p>
 	  </ion-toolbar>
 	</div>
-	<ion-list id="menu">
-		<ion-item>
-			<ion-row>
-				<ion-col>
-					<img src="">
-				</ion-col>
-				<ion-col>
-					<ion-row>
-						<ion-col>
-							<ion-label>{{ hour }}</ion-label>
-						</ion-col>
-					</ion-row>
-					<ion-row>
-						<ion-col>
-							<ion-button></ion-button>
-						</ion-col>
-					</ion-row>
-				</ion-col>
-			</ion-row>
-		</ion-item>
-		<ion-item slot="start" id="i1" routerLink="/feed">
-			<ion-button id="b1" fill="clear">
-				<ion-icon name="home-outline"></ion-icon>
-			</ion-button>
-			LA TUA COMBINAZIONE
-		</ion-item>
-		<ion-item slot="start" id="i2" routerLink="/manual">
-			<ion-button id="b2" fill="clear">
-				<ion-icon name="school-outline"></ion-icon>
-			</ion-button>
-			SELEZIONE IL SISTEMA
-		</ion-item>
-		<ion-item slot="start" id="i3" routerLink="/historial">
-			<ion-button id="b3" fill="clear">
-				<ion-icon name="newspaper-outline"></ion-icon>
-			</ion-button>
-			TEST DEI TUO NUMERI
-		</ion-item>
-		<ion-item slot="start" id="i4">
-			<ion-button id="b4" fill="clear">
-				<ion-icon name="journal-outline"></ion-icon>
-			</ion-button>
-			ESTATISTICHE
-		</ion-item>
-		<ion-item slot="start" id="i5">
-			<ion-button id="b5" fill="clear">
-				<ion-icon name="settings-outline"></ion-icon>
-			</ion-button>
-			VERIFICA SCHEDINA
-		</ion-item>
-		<ion-item slot="start" id="i6" routerLink="/estadisticas">
-			<ion-button id="b6" fill="clear">
-				<ion-icon name="stats-chart-outline"></ion-icon>
-			</ion-button>
-			ULTIME ESTRAZIONI
-		</ion-item>
-		<ion-item slot="start" id="i7" (click)="salir()">
-			<ion-button id="b7" fill="clear">
-				<ion-icon name="exit-outline"></ion-icon>
-			</ion-button>
-			TUTORIAL
-		</ion-item>
-		<ion-item slot="start" id="i7" (click)="salir()">
-			<ion-button id="b7" fill="clear">
-				<ion-icon name="exit-outline"></ion-icon>
-			</ion-button>
-			DONA
-		</ion-item>
-	</ion-list>
 	<ion-row>
 		<ion-col></ion-col>
 		<ion-col>
