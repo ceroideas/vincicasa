@@ -227,7 +227,6 @@ export class MnumerosPage implements OnInit {
         elemento.style.backgroundSize = '40px' + ' ' + '40px';
         elemento.style.height = '100%';
         this.combinacion.push(seleccion);
-        console.log(this.combinacion);
 
       }
 
@@ -239,7 +238,6 @@ export class MnumerosPage implements OnInit {
 
       if (index > -1) {
         this.combinacion.splice(index, 1);
-        console.log(this.combinacion);
       }
 
     }
@@ -263,7 +261,6 @@ export class MnumerosPage implements OnInit {
         elemento.style.height = '100%';
 
         this.combinacion.push(seleccion);
-        console.log(this.combinacion);
 
       }
 
@@ -275,7 +272,6 @@ export class MnumerosPage implements OnInit {
 
       if (index > -1) {
         this.combinacion.splice(index, 1);
-        console.log(this.combinacion);
       }
 
     }
@@ -287,10 +283,10 @@ export class MnumerosPage implements OnInit {
     console.log(this.combinacion);
     const combinazione = this.combinacion.sort((a, b) => a - b);
     console.log(combinazione);
-    let array;
+    let array = [];
     array.push(combinazione[0], combinazione[1], combinazione[2], combinazione[3], combinazione[4]);
     const semaforo = document.getElementById("rvalidacion");
-    const colores = ['Combinación probable: Verde', 'Combinación poco probable: Amarillo', 'Combinación difícilmente probable: Rojo'];
+    const colores = ['COMBINAZIONE MOLTO PROBAILE', 'Combinación poco probable: Amarillo', 'Combinación difícilmente probable: Rojo'];
     const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
     let nprimos;
 
@@ -308,9 +304,9 @@ export class MnumerosPage implements OnInit {
       }
     }
 
-    if (semaforo.style.display = 'none') {
+    /*if (semaforo.style.display = 'none') {
       semaforo.style.display = 'block';
-    }
+    }*/
 
     if (array[1] == array[0] + 1 && array[2] == array[1] + 1 || array[2] == array[1] + 1 && array[3] == array[2] + 1 || array[3] == array[2] + 1 && array[4] == array[3] + 1) {
       
