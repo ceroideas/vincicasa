@@ -11,9 +11,10 @@ import { Platform } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CombinazionePipe } from './combinazione.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CombinazionePipe],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [

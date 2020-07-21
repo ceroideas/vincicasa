@@ -1,0 +1,28 @@
+#body, #head{
+	--background: #09B7DA;
+} 
+#tutorial{
+	--text-align: center;
+	color: white;
+	margin-left: 30%;
+}
+#instrucciones{
+	width: 90%;
+	background: white;
+	border-radius: 15px;
+	margin: auto;
+	padding: 2% 2% 2% 2%;
+	font-size: 90%;
+}
+#continuar{
+	margin-top: 10%;
+	--color: #09B7DA;
+	--background: white;
+	font-weight: bolder;
+}
+#info{
+	margin: auto;
+	color: white;
+	text-align: center;
+	margin-bottom: 10%;
+}
