@@ -7,6 +7,7 @@ import { ComunicacionService } from '../comunicacion.service';
 import { Router } from  '@angular/router';
 import { MenuController } from  '@ionic/angular';
 import * as moment from 'moment';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomePage {
   isesion = new Sesion();
   contrasena: string = "$a1e5i5o2u";
 
-  constructor(private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
+  constructor(public alertController: AlertController, private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
     this.menu.enable(false);
   }
 
@@ -29,10 +30,35 @@ export class HomePage {
     
   }
 
+  async error(problema) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Error:',
+      subHeader: '',
+      message: problema,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async alerta(alerta) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Advertencia:',
+      subHeader: '',
+      message: alerta,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+  
   registrarse(f: NgForm){
     if (this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined) {
       
-      alert('Todos los campos son obligatorios');
+      //alert('Todos los campos son obligatorios');
+      this.alerta('Todos los campos son obligatorios');
 
     }else{
 
@@ -48,7 +74,11 @@ export class HomePage {
         
         this.comunicacion.registros(jsono).subscribe((data:any) => {
           if (data.respuesta == 'registrado') {
-            alert('Usuario ya existe');
+            
+            //console.log(data.respuesta);
+            //alert('Usuario ya existe');
+            this.alerta('Usuario ya existe');
+
           }else{
 
             localStorage.setItem('usuario', this.formulario.correo);
@@ -56,11 +86,17 @@ export class HomePage {
 
           }
         }, Error => {
-          console.log(Error);
+
+          //console.log(Error);
+          this.error(Error);
+
         });
 
       }else{
-        alert("Las contraseñas no coinciden");
+
+        //alert("Las contraseñas no coinciden");
+        this.alerta('Las contraseñas no coinciden');
+
       }
     }
   }
@@ -68,7 +104,10 @@ export class HomePage {
   sesion(f: NgForm){
 
     if (this.isesion.correo == undefined || this.isesion.password == undefined) {
-      alert('Todos los campos son obligatorios');
+      
+      //alert('Todos los campos son obligatorios');
+      this.alerta('Todos los campos son obligatorios');
+
     }else{
 
       localStorage.setItem('correo', this.isesion.correo);
@@ -83,7 +122,8 @@ export class HomePage {
         
         if(data.respuesta == 'nousuario'){
 
-          alert('Usuario no registrado');
+          //alert('Usuario no registrado');
+          this.alerta('Usuario no registrado');
 
         }else{
 
@@ -93,14 +133,18 @@ export class HomePage {
 
           }else{
             
-            alert('Las contraseñas no coinciden');
+            //alert('Las contraseñas no coinciden');
+            this.alerta('Las contraseñas no coinciden');
           
           }
 
         }
         
       }, Error => {
-          console.log(Error);
+
+          //console.log(Error);
+          this.error(Error);
+
       });
     }
     
