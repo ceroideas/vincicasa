@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ComunicacionService } from '../comunicacion.service';
 import { Numeros } from '../numeros';
 import { Router } from  '@angular/router';
-import * as moment from 'moment';
+import { MenuController } from  '@ionic/angular';
 
 @Component({
   selector: 'app-feed',
@@ -23,23 +23,40 @@ export class FeedPage implements OnInit {
   inc2: number = +this.n4;
   resultado: any = [];
   colores: string;*/
-  hour: any;
-  minute: any;
-  second: any;
- 
-  constructor(private comunicacion: ComunicacionService, private router: Router) {
+  usuario: string = localStorage.getItem('correo');
+  horas: any = [];
+ // @Output() cambio = new EventEmitter();
+
+  constructor(private menu: MenuController, private comunicacion: ComunicacionService, private router: Router) {
+    this.menu.enable(true);
   }
 
   ngOnInit() {
-
+    this.comunicacion.changeData(this.usuario);
+    this.refrescar();
+   // this.cambio.emit(this.usuario);
+   /* console.log(this.usuario);
     this.reloj();
     
+    
     if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined) {
-      this.scrapping();
+      this.scrapping();*/
     }
 
-  }
+  refrescar(){
+    let mostrar_hora = () => {
 
+      this.horas = [];
+      this.comunicacion.hora$.subscribe(res => {
+
+        document.getElementById("hh1").innerHTML = res[0];
+        document.getElementById("mh1").innerHTML = res[1];
+        document.getElementById("sh1").innerHTML = res[2];
+
+      });
+    }
+    let intervalo = setInterval(mostrar_hora, 1000);
+  }
   /*getRandomArbitrary(min, max){
     return Math.random() * (max - min) + min;
   }*/
@@ -316,7 +333,7 @@ export class FeedPage implements OnInit {
   	}
   }
 
-  scrapping(){
+  /*scrapping(){
     this.comunicacion.tabla().subscribe((data: any) => {
 
       let info = [data['dias'][0]];
@@ -371,7 +388,7 @@ export class FeedPage implements OnInit {
         // console.log(this.numeros);
         
         ultimos.push(numeros);
-      }*/
+      }
 
       //localStorage.setItem('ultimos', JSON.stringify(ultimos));
       
@@ -385,12 +402,12 @@ export class FeedPage implements OnInit {
 
         }
 
-        /*for (let key in info3[i].dia1) {
+        for (let key in info3[i].dia1) {
 
           console.log('key',key);
           numeros.push(info3[i].dia1[key]);
 
-        }*/
+        }
 
       }
       
@@ -406,7 +423,7 @@ export class FeedPage implements OnInit {
       console.log(Error)
     });
 
-  }
+  }*/
   /*numeros(event){
 
     this.data.numero = localStorage.getItem('numero');
@@ -434,7 +451,7 @@ export class FeedPage implements OnInit {
     });
   }*/
 
-  reloj(){
+ /* reloj(){
 
     let mostrar_hora = () => {
 
@@ -481,7 +498,7 @@ export class FeedPage implements OnInit {
 
     let intervalo = setInterval(mostrar_hora, 1000);
 
-  }
+  }*/
 
   salir(event){
     this.router.navigateByUrl('/home');

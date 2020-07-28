@@ -1,0 +1,61 @@
+<ion-content id="body">
+	<ion-toolbar id="tools">
+		<ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
+	    <ion-label id="titulo">COMBINAZIONE</ion-label>
+	</ion-toolbar>
+	<img src="../assets/monedas-2.png" id="imgm">
+	<img src="../assets/aro-luz.png" id="fondo"> 
+	<ion-row>
+		<ion-col id="hoy">
+			LA TUA COMBINAZIONE {{ hoy }}
+		</ion-col>
+	</ion-row>
+	<ion-row id="combinacion">
+		<ion-col class="columna">
+			<div class="n1">
+				<b>{{ combinacion[0] }}</b>
+			</div>
+		</ion-col>
+		<ion-col class="columna2">
+			<div class="n2">
+				<b>{{ combinacion[1] }}</b>
+			</div>
+		</ion-col>
+		<ion-col class="columna">
+			<div class="n1">
+				<b>{{ combinacion[2] }}</b>
+			</div>
+		</ion-col>
+		<ion-col class="columna2">
+			<div class="n2">
+				<b>{{ combinacion[3] }}</b>
+			</div>
+		</ion-col>
+		<ion-col class="columna">
+			<div class="n1">
+				<b>{{ combinacion[4] }}</b>
+			</div>
+		</ion-col>
+	</ion-row>
+	<ion-button shape="round" size="large" id="modifica">MODIFICA COMBINAZIONE</ion-button>
+	<ion-row>
+		<ion-col>ULTIME 3 COMBINAZIONI</ion-col>
+	</ion-row>
+	<ion-row id="uc">
+		<ion-col id="numbers">
+			<ion-row *ngFor="let array of arrays; let i = index">
+				<ion-col class="c{{ i }}" *ngFor="let numero of arrays[i]">
+					<div class="columna">
+						<b>{{ numero }}</b>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-col>
+		<ion-col id="numbers2">
+			<ion-row *ngFor="let fecha of fechas">
+				<p>{{ fecha }}</p>
+			</ion-row>
+		</ion-col>
+	</ion-row>
+	
+</ion-content>

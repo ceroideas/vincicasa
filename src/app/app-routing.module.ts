@@ -47,6 +47,14 @@ const routes: Routes = [
     path: 'historial',
     loadChildren: () => import('./historial/historial.module').then( m => m.HistorialPageModule)
   },
+  {
+    path: 'combinazione',
+    loadChildren: () => import('./combinazione/combinazione.module').then( m => m.CombinazionePageModule)
+  },
+  {
+    path: 'seleccion',
+    loadChildren: () => import('./seleccion/seleccion.module').then( m => m.SeleccionPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,77 @@
+#body{
+	--background: #09B7DA;
+	--color: white;
+}
+#tools{
+	--background: transparent;
+	--color: white;
+	text-align: center;
+	font-weight: 100;
+}
+#titulo{
+	margin-left: -10%;
+}
+#imgm{
+	height: 30%;
+	width: 80%;
+	position: absolute;
+	left: 10%;
+	top: 10%;
+	z-index: 0;
+}
+#fondo{
+	margin-top: -20%;
+	height: 50%;
+	width: 100%;
+	z-index: 1;
+}
+#combinacion, #columna{
+	margin: 0;
+	text-align: center;
+	height: 10%;
+}
+.n1, .n2{
+	height: 100%;
+	font-weight: bolder;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 80% 100%;
+	color: black;
+}
+.n1{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+.n2{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+.n1, .n2{
+	b{
+		position: relative;
+		top: 20px;
+	}
+}
+#modifica{
+	width: 80%;
+	height: 7.5%;
+	margin: 10%;
+	--background: white;
+	--color: #09B7DA;
+	font-weight: bold;
+	font-size: 100%;
+}
+#hoy{
+	text-align: center;
+	font-weight: 300;
+}
+[id*="c"]{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+	font-weight: bolder;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	color: black;
+}
+p{
+	text-align: right;
+	width: 100%;
+}

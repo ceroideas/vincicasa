@@ -15,6 +15,7 @@ export class NautomaticosPage implements OnInit {
 	inc1: number = +this.n3;
 	n4: string = localStorage.getItem('incluir2');
 	inc2: number = +this.n4;
+	//hoy: string = localStorage.getItem('fhoy');
 
 	constructor() { }
 

@@ -5,6 +5,7 @@ import * as CryptoJS from 'crypto-js';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../comunicacion.service';
 import { Router } from  '@angular/router';
+import { MenuController } from  '@ionic/angular';
 import * as moment from 'moment';
 
 @Component({
@@ -19,7 +20,9 @@ export class HomePage {
   isesion = new Sesion();
   contrasena: string = "$a1e5i5o2u";
 
-  constructor(private comunicacion: ComunicacionService, private router: Router){}
+  constructor(private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
+    this.menu.enable(false);
+  }
 
   ngOnInit(){
     localStorage.removeItem('correo');

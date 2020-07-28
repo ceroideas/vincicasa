@@ -224,7 +224,7 @@ export class MnumerosPage implements OnInit {
         elemento.style.backgroundImage = 'url(' +  '/assets/fondo-numero-rojo-verde.png' + ')';
         elemento.style.backgroundPosition = 'center';
         elemento.style.backgroundRepeat = 'no-repeat';
-        elemento.style.backgroundSize = '40px' + ' ' + '40px';
+        elemento.style.backgroundSize = '37.5px' + ' ' + '37.5px';
         elemento.style.height = '100%';
         this.combinacion.push(seleccion);
 
@@ -257,7 +257,7 @@ export class MnumerosPage implements OnInit {
         elemento.style.backgroundImage = 'url(' +  '/assets/fondo-numero-azul-verde.png' + ')';
         elemento.style.backgroundPosition = 'center';
         elemento.style.backgroundRepeat = 'no-repeat';
-        elemento.style.backgroundSize = '40px' + ' ' + '40px';
+        elemento.style.backgroundSize = '37.5px' + ' ' + '37.5px';
         elemento.style.height = '100%';
 
         this.combinacion.push(seleccion);
@@ -282,7 +282,6 @@ export class MnumerosPage implements OnInit {
 
     console.log(this.combinacion);
     const combinazione = this.combinacion.sort((a, b) => a - b);
-    console.log(combinazione);
     let array = [];
     array.push(combinazione[0], combinazione[1], combinazione[2], combinazione[3], combinazione[4]);
     const semaforo = document.getElementById("rvalidacion");
