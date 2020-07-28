@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComunicacionService } from '../comunicacion.service';
 
 @Component({
   selector: 'app-combinazione',
@@ -15,10 +16,12 @@ export class CombinazionePage implements OnInit {
 	utl3: any = [4, 2, 3, 4, 5];
 	arrays: any = [];
 	fechas: any = ['06/01/2000', '08/04/1997', '7/12/2025'];
+	usuario: string = localStorage.getItem('correo');
 
-  constructor() { }
+  constructor(private service: ComunicacionService) { }
 
   ngOnInit() {
+  	this.service.changeData(this.usuario);
   	this.arrays.push(this.utl, this.utl2, this.utl3);
   }
 

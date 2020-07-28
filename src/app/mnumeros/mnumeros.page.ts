@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ComunicacionService } from '../comunicacion.service';
 
 @Component({
   selector: 'app-mnumeros',
@@ -32,10 +33,14 @@ export class MnumerosPage implements OnInit {
   combinacion: any = [];
   final: any = [];
   colores: string;
+  usuario: string = localStorage.getItem('correo');
 
-  constructor() { }
+  constructor(private service: ComunicacionService) { }
 
   ngOnInit() {
+
+    this.service.changeData(this.usuario);
+
   }
 
   /*cambio(event){
@@ -218,14 +223,35 @@ export class MnumerosPage implements OnInit {
 
     if (elemento.style.backgroundImage == 'none') {
 
-
       if (this.combinacion.length < 5) {
 
         elemento.style.backgroundImage = 'url(' +  '/assets/fondo-numero-rojo-verde.png' + ')';
         elemento.style.backgroundPosition = 'center';
         elemento.style.backgroundRepeat = 'no-repeat';
-        elemento.style.backgroundSize = '37.5px' + ' ' + '37.5px';
         elemento.style.height = '100%';
+
+        if (window.matchMedia("(min-height: 650px)").matches) {
+
+          elemento.style.backgroundSize = '27.5px' + ' ' + '32.5px';
+
+        }else if (window.matchMedia("(min-height: 560px)").matches) {
+
+          elemento.style.backgroundSize = '32.5px' + ' ' + '32.5px';
+          
+        }if (window.matchMedia("(min-height: 1024px)").matches) {
+          
+          elemento.style.backgroundSize = '45px' + ' ' + '45px';
+
+        }if (window.matchMedia("(min-height: 1300px)").matches) {
+          
+          elemento.style.backgroundSize = '55px' + ' ' + '55px';
+
+        } else {
+
+          elemento.style.backgroundSize = '32.5px' + ' ' + '37.5px';
+
+        }
+
         this.combinacion.push(seleccion);
 
       }
@@ -257,8 +283,29 @@ export class MnumerosPage implements OnInit {
         elemento.style.backgroundImage = 'url(' +  '/assets/fondo-numero-azul-verde.png' + ')';
         elemento.style.backgroundPosition = 'center';
         elemento.style.backgroundRepeat = 'no-repeat';
-        elemento.style.backgroundSize = '37.5px' + ' ' + '37.5px';
         elemento.style.height = '100%';
+
+        if (window.matchMedia("(min-height: 650px)").matches) {
+
+          elemento.style.backgroundSize = '27.5px' + ' ' + '32.5px';
+
+        }else if (window.matchMedia("(min-height: 560px)").matches) {
+
+          elemento.style.backgroundSize = '32.5px' + ' ' + '32.5px';
+
+        }if (window.matchMedia("(min-height: 1024px)").matches) {
+          
+          elemento.style.backgroundSize = '45px' + ' ' + '45px';
+
+        }if (window.matchMedia("(min-height: 1300px)").matches) {
+          
+          elemento.style.backgroundSize = '55px' + ' ' + '55px';
+
+        } else {
+
+          elemento.style.backgroundSize = '32.5px' + ' ' + '37.5px';
+
+        }
 
         this.combinacion.push(seleccion);
 
@@ -275,7 +322,7 @@ export class MnumerosPage implements OnInit {
       }
 
     }
-    
+
   }
 
   validar(){

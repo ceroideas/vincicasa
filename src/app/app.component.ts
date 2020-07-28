@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ComunicacionService } from './comunicacion.service';
 import * as moment from 'moment';
+import { MenuController } from '@ionic/angular'; //import MenuController to access toggle() method.
 //import { Subject } from 'rxjs';
 
 @Component({
@@ -20,14 +21,18 @@ export class AppComponent {
   second: any;
   tiempo: any = [];
 
-  constructor(private service: ComunicacionService) { }
+  constructor(private service: ComunicacionService, public menuCtrl: MenuController) { 
+
+    this.menuCtrl.toggle(); 
+
+  }
 
   ngOnInit(){
 
     this.reloj();
     this.service.data$.subscribe(res => this.user = res);
     
-    localStorage.clear();
+    //localStorage.clear();
 
     if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined) {
       this.scrapping();

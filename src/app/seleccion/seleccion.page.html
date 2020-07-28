@@ -54,14 +54,14 @@
 			</ion-col>
 			<ion-col class="columna">
 				<div *ngFor="let numero of numeros7" class="n1">
-					<div id="numero{{ numero }}" (click)="seleccionar(numero)" class="valores">
+					<div id="numero{{ numero }}" (mouseover)="seleccionar(numero)" class="valores">
 						<b>{{ numero }}</b>
 					</div>
 				</div>
 			</ion-col>
 		</ion-row>
 	</div>
-	<ion-row *ngIf="combinacion.length > 1" id="seleccionado">
+	<ion-row *ngIf="combinacion.length >= 1" id="seleccionado">
 		<ion-col *ngIf="combinacion[0]" class="c1">
 			<b>{{ combinazione[0] }}</b>
 		</ion-col>

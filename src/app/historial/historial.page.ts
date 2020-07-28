@@ -11,11 +11,13 @@ export class HistorialPage implements OnInit {
   dias: any = []; 
   fechas: any = [];
   numeros: any = [];
+  usuario: string = localStorage.getItem('correo');
 
   constructor(private comunicacion: ComunicacionService) { }
 
   ngOnInit() {
 
+    this.comunicacion.changeData(this.usuario);
     this.dias = JSON.parse(localStorage.getItem('dias'));
     this.fechas = JSON.parse(localStorage.getItem('fechas'));
     this.numeros = JSON.parse(localStorage.getItem('numeros'));

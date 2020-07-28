@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComunicacionService } from '../comunicacion.service';
 
 @Component({
   selector: 'app-manual',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManualPage implements OnInit {
 
-  constructor() { }
+  usuario: string = localStorage.getItem('correo');
+
+  constructor(private service: ComunicacionService) { }
 
   ngOnInit() {
+  	this.service.changeData(this.usuario);
   }
 
 }
+

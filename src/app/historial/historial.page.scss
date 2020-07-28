@@ -24,14 +24,27 @@
 		float: left;
 	}
 }
+.datos, #number {
+	[id*="ultime"] {
+		b{
+			position: relative;
+			top: 37.5%;
+			color: black;
+		}
+	}
+}
+#dia b{
+	font-size: 110%;
+	color: white;
+}
 .datos:before {
 	content: "";
 	clear: both;
 }
-.datos #ultime0 b, #ultime1 b, #ultime2 b, #ultime3 b, #ultime4 b, #number #ultime0 b, #ultime1 b, #ultime2 b, #ultime3 b, #ultime4 b{
+/*.datos #ultime0 b, #ultime1 b, #ultime2 b, #ultime3 b, #ultime4 b, #number #ultime0 b, #ultime1 b, #ultime2 b, #ultime3 b, #ultime4 b{
 	position: relative;
 	top: 37.5%;
-}
+}*/
 #ultime0, #ultime2, #ultime4{
 	background-image: url('/assets/fondo-numero-rojo-balnco.png');
 }
@@ -116,4 +129,80 @@
 }
 #tab{
 	width: 100%;
+}
+@media only screen and(min-height: 1024px ){
+	.datos, #number {
+		[id*="ultime"] {
+			width: 20%;
+			height: 130px;
+			text-align: center;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 90% 70%;
+			float: left;
+			font-size: 40px;
+		}
+	}
+	#number{
+		background: white;
+		border-radius: 10px;
+		height: 250px;
+		width: 90%;
+		margin-left: 5%;
+	}/*
+	.datos, #number{
+		b{
+			font-size: 40px;
+			position: relative;
+			top: 230%;
+		}
+	} */
+	/*.datos, #number{
+		/*[id*="ultime"]{
+			b {
+				position: relative;
+				top: 0%;
+			}
+		}
+	}*/
+	#dia b, #ucc, #ucp, #fecha p{
+		font-size: 150%;
+	}
+	.datos, #number {
+		[id*="ultime"] {
+			b{
+				position: relative;
+				top: 32.5%;
+			}
+		}
+	}
+}
+@media only screen and(min-height: 1024px ){
+	.datos, #number {
+		[id*="ultime"] {
+			width: 20%;
+			height: 150px;
+			text-align: center;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 90% 70%;
+			float: left;
+			font-size: 40px;
+		}
+	}
+	#number{
+		background: white;
+		border-radius: 10px;
+		height: 280px;
+		width: 90%;
+		margin-left: 5%;
+	}
+	.datos, #number {
+		[id*="ultime"] {
+			b{
+				position: relative;
+				top: 35%;
+			}
+		}
+	}
 }

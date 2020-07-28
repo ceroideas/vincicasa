@@ -3,14 +3,15 @@
 	margin: 0;
 	--border: none;
 }
-.items{
+.items .label{
 	--color: #FFF100;
 	-webkit-text-stroke: 1px black;
 	font-weight: bolder;
 	margin-bottom: 2.5%;
 }
 #profile{
-	height: 90%;
+	margin-top: 15%;
+	height: 70%;
 	width: 50%;
 }
 #salir{
@@ -24,3 +25,38 @@
 #lista{
 	background: transparent;
 }
+#usuario{
+	color: white;
+}
+/*@media only screen and(min-height: 560px){
+	#profile{
+		height: 90%;
+		width: 50%;
+	}
+}
+@media only screen and(min-height: 640px){
+	#profile{
+		height: 90%;
+		width: 50%;
+	}
+}
+@media only screen and(min-height: 650px){
+	#profile{
+		height: 90%;
+		width: 50%;
+	}
+}
+@media only screen and(min-height: 720px){
+	#profile{
+		margin-top: 10%;
+		height: 80%;
+		width: 50%;
+	}
+}
+@media only screen and(min-height: 800px){
+	#profile{
+		margin-top: 10%;
+		height: 80%;
+		width: 50%;
+	}
+}*/
