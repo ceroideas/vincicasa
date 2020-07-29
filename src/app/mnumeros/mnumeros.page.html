@@ -9,51 +9,72 @@
 		<ion-row id="fila">
 					<ion-col class="columna">
 						<div *ngFor="let numero of numeros" class="n1">
-							<div id="numero{{ numero }}" (click)="seleccionar(numero)" class="valores">
-								<b>{{ numero }}</b>
-							</div>
+							<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar($event, numero)">
+							<label for="numero{{ numero }}">
+								<b class="valores">
+									{{ numero }}
+								</b>
+							</label>
 						</div>
 					</ion-col>
 					<ion-col class="columna">
 						<div *ngFor="let numero of numeros2" class="n2">
-							<div id="numero{{ numero }}" (click)="seleccionar2(numero)" class="valores">
-								<b>{{ numero }}</b>
-							</div>
+							<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar2($event, numero)">
+							<label for="numero{{ numero }}">
+								<b class="valores">
+									{{ numero }}
+								</b>
+							</label>
 						</div>
 					</ion-col>
 					<ion-col class="columna">
 						<div *ngFor="let numero of numeros3" class="n1">
-							<div id="numero{{ numero }}" (click)="seleccionar(numero)" class="valores">
-								<b>{{ numero }}</b>
-							</div>
+							<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar($event, numero)">
+							<label for="numero{{ numero }}">
+								<b class="valores">
+									{{ numero }}
+								</b>
+							</label>
 						</div>
 					</ion-col>
 					<ion-col class="columna">
 						<div *ngFor="let numero of numeros4" class="n2">
-							<div id="numero{{ numero }}" (click)="seleccionar2(numero)" class="valores">
-								<b>{{ numero }}</b>
-							</div>
+							<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar2($event, numero)">
+							<label for="numero{{ numero }}">
+								<b class="valores">
+									{{ numero }}
+								</b>
+							</label>
 						</div>
 					</ion-col>
 					<ion-col class="columna">
 						<div *ngFor="let numero of numeros5" class="n1">
-							<div id="numero{{ numero }}" (click)="seleccionar(numero)" class="valores">
-								<b>{{ numero }}</b>
-							</div>
+							<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar($event, numero)">
+							<label for="numero{{ numero }}">
+								<b class="valores">
+									{{ numero }}
+								</b>
+							</label>
 						</div>
 					</ion-col>
 					<ion-col class="columna">
 						<div *ngFor="let numero of numeros6" class="n2">
-							<div id="numero{{ numero }}" (click)="seleccionar2(numero)" class="valores">
-								<b>{{ numero }}</b>
-							</div>
+							<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar2($event, numero)">
+							<label for="numero{{ numero }}">
+								<b class="valores">
+									{{ numero }}
+								</b>
+							</label>
 						</div>
 					</ion-col>
 					<ion-col class="columna">
 						<div *ngFor="let numero of numeros7" class="n1">
-							<div id="numero{{ numero }}" (click)="seleccionar(numero)" class="valores">
-								<b>{{ numero }}</b>
-							</div>
+							<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar($event, numero)">
+							<label for="numero{{ numero }}">
+								<b class="valores">
+									{{ numero }}
+								</b>
+							</label>
 						</div>
 					</ion-col>
 

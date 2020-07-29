@@ -215,13 +215,33 @@ export class MnumerosPage implements OnInit {
 
   }*/
 
-  seleccionar (numero){
+  seleccionar (event, numero){
 
     let seleccion = numero;
     let valor = 'numero' + numero.toString();
-    let elemento = document.getElementById(valor);
+    //let elemento = document.getElementById(valor);
 
-    if (elemento.style.backgroundImage == 'none') {
+    if (event.target.checked && this.combinacion.length < 5) {
+
+
+      this.combinacion.push(seleccion);
+
+    }else{
+
+      event.target.checked = false;
+      const index = this.combinacion.indexOf(seleccion);
+
+      if (index > -1) {
+
+        this.combinacion.splice(index, 1);
+
+      }
+
+    }
+
+    console.log(this.combinacion);
+
+    /*if (elemento.style.backgroundImage == 'none') {
 
       if (this.combinacion.length < 5) {
 
@@ -266,62 +286,35 @@ export class MnumerosPage implements OnInit {
         this.combinacion.splice(index, 1);
       }
 
-    }
+    }*/
     
   }
 
-  seleccionar2 (numero){
+  seleccionar2 (event, numero){
 
     let seleccion = numero;
     let valor = 'numero' + numero.toString();
-    let elemento = document.getElementById(valor);
+    //let elemento = document.getElementById(valor);
 
-    if (elemento.style.backgroundImage == 'none') {
+    if (event.target.checked && this.combinacion.length < 5) {
 
-      if (this.combinacion.length < 5) {
 
-        elemento.style.backgroundImage = 'url(' +  '/assets/fondo-numero-azul-verde.png' + ')';
-        elemento.style.backgroundPosition = 'center';
-        elemento.style.backgroundRepeat = 'no-repeat';
-        elemento.style.height = '100%';
-
-        if (window.matchMedia("(min-height: 650px)").matches) {
-
-          elemento.style.backgroundSize = '27.5px' + ' ' + '32.5px';
-
-        }else if (window.matchMedia("(min-height: 560px)").matches) {
-
-          elemento.style.backgroundSize = '32.5px' + ' ' + '32.5px';
-
-        }if (window.matchMedia("(min-height: 1024px)").matches) {
-          
-          elemento.style.backgroundSize = '45px' + ' ' + '45px';
-
-        }if (window.matchMedia("(min-height: 1300px)").matches) {
-          
-          elemento.style.backgroundSize = '55px' + ' ' + '55px';
-
-        } else {
-
-          elemento.style.backgroundSize = '32.5px' + ' ' + '37.5px';
-
-        }
-
-        this.combinacion.push(seleccion);
-
-      }
+      this.combinacion.push(seleccion);
 
     }else{
 
-      elemento.style.backgroundImage = 'none';
-      
+      event.target.checked = false;
       const index = this.combinacion.indexOf(seleccion);
 
       if (index > -1) {
+
         this.combinacion.splice(index, 1);
+
       }
 
     }
+
+    console.log(this.combinacion);
 
   }
 
