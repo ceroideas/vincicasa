@@ -5,9 +5,8 @@ import * as CryptoJS from 'crypto-js';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../comunicacion.service';
 import { Router } from  '@angular/router';
-import { MenuController } from  '@ionic/angular';
+import { MenuController, NavController, AlertController } from  '@ionic/angular';
 import * as moment from 'moment';
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -21,12 +20,16 @@ export class HomePage {
   isesion = new Sesion();
   contrasena: string = "$a1e5i5o2u";
 
-  constructor(public alertController: AlertController, private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
+  constructor(public nav: NavController, public alertController: AlertController, private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
     this.menu.enable(false);
   }
 
   ngOnInit(){
-    localStorage.removeItem('correo');
+    // localStorage.removeItem('correo');
+
+    if (localStorage.getItem('correo')) {
+      this.nav.navigateRoot('feed');
+    }
     
   }
 

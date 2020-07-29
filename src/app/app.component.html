@@ -1,5 +1,5 @@
 <ion-app>
-	<ion-menu menuId="main-menu" content-id="main" id="menup" autoHide="false">
+	<ion-menu menuId="main-menu" content-id="main" id="menup" autoHide="true">
 		<ion-header id="header">
 			<ion-toolbar id="tools">
 				<ion-row>
@@ -14,7 +14,9 @@
 						</ion-row>
 						<ion-row>
 							<ion-col>
-								<ion-button menuToggle fill="outline" routerLink="/home" id="salir">ESCI</ion-button>
+								<ion-menu-toggle auto-hide="true">
+									<ion-button menuToggle fill="outline" (click)="logout()" routerLink="/home" id="salir">ESCI</ion-button>
+								</ion-menu-toggle>
 							</ion-col>
 						</ion-row>
 					</ion-col>

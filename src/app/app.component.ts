@@ -27,6 +27,10 @@ export class AppComponent {
 
   }
 
+  logout() {
+    localStorage.removeItem('correo');
+  }
+
   ngOnInit(){
 
     this.reloj();
