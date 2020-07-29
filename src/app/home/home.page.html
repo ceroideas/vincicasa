@@ -21,16 +21,17 @@
             </ion-item>
           </ion-col>
         </ion-row>
-        <ion-item id="entrada" lines="none">
-          <ion-row>
-            <ion-col>
-              <h6>Fecha de nacimiento: </h6>
-            </ion-col>
-            <ion-col>
-              <ion-input type="date" name="formulario.fecha" [(ngModel)]="formulario.fecha"></ion-input>
-            </ion-col>
-          </ion-row>
-        </ion-item>
+        <ion-row>
+          <ion-col size="12">
+            <ion-datetime [(ngModel)]="formulario.fecha" name="formulario.fecha" value="2019-10-01T15:43:40.394Z" displayFormat="DD MMM YYYY" display-timezone="utc"
+            monthShortNames="gen, feb, mar, apr, mai, jun, lug, aug, set, ott, nov, dec"
+            placeholder="Fecha de nacimiento"
+            cancel-text="Chiudi"
+            done-text="Ok"
+            ></ion-datetime>
+            <!-- <ion-input type="date" name="formulario.fecha" [(ngModel)]="formulario.fecha"></ion-input> -->
+          </ion-col>
+        </ion-row>
         <ion-row>
           <ion-col>
             <ion-item id="entrada2" lines="none">
