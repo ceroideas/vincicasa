@@ -10,7 +10,7 @@
 			LA TUA COMBINAZIONE {{ hoy }}
 		</ion-col>
 	</ion-row>
-	<ion-row id="combinacion">
+	<ion-row id="combinacion" *ngIf="combinacion">
 		<ion-col class="columna">
 			<div class="n1">
 				<b>{{ combinacion[0] }}</b>
@@ -37,29 +37,27 @@
 			</div>
 		</ion-col>
 	</ion-row>
-	<ion-button shape="round" size="large" id="modifica">MODIFICA COMBINAZIONE</ion-button>
-	<ion-row>
-		<ion-col>ULTIME 3 COMBINAZIONI</ion-col>
-	</ion-row>
-	<ion-row id="uc">
-		<ion-row *ngFor="let fecha of fechas">
-			<ion-col class="n1">
-				<label>{{ utl3[2] }}</label>
+	<ion-button shape="round" size="large" id="modifica" (click)="random()">MODIFICA COMBINAZIONE</ion-button>
+	<p id="combo">ULTIME 3 COMBINAZIONI</p>
+	<ion-row id="uc" *ngIf="ultimos">
+		<ion-row *ngFor="let fecha of fechas; let i = index">
+			<ion-col class="c1">
+				<label>{{ combinacion[i] }}</label>
 			</ion-col>
-			<ion-col class="n2">
-				<label>{{ utl3[2] }}</label>
+			<ion-col class="c2">
+				<label>{{ combinacion[i] }}</label>
 			</ion-col>
-			<ion-col class="n1">
-				<label>{{ utl3[2] }}</label>
+			<ion-col class="c1">
+				<label>{{ combinacion[i] }}</label>
 			</ion-col>
-			<ion-col class="n2">
-				<label>{{ utl3[2] }}</label>
+			<ion-col class="c2">
+				<label>{{ combinacion[i] }}</label>
 			</ion-col>
-			<ion-col class="n1">
-				<label>{{ utl3[2] }}</label>
+			<ion-col class="c1">
+				<label>{{ combinacion[i] }}</label>
 			</ion-col>
 			<ion-col>
-				<label>{{ fechas[2] }}</label>
+				<label>{{ fechas[i] }}</label>
 			</ion-col>
 		</ion-row>
 	</ion-row>

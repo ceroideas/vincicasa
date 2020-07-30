@@ -35,21 +35,34 @@
 	font-weight: bolder;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 60% 80%;
+	background-size: 80% 80%;
 	color: black;
 	display: flex;
 	text-align: center;
-	margin: auto;
+	margin: 5px;
 }
-.n1{
+.c1, .c2{
+	height: 100%;
+	font-weight: bolder;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 70% 100%;
+	color: black;
+	display: flex;
+	text-align: center;
+	margin: 5px;
+}
+.n1, .c1{
 	background-image: url('/assets/fondo-numero-rojo-balnco.png');
 }
-.n2{
+.n2, .c2{
 	background-image: url('/assets/fondo-numero-azul-blanco.png');
 }
-.n1, .n2{
-	b{
+.n1, .n2, .c1, .c2{
+	label, b{
 		margin: auto;
+		text-align: center;
+		display: flex;
 	}
 }
 #modifica{
@@ -58,18 +71,30 @@
 	top: 2.5%;
 	width: 80%;
 	height: 7.5%;
-	margin: auto;
+	margin: 5px;
 	--background: white;
 	color: #09B7DA;
 	font-weight: bold;
 	font-size: 100%;
+	--box-shadow: 0px 10px 10px #0898B5;
 }
 #hoy{
 	text-align: center;
 	font-weight: 300;
 	margin: auto;
+	position: relative;
+	top: -50%;
 }
 p{
 	text-align: right;
 	width: 100%;
+}
+#uc{
+	display: block;
+	text-align: center;
+	margin: auto;
+}
+#combo{
+	text-align: left;
+	margin-left: 2.5%;
 }
