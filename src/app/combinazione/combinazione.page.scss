@@ -37,6 +37,8 @@
 	background-repeat: no-repeat;
 	background-size: 80% 100%;
 	color: black;
+	display: flex;
+	text-align: center;
 }
 .n1{
 	background-image: url('/assets/fondo-numero-rojo-balnco.png');
@@ -46,8 +48,7 @@
 }
 .n1, .n2{
 	b{
-		position: relative;
-		top: 20px;
+		margin: auto;
 	}
 }
 #modifica{
@@ -55,7 +56,7 @@
 	height: 7.5%;
 	margin: 10%;
 	--background: white;
-	--color: #09B7DA;
+	color: #09B7DA;
 	font-weight: bold;
 	font-size: 100%;
 }
