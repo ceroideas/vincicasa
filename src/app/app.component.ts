@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as CryptoJS from 'crypto-js'
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ComunicacionService } from './comunicacion.service';
@@ -21,14 +21,17 @@ export class AppComponent {
   second: any;
   tiempo: any = [];
 
-  constructor(private service: ComunicacionService, public menuCtrl: MenuController) { 
+  constructor(public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController) { 
 
     this.menuCtrl.toggle(); 
 
   }
 
   logout() {
+
     localStorage.removeItem('correo');
+    this.nav.navigateRoot('home');
+
   }
 
   ngOnInit(){
