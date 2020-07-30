@@ -36,10 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./pruebas/pruebas.module').then( m => m.PruebasPageModule)
   },
   {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
-  },
-  {
     path: 'estadisticas',
     loadChildren: () => import('./estadisticas/estadisticas.module').then( m => m.EstadisticasPageModule)
   },
@@ -54,6 +50,10 @@ const routes: Routes = [
   {
     path: 'seleccion',
     loadChildren: () => import('./seleccion/seleccion.module').then( m => m.SeleccionPageModule)
+  },
+  {
+    path: 'dona',
+    loadChildren: () => import('./dona/dona.module').then( m => m.DonaPageModule)
   },
 ];
 
