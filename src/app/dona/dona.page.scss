@@ -26,8 +26,16 @@
 	width: 100%;
 	z-index: 1;
 }
+#is{
+	height: 30%;
+	width: 80%;
+	position: absolute;
+	left: 10%;
+	top: 10%;
+	z-index: 2;
+}
 #dona{
-	margin-top: 5%;
+	margin-top: 10%;
 	width: 75%;
 	margin-left: 12.5%;
 	--background: white;
@@ -43,15 +51,21 @@
 	margin: auto;
 	text-align: center;
 	font-size: 14px;
+	display: block;
+	margin-bottom: 3.5%;
 }
 #monto{
 	--background: white;
-	--margin-top: 5%;
+	--color: #50CBE4;
 	margin: auto;
+	font-weight: bold;
+	text-align: center;
 	width: 30% !important;
 }
 #prop{
+	display: block;
 	text-align: center;
-	font-size: 12px;
+	font-size: 14px;
 	margin: auto;
+	font-weight: 100;
 }
