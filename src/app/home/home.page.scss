@@ -56,6 +56,7 @@ h2{
 #million{
   height: 40%;
   width: 80%;
+  display: flex;
   position: relative;
   top: 15%;
   left: 10%;
@@ -66,7 +67,7 @@ h2{
   margin-top: 10%;
 }
 #botones2{
-  margin-top: 10%;
+  margin-top: 5%;
   --color: #50CBE4;
   width: 80%;
   font-weight: bolder;
@@ -86,7 +87,7 @@ h2{
   --placeholder-color: gray;
 }
 #ir{
-  margin-top: 5%;
+  margin: auto;
   text-align: center;
   font-size: 120%;
 }

@@ -42,20 +42,26 @@
 		<ion-col>ULTIME 3 COMBINAZIONI</ion-col>
 	</ion-row>
 	<ion-row id="uc">
-		<ion-col id="numbers">
-			<ion-row *ngFor="let array of arrays; let i = index">
-				<ion-col class="c{{ i }}" *ngFor="let numero of arrays[i]">
-					<div class="columna">
-						<b>{{ numero }}</b>
-					</div>
-				</ion-col>
-			</ion-row>
-		</ion-col>
-		<ion-col id="numbers2">
-			<ion-row *ngFor="let fecha of fechas">
-				<p>{{ fecha }}</p>
-			</ion-row>
-		</ion-col>
+		<ion-row *ngFor="let fecha of fechas">
+			<ion-col class="n1">
+				<label>{{ utl3[2] }}</label>
+			</ion-col>
+			<ion-col class="n2">
+				<label>{{ utl3[2] }}</label>
+			</ion-col>
+			<ion-col class="n1">
+				<label>{{ utl3[2] }}</label>
+			</ion-col>
+			<ion-col class="n2">
+				<label>{{ utl3[2] }}</label>
+			</ion-col>
+			<ion-col class="n1">
+				<label>{{ utl3[2] }}</label>
+			</ion-col>
+			<ion-col>
+				<label>{{ fechas[2] }}</label>
+			</ion-col>
+		</ion-row>
 	</ion-row>
 	
 </ion-content>

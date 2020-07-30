@@ -35,7 +35,7 @@
 	font-weight: bolder;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 80% 100%;
+	background-size: 70% 90%;
 	color: black;
 	display: flex;
 	text-align: center;
@@ -63,14 +63,6 @@
 #hoy{
 	text-align: center;
 	font-weight: 300;
-}
-[id*="c"]{
-	background-image: url('/assets/fondo-numero-rojo-balnco.png');
-	font-weight: bolder;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 20px 20px;
-	color: black;
 }
 p{
 	text-align: right;
