@@ -10,14 +10,14 @@
         <ion-row>
           <ion-col>
             <ion-item id="entrada2" lines="none">
-              <ion-input placeholder="Nombre completo" type="text" name="formulario.nombre" [(ngModel)]="formulario.nombre" autocomplete="off"></ion-input>
+              <ion-input placeholder="NOME E COGNOME" type="text" name="formulario.nombre" [(ngModel)]="formulario.nombre" autocomplete="off"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item id="entrada2" lines="none">
-              <ion-input placeholder="Correo" type="text" name="formulario.correo" [(ngModel)]="formulario.correo" autocomplete="off"></ion-input>
+              <ion-input placeholder="MAIL" type="text" name="formulario.correo" [(ngModel)]="formulario.correo" autocomplete="off"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -25,7 +25,7 @@
           <ion-col size="12">
             <ion-datetime [(ngModel)]="formulario.fecha" name="formulario.fecha" value="2019-10-01T15:43:40.394Z" displayFormat="DD MMM YYYY" display-timezone="utc"
             monthShortNames="gen, feb, mar, apr, mai, jun, lug, aug, set, ott, nov, dec"
-            placeholder="Fecha de nacimiento"
+            placeholder="DATA DI NASCITA"
             cancel-text="Chiudi"
             done-text="Ok"
             ></ion-datetime>
@@ -35,33 +35,33 @@
         <ion-row>
           <ion-col>
             <ion-item id="entrada2" lines="none">
-              <ion-input placeholder="Contraseña" name="formulario.password" type="password" [(ngModel)]="formulario.password" autocomplete="off"></ion-input>
+              <ion-input placeholder="PASSWORD" name="formulario.password" type="password" [(ngModel)]="formulario.password" autocomplete="off"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item id="entrada2" lines="none">
-              <ion-input placeholder="Confirmar contraseña" name="confirmar" type="password" [(ngModel)]="confirmar" autocomplete="off"></ion-input>
+              <ion-input placeholder="CONFERMA PASSWORD" name="confirmar" type="password" [(ngModel)]="confirmar" autocomplete="off"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row id="ir">
         <ion-col>
-          <a (click)="cambio()">¿Ya tienes una cuenta? <p>Inicia sesión</p></a>
+          <a (click)="cambio()">Hai già un account? <p>accesso</p></a>
         </ion-col>
         </ion-row>
         <ion-row id="ir">
           <ion-col>
-            <a routerLink="/">Recuperar <p>contraseña</p></a>
+            <a routerLink="/">Ho dimenticato la mia <p>password</p></a>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-button shape="round" type="submit" expand="full" id="botones">Registrate</ion-button>
+            <ion-button shape="round" type="submit" expand="full" id="botones">REGISTRATI</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button shape="round" type="reset" expand="full" id="botones">Limpiar</ion-button>
+            <ion-button shape="round" type="reset" expand="full" id="botones">PULITO</ion-button>
           </ion-col>
         </ion-row>
     </form>
@@ -76,25 +76,25 @@
       <ion-row>
         <ion-col>
           <ion-item id="entrada2" lines="none">
-            <ion-input placeholder="Correo" [(ngModel)]="isesion.correo" name="isesion.correo" type="email" id="csesion" autocomplete="off"></ion-input>
+            <ion-input placeholder="USER" [(ngModel)]="isesion.correo" name="isesion.correo" type="email" id="csesion" autocomplete="off"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-item id="entrada2" lines="none">
-            <ion-input placeholder="Contraseña" [(ngModel)]="isesion.password" name="isesion.password" type="password" id="psesion" autocomplete="off"></ion-input>
+            <ion-input placeholder="PASSWORD" [(ngModel)]="isesion.password" name="isesion.password" type="password" id="psesion" autocomplete="off"></ion-input>
           </ion-item>
         </ion-col> 
       </ion-row>
       <ion-row id="ir">
         <ion-col>
-          <a (click)="cambio2()">¿No tienes una cuenta? <p>regístrate</p></a>
+          <a (click)="cambio2()">Non ho un account, <p>Registrati</p></a>
         </ion-col>
       </ion-row>
       <ion-row id="ir">
         <ion-col>
-          <a routerLink="/">Recuperar <p>contraseña</p></a>
+          <a routerLink="/">Ho dimenticato la mia <p>password</p></a>
         </ion-col>
       </ion-row>
       <ion-row id=sesionb>
