@@ -41,7 +41,7 @@ export class AppComponent {
     
     //localStorage.clear();
 
-    if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined) {
+    if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined || localStorage.getItem('fechas') == '' || localStorage.getItem('fechas') == undefined) {
       this.scrapping();
     }
   }

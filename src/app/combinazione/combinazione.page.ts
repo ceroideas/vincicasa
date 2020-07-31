@@ -166,9 +166,9 @@ export class CombinazionePage implements OnInit {
 			localStorage.removeItem('combinacion');
 			localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 			localStorage.setItem('ultimos', JSON.stringify(this.combinacion));
-			let date = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
+			/*let date = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
 			this.fechas.push(date);
-			localStorage.setItem('fechas', this.fechas.toString());
+			localStorage.setItem('fechas', this.fechas.toString());*/
 
 	}
 

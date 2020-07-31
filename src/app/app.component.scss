@@ -28,6 +28,20 @@
 #usuario{
 	color: white;
 }
+@font-face{
+	font-family: 'digital-7';
+	src: url('/assets/digital-7.ttf');
+}
+@font-face{
+	font-family: 'Roboto';
+	font-weight: 100;
+	src: url('/assets/Roboto-Black.ttf');
+}
+@font-face{
+	font-family: 'geometos';
+	font-weight: 100;
+	src: url('/assets/Geometos.ttf');
+}
 /*@media only screen and(min-height: 560px){
 	#profile{
 		height: 90%;

@@ -1,11 +1,17 @@
 #body, #head{
 	--background: #09B7DA; 
+	font-family: 'geometos';
+	font-size: 14px;
 }
 #ue{
-	text-align: center;
-	font-weight: 200;
+	text-align: left;
 	color: white;
 	background: #09B7DA; 
+	font-family: 'geometos';
+	font-size: 14px;
+	position: relative;
+	left: 10%;
+	margin: none;
 }
 .datos{
 	width: 70%;
@@ -34,7 +40,6 @@
 	}
 }
 #dia b{
-	font-size: 110%;
 	color: white;
 }
 .datos:before {
@@ -89,6 +94,7 @@
 #v{
 	width: 33.33%;
 	text-align: center;
+	font-weight: 100;
 }
 #estrazioni{
 	width: 90%;
