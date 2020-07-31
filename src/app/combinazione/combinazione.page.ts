@@ -15,6 +15,7 @@ export class CombinazionePage implements OnInit {
 	ultimos: any;
 	fechas: any; 
 	usuario: string = localStorage.getItem('correo');
+	hoy: any = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
 
   constructor(private service: ComunicacionService) { }
 
@@ -26,7 +27,7 @@ export class CombinazionePage implements OnInit {
 		return Math.random() * (max - min) + min;
 	}
 
-  random(event){
+  random(){
 
 		this.combinacion = [];
 		let omitir = [];

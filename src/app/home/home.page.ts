@@ -153,7 +153,7 @@ export class HomePage {
     
   }
 
-  cambio(event){
+  cambio(){
 
   	const sesion = document.getElementById("container2");
   	const formulario = document.getElementById("container");
@@ -164,7 +164,7 @@ export class HomePage {
   	}
   }
 
-  cambio2(event){
+  cambio2(){
 
   	const sesion = document.getElementById("container2");
   	const formulario = document.getElementById("container");

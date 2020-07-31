@@ -148,7 +148,7 @@ export class NautomaticosPage implements OnInit {
 
 	}
 
-	random(event){
+	random(){
 
 		let resultado = [];
 		let omitir = [];
