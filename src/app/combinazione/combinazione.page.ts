@@ -12,19 +12,14 @@ export class CombinazionePage implements OnInit {
 	excluir: any = [JSON.parse(localStorage.getItem('excluir'))];
 	incluir: any = [JSON.parse(localStorage.getItem('incluir'))];
 	combinacion: any = JSON.parse(localStorage.getItem('combinacion'));
-	utl: any = [];
-	utl2: any = [];
-	utl3: any = [];
-	ultimos: any = [this.utl, this.utl2, this.utl3];
-	arrays: any = [];
-	fechas: any = [];
+	ultimos: any;
+	fechas: any; 
 	usuario: string = localStorage.getItem('correo');
 
   constructor(private service: ComunicacionService) { }
 
   ngOnInit() {
   	this.service.changeData(this.usuario);
-  	this.arrays.push(this.utl, this.utl2, this.utl3);
   }
 
   getRandomArbitrary(min, max){
@@ -35,6 +30,15 @@ export class CombinazionePage implements OnInit {
 
 		this.combinacion = [];
 		let omitir = [];
+
+		if (localStorage.getItem('ultimos') && localStorage.getItem('fechas')) {
+
+			this.ultimos = JSON.parse(localStorage.getItem('ultimos'));
+			//this.fechas = JSON.parse(localStorage.getItem('fechas'));
+
+		}
+
+		//this.ultimos = JSON.parse(localStorage.getItem('ultimos'));
 
 		if (this.incluir == undefined) {
 
@@ -158,30 +162,12 @@ export class CombinazionePage implements OnInit {
 
 			}
 
-			if (this.ultimos.utl =! undefined) {
-
-				this.ultimos.utl.push(this.combinacion);
-				this.fechas.push(new Date);
-				localStorage.setItem('fechas', JSON.stringify(new Date));
-				localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
-
-			}else if (this.ultimos.utl2 =! undefined) {
-				
-				this.ultimos.utl2.push(this.combinacion);
-				this.fechas.push(new Date);
-				localStorage.setItem('fechas', JSON.stringify(new Date));
-				localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
-
-			}else{
-
-				this.ultimos.utl3.push(this.combinacion);
-				this.fechas.push(new Date);
-				localStorage.setItem('fechas', JSON.stringify(new Date));
-				localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
-
-			}
-			
+			localStorage.removeItem('combinacion');
 			localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
+			localStorage.setItem('ultimos', JSON.stringify(this.combinacion));
+			let date = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
+			this.fechas.push(date);
+			localStorage.setItem('fechas', this.fechas.toString());
 
 	}
 
