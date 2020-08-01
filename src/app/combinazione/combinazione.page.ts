@@ -9,18 +9,30 @@ import * as moment from 'moment';
 })
 export class CombinazionePage implements OnInit {
 
-	excluir: any = [JSON.parse(localStorage.getItem('excluir'))];
-	incluir: any = [JSON.parse(localStorage.getItem('incluir'))];
+	excluir: any;
+	incluir: any = JSON.parse(localStorage.getItem('incluidos'));
 	combinacion: any = JSON.parse(localStorage.getItem('combinacion'));
-	ultimos: any;
-	fechas: any; 
+	ultimos: any[3];
+	dates: any[3]; 
 	usuario: string = localStorage.getItem('correo');
 	hoy: any = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
 
   constructor(private service: ComunicacionService) { }
 
   ngOnInit() {
+
   	this.service.changeData(this.usuario);
+
+  	if (localStorage.getItem('excluidos') && localStorage.getItem('excluidos') != undefined) {
+  		this.excluir = JSON.parse(localStorage.getItem('excluidos'));
+  	}
+  	if (localStorage.getItem('excluidos') && localStorage.getItem('incluidos') != undefined) {
+  		this.incluir = JSON.parse(localStorage.getItem('incluidos'));
+  	}
+  	if (localStorage.getItem('ufechas') && localStorage.getItem('ufechas') != undefined) {
+  		this.dates = JSON.parse(localStorage.getItem('ufechas'));
+  	}
+
   }
 
   getRandomArbitrary(min, max){
@@ -166,9 +178,10 @@ export class CombinazionePage implements OnInit {
 			localStorage.removeItem('combinacion');
 			localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 			localStorage.setItem('ultimos', JSON.stringify(this.combinacion));
-			/*let date = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
-			this.fechas.push(date);
-			localStorage.setItem('fechas', this.fechas.toString());*/
+			let date = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
+			console.log(date);
+			localStorage.setItem('ufechas', JSON.stringify(this.dates));
+			this.dates.push(date.toString());
 
 	}
 
