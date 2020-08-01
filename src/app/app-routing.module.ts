@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'dona',
     loadChildren: () => import('./dona/dona.module').then( m => m.DonaPageModule)
   },
+  {
+    path: 'seleccion2',
+    loadChildren: () => import('./seleccion2/seleccion2.module').then( m => m.Seleccion2PageModule)
+  },
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@
 	  </ion-toolbar>
 	</ion-header>
 	<p id="exclusion">
-		Soegli massimo CINQUE numeri che NON DEVONO essere presenti nelia combinazione. Altrimenti CONTINUA.
+		Soegli massimo DUE numeri che DEVONO essere presenti nelia combinazione. Altrimenti CONTINUA.
 	</p>
 	<div id="contenedor">
 		<ion-row id="fila">
@@ -88,15 +88,6 @@
 		</ion-col>
 		<ion-col *ngIf="combinacion[1]" class="c2">
 			<b>{{ combinazione[1] }}</b>
-		</ion-col>
-		<ion-col *ngIf="combinacion[2]" class="c1">
-			<b>{{ combinazione[2] }}</b>
-		</ion-col>
-		<ion-col *ngIf="combinacion[3]" class="c2">
-			<b>{{ combinazione[3] }}</b>
-		</ion-col>
-		<ion-col *ngIf="combinacion[4]" class="c1">
-			<b>{{ combinazione[4] }}</b>
 		</ion-col>
 	</ion-row>
 	<ion-row>

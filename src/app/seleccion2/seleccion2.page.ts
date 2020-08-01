@@ -3,11 +3,11 @@ import { ComunicacionService } from '../comunicacion.service';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-seleccion',
-  templateUrl: './seleccion.page.html',
-  styleUrls: ['./seleccion.page.scss'],
+  selector: 'app-seleccion2',
+  templateUrl: './seleccion2.page.html',
+  styleUrls: ['./seleccion2.page.scss'],
 })
-export class SeleccionPage implements OnInit {
+export class Seleccion2Page implements OnInit {
 
   numeros: any = [1, 8, 15, 22, 29, 36, 43, 50];
   numeros2: any = [2, 9, 16, 23, 30, 36, 44, 51];
@@ -27,18 +27,18 @@ export class SeleccionPage implements OnInit {
   ngOnInit() {
 
     this.service.changeData(this.usuario);
-    if (localStorage.getItem('excluidos')) {
+    if (localStorage.getItem('incluidos')) {
 
-      this.combinacion = JSON.parse(localStorage.getItem('excluidos'));
+      this.combinacion = JSON.parse(localStorage.getItem('incluidos'));
       this.combinazione = this.combinacion.sort((a, b) => a - b);
 
     }
 
-    this.obtener_excluidos();
+    this.obtener_incluidos();
     
   }
 
-  obtener_excluidos(){
+  obtener_incluidos(){
     let obtener = () => {
 
       let checks;
@@ -59,7 +59,7 @@ export class SeleccionPage implements OnInit {
     let valor = 'numero' + numero.toString();
     //let elemento = document.getElementById(valor);
 
-    if (event.target.checked && this.combinacion.length < 5) {
+    if (event.target.checked && this.combinacion.length < 2) {
 
 
       this.combinacion.push(seleccion);
@@ -90,7 +90,7 @@ export class SeleccionPage implements OnInit {
     let valor = 'numero' + numero.toString();
     //let elemento = document.getElementById(valor);
 
-    if (event.target.checked && this.combinacion.length < 5) {
+    if (event.target.checked && this.combinacion.length < 2) {
 
 
       this.combinacion.push(seleccion);
@@ -116,17 +116,17 @@ export class SeleccionPage implements OnInit {
 
   guardar(){
 
-    let excluidos = [];
+    let incluidos = [];
 
     for (let i = 0; i < this.combinacion.length; ++i) {
 
-      excluidos.push(this.combinacion[i]); 
+      incluidos.push(this.combinacion[i]); 
 
     }
 
-    localStorage.removeItem('excluidos');
-    localStorage.setItem('excluidos', JSON.stringify(excluidos));
-    this.nav.navigateRoot('seleccion2');
+    localStorage.removeItem('incluidos');
+    localStorage.setItem('incluidos', JSON.stringify(incluidos));
+    this.nav.navigateRoot('feed');
 
   }
 
@@ -142,7 +142,7 @@ export class SeleccionPage implements OnInit {
     }
 
     this.combinacion = [];
-    localStorage.removeItem('excluidos');
+    localStorage.removeItem('incluidos');
 
     
   }
