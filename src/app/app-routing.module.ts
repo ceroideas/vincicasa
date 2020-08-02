@@ -59,6 +59,14 @@ const routes: Routes = [
     path: 'seleccion2',
     loadChildren: () => import('./seleccion2/seleccion2.module').then( m => m.Seleccion2PageModule)
   },
+  {
+    path: 'verifica',
+    loadChildren: () => import('./verifica/verifica.module').then( m => m.VerificaPageModule)
+  },
+  {
+    path: 'archivo',
+    loadChildren: () => import('./archivo/archivo.module').then( m => m.ArchivoPageModule)
+  },
 ];
 
 @NgModule({

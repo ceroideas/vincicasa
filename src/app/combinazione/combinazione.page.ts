@@ -9,11 +9,11 @@ import * as moment from 'moment';
 })
 export class CombinazionePage implements OnInit {
 
-	excluir: any;
-	incluir: any = JSON.parse(localStorage.getItem('incluidos'));
+	excluir: any = [];
+	incluir: any = [];
 	combinacion: any = JSON.parse(localStorage.getItem('combinacion'));
-	ultimos: any[3];
-	fechas: any[3]; 
+	ultimos: any[3] = [];
+	fechas: any[3] = [];
 	usuario: string = localStorage.getItem('correo');
 	hoy: any = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
 
@@ -24,13 +24,34 @@ export class CombinazionePage implements OnInit {
   	this.service.changeData(this.usuario);
 
   	if (localStorage.getItem('excluidos') && localStorage.getItem('excluidos') != undefined) {
+  		
   		this.excluir = JSON.parse(localStorage.getItem('excluidos'));
+  	
+  	}else{
+  		
+  		localStorage.setItem('excluidos', JSON.stringify(this.incluir));
+
   	}
-  	if (localStorage.getItem('excluidos') && localStorage.getItem('incluidos') != undefined) {
+
+  	if (localStorage.getItem('incluidos') && localStorage.getItem('incluidos') != undefined) {
+  		
   		this.incluir = JSON.parse(localStorage.getItem('incluidos'));
+
+  	}else{
+
+  		localStorage.setItem('excluidos', JSON.stringify(this.incluir));
+
   	}
+
   	if (localStorage.getItem('ufechas') && localStorage.getItem('ufechas') != undefined) {
+
   		this.fechas = localStorage.getItem('ufechas');
+  	
+  	}else{
+
+  		this.fechas = [];
+  		localStorage.setItem('ufechas', JSON.stringify(this.fechas));
+
   	}
 
   }

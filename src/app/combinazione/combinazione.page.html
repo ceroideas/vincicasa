@@ -1,6 +1,6 @@
 <ion-content id="body">
 	<ion-toolbar id="tools">
-		<ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
+		<ion-menu-button menu="main-menu" slot="start" id="mboton"></ion-menu-button>
 	    <ion-label id="titulo">COMBINAZIONE</ion-label>
 	</ion-toolbar>
 	<img src="../assets/monedas-2.png" id="imgm">
@@ -39,7 +39,7 @@
 	</ion-row>
 	<ion-button shape="round" size="large" id="modifica" (click)="random()">MODIFICA COMBINAZIONE</ion-button>
 	<p id="combo">ULTIME 3 COMBINAZIONI</p>
-	<ion-row id="uc" *ngIf="ultimos">
+	<ion-row id="uc" *ngIf="fechas.length > 0">
 		<ion-row *ngFor="let fecha of fechas; let i = index">
 			<ion-col class="c1">
 				<label>{{ ultimos[i] }}</label>
