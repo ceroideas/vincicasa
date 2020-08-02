@@ -13,7 +13,7 @@ export class CombinazionePage implements OnInit {
 	incluir: any = JSON.parse(localStorage.getItem('incluidos'));
 	combinacion: any = JSON.parse(localStorage.getItem('combinacion'));
 	ultimos: any[3];
-	dates: any[3]; 
+	fechas: any[3]; 
 	usuario: string = localStorage.getItem('correo');
 	hoy: any = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
 
@@ -30,7 +30,7 @@ export class CombinazionePage implements OnInit {
   		this.incluir = JSON.parse(localStorage.getItem('incluidos'));
   	}
   	if (localStorage.getItem('ufechas') && localStorage.getItem('ufechas') != undefined) {
-  		this.dates = JSON.parse(localStorage.getItem('ufechas'));
+  		this.fechas = localStorage.getItem('ufechas');
   	}
 
   }
@@ -178,10 +178,8 @@ export class CombinazionePage implements OnInit {
 			localStorage.removeItem('combinacion');
 			localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 			localStorage.setItem('ultimos', JSON.stringify(this.combinacion));
-			let date = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
-			console.log(date);
-			localStorage.setItem('ufechas', JSON.stringify(this.dates));
-			this.dates.push(date.toString());
+			this.fechas.push(this.hoy.toString());
+			localStorage.setItem('ufechas', JSON.stringify(this.fechas));
 
 	}
 

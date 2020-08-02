@@ -49,9 +49,17 @@ export class FeedPage implements OnInit {
       this.horas = [];
       this.comunicacion.hora$.subscribe(res => {
 
-        document.getElementById("hh1").innerHTML = res[0];
-        document.getElementById("mh1").innerHTML = res[1];
-        document.getElementById("sh1").innerHTML = res[2];
+        let verificar = document.getElementById("hh1");
+
+        if (verificar) {
+
+          verificar.innerHTML = res[0];
+          document.getElementById("mh1").innerHTML = res[1];
+          document.getElementById("sh1").innerHTML = res[2];
+          
+        }else{
+          clearInterval(intervalo);
+        }
 
       });
     }
