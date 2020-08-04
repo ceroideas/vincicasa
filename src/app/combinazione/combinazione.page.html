@@ -10,7 +10,7 @@
 			LA TUA COMBINAZIONE {{ hoy }}
 		</ion-col>
 	</ion-row>
-	<ion-row id="combinacion" *ngIf="combinacion">
+	<ion-row id="combinacion" *ngIf="combinacion.length > 0">
 		<ion-col class="columna">
 			<div class="n1">
 				<b>{{ combinacion[0] }}</b>
@@ -42,7 +42,7 @@
 	<ion-row id="uc" *ngIf="fechas.length > 0 && ultimos.length > 0">
 		<div *ngFor="let fecha of fechas; let i = index">
 			<ion-row>
-				<ion-col class="c + i" *ngFor="let ultimo of ultimos[i]; let x = index">
+				<ion-col [ngClass]="'cn'+ (x + 1)" *ngFor="let ultimo of ultimos[i]; let x = index">
 					<label>{{ ultimo }}</label>
 				</ion-col>
 				<!--<ion-col class="c2">

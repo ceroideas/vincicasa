@@ -24,12 +24,12 @@ export class MnumerosPage implements OnInit {
   columna5: any = [5, 10, 15, 20, 25, 30, 35, 40];
   */
   numeros: any = [1, 8, 15, 22, 29, 36, 43, 50];
-  numeros2: any = [2, 9, 16, 23, 30, 36, 44, 51];
-  numeros3: any = [3, 10, 17, 24, 31, 37, 45, 52];
-  numeros4: any = [4, 11, 18, 25, 32, 38, 46, 53];
-  numeros5: any = [5, 12, 19, 26, 33, 39, 47, 54];
-  numeros6: any = [6, 13, 20, 27, 34, 40, 48, 55];
-  numeros7: any = [7, 14, 21, 28, 35, 41, 49];
+  numeros2: any = [2, 9, 16, 23, 30, 37, 44, 51];
+  numeros3: any = [3, 10, 17, 24, 31, 38, 45, 52];
+  numeros4: any = [4, 11, 18, 25, 32, 39, 46, 53];
+  numeros5: any = [5, 12, 19, 26, 33, 40, 47, 54];
+  numeros6: any = [6, 13, 20, 27, 34, 41, 48, 55];
+  numeros7: any = [7, 14, 21, 28, 35, 42, 49];
   combinacion: any = [];
   final: any = [];
   colores: string;
@@ -356,6 +356,8 @@ export class MnumerosPage implements OnInit {
       if (combinazione[i+1] !== undefined) {
         if (combinazione[i]+1 == combinazione[i+1]) {
           a++;
+        }else{
+          a=0;
         }
       }
     }
@@ -373,6 +375,8 @@ export class MnumerosPage implements OnInit {
         if (combinazione[i+1] !== undefined) {
           if (combinazione[i]+h == combinazione[i+1]) {
             a++;
+          }else{
+            a=0;
           }
         }
       }

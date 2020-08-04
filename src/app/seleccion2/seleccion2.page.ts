@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComunicacionService } from '../comunicacion.service';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-seleccion2',
@@ -10,19 +10,19 @@ import { NavController } from '@ionic/angular';
 export class Seleccion2Page implements OnInit {
 
   numeros: any = [1, 8, 15, 22, 29, 36, 43, 50];
-  numeros2: any = [2, 9, 16, 23, 30, 36, 44, 51];
-  numeros3: any = [3, 10, 17, 24, 31, 37, 45, 52];
-  numeros4: any = [4, 11, 18, 25, 32, 38, 46, 53];
-  numeros5: any = [5, 12, 19, 26, 33, 39, 47, 54];
-  numeros6: any = [6, 13, 20, 27, 34, 40, 48, 55];
-  numeros7: any = [7, 14, 21, 28, 35, 41, 49];
+  numeros2: any = [2, 9, 16, 23, 30, 37, 44, 51];
+  numeros3: any = [3, 10, 17, 24, 31, 38, 45, 52];
+  numeros4: any = [4, 11, 18, 25, 32, 39, 46, 53];
+  numeros5: any = [5, 12, 19, 26, 33, 40, 47, 54];
+  numeros6: any = [6, 13, 20, 27, 34, 41, 48, 55];
+  numeros7: any = [7, 14, 21, 28, 35, 42, 49];
   combinacion: any = [];
   combinazione: any = [];
   final: any = [];
   colores: string;
   usuario: string = localStorage.getItem('correo');
 
-  constructor(private service: ComunicacionService, public nav: NavController) { }
+  constructor(public alertController: AlertController, private service: ComunicacionService, public nav: NavController) { }
 
   ngOnInit() {
 
@@ -53,11 +53,24 @@ export class Seleccion2Page implements OnInit {
     }
   }
 
+  async error(problema) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alerta:',
+      subHeader: '',
+      message: problema,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
   seleccionar (event, numero){
 
     let seleccion = numero;
     let valor = 'numero' + numero.toString();
     //let elemento = document.getElementById(valor);
+    let excluidos = JSON.parse(localStorage.getItem('excluidos'));
 
     if (event.target.checked && this.combinacion.length < 2) {
 
@@ -78,8 +91,6 @@ export class Seleccion2Page implements OnInit {
     }
 
     console.log(this.combinacion);
-
-
     this.combinazione = this.combinacion.sort((a, b) => a - b);
     
   }
@@ -109,7 +120,6 @@ export class Seleccion2Page implements OnInit {
     }
 
     console.log(this.combinacion);
-    
     this.combinazione = this.combinacion.sort((a, b) => a - b);
 
   }
