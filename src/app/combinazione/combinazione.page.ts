@@ -11,7 +11,7 @@ export class CombinazionePage implements OnInit {
 
 	excluir: any = [];
 	incluir: any = [];
-	combinacion: any = JSON.parse(localStorage.getItem('combinacion'));
+	combinacion: any = [];
 	ultimos: any[3] = [];
 	fechas: any[3] = [];
 	usuario: string = localStorage.getItem('correo');
@@ -33,24 +33,45 @@ export class CombinazionePage implements OnInit {
 
   	}
 
+  	if (localStorage.getItem('combinacion') && localStorage.getItem('combinacion') != undefined) {
+  		
+  		this.combinacion = JSON.parse(localStorage.getItem('combinacion'));
+  	
+  	}else{
+  		
+  		localStorage.setItem('combinacion', JSON.stringify(this.incluir));
+
+  	}
+
   	if (localStorage.getItem('incluidos') && localStorage.getItem('incluidos') != undefined) {
   		
   		this.incluir = JSON.parse(localStorage.getItem('incluidos'));
 
   	}else{
 
-  		localStorage.setItem('excluidos', JSON.stringify(this.incluir));
+  		localStorage.setItem('incluidos', JSON.stringify(this.incluir));
 
   	}
 
   	if (localStorage.getItem('ufechas') && localStorage.getItem('ufechas') != undefined) {
 
-  		this.fechas = localStorage.getItem('ufechas');
+  		this.fechas = JSON.parse(localStorage.getItem('ufechas'));
   	
   	}else{
 
   		this.fechas = [];
   		localStorage.setItem('ufechas', JSON.stringify(this.fechas));
+
+  	}
+
+  	if (localStorage.getItem('ultimos') && localStorage.getItem('ultimos') != undefined) {
+
+  		this.fechas = JSON.parse(localStorage.getItem('ultimos'));
+  	
+  	}else{
+
+  		this.ultimos = [];
+  		localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
 
   	}
 
@@ -72,7 +93,7 @@ export class CombinazionePage implements OnInit {
 
 		}
 
-		//this.ultimos = JSON.parse(localStorage.getItem('ultimos'));
+		// this.ultimos = JSON.parse(localStorage.getItem('ultimos'));
 
 		if (this.incluir == undefined) {
 
@@ -196,10 +217,39 @@ export class CombinazionePage implements OnInit {
 
 			}
 
-			localStorage.removeItem('combinacion');
+			if (this.ultimos.length == 3 && this.fechas.length == 3) {
+				
+				let datos = [this.ultimos[1], this.ultimos[2]];
+				let datos2 = [this.fechas[1], this.fechas[2]];
+
+				this.ultimos = [this.combinacion, datos[1], datos[0]];
+				this.fechas = [this.hoy, datos2[1], datos2[0]];
+
+			}else if (this.ultimos.length == 2 && this.fechas.length == 2) {
+
+				let datos = [this.ultimos[0], this.ultimos[1]];
+				let datos2 = [this.fechas[0], this.fechas[1]];
+
+				this.ultimos = [this.combinacion, datos[1], datos[0]];
+				this.fechas = [this.hoy, datos2[1], datos2[0]];
+
+			}else if (!this.ultimos[0] && !this.fechas[0]) {
+
+				this.ultimos.push(this.combinacion);
+				this.fechas.push(this.hoy);
+
+			}else{
+
+				let datos = [this.ultimos[0]];
+				let datos2 = [this.fechas[0]];
+
+				this.ultimos = [this.combinacion, datos[0]];
+				this.fechas = [this.hoy, datos2[0]];
+
+			}
+
 			localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
-			localStorage.setItem('ultimos', JSON.stringify(this.combinacion));
-			this.fechas.push(this.hoy.toString());
+			localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
 			localStorage.setItem('ufechas', JSON.stringify(this.fechas));
 
 	}

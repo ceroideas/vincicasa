@@ -37,7 +37,7 @@
 	font-weight: bolder;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 80% 80%;
+	background-size: 45px 45px;
 	color: black;
 	display: flex;
 	text-align: center;
@@ -48,19 +48,19 @@
 	font-weight: bolder;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 70% 100%;
+	background-size: 30px 30px;
 	color: black;
 	display: flex;
 	text-align: center;
 	margin: 5px;
 }
-.n1, .c1{
+.n1, .c1, .c3, .c5{
 	background-image: url('/assets/fondo-numero-rojo-balnco.png');
 }
-.n2, .c2{
+.n2, .c2, .c4{
 	background-image: url('/assets/fondo-numero-azul-blanco.png');
 }
-.n1, .n2, .c1, .c2{
+.n1, .n2, [class*="c"]{
 	label, b{
 		margin: auto;
 		text-align: center;
