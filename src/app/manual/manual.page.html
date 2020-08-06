@@ -4,26 +4,39 @@
 		<ion-label id="tutorial">TUTORIAL</ion-label>
 	</ion-toolbar>
 	<h6 id="info">LE TUE COMBINAZIONI FORTUNATE</h6>
+	<!--<ion-slides [options]="slideOptsOne" #slideWithNav  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+	   	<ion-slide *ngFor="let s of sliderOne.slidesItems">
+	       <img src="../../assets/images/{{s.id}}.jpg">
+	    </ion-slide>
+	</ion-slides>-->
 	<div id="instrucciones">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		<br><br>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<ion-slides>
+			<ion-slide>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</ion-slide>
+			<ion-slide>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</ion-slide>
+			<ion-slide>
+				slider3
+			</ion-slide>
+		</ion-slides>
 	</div>
 	<ion-row>
 		<ion-col></ion-col>
-		<ion-col>
-			<ion-button routerLink="/feed" fill="clear" shape="round" id="continuar" routerDirection="root">CONTINUA</ion-button>
-		</ion-col>
+			<ion-col>
+				<ion-button routerLink="/feed" fill="clear" shape="round" id="continuar" routerDirection="root">CONTINUA</ion-button>
+			</ion-col>
 		<ion-col></ion-col>
 	</ion-row>
 </ion-content>
