@@ -126,7 +126,7 @@ export class SeleccionPage implements OnInit {
 
     localStorage.removeItem('excluidos');
     localStorage.setItem('excluidos', JSON.stringify(excluidos));
-    this.nav.navigateRoot('seleccion2');
+    this.nav.navigateRoot('feed');
 
   }
 

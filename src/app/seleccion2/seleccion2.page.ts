@@ -136,7 +136,7 @@ export class Seleccion2Page implements OnInit {
 
     localStorage.removeItem('incluidos');
     localStorage.setItem('incluidos', JSON.stringify(incluidos));
-    this.nav.navigateRoot('feed');
+    this.nav.navigateRoot('seleccion');
 
   }
 

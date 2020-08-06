@@ -90,6 +90,7 @@ export class AppComponent {
         localStorage.removeItem('fechas');
         localStorage.removeItem('dias');
         localStorage.removeItem('ultimos');
+        localStorage.removeItem('contador');
        
         /*this.service.reloj();*/
 

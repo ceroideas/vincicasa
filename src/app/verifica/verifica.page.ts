@@ -16,7 +16,6 @@ export class VerificaPage implements OnInit {
   numeros6: any = [6, 13, 20, 27, 34, 41, 48, 55];
   numeros7: any = [7, 14, 21, 28, 35, 42, 49];
   combinacion: any = [];
-  combinazione: any = [];
   ultimos: any[] = JSON.parse(localStorage.getItem('numeros'));
   fechas: any[] = [];
   usuario: string = localStorage.getItem('correo');
@@ -39,7 +38,6 @@ export class VerificaPage implements OnInit {
     let valor = 'numero' + numero.toString();
 
     if (event.target.checked && this.combinacion.length < 5) {
-
 
       this.combinacion.push(seleccion);
 
@@ -65,7 +63,6 @@ export class VerificaPage implements OnInit {
 
     if (event.target.checked && this.combinacion.length < 5) {
 
-
       this.combinacion.push(seleccion);
 
     }else{
@@ -85,25 +82,26 @@ export class VerificaPage implements OnInit {
 
   verificar(){
 
-    this.combinazione = this.combinacion.sort((a, b) => a - b);
-    let resultado = [];
+    //let resultado = [];
 
-    for (let i = 0; i < this.combinazione.length; i++) {
-      
-      for (let x = 0; x < this.ultimos[i].length; x++) {
+    for (let i = 0; i < this.ultimos[0].length; i++) {
 
-        if (this.combinazione[i] == this.ultimos[i][x]) {
+      for (let a = 0; a < this.ultimos[0].length; ++a) {
+
+        /*if (parseInt(this.ultimos[0][i]) == this.combinacion[a]) {
+            
+          resultado.push(this.combinacion[a]);
+          console.log(this.combinacion[a]);
           
-          resultado.push(this.combinazione[i]);
-          
-        }
-       
+          document.getElementsByClassName("cx" + i)[0].style.backgroundImage = '';
+              
+        }*/
+        
       }
-
+       
     }
 
-    console.log(resultado);
-    //alert(numeros);
+    //console.log(resultado);
 
   }
 

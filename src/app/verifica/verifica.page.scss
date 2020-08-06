@@ -58,7 +58,8 @@
 	border: solid;
 }
 #verifica{
-	margin-top: 5%;
+	margin-top: 5px;
+	margin-bottom: 20px;
 	width: 75%;
 	margin-left: 12.5%;
 	--background: white;
@@ -80,7 +81,7 @@
 		background-repeat: no-repeat;
 		background-size: 30px 30px;
 		height: 35px;
-		width: 35px;
+		//width: 35px;
 		display: flex;
 		font-size: 11px;
 	}
@@ -104,7 +105,7 @@
 		background-repeat: no-repeat;
 		background-size: 30px 30px;
 		height: 35px;
-		width: 35px;
+		//width: 35px;
 		display: flex;
 		font-size: 11px;
 	}
@@ -161,4 +162,28 @@
 	display: block; 
 	width: 110px; 
 	text-align: right;
+}
+#d0, #d2, #d4{
+	background-image: url('/assets/fondo-numero-rojo-verde.png');
+}
+#d1, #d3{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+@media only screen and(max-width: 300px){
+	.date{
+		width: auto;
+	}
+	[class*="cn"]{
+		/*font-weight: bolder;
+		background-position: center;
+		background-repeat: no-repeat;*/
+		background-size: 30px 30px;
+		/*color: black;*/
+		display: flex;
+		/*text-align: center;*/
+		margin: 2px;
+		/*font-size: 12px;
+		height: 35px;
+		width: 35px;*/
+	}
 }

@@ -41,7 +41,6 @@
 	color: black;
 	display: flex;
 	text-align: center;
-	margin: 5px;
 }
 [class*="cn"]{
 	height: 100%;
@@ -70,17 +69,20 @@
 	}
 }
 #modifica{
-	position: relative;
-	left: 10%;
-	top: 2.5%;
-	width: 80%;
-	height: 7.5%;
-	margin: 5px;
+	width: 260px;
+	height: 45px;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	--background: white;
 	color: #09B7DA;
 	font-weight: bold;
-	font-size: 100%;
+	font-size: 14px;
 	--box-shadow: 0px 10px 10px #0898B5;
+}
+#content{
+	margin: auto;
+	display: flex;
 }
 #hoy{
 	text-align: center;
@@ -106,7 +108,7 @@ p{
 	margin-left: 2.5%;
 }
 
-#million,#fondo{
+#million, #fondo{
   // height: 40%;
   width: 80%;
   // display: flex;

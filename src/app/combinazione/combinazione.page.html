@@ -39,11 +39,16 @@
 			</div>
 		</ion-col>
 	</ion-row>
-	<ion-button shape="round" size="large" id="modifica" (click)="random()">MODIFICA COMBINAZIONE</ion-button>
+	<div *ngIf="contador > 0" id="content">
+		<ion-button shape="round" size="large" id="modifica" (click)="random()" disabled>MODIFICA COMBINAZIONE</ion-button>
+	</div>
+	<div *ngIf="contador == 0" id="content">
+		<ion-button shape="round" size="large" id="modifica" (click)="random()">MODIFICA COMBINAZIONE</ion-button>	
+	</div>
 	<p id="combo">ULTIME 3 COMBINAZIONI</p>
 	<ion-row id="uc" *ngIf="fechas.length > 0 && ultimos.length > 0">
 		<div *ngFor="let fecha of fechas; let i = index">
-			<ion-row>
+			<ion-row *ngIf="i < 3">
 				<ion-col [ngClass]="'cn'+ (x + 1)" *ngFor="let ultimo of ultimos[i]; let x = index">
 					<label>{{ ultimo }}</label>
 				</ion-col>
