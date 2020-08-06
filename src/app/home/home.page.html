@@ -3,12 +3,12 @@
     <div id="presentacion">
       <h2>CHANCE MILLIONDAY</h2>
       <img src="../assets/icono superior.png" id="million">
-      <img src="../assets/aro-luz.png" id="fondo">
+      <img src="../assets/monedas-2.png" id="fondo">
     </div>
-    <form method="POST" #f="ngForm" (ngSubmit)="registrarse(f)" id="register">
+    <form method="POST" #f="ngForm" (ngSubmit)="registrarse(f)" id="register" style="margin-top: -8px">
         <ion-row>
           <ion-col>
-            <ion-item id="entrada2" lines="none">
+            <ion-item id="entrada2" lines="none" style="margin-top: 0">
               <ion-input placeholder="NOME E COGNOME" type="text" name="formulario.nombre" [(ngModel)]="formulario.nombre" autocomplete="off"></ion-input>
             </ion-item>
           </ion-col>
@@ -45,12 +45,12 @@
             </ion-item>
           </ion-col>
         </ion-row>
-        <ion-row id="ir">
+        <ion-row class="ir pt-16">
         <ion-col>
           <a (click)="cambio()">Hai già un account? <p>accesso</p></a>
         </ion-col>
         </ion-row>
-        <ion-row id="ir">
+        <ion-row class="ir">
           <ion-col>
             <a routerLink="/">Ho dimenticato la mia <p>password</p></a>
           </ion-col>
@@ -68,14 +68,14 @@
   <div id="container2">
     <div id="presentacion">
       <h2>CHANCE MILLIONDAY</h2>
-  <img src="../assets/icono superior.png" id="million">
-      <img src="../assets/aro-luz.png" id="fondo">
+      <img src="../assets/icono superior.png" id="million">
+      <img src="../assets/monedas-2.png" id="fondo">
     </div>
-    <form method="POST" (ngSubmit)="sesion(f)" id="fsesion">
+    <form method="POST" (ngSubmit)="sesion(f)" id="fsesion" style="margin-top: -8px">
       <ion-row>
         <ion-col>
-          <ion-item id="entrada2" lines="none">
-            <ion-input placeholder="USER" [(ngModel)]="isesion.correo" name="isesion.correo" type="email" id="csesion" autocomplete="off"></ion-input>
+          <ion-item id="entrada2" lines="none" style="margin-top: 0">
+            <ion-input placeholder="USER" [(ngModel)]="isesion.correo" name="isesion.correo" type="email" id="" autocomplete="off"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -86,12 +86,12 @@
           </ion-item>
         </ion-col> 
       </ion-row>
-      <ion-row id="ir">
+      <ion-row class="ir pt-16">
         <ion-col>
           <a (click)="cambio2()">Non ho un account, <p>Registrati</p></a>
         </ion-col>
       </ion-row>
-      <ion-row id="ir">
+      <ion-row class="ir">
         <ion-col>
           <a routerLink="/">Ho dimenticato la mia <p>password</p></a>
         </ion-col>

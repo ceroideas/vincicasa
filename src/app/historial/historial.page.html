@@ -57,7 +57,7 @@
 			<b id="ucc">ULTIMO CONCORSO</b>
 		</ion-col>
 	</ion-row>
-	<div class="datos">
+	<div class="datos" style="width: 80%;">
 		<div *ngFor="let ultime of numeros[0]; let i = index">
 			<div [id]="'ultime'+i">
 				<b>{{ ultime }}</b>
@@ -75,26 +75,31 @@
 			<b id="ucp">EURO</b>
 		</ion-col>
 	</ion-row>
-	<ion-item id="resultados">
+	<ion-item id="resultados" lines="none">
 		<table id="vincite">
-			<td id="v">
-				<tr>1</tr>
-				<tr>2</tr>
-				<tr>3</tr>
-				<tr>4</tr>
-			</td>
-			<td id="v">
-				<tr>Punti 5</tr>
-				<tr>Punti 4</tr>
-				<tr>Punti 3</tr>
-				<tr>Punti 1</tr>
-			</td>
-			<td id="v">
-				<tr>250,00€</tr>
-				<tr>250,00€</tr>
-				<tr>250,00€</tr>
-				<tr>250,00€</tr>
-			</td>
+			<tr id="v">
+				<td>Nessuna</td>
+				<td>Punti 5</td>
+				<td>254,39€</td>
+			</tr>
+				
+			<tr id="v">
+				<td>1</td>
+				<td>Punti 4</td>
+				<td>254,39€</td>
+			</tr>
+
+			<tr id="v">
+				<td>29</td>
+				<td>Punti 3</td>
+				<td>254,39€</td>
+			</tr>
+
+			<tr id="v">
+				<td>430</td>
+				<td>Punti 2</td>
+				<td>254,39€</td>
+			</tr>
 		</table>
 	</ion-item>
 	<ion-row id="uc">
@@ -104,29 +109,29 @@
 	</ion-row>
 	<div id="estrazioni" id="number" *ngFor="let d of dias; let i = index">
 		<ion-row id="fecha">
-			<p>ESTRAZIONE {{ d }} {{ fechas[i] }}</p>
+			<p>ESTRAZIONE <!-- {{ d }} --> <span style="float: right;">{{ fechas[i] }}</span></p>
 		</ion-row>
 		<ion-row id="dia">
 			<ion-col>
-				<b>LUN</b>
+				<b [ngClass]="i == 0 ? 'green' : '' ">LUN</b>
 			</ion-col>
 			<ion-col>
-				<b>MAR</b>
+				<b [ngClass]="i == 1 ? 'green' : '' ">MAR</b>
 			</ion-col>
 			<ion-col>
-				<b>MER</b>
+				<b [ngClass]="i == 2 ? 'green' : '' ">MER</b>
 			</ion-col>
 			<ion-col>
-				<b>GIO</b>
+				<b [ngClass]="i == 3 ? 'green' : '' ">GIO</b>
 			</ion-col>
 			<ion-col>
-				<b>VEN</b>
+				<b [ngClass]="i == 4 ? 'green' : '' ">VEN</b>
 			</ion-col>
 			<ion-col>
-				<b>SAB</b>
+				<b [ngClass]="i == 5 ? 'green' : '' ">SAB</b>
 			</ion-col>
 			<ion-col>
-				<b>DOM</b>
+				<b [ngClass]="i == 6 ? 'green' : '' ">DOM</b>
 			</ion-col>
 		</ion-row>
 		<div class="datos">

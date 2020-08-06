@@ -128,6 +128,8 @@ export class AppComponent {
       let fechas = [];
       let numeros = [];
       let ultimos = [];
+      let meses = ["GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"];
+      //let numbers = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]; 
       // console.log(data);
 
       for (let i = 7; i >= 0; i--) {
@@ -156,6 +158,16 @@ export class AppComponent {
 
       }
 
+      for (let i = 0; i < fechas.length; ++i) {
+
+        let mes =  moment().subtract(i, 'd').format('M');
+        fechas[i] = moment().subtract(i, 'd').format('DD') + ' ' + meses[parseInt(mes)] + ' ' + moment().subtract(i, 'd').format('Y');
+        //fechas[i] = fechas[i].replace(data, meses[i]);
+        
+
+      }
+
+      console.log(fechas);
       localStorage.setItem('fechas', JSON.stringify(fechas));
 
       /*let _keys = Object.keys(info3[0]);

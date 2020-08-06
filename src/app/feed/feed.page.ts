@@ -4,6 +4,9 @@ import { ComunicacionService } from '../comunicacion.service';
 import { Numeros } from '../numeros';
 import { Router } from  '@angular/router';
 import { MenuController } from  '@ionic/angular';
+import * as moment from 'moment';
+
+
 
 @Component({
   selector: 'app-feed',
@@ -33,7 +36,8 @@ export class FeedPage implements OnInit {
 
   ngOnInit() {
     this.comunicacion.changeData(this.usuario);
-    this.refrescar();
+    // this.refrescar();
+    this.reloj();
    // this.cambio.emit(this.usuario);
    /* console.log(this.usuario);
     this.reloj();
@@ -510,6 +514,133 @@ export class FeedPage implements OnInit {
 
   salir(event){
     this.router.navigateByUrl('/home');
+  }
+
+  reloj()
+  {
+    console.log('reloj');
+    function CountdownTracker(label, value){
+
+      var el = document.createElement('span');
+
+      el.className = 'flip-clock__piece';
+      el.innerHTML = '<b class="flip-clock__card card"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' + 
+        '<span class="flip-clock__slot">' + label + '</span>';
+
+      this.el = el;
+
+      var top = el.querySelector('.card__top') as HTMLElement,
+          bottom = el.querySelector('.card__bottom'),
+          back = el.querySelector('.card__back'),
+          backBottom = el.querySelector('.card__back .card__bottom');
+
+      this.update = function(val){
+        val = ( '0' + val ).slice(-2);
+        if ( val !== this.currentValue ) {
+          
+          if ( this.currentValue >= 0 ) {
+            back.setAttribute('data-value', this.currentValue);
+            bottom.setAttribute('data-value', this.currentValue);
+          }
+          this.currentValue = val;
+          top.innerText = this.currentValue;
+          backBottom.setAttribute('data-value', this.currentValue);
+
+          this.el.classList.remove('flip');
+          void this.el.offsetWidth;
+          this.el.classList.add('flip');
+        }
+      }
+      
+      this.update(value);
+    }
+
+    // Calculation adapted from https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+
+    function getTimeRemaining(endtime) {
+      var t = Date.parse(endtime) - Date.parse(new Date().toString());
+      return {
+        'Total': t,
+        // 'Days': Math.floor(t / (1000 * 60 * 60 * 24)),
+        '<p>ORE</p>': Math.floor((t / (1000 * 60 * 60)) % 24),
+        '<p>MINUTI</p>': Math.floor((t / 1000 / 60) % 60),
+        '<p>SECONDI</p>': Math.floor((t / 1000) % 60)
+      };
+    }
+
+    function getTime() {
+      var t = new Date();
+      return {
+        'Total': t,
+        'Hours': t.getHours() % 12,
+        'Minutes': t.getMinutes(),
+        'Seconds': t.getSeconds()
+      };
+    }
+
+    function Clock(countdown,callback) {
+      
+      countdown = countdown ? new Date(Date.parse(countdown)) : false;
+      callback = callback || function(){};
+      
+      var updateFn = countdown ? getTimeRemaining : getTime;
+
+      this.el = document.createElement('div');
+      this.el.className = 'flip-clock';
+
+      var trackers = {},
+          t = updateFn(countdown),
+          key, timeinterval;
+
+      for ( key in t ){
+        if ( key === 'Total' ) { continue; }
+        trackers[key] = new CountdownTracker(key, t[key]);
+        this.el.appendChild(trackers[key].el);
+      }
+
+      var i = 0;
+      function updateClock() {
+        timeinterval = requestAnimationFrame(updateClock);
+        
+        // throttle so it's not constantly updating the time.
+        if ( i++ % 10 ) { return; }
+        
+        var t = updateFn(countdown);
+        if ( t.Total < 0 ) {
+          cancelAnimationFrame(timeinterval);
+          for ( key in trackers ){
+            trackers[key].update( 0 );
+          }
+          callback();
+          return;
+        }
+        
+        for ( key in trackers ){
+          trackers[key].update( t[key] );
+        }
+      }
+
+      setTimeout(updateClock,500);
+    }
+
+    let mins8 = moment(moment().format('YYYY-MM-DD 20:00'));
+    let now;
+
+    let restante = mins8.diff(moment(),'seconds');
+
+    if (restante < 0) {
+      now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 20:00'));
+    }else{
+      now = moment(moment().format('YYYY-MM-DD 20:00'));
+    }
+
+    // var deadline = new Date(Date.parse(new Date().toString()) + 12 * 24 * 60 * 60 * 1000);
+    var deadline = new Date(Date.parse(now));
+    var c = new Clock(deadline, function(){ alert('countdown complete') });
+    document.getElementById('tiempo').appendChild(c.el);
+
+    // var clock = new Clock(null,null);
+    // document.getElementById('tiempo').appendChild(clock.el);
   }
 
 }

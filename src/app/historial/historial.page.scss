@@ -1,23 +1,23 @@
 #body, #head{
 	--background: #09B7DA; 
-	font-family: 'geometos';
+	font-family: 'roboto';
 	font-size: 14px;
 }
 #ue{
 	text-align: left;
 	color: white;
 	background: #09B7DA; 
-	font-family: 'geometos';
+	font-family: 'roboto';
 	font-size: 14px;
 	position: relative;
 	left: 10%;
 	margin: none;
 }
 .datos{
-	width: 70%;
+	width: 90%;
 	margin-top: 0%;
-	margin-left: 15%;
-	height: 10%;
+	margin: auto;
+	// height: 10%;
 }
 .datos, #number {
 	[id*="ultime"] {
@@ -32,15 +32,19 @@
 }
 .datos, #number {
 	[id*="ultime"] {
+		display: flex;
 		b{
 			position: relative;
-			top: 37.5%;
+			margin: auto;
 			color: black;
 		}
 	}
 }
 #dia b{
 	color: white;
+	font-size: 12px;
+	text-align: center;
+	display: block;
 }
 .datos:before {
 	content: "";
@@ -50,6 +54,7 @@
 	position: relative;
 	top: 37.5%;
 }*/
+
 #ultime0, #ultime2, #ultime4{
 	background-image: url('/assets/fondo-numero-rojo-balnco.png');
 }
@@ -57,32 +62,38 @@
 	background-image: url('/assets/fondo-numero-azul-blanco.png');
 }
 #uc{
-	margin-left: 15%;
-	height: 5%;
-	width: 70%;
+	margin: auto;
+	height: 32px;
+	width: 80%;
 	margin-bottom: 0%;
 	text-align: center;
 	background: white;
 	color: #09B7DA;
+	ion-col {
+		display: flex;
+	}
 }
 #ucc{
-	height: 100%;
+	// height: 100%;
 	width: 100%;
 	position: relative;
-	top: 15%;
+	margin: auto;
 }
 #ucp{
-	height: 100%;
-	width: 33.33%;
+	// height: 100%;
+	// width: 33.33%;
 	position: relative;
-	top: 15%;
+	margin: auto;
+	// top: 15%;
 }
 #vincite{
 	color: white;
-	margin-top: 5%;
-	width: 85%;
-	margin-left: 6.5%;
-	height: 90%;
+	margin: auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	width: 90%;
+	// margin-left: 6.5%;
+	// height: 90%;
 }
 #resultados{
 	--background: #09B7DA;
@@ -95,6 +106,12 @@
 	width: 33.33%;
 	text-align: center;
 	font-weight: 100;
+	font-size: 14px;
+	text-align: left;
+
+	td:first-child {text-align: left;}
+	td:nth-child(2) {text-align: center;}
+	td:last-child {text-align: right;}
 }
 #estrazioni{
 	width: 90%;
@@ -104,12 +121,14 @@
 #fecha, #dia, #number{
 	margin: auto;
 	width: 100%;
+	font-size: 14px;
 }
 #fecha{
-	height: 30%;
+	height: auto;
+	padding: 10px;
 	color: white;
 	font-weight: 100;
-	text-align: center;
+	text-align: left;
 	border: 1px solid white;
 	margin-top: 5%;
 	background: #09B7DA;
@@ -130,11 +149,15 @@
 	margin-left: 5%;
 }
 #fecha p{
-	text-align: center;
+	text-align: left;
 	width: 100%;
+	margin: 0 !important;
 }
 #tab{
 	width: 100%;
+}
+.green {
+	color: #00ff00 !important;
 }
 /*@media only screen and(min-height: 1024px ){
 	.datos, #number {

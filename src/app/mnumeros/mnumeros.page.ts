@@ -35,7 +35,9 @@ export class MnumerosPage implements OnInit {
   colores: string;
   usuario: string = localStorage.getItem('correo');
 
-  constructor(private service: ComunicacionService) { }
+  constructor(private service: ComunicacionService) {
+    this.colores = null;
+  }
 
   ngOnInit() {
 
@@ -320,6 +322,10 @@ export class MnumerosPage implements OnInit {
 
   validar(){
 
+    setTimeout(()=>{
+      this.colores = null;
+    },5000)
+
     console.log(this.combinacion);
     const combinazione = this.combinacion.sort((a, b) => a - b);
     // let array = [];
@@ -346,24 +352,34 @@ export class MnumerosPage implements OnInit {
     console.log(nprimos);
 
     if (nprimos >= 4) {
-      return this.colores = colores[2];
+      return this.colores = colores[1];
     }
 
     // regla 1
     let a = 0;
+    let b = 0;
+    let c = 0;
     //
     for (let i = 0; i < combinazione.length; i++) {
       if (combinazione[i+1] !== undefined) {
         if (combinazione[i]+1 == combinazione[i+1]) {
           a++;
+          b++;
         }else{
-          a=0;
+          b=0;
         }
       }
     }
     //
+    console.log(1,a,b);
     if (a >= 3) {
       return this.colores = colores[2];
+    }
+    if(a >= 2) {
+      return this.colores = colores[1];
+    }
+    if(a >= 2 || b >= 2) {
+      return this.colores = colores[1];
     }
     // regla 2
     //
@@ -375,14 +391,23 @@ export class MnumerosPage implements OnInit {
         if (combinazione[i+1] !== undefined) {
           if (combinazione[i]+h == combinazione[i+1]) {
             a++;
+            b++;
           }else{
-            a=0;
+            b=0;
           }
         }
       }
+
+      console.log(h,a,b);
       
       if (a >= 3) {
         return this.colores = colores[2];
+      }
+      if(a >= 2) {
+        return this.colores = colores[1];
+      }
+      if(a >= 2 || b >= 2) {
+        return this.colores = colores[1];
       }
       //
     }

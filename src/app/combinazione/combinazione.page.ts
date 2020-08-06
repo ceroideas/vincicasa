@@ -15,9 +15,25 @@ export class CombinazionePage implements OnInit {
 	ultimos: any[3] = [];
 	fechas: any[3] = [];
 	usuario: string = localStorage.getItem('correo');
-	hoy: any = moment().format('DD') + '/' + moment().format('MM') + '/' + moment().format('YYYY');
+	hoy: any = moment();
 
-  constructor(private service: ComunicacionService) { }
+	meses = ['gennaio',
+			'febbraio',
+			'marzo',
+			'aprile',
+			'maggio',
+			'giugno',
+			'luglio',
+			'agosto',
+			'settembre',
+			'ottobre',
+			'novembre',
+			'dicembre'];
+
+
+  constructor(private service: ComunicacionService) {
+  	this.hoy = this.hoy.format('DD')+' '+this.meses[ this.hoy.format('M')-1 ]+' '+this.hoy.format('YYYY');
+  }
 
   ngOnInit() {
 
@@ -290,8 +306,8 @@ export class CombinazionePage implements OnInit {
 		
 
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
-		localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
-		localStorage.setItem('ufechas', JSON.stringify(this.fechas));
+		localStorage.setItem('ultimos', JSON.stringify(this.ultimos.reverse()));
+		localStorage.setItem('ufechas', JSON.stringify(this.fechas.reverse()));
 
 
 	}

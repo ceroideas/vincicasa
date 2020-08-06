@@ -35,18 +35,20 @@
 	}
 }
 #tools p{
-	display: flex;
-	text-align: center;
-	margin: auto;
-	position: relative;
-	left: 15%;
+	display: block;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    left: -28px;
+    width: 100%;
+    text-align: center;
 }
 #game{
 	//margin: auto;
 	text-align: center;
 	background: transparent;
 	height: 20%;
-	margin-top: 0%;
+	margin-top: -6px;
 }
 #imgm{
 	height: 30%;
@@ -98,21 +100,14 @@
 }
 #tiempo{
 	width: 100%;
-	height: 10%;
+	// height: 10%;
 }
-#tiempo div{
-	width: 90%;
-	height: 60px;
-	color: white;
-	z-index: 0;
-}
-#tiempo p{
-	margin-bottom: 5%;
-	color: white;
-	text-align: center;
-	font-size: 80%;
-	font-family: 'geometos';
-}
+// #tiempo div{
+// 	width: 90%;
+// 	height: 60px;
+// 	color: white;
+// 	z-index: 0;
+// }
 #tuto{
 	margin-top: 10%;
 }
@@ -132,17 +127,17 @@
 	font-size: 175%;
 	font-family: 'sf ui display';
 }
-#tiempo #barra{
-	height: 1%;
-	width: 80%;
-	z-index: 1;
-	background: #0BB6D8;
-	position: relative;
-	top: 50%;
-	left: 10%;
-}
+// #tiempo #barra{
+// 	height: 1%;
+// 	width: 80%;
+// 	z-index: 1;
+// 	background: #0BB6D8;
+// 	position: relative;
+// 	top: 50%;
+// 	left: 10%;
+// }
 #chance{
-	margin-top: 30%;
+	margin-top: 15px;
 	//font-family: 'freestyle script';
 	color: white;
 	//margin: auto;
@@ -160,4 +155,35 @@
 	box-shadow: 0px 15px 15px #0898B5;
   	margin-bottom: 7.5%;
 	border-radius: 80px;
+}
+
+#million,#fondo{
+  // height: 40%;
+  width: 80%;
+  // display: flex;
+  position: absolute;
+  // top: 15%;
+  // left: 10%;
+  z-index: 1;
+  // margin-top: 0%;
+  margin: auto;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#fondo {
+  width: 90%;
+  z-index: 0;
+}
+#presentacion {
+  h2 {
+    width: 100%;
+  }
+  position: relative;
+  height: 350px;
+  background-image: url(/assets/aro-luz.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
 }

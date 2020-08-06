@@ -1,13 +1,15 @@
 <ion-content id="body">
+	<div id="presentacion">
 	<ion-toolbar id="tools">
 		<ion-menu-button menu="main-menu" slot="start" id="mboton"></ion-menu-button>
 	    <ion-label id="titulo">COMBINAZIONE</ion-label>
 	</ion-toolbar>
-	<img src="../assets/monedas-2.png" id="imgm">
-	<img src="../assets/aro-luz.png" id="fondo"> 
-	<ion-row>
+	<img src="../assets/icono superior.png" id="million">
+	<img src="../assets/monedas-2.png" id="fondo">
+	</div>
+	<ion-row style="margin-top: -8px;">
 		<ion-col id="hoy">
-			LA TUA COMBINAZIONE {{ hoy }}
+			LA TUA COMBINAZIONE <br> {{ hoy }}
 		</ion-col>
 	</ion-row>
 	<ion-row id="combinacion" *ngIf="combinacion.length > 0">
@@ -58,7 +60,7 @@
 					<label>{{ ultimo }}</label>
 				</ion-col>-->
 				<ion-col>
-					<label>{{ fecha }}</label>
+					<label style="font-size: 14px;padding: 7px 0;display: block; width: 110px;">{{ fecha }}</label>
 				</ion-col>
 			</ion-row>
 		</div>

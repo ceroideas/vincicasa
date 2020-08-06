@@ -1,9 +1,100 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>verifica</ion-title>
+<ion-content id="body">
+  <ion-toolbar id="tools">
+  	<ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title id="titulo">VERIFICA SCHEDINA</ion-title>
   </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+  <div id="contenedor">
+		<ion-row id="fila">
+			<ion-col class="columna">
+				<div *ngFor="let numero of numeros" class="n1">
+					<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar($event, numero)">
+					<label for="numero{{ numero }}">
+						<b class="valores">
+							{{ numero }}
+						</b>
+					</label>
+				</div>
+			</ion-col>
+			<ion-col class="columna">
+				<div *ngFor="let numero of numeros2" class="n2">
+					<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar2($event, numero)">
+					<label for="numero{{ numero }}">
+						<b class="valores">
+							{{ numero }}
+						</b>
+					</label>
+				</div>
+			</ion-col>
+			<ion-col class="columna">
+				<div *ngFor="let numero of numeros3" class="n1">
+					<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar($event, numero)">
+					<label for="numero{{ numero }}">
+						<b class="valores">
+							{{ numero }}
+						</b>
+					</label>
+				</div>
+			</ion-col>
+			<ion-col class="columna">
+				<div *ngFor="let numero of numeros4" class="n2">
+					<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar2($event, numero)">
+					<label for="numero{{ numero }}">
+						<b class="valores">
+							{{ numero }}
+						</b>
+					</label>
+				</div>
+			</ion-col>
+			<ion-col class="columna">
+				<div *ngFor="let numero of numeros5" class="n1">
+					<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar($event, numero)">
+					<label for="numero{{ numero }}">
+						<b class="valores">
+							{{ numero }}
+						</b>
+					</label>
+				</div>
+			</ion-col>
+			<ion-col class="columna">
+				<div *ngFor="let numero of numeros6" class="n2">
+					<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar2($event, numero)">
+					<label for="numero{{ numero }}">
+						<b class="valores">
+							{{ numero }}
+						</b>
+					</label>
+				</div>
+			</ion-col>
+			<ion-col class="columna">
+				<div *ngFor="let numero of numeros7" class="n1">
+					<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar($event, numero)">
+					<label for="numero{{ numero }}">
+						<b class="valores">
+							{{ numero }}
+						</b>
+					</label>
+				</div>
+			</ion-col>
+		</ion-row>
+	</div>
+	<div *ngIf="combinacion.length < 5">
+		<ion-button shape="round" expand="full" size="large" id="verificar" (click)="verificar()" disabled>VERIFICA</ion-button>
+	</div>
+	<div *ngIf="combinacion.length == 5">
+		<ion-button shape="round" expand="full" size="large" id="verificar" (click)="verificar()">VERIFICA</ion-button>
+	</div>
+	<ion-row id="uc" *ngIf="fechas.length > 0 && ultimos.length > 0">
+		<div *ngFor="let fecha of fechas; let i = index">
+			<ion-row *ngIf="i < 5" class="fila">
+				<ion-col [ngClass]="'cn'+ (x + 1)" *ngFor="let ultimo of ultimos[i]; let x = index">
+					<label [ngClass]="'cx'+ (x + 1)">{{ ultimo }}</label>
+				</ion-col>
+				<ion-col>
+					<label class="date">{{ fecha }}</label>
+				</ion-col>
+			</ion-row>
+		</div>
+	</ion-row>
 </ion-content>

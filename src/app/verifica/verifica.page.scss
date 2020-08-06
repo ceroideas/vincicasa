@@ -1,0 +1,164 @@
+.toolbar-container, #body, #tools, #head{
+	--background: #09B7DA;
+	--color: white;
+}
+#exclusion{
+	padding: 2.5% 0 0 0;
+	text-align: center;
+	color: white;
+	font-family: 'geometos';
+	font-size: 10px;
+}
+#titulo{
+	font-family: 'geometos';
+	font-size: 14px;
+	margin: auto;
+	margin-right: 30px;
+	text-align: center;
+}
+#fila{
+	.n1, .n2{
+		text-align: center;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 37.5px 37.5px;
+		height: 12.5%;
+		width: 100%;
+	}
+} 
+ .n1, .n2{
+	b{
+		margin: auto;
+		color: black;
+	}
+ } 
+.n1, .n2{
+	[id*="numero"]{
+		height: 100%;
+	}
+}
+#seleccionado{
+	height: 50px;
+	margin-top: 5%;
+}
+#contenedor{
+	width: 95%;
+	margin-left: 2.5%;
+	border-bottom: 1.5px solid white;
+}
+#fila{
+	margin: none;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	left: 0%;
+}
+#columna{
+	height: 100%;
+	border: solid;
+}
+#verifica{
+	margin-top: 5%;
+	width: 75%;
+	margin-left: 12.5%;
+	--background: white;
+	--color: #50CBE4;
+	font-weight: bolder;
+	--box-shadow: none;
+}
+.n1{
+	width: 100%;
+	height: auto;
+
+	[id*="numero"]{
+		display: none;
+	}
+	[id*="numero"]+label{
+		background-image: url('/assets/fondo-numero-rojo-balnco.png');
+		text-align: center;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 30px 30px;
+		height: 35px;
+		width: 35px;
+		display: flex;
+		font-size: 11px;
+	}
+}
+.n1{
+	[id*="numero"]:checked + label{
+		background-image: url('/assets/fondo-numero-rojo-verde.png');
+	}
+}
+.n2{
+	width: 100%;
+	height: auto;
+
+	[id*="numero"]{
+		display: none;
+	}
+	[id*="numero"]+label{
+		background-image: url('/assets/fondo-numero-azul-blanco.png');
+		text-align: center;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 30px 30px;
+		height: 35px;
+		width: 35px;
+		display: flex;
+		font-size: 11px;
+	}
+}
+.n2{
+	[id*="numero"]:checked + label{
+		background-image: url('/assets/fondo-numero-azul-verde.png');
+	}
+}
+#verificar{
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	width: 270px;
+	height: 45px;
+	font-size: 15px;
+	--background: white;
+	--color: #50CBE4;
+	--box-shadow: 0px 5px 5px #0898B5;
+}
+[class*="cn"]{
+	font-weight: bolder;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	color: black;
+	display: flex;
+	text-align: center;
+	margin: 5px;
+	font-size: 12px;
+	height: 35px;
+	width: 35px;
+}
+.cn1, .cn3, .cn5{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+.cn2, .cn4{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+[class*="c"]{
+	label, b{
+		margin: auto;
+		text-align: center;
+		display: flex;
+	}
+}
+.fila{
+	height: 40px;
+}
+.date{
+	font-family: 'geometos';
+	font-size: 12px;
+	padding: 7px 0;
+	display: block; 
+	width: 110px; 
+	text-align: right;
+}

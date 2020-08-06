@@ -26,6 +26,12 @@
 		<ion-content id="menu">
 			<ion-list id="lista">
 				<ion-menu-toggle auto-hide="true">
+					<ion-item class="items" lines="none" routerLink="/feed" routerDirection="root">
+						<ion-icon src="../assets/browser.svg"></ion-icon>
+						<ion-label class="label">HOME</ion-label>
+					</ion-item>
+          		</ion-menu-toggle>
+				<ion-menu-toggle auto-hide="true">
 					<ion-item class="items" lines="none" routerLink="/combinazione" routerDirection="root">
 						<ion-icon src="../assets/lotto.svg"></ion-icon>
 						<ion-label class="label">LA TUA COMBINAZIONE</ion-label>
@@ -81,6 +87,10 @@
           		</ion-menu-toggle>
 			</ion-list>
 		</ion-content>
+
+		<ion-footer>
+			<p style="color: #fff; text-align: center;">V 0.0.1</p>
+		</ion-footer>
 	</ion-menu>
     <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

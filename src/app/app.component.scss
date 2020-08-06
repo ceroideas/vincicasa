@@ -11,8 +11,8 @@
 }
 #profile{
 	margin-top: 15%;
-	height: 70%;
-	width: 50%;
+	height: 70px;
+	width: 70px;
 }
 #salir{
 	--color: white;
@@ -51,6 +51,12 @@
 	font-family: 'Hitchhiker';
 	font-weight: 100;
 	src: url('/assets/Hitchhiker.ttf');
+}
+
+ion-footer {
+	&:before {
+		background: none !important;
+	}
 }
 /*@media only screen and(min-height: 560px){
 	#profile{
