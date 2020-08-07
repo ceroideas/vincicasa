@@ -82,26 +82,25 @@ export class VerificaPage implements OnInit {
 
   verificar(){
 
-    //let resultado = [];
+    let resultado = [];
 
     for (let i = 0; i < this.ultimos[0].length; i++) {
 
       for (let a = 0; a < this.ultimos[0].length; ++a) {
 
-        /*if (parseInt(this.ultimos[0][i]) == this.combinacion[a]) {
+        if (parseInt(this.ultimos[0][i]) == this.combinacion[a]) {
             
           resultado.push(this.combinacion[a]);
           console.log(this.combinacion[a]);
-          
-          document.getElementsByClassName("cx" + i)[0].style.backgroundImage = '';
-              
-        }*/
+          console.log(document.getElementsByClassName("cn" + a)[0]);
+                        
+        }
         
       }
        
     }
 
-    //console.log(resultado);
+    console.log(resultado);
 
   }
 
