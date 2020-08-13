@@ -90,7 +90,7 @@ export class VerificaPage implements OnInit {
 
   verificar(){
 
-    let resultado = [];
+    /*let resultado = [];
 
     for (let i = 0; i < this.ultimos[0].length; i++) {
 
@@ -104,11 +104,13 @@ export class VerificaPage implements OnInit {
         
       }
        
-    }
+    }*/
 
+    this.numerosx = [];
     this.cd.detectChanges();
+    this.numerosx = JSON.parse(localStorage.getItem('numeros'));
 
-    console.log(resultado);
+   // console.log(resultado);
 
   }
 

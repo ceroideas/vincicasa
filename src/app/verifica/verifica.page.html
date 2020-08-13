@@ -111,8 +111,8 @@
 		</ion-row>
 		<div class="datos">
 			<ion-row id="tab">
-				<!--<ion-col [ngClass]=" n | verificar:combinacion ? 'verde' : '' " id="ultime{{ x }}" *ngFor="let n of numeros[i]; let x = index">-->
-				<ion-col [ngClass]="combinacion.length > 0; then n | verificar:combinacion ? 'verde' : '' " id="ultime{{ x }}" *ngFor="let n of numerosx[i]; let x = index">
+				<ion-col [ngClass]="(n | verificar:combinacion) ? 'verde' : '' " id="ultime{{ x }}" *ngFor="let n of numerosx[i]; let x = index">
+				<!--<ion-col [ngClass]="combinacion.length > 0; then n | verificar:combinacion ? 'verde' : '' " id="ultime{{ x }}" *ngFor="let n of numerosx[i]; let x = index">-->
 					<b>{{ n }}</b>
 				</ion-col>
 			</ion-row>
