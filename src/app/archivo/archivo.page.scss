@@ -1,10 +1,12 @@
 .toolbar-container, #body, #tools{
 	--background: #09B7DA;
 	--color: white;
+	font-family: 'geometos';
+	font-size: 12px;
 }
 #tools{
 	z-index: 2;
-	background: transparent;
+	--background: transparent !important;
 }
 #titulo{
 	text-align: center;
@@ -14,7 +16,7 @@
 	margin-right: 30px;
 }
 #million, #fondo{
-	height: 350px;
+	height: 300px;
 	width: 100%;
 	position: absolute;
 	top: 0%;
@@ -32,7 +34,7 @@
 }
 #fecha{
 	position: absolute;
-	top: 355px;
+	top: 305px;
 	display: flex;
 }
 #date, #title{
@@ -42,4 +44,45 @@
 #date{
 	background: white;
 	color: #09B7DA;
+}
+#verifica{
+	--background: white;
+	--color: #09B7DA;
+	width: 250px;
+	height: 50px;
+	margin: auto;
+	position: relative;
+	top: 320px;
+}
+#datos{
+	position: relative;
+	top: 57.5%;
+	margin: auto;
+	width: 300px;
+}
+[class*="numeros"]{
+	height: 40px;
+	width: 40px;
+	background-size: 40px 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: flex;
+	b{
+		color: black;
+		text-align: center;
+		margin: auto;
+	}
+}
+.numeros1, .numeros3, .numeros5{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png') !important;
+}
+.numeros2, .numeros4{
+	background-image: url('/assets/fondo-numero-azul-blanco.png') !important;
+}
+#fechas{
+	position: relative;
+	top: 55%;
+	color: white;
+	margin-left: 15%;
+	font-size: 14px;
 }

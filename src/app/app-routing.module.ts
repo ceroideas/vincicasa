@@ -28,10 +28,6 @@ const routes: Routes = [
     loadChildren: () => import('./mnumeros/mnumeros.module').then( m => m.MnumerosPageModule)
   },
   {
-    path: 'pruebas',
-    loadChildren: () => import('./pruebas/pruebas.module').then( m => m.PruebasPageModule)
-  },
-  {
     path: 'estadisticas',
     loadChildren: () => import('./estadisticas/estadisticas.module').then( m => m.EstadisticasPageModule)
   },

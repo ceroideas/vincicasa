@@ -4,14 +4,22 @@
 	font-size: 14px;
 }
 #ue{
-	text-align: left;
+	/*text-align: left;
 	color: white;
 	background: #09B7DA; 
 	font-family: 'roboto';
 	font-size: 14px;
 	position: relative;
 	left: 10%;
-	margin: none;
+	margin: none;*/
+
+	text-align: center !important;
+    color: white;
+    background: #09B7DA;
+    font-family: "roboto";
+    font-size: 14px;
+    position: relative;
+    margin-right: 10%;
 }
 .datos{
 	width: 90%;

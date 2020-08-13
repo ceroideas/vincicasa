@@ -94,7 +94,7 @@
 	[id*="numero"]{
 		display: none;
 	}
-	[id*="numero"]+label{
+	[id*="numero"] + label{
 		background-image: url('/assets/fondo-numero-rojo-balnco.png');
 		text-align: center;
 		background-position: center;

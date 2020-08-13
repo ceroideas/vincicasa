@@ -46,40 +46,56 @@ export class AppComponent {
     }
 
     if (localStorage.getItem('u30') == '' || localStorage.getItem('u30') == undefined) {
-      this.scrapping2();
+      // this.scrapping2();
     }
 
-    let contador = parseInt(localStorage.getItem('contador'));
-    // let horaClick = moment(localStorage.getItem('horaClick'));
+    let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
-    /*let pm8 = moment(moment().format('YYYY-MM-DD 20:00'));
-    let pm8p1 = moment(moment().format('YYYY-MM-DD 20:00')).add(1,'day');*/
 
-    let pm8p1 = moment(moment().format('YYYY-MM-DD 20:00')).add(-1,'day');
+    let pm8 = moment(moment().format('YYYY-MM-DD 20:00'));
+    let pm8p1 = moment(moment().format('YYYY-MM-DD 20:00')).add(1,'day');
+
     let diff = (pm8p1.diff(hora,'seconds'))/3600;
-    let diff2 = moment(moment().format('YYYY-MM-DD 20:00')).diff(hora,'seconds')/3600;
-    console.log(diff);
 
-    /*if (diff >= 24 && hora > diff2) {
+    //
+
+    let diff2 = hora.diff(horaClick,'seconds')/3600;
+    // console.log(diff2);
+
+    if (diff2 > 24) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente se borra el contador
       
-    }*/
-    /*if (diff >= 24) {
-      let pm8s1 = moment(moment().format('YYYY-MM-DD 20:00')).subtract(1,'day');
+      localStorage.removeItem('contador');
 
-      diff = (hora.diff(pm8s1,'seconds'))/3600;
-
-      console.log(diff);
-      
     }else{
 
-    }*/
-    
-    
+      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las 20:00 hasta hoy a las 20:00
 
+        let d = pm8.diff(horaClick,'seconds')/3600;
+
+        if (d > 24) {
+          console.log('borrar contador')
+          localStorage.removeItem('contador');
+        }
+        
+        console.log('desde el dia anterior', d);
+        
+      }else{ // en caso contrario se cuenta a partir de hoy a las 20:00 hasta mañana a las 20:00
+
+        let d = pm8p1.diff(horaClick,'seconds')/3600;
+
+        if (d > 24) {
+          console.log('borrar contador')
+          localStorage.removeItem('contador');
+        }
+
+        console.log('hasta el dia siguiente', d);
+
+      }
+    }
   }
    //read t
   /*usuario(e){
-  	this.user = e;
+    this.user = e;
   }*/
 
   reloj(){
@@ -121,7 +137,7 @@ export class AppComponent {
         localStorage.removeItem('numeros');
         localStorage.removeItem('fechas');
         localStorage.removeItem('dias');
-        //localStorage.removeItem('ultimos');
+        localStorage.removeItem('ultimos');
         localStorage.removeItem('contador');
        
         /*this.service.reloj();*/

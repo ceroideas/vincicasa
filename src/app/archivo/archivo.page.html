@@ -19,5 +19,11 @@
     		</ion-datetime>
     	</ion-col>
     </ion-row>
-    
+    <ion-button size="large" expand="full" shape="round" id="verifica">VERIFICA</ion-button>
+    <p id="fechas">{{ fecha }}</p>
+    <ion-row id="datos">
+        <ion-col *ngFor="let schedina of numeros; let x = index" [ngClass]="'numeros' + (x + 1)">
+            <b>{{ schedina }}</b>
+        </ion-col>
+    </ion-row>
 </ion-content>
