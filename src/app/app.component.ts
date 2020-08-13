@@ -121,7 +121,7 @@ export class AppComponent {
         localStorage.removeItem('numeros');
         localStorage.removeItem('fechas');
         localStorage.removeItem('dias');
-        localStorage.removeItem('ultimos');
+        //localStorage.removeItem('ultimos');
         localStorage.removeItem('contador');
        
         /*this.service.reloj();*/
