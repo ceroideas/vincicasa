@@ -1,0 +1,45 @@
+.toolbar-container, #body, #tools{
+	--background: #09B7DA;
+	--color: white;
+}
+#tools{
+	z-index: 2;
+	background: transparent;
+}
+#titulo{
+	text-align: center;
+	font-family: 'geometos';
+	font-size: 14px;
+	margin: auto;
+	margin-right: 30px;
+}
+#million, #fondo{
+	height: 350px;
+	width: 100%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	right: 0%;
+}
+#million{
+	z-index: 1;
+}
+#fondo{
+	background-image: url('/assets/aro-luz.png');
+	background-size: cover;
+	background-position: center;
+	z-index: 0;
+}
+#fecha{
+	position: absolute;
+	top: 355px;
+	display: flex;
+}
+#date, #title{
+	margin: auto;
+	text-align: center;
+}
+#date{
+	background: white;
+	color: #09B7DA;
+}

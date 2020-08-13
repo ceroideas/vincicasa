@@ -317,6 +317,7 @@ export class CombinazionePage implements OnInit {
 		localStorage.setItem('ufechas', JSON.stringify(this.fechas.reverse()));
 		this.contador++;
 		localStorage.setItem('contador', JSON.stringify(this.contador));
+		localStorage.setItem('horaClick',moment().format('YYYY-MM-DD HH:mm:ss'));
 
 	}
 

@@ -43,6 +43,7 @@
 }
 #contenedor{
 	width: 95%;
+	height: 400px;
 	margin-left: 2.5%;
 	border-bottom: 1.5px solid white;
 }
@@ -67,50 +68,50 @@
 	font-weight: bolder;
 	--box-shadow: none;
 }
-.n1{
-	width: 100%;
+.n1, .cn1, .cn3, .cn5{
+	width: 60px;
 	height: auto;
 
 	[id*="numero"]{
 		display: none;
 	}
-	[id*="numero"]+label{
+	[id*="numero"] + label{
 		background-image: url('/assets/fondo-numero-rojo-balnco.png');
 		text-align: center;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: 30px 30px;
-		height: 35px;
-		//width: 35px;
+		height: 30px;
 		display: flex;
 		font-size: 11px;
+		color: black;
 	}
 }
-.n1{
+.n1, .cn1, .cn3, .cn5{
 	[id*="numero"]:checked + label{
 		background-image: url('/assets/fondo-numero-rojo-verde.png');
 	}
 }
-.n2{
-	width: 100%;
+.n2, .cn2, .cn4{
+	width: 60px;
 	height: auto;
 
 	[id*="numero"]{
 		display: none;
 	}
-	[id*="numero"]+label{
+	[id*="numero"] + label{
 		background-image: url('/assets/fondo-numero-azul-blanco.png');
 		text-align: center;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: 30px 30px;
-		height: 35px;
-		//width: 35px;
+		height: 30px;
 		display: flex;
 		font-size: 11px;
+		color: black;
 	}
 }
-.n2{
+.n2, .cn2, .cn4{
 	[id*="numero"]:checked + label{
 		background-image: url('/assets/fondo-numero-azul-verde.png');
 	}
@@ -125,25 +126,6 @@
 	--background: white;
 	--color: #50CBE4;
 	--box-shadow: 0px 5px 5px #0898B5;
-}
-[class*="cn"]{
-	font-weight: bolder;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 30px 30px;
-	color: black;
-	display: flex;
-	text-align: center;
-	margin: 5px;
-	font-size: 12px;
-	height: 35px;
-	width: 35px;
-}
-.cn1, .cn3, .cn5{
-	background-image: url('/assets/fondo-numero-rojo-balnco.png');
-}
-.cn2, .cn4{
-	background-image: url('/assets/fondo-numero-azul-blanco.png');
 }
 [class*="c"]{
 	label, b{
@@ -163,27 +145,135 @@
 	width: 110px; 
 	text-align: right;
 }
-#d0, #d2, #d4{
-	background-image: url('/assets/fondo-numero-rojo-verde.png');
+.verde#ultime0, .verde#ultime2, .verde#ultime4{
+	background-image: url('/assets/fondo-numero-rojo-verde.png') !important;
 }
-#d1, #d3{
+.verde#ultime1, .verde#ultime3{
+	background-image: url('/assets/fondo-numero-azul-verde.png') !important;
+}
+#ultime0, #ultime2, #ultime4{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+#ultime1, #ultime3{
 	background-image: url('/assets/fondo-numero-azul-blanco.png');
 }
-@media only screen and(max-width: 300px){
+#body, #head{
+	--background: #09B7DA; 
+	font-family: 'roboto';
+	font-size: 14px;
+}
+#ue{
+	text-align: left;
+	color: white;
+	background: #09B7DA; 
+	font-family: 'roboto';
+	font-size: 14px;
+	position: relative;
+	left: 10%;
+	margin: none;
+}
+.datos{
+	width: 90%;
+	margin-top: 0%;
+	margin: auto;
+}
+.datos, #number {
+	[id*="ultime"] {
+		width: 20%;
+		height: 70px;
+		text-align: center;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 40px 40px;
+		float: left;
+	}
+}
+.datos, #number {
+	[id*="ultime"] {
+		display: flex;
+		b{
+			position: relative;
+			margin: auto;
+			color: black;
+		}
+	}
+}
+#dia b{
+	color: white;
+	font-size: 12px;
+	text-align: center;
+	display: block;
+}
+.datos:before {
+	content: "";
+	clear: both;
+}
+#ultime0, #ultime2, #ultime4{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+#ultime1, #ultime3{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+#resultados{
+	--background: #09B7DA;
+	width: 90%;
+	margin-left: 5%;
+	border-bottom: 1px solid white; 
+	margin-bottom: 5%;
+}
+#estrazioni{
+	width: 90%;
+	height: 20%;
+	--background: #09B7DA;
+}
+#fecha, #dia, #number{
+	margin: auto;
+	width: 100%;
+	font-size: 14px;
+}
+#fecha{
+	height: auto;
+	padding: 10px;
+	color: white;
+	font-weight: 100;
+	text-align: left;
+	border: 1px solid white;
+	margin-top: 5%;
+	background: #09B7DA;
+	width: 100%;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#dia{
+	color: white;
+	height: 20%;
+	background: #0591AC;
+}
+#number{
+	background: white;
+	border-radius: 10px;
+	height: 130px;
+	width: 90%;
+	margin-left: 5%;
+}
+#fecha p{
+	text-align: left;
+	width: 100%;
+	margin: 0 !important;
+}
+#tab{
+	width: 100%;
+}
+.green {
+	color: #00ff00 !important;
+}
+/*@media only screen and(max-width: 300px){
 	.date{
 		width: auto;
 	}
 	[class*="cn"]{
-		/*font-weight: bolder;
-		background-position: center;
-		background-repeat: no-repeat;*/
 		background-size: 30px 30px;
-		/*color: black;*/
 		display: flex;
-		/*text-align: center;*/
 		margin: 2px;
-		/*font-size: 12px;
-		height: 35px;
-		width: 35px;*/
 	}
-}
+}*/

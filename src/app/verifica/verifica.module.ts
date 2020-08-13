@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { VerificaPageRoutingModule } from './verifica-routing.module';
 
 import { VerificaPage } from './verifica.page';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    VerificaPageRoutingModule
+    VerificaPageRoutingModule,
+    PipesModule
   ],
   declarations: [VerificaPage]
 })

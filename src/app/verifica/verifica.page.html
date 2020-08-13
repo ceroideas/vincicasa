@@ -79,22 +79,43 @@
 			</ion-col>
 		</ion-row>
 	</div>
-	<div *ngIf="combinacion.length < 5">
-		<ion-button shape="round" expand="full" size="large" id="verificar" (click)="verificar()" disabled>VERIFICA</ion-button>
+	<div>
+		<ion-button shape="round" expand="full" size="large" id="verificar" [disabled]="combinacion.length != 5" (click)="verificar()">VERIFICA</ion-button>
 	</div>
-	<div *ngIf="combinacion.length == 5">
-		<ion-button shape="round" expand="full" size="large" id="verificar" (click)="verificar()">VERIFICA</ion-button>
-	</div>
-	<ion-row id="uc" *ngIf="fechas.length > 0 && ultimos.length > 0">
-		<div *ngFor="let fecha of fechas; let i = index">
-			<ion-row *ngIf="i < 5" class="fila">
-				<ion-col [ngClass]="'cn'+ (x + 1)" *ngFor="let ultimo of ultimos[i]; let x = index">
-					<label [ngClass]="'cx'+ (x + 1)">{{ ultimo }}</label>
-				</ion-col>
-				<ion-col>
-					<label class="date">{{ fecha }}</label>
+	<div id="estrazioni" id="number" *ngFor="let d of dias; let i = index">
+		<ion-row id="fecha">
+			<p>ESTRAZIONE <span style="float: right;">{{ fechas[i] }}</span></p>
+		</ion-row>
+		<ion-row id="dia">
+			<ion-col>
+				<b [ngClass]="i == 0 ? 'green' : '' ">LUN</b>
+			</ion-col>
+			<ion-col>
+				<b [ngClass]="i == 1 ? 'green' : '' ">MAR</b>
+			</ion-col>
+			<ion-col>
+				<b [ngClass]="i == 2 ? 'green' : '' ">MER</b>
+			</ion-col>
+			<ion-col>
+				<b [ngClass]="i == 3 ? 'green' : '' ">GIO</b>
+			</ion-col>
+			<ion-col>
+				<b [ngClass]="i == 4 ? 'green' : '' ">VEN</b>
+			</ion-col>
+			<ion-col>
+				<b [ngClass]="i == 5 ? 'green' : '' ">SAB</b>
+			</ion-col>
+			<ion-col>
+				<b [ngClass]="i == 6 ? 'green' : '' ">DOM</b>
+			</ion-col>
+		</ion-row>
+		<div class="datos">
+			<ion-row id="tab">
+				<!--<ion-col [ngClass]=" n | verificar:combinacion ? 'verde' : '' " id="ultime{{ x }}" *ngFor="let n of numeros[i]; let x = index">-->
+				<ion-col [ngClass]=" x | verificar:combinacion ? 'verde' : ''" id="ultime{{ x }}" *ngFor="let n of numerosx[i]; let x = index">
+					<b>{{ n }}</b>
 				</ion-col>
 			</ion-row>
 		</div>
-	</ion-row>
+	</div>
 </ion-content>

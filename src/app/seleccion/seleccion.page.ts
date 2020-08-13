@@ -57,7 +57,6 @@ export class SeleccionPage implements OnInit {
 
     let seleccion = numero;
     let valor = 'numero' + numero.toString();
-    //let elemento = document.getElementById(valor);
 
     if (event.target.checked && this.combinacion.length < 5) {
 

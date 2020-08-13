@@ -69,7 +69,6 @@ export class Seleccion2Page implements OnInit {
 
     let seleccion = numero;
     let valor = 'numero' + numero.toString();
-    //let elemento = document.getElementById(valor);
     let excluidos = JSON.parse(localStorage.getItem('excluidos'));
 
     if (event.target.checked && this.combinacion.length < 2) {
@@ -99,7 +98,6 @@ export class Seleccion2Page implements OnInit {
 
     let seleccion = numero;
     let valor = 'numero' + numero.toString();
-    //let elemento = document.getElementById(valor);
 
     if (event.target.checked && this.combinacion.length < 2) {
 

@@ -14,7 +14,8 @@ export class EstadisticasPage implements OnInit {
 
   ngOnInit() {
 
-  	let canvas = document.getElementById("grafico").getContext("2d");
+    let div: any =  document.getElementById("grafico");
+  	let canvas: any = div.getContext("2d");
   	let array = [];
 
   	for (let i = 1; i <= 56; ++i) {
@@ -24,8 +25,8 @@ export class EstadisticasPage implements OnInit {
   	}
 
   	let gradiente = canvas.createLinearGradient(0, 0, 450, 0);
-	gradiente.addColorStop(0, '#FF2300');   
-	gradiente.addColorStop(1, '#FFFEC7');
+	  gradiente.addColorStop(0, '#FF2300');   
+	  gradiente.addColorStop(1, '#FFFEC7');
 
   	let chart = new Chart(canvas, {
   		type: "horizontalBar",

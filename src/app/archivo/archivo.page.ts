@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArchivoPage implements OnInit {
 
+  usuario: string = localStorage.getItem("correo");
+
   constructor() { }
 
   ngOnInit() {

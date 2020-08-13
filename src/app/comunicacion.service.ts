@@ -68,8 +68,6 @@ export class ComunicacionService {
 
     console.log(combinacion);
     const combinazione = combinacion.sort((a, b) => a - b);
-    // let array = [];
-    // array.push(combinazione[0], combinazione[1], combinazione[2], combinazione[3], combinazione[4]);
     const semaforo = document.getElementById("rvalidacion");
     const colores = ['green', 'yellow', 'red'];
     const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
@@ -97,7 +95,7 @@ export class ComunicacionService {
 
     // regla 1
     let a = 0;
-    //
+    
     for (let i = 0; i < combinazione.length; i++) {
       if (combinazione[i+1] !== undefined) {
         if (combinazione[i]+1 == combinazione[i+1]) {
@@ -105,12 +103,12 @@ export class ComunicacionService {
         }
       }
     }
-    //
+    
     if (a >= 2) {
       return colores[2];
     }
     // regla 2
-    //
+    
     for (let h = 2; h <= 13; h++) {
       //
       a = 0;
@@ -126,10 +124,8 @@ export class ComunicacionService {
       if (a >= 2) {
         return colores[2];
       }
-      //
+     
     }
-
-    //colores[0];
 
   }
   

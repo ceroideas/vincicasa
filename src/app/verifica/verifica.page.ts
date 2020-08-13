@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import * as moment from 'moment';
+import { ComunicacionService } from '../comunicacion.service';
 
 @Component({
   selector: 'app-verifica',
@@ -19,10 +20,17 @@ export class VerificaPage implements OnInit {
   ultimos: any[] = JSON.parse(localStorage.getItem('numeros'));
   fechas: any[] = [];
   usuario: string = localStorage.getItem('correo');
+  dias: any[] = [];
+  numerosx: any[] = [];
 
-  constructor() { }
+  constructor(private cd: ChangeDetectorRef, private comunicacion: ComunicacionService) { }
 
   ngOnInit() {
+
+    this.comunicacion.changeData(this.usuario);
+    this.dias = JSON.parse(localStorage.getItem('dias'));
+    this.fechas = JSON.parse(localStorage.getItem('fechas'));
+    this.numerosx = JSON.parse(localStorage.getItem('numeros'));
 
   	for (let i = 0; i < this.ultimos.length; ++i) {
 
@@ -86,19 +94,19 @@ export class VerificaPage implements OnInit {
 
     for (let i = 0; i < this.ultimos[0].length; i++) {
 
-      for (let a = 0; a < this.ultimos[0].length; ++a) {
+      for (let a = 0; a < this.ultimos[0].length; a++) {
 
         if (parseInt(this.ultimos[0][i]) == this.combinacion[a]) {
             
           resultado.push(this.combinacion[a]);
-          console.log(this.combinacion[a]);
-          console.log(document.getElementsByClassName("cn" + a)[0]);
-                        
+
         }
         
       }
        
     }
+
+    this.cd.detectChanges();
 
     console.log(resultado);
 
