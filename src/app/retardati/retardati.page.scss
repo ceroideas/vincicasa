@@ -1,0 +1,61 @@
+.toolbar-container, #body, #tools, #head{
+	--background: #09B7DA;
+	--color: white;
+}
+#titulo{
+	text-align: center;
+	font-family: 'geometos';
+	font-size: 14px;
+	margin: auto;
+	margin-right: 30px;
+}
+[id*="tab-button-tab"]{
+	background: #297CA8;
+	color: white !important;
+	font-size: 8px;
+	font-family: 'geometos';
+}
+.numeros{
+	display: flex;
+	margin: auto;
+}
+.numero1, .numero2{
+	height: 50px;
+	width: 100px;
+	margin: 1.5%;
+	border: 1px solid white;
+	display: flex;
+	text-align: center;
+}
+.c1{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+.c2{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+.c1, .c2{
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 35px 35px;
+	height: 35px;
+	width: 35px;
+	display: flex;
+	color: black;
+	text-align: center;
+	margin: auto;
+	margin-left: 0px;
+	label{
+		display: flex;
+		margin: auto;
+		font-size: 12px;
+	}
+}
+p{
+	margin: 0;
+	margin-right: 0px;
+	color: white;
+	text-align: right;
+	font-family: 'geometos';
+	font-size: 12px;
+	width: 100px;
+}

@@ -59,6 +59,14 @@ const routes: Routes = [
     path: 'archivo',
     loadChildren: () => import('./archivo/archivo.module').then( m => m.ArchivoPageModule)
   },
+  {
+    path: 'retardati',
+    loadChildren: () => import('./retardati/retardati.module').then( m => m.RetardatiPageModule)
+  },
+  {
+    path: 'frequenti',
+    loadChildren: () => import('./frequenti/frequenti.module').then( m => m.FrequentiPageModule)
+  },
 ];
 
 @NgModule({

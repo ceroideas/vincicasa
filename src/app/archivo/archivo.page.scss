@@ -28,14 +28,16 @@
 }
 #fondo{
 	background-image: url('/assets/aro-luz.png');
-	background-size: cover;
-	background-position: center;
+	background-size: 300px 300px;
+    background-repeat: no-repeat;
+    background-position: center;
 	z-index: 0;
 }
 #fecha{
 	position: absolute;
 	top: 305px;
 	display: flex;
+	--background: transparent !important;
 }
 #date, #title{
 	margin: auto;
@@ -56,7 +58,7 @@
 }
 #datos{
 	position: relative;
-	top: 57.5%;
+	top: 400px;
 	margin: auto;
 	width: 300px;
 }
@@ -81,8 +83,119 @@
 }
 #fechas{
 	position: relative;
-	top: 55%;
+	top: 380px;
 	color: white;
 	margin-left: 15%;
 	font-size: 14px;
+}
+@media only screen and(min-height: 800px){
+	#million, #fondo{
+		height: 400px;
+	}
+	#fecha{
+		top: 405px;
+	}
+	#verifica{
+		top: 420px;
+	}
+	#fechas{
+		top: 480px;
+	}
+	#datos{
+		top: 500px;
+	}
+	#fondo{
+		background-size: 400px 400px;
+	}
+	[class*="numeros"]{
+		height: 50px;
+		width: 50px;
+		background-size: 50px 50px;
+		margin: auto;
+	}
+}
+@media only screen and(max-height: 800px) and(max-width: 300px){
+	[class*="numeros"]{
+		height: 40px;
+		width: 40px;
+		background-size: 40px 40px;
+		margin: auto;
+	}
+	#datos{
+		width: auto;
+	}
+}
+@media only screen and(min-height: 1000px){
+	.toolbar-container, #body, #tools{
+		font-size: 14px;
+	}
+	#million, #fondo{
+		height: 500px;
+	}
+	#fecha{
+		top: 505px;
+	}
+	#verifica{
+		top: 520px;
+	}
+	#fechas{
+		top: 580px;
+	}
+	#datos{
+		top: 600px;
+	}
+	#fondo{
+		background-size: 500px 500px;
+	}
+	[class*="numeros"]{
+		height: 80px;
+		width: 80px;
+		background-size: 80px 80px;
+		margin: auto;
+		b{
+			font-size: 16px;
+		}
+	}
+	#datos{
+		width: auto;
+	}
+}
+@media only screen and(min-height: 1300px){
+	.toolbar-container, #body, #tools{
+		font-size: 18px;
+	}
+	#million, #fondo{
+		height: 600px;
+	}
+	#fecha{
+		top: 605px;
+	}
+	#verifica{
+		top: 720px;
+		width: 350px;
+		height: 75px;
+		font-size: 20px;
+	}
+	#fechas{
+		top: 800px;
+		font-size: 20px;
+	}
+	#datos{
+		top: 850px;
+	}
+	#fondo{
+		background-size: 600px 600px;
+	}
+	[class*="numeros"]{
+		height: 100px;
+		width: 100px;
+		background-size: 100px 100px;
+		margin: auto;
+		b{
+			font-size: 18px;
+		}
+	}
+	#datos{
+		width: auto;
+	}
 }

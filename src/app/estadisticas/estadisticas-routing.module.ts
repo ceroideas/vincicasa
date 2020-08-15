@@ -8,6 +8,10 @@ const routes: Routes = [
     path: '',
     component: EstadisticasPage
   }
+  /*{
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  }*/
 ];
 
 @NgModule({

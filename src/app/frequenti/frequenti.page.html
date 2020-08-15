@@ -1,0 +1,42 @@
+<ion-content id="body">
+	<ion-toolbar id="tools">
+		<ion-buttons slot="start">
+			<ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
+    	</ion-buttons>
+    	<ion-title id="titulo">NUMERI PIÜ FREQUENTI</ion-title>
+    </ion-toolbar>
+	<div id="contenedor">
+		<ion-row class="numeros" *ngFor="let numero of numeros; let i = index">
+			<ion-col class="numero1">
+				<div class="c1">
+					<label>{{ numero }}</label>
+				</div>
+				<p>E'uscito per 230 Estrazioni</p>
+			</ion-col>
+			<ion-col class="numero2">
+				<div class="c2">
+					<label>{{ numero }}</label>
+				</div>
+				<p>E'uscito per 230 Estrazioni</p>
+			</ion-col>
+		</ion-row>
+	</div>
+	<ion-tabs id="menufoot">
+	  <ion-tab-bar slot="bottom">
+	    <ion-tab-button tab="tab1" routerLink="/frequenti" routerDirection="root" id="mb1">
+	      <ion-icon name="home"></ion-icon>
+	      <ion-label>PIÜ FREQUENTI</ion-label>
+	    </ion-tab-button>
+
+	    <ion-tab-button tab="tab2" routerLink="/retardati" routerDirection="root" id="mb2">
+	      <ion-icon src="../assets/bingo.svg"></ion-icon>
+	      <ion-label>NUMERI RETARDATARI</ion-label>
+	    </ion-tab-button>
+
+	    <ion-tab-button tab="tab3" routerLink="/estadisticas" routerDirection="root" id="mb3">
+	      <ion-icon src="../assets/statistics.svg"></ion-icon>
+	      <ion-label>ANALISI PRESENZE</ion-label>
+	    </ion-tab-button>
+	  </ion-tab-bar>
+	</ion-tabs>
+</ion-content>
