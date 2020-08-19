@@ -18,7 +18,7 @@ export class EstadisticasPage implements OnInit {
   	let canvas: any = div.getContext("2d");
   	let array = [];
 
-  	for (let i = 1; i <= 56; ++i) {
+  	for (let i = 1; i <= 55; ++i) {
 
   		array.push(i);
 
@@ -31,13 +31,16 @@ export class EstadisticasPage implements OnInit {
   	let chart = new Chart(canvas, {
   		type: "horizontalBar",
   		data: {
-  			labels: array,
+
+
+
+
   			datasets: [
   				{
   					border: "white",
   					label: "ULTIME 200 ESTRAZIONI",
   					backgroundColor : gradiente,
-  					data: ["0.", "5.", "10.", "20.", "30.", "40.", "50.", "+50"],
+  					data: [{x: array, y: array}],
             fontColor: "white"
   				}
   			]

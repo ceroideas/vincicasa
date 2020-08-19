@@ -64,6 +64,10 @@ export class ComunicacionService {
     return this.http.get(url);
   }
 
+  tabla3(): Observable<any>{
+    const url = 'http://localhost:5000/scrapper3';
+    return this.http.get(url);
+  }
   validar(combinacion: any){
 
     console.log(combinacion);

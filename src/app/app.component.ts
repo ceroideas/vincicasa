@@ -46,7 +46,11 @@ export class AppComponent {
     }
 
     if (localStorage.getItem('u30') == '' || localStorage.getItem('u30') == undefined) {
-      // this.scrapping2();
+      this.scrapping2();
+    }
+
+    if (localStorage.getItem('e200') == '' || localStorage.getItem('e200') == undefined) {
+      this.scrapping3();
     }
 
     let horaClick = moment(localStorage.getItem('horaClick'));
@@ -373,4 +377,40 @@ export class AppComponent {
     });
   }
 
+  scrapping3(){
+    this.service.tabla3().subscribe((data: any) => {
+
+      localStorage.setItem('e200', data);
+
+      let json = JSON.parse(data);
+      let fechas = [];
+      let numeros = [];
+      //let meses = ["GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"];
+
+      for (let i = 0; i < 200; i++) {
+
+        let obj = json[i]["numeriEstratti"];
+
+        for (let key in obj) {
+
+          numeros.push(obj[key]);
+
+        }
+
+      }
+
+      for (let i = 0; i < 200; i++) {
+
+        let obj = json[i]["progressivo"];
+        fechas.push(obj);
+
+      }
+
+      console.log(numeros);
+      console.log(fechas);
+      localStorage.setItem('e200f', JSON.stringify(fechas));
+      localStorage.setItem('e200n', JSON.stringify(numeros));
+
+    });
+  }
 }

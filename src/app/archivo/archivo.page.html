@@ -1,28 +1,29 @@
 <ion-content id="body">
-	<ion-toolbar id="tools">
-		<ion-buttons slot="start">
-			<ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
-    	</ion-buttons>
-    	<ion-title id="titulo">VERIFICA SCHEDINA</ion-title>
+    <ion-toolbar id="tools">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
+        </ion-buttons>
+        <ion-title id="titulo">VERIFICA SCHEDINA</ion-title>
     </ion-toolbar>
     <img src="../assets/icono superior.png" id="million">
     <img src="../assets/monedas-2.png" id="fondo">
     <ion-row>
-    	<ion-col id="fecha">
-    		<p id="title">SELEZIONA LA DATA</p>
-    		<ion-datetime class="ion-no-padding ion-no-margion" style="padding: 10px 16px" displayFormat="DD MMM YYYY" display-timezone="utc"
-			    monthShortNames="gen, feb, mar, apr, mai, jun, lug, aug, set, ott, nov, dec"
-			    placeholder="DATA DI NASCITA"
-			    cancel-text="Chiudi"
-			    done-text="Ok"
-			    id="date">
-    		</ion-datetime>
-    	</ion-col>
+        <ion-col id="fecha">
+            <p id="title">SELEZIONA LA DATA</p>
+            <ion-datetime class="ion-no-padding ion-no-margion" style="padding: 10px 16px" displayFormat="DD MMM YYYY" display-timezone="utc"
+                monthShortNames="gen, feb, mar, apr, mai, jun, lug, aug, set, ott, nov, dec"
+                placeholder="DATA DI NASCITA"
+                cancel-text="Chiudi"
+                done-text="Ok"
+                id="date"
+                [(ngModel)]="fecha" name="fecha">
+            </ion-datetime>
+        </ion-col>
     </ion-row>
-    <ion-button size="large" expand="full" shape="round" id="verifica">VERIFICA</ion-button>
+    <ion-button size="large" expand="full" shape="round" id="verifica" (click)="verifica()">VERIFICA</ion-button>
     <p id="fechas">{{ fecha }}</p>
     <ion-row id="datos">
-        <ion-col *ngFor="let schedina of numeros; let x = index" [ngClass]="'numeros' + (x + 1)">
+        <ion-col *ngFor="let schedina of numeros; let x = index" [ngClass]="'numeros' + (x + 1)" disable="fecha.length > 0">
             <b>{{ schedina }}</b>
         </ion-col>
     </ion-row>
