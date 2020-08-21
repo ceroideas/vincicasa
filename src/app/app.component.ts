@@ -392,12 +392,20 @@ export class AppComponent {
   scrapping3(){
     this.service.tabla3().subscribe((data: any) => {
 
-      localStorage.setItem('e200', data);
+      localStorage.setItem('e200', data[0]);
+      localStorage.setItem('fnumeros', data[1]);
+      localStorage.setItem('ifnumeros', data[2]);
 
-      let json = JSON.parse(data);
+      let json = JSON.parse(data[0]);
+      let json2 = JSON.parse(data[1]);
+      let json3 = JSON.parse(data[2]);
       let fechas = [];
       let numeros = [];
       let arrayn = [];
+      let frecuentes = [];
+      let frecuencia = [];
+      let infrecuentes = [];
+      let infrecuencia = [];
       //let meses = ["GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"];
 
       for (let i = 0; i < 200; i++) {
@@ -414,10 +422,47 @@ export class AppComponent {
 
       }
 
-      console.log(numeros);
+      for (let i = 0; i < 10; i++) {
+
+        let obj = json2["frequenti"][i]["numero"];
+
+        frecuentes.push(obj);
+
+      }
+
+      for (let i = 0; i < 10; i++) {
+
+        let obj2 = json2["frequenti"][i]["frequenza"];
+
+        frecuencia.push(obj2);
+
+      }
+
+      for (let i = 0; i < 10; i++) {
+
+        let obj = json3["ritardatari"][i]["numero"];
+
+        infrecuentes.push(obj);
+
+      }
+
+      for (let i = 0; i < 10; i++) {
+
+        let obj2 = json3["ritardatari"][i]["ritardo"];
+
+        infrecuencia.push(obj2);
+
+      }
+      /*console.log(numeros);
       console.log(fechas);
+      console.log(frecuentes, frecuencia);*/
+
       localStorage.setItem('e200f', JSON.stringify(fechas));
       localStorage.setItem('e200n', JSON.stringify(numeros));
+      localStorage.setItem('frecuentes', JSON.stringify(frecuentes));
+      localStorage.setItem('frecuencia', JSON.stringify(frecuencia));
+      localStorage.setItem('infrecuentes', JSON.stringify(infrecuentes));
+      localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));
 
     });
   }
