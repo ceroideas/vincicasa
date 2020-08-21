@@ -102,9 +102,6 @@
 		background-size: 35px;
 		height: 50px;
 		display: flex;
-		//background-size: 32.5px 32.5px;
-		/*height: 100%;
-		width: 100%;*/
 	}
 }
 .n1{
@@ -127,9 +124,6 @@
 		background-size: 35px;
 		height: 50px;
 		display: flex;
-		//background-size: 32.5px 32.5px;
-		/*height: 100%;
-		width: 100%;*/
 	}
 }
 .n2{
@@ -137,141 +131,3 @@
 		background-image: url('/assets/fondo-numero-azul-verde.png');
 	}
 }
-/*@media only screen and(min-height: 560px){
-	#fila{
-		.n1, .n2{
-			background-size: 32.5px 32.5px;
-			height: 12.5%;
-			width: 100%;
-			b{
-				top: 12.5px;
-			}
-		}
-	}
-	.c1, .c2{
-	 	b{
-	 		position: relative;
-	 		top: 32.5%;
-	 	}
-	}
-}
-@media only screen and(min-height: 640px){
-	#fila{
-		.n1, .n2{
-			background-size: 32.5px 35px;
-			height: 12.5%;
-			width: 100%;
-			b{
-				top: 16px;
-			}
-		}
-	}
-	.c1, .c2{
-	 	b{
-	 		position: relative;
-	 		top: 35%;
-	 	}
-	}
-}
-@media only screen and(min-height: 650px){
-	#fila{
-		.n1, .n2{
-			background-size: 27.5px 32.5px;
-			height: 12.5%;
-			width: 100%;
-			b{
-				top: 16px;
-			}
-		}
-	}
-	.c1, .c2{
-	 	b{
-	 		position: relative;
-	 		top: 35%;
-	 	}
-	}
-}
-@media only screen and(min-height: 720px){
-	#fila{
-		.n1, .n2{
-			background-size: 32.5px 32.5px;
-			height: 12.5%;
-			width: 100%;
-			b{
-				top: 17.5px;
-			}
-		}
-	}
-	.c1, .c2{
-	 	b{
-	 		position: relative;
-	 		top: 37.5%;
-	 	}
-	}
-}
-@media only screen and(min-height: 800px){
-	#fila{
-		.n1, .n2{
-			b{
-				top: 21px;
-			}
-		} 
-	}
-	.c1, .c2{
-	 	b{
-	 		position: relative;
-	 		top: 40%;
-	 	}
-	}
-	
-}
-@media only screen and(min-height: 1024px){
-	#fila{
-		.n1, .n2{
-			background-size: 45px 45px;
-			height: 12.5%;
-			width: 100%;
-			b{
-				top: 30px;
-			}
-		} 
-	}
-	.c1, .c2{
-	 	b{
-	 		position: relative;
-	 		top: 42.5%;
-	 	}
-	}
-	.c1, .c2{
-		text-align: center;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 45px 45px;
-		height: 100%;
-	}
-}
-@media only screen and(min-height: 1300px){
-	#fila{
-		.n1, .n2{
-			background-size: 55px 55px;
-			height: 12.5%;
-			width: 100%;
-			b{
-				top: 40px;
-			}
-		} 
-	}
-	.c1, .c2{
-	 	b{
-	 		position: relative;
-	 		top: 45%;
-	 	}
-	}
-	.c1, .c2{
-		text-align: center;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 55px 55px;
-		height: 100%;
-	}
-}*/

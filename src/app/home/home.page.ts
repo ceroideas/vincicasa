@@ -25,7 +25,6 @@ export class HomePage {
   }
 
   ngOnInit(){
-    // localStorage.removeItem('correo');
 
     if (localStorage.getItem('correo')) {
       this.nav.navigateRoot('feed');
@@ -60,7 +59,6 @@ export class HomePage {
   registrarse(f: NgForm){
     if (this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined) {
       
-      //alert('Todos los campos son obligatorios');
       this.alerta('Todos los campos son obligatorios');
 
     }else{
@@ -78,8 +76,6 @@ export class HomePage {
         this.comunicacion.registros(jsono).subscribe((data:any) => {
           if (data.respuesta == 'registrado') {
             
-            //console.log(data.respuesta);
-            //alert('Usuario ya existe');
             this.alerta('Usuario ya existe');
 
           }else{
@@ -90,14 +86,12 @@ export class HomePage {
           }
         }, Error => {
 
-          //console.log(Error);
           this.error(Error);
 
         });
 
       }else{
 
-        //alert("Las contraseñas no coinciden");
         this.alerta('Las contraseñas no coinciden');
 
       }
@@ -108,7 +102,6 @@ export class HomePage {
 
     if (this.isesion.correo == undefined || this.isesion.password == undefined) {
       
-      //alert('Todos los campos son obligatorios');
       this.alerta('Todos los campos son obligatorios');
 
     }else{
@@ -125,7 +118,6 @@ export class HomePage {
         
         if(data.respuesta == 'nousuario'){
 
-          //alert('Usuario no registrado');
           this.alerta('Usuario no registrado');
 
         }else{
@@ -136,7 +128,6 @@ export class HomePage {
 
           }else{
             
-            //alert('Las contraseñas no coinciden');
             this.alerta('Las contraseñas no coinciden');
           
           }
@@ -145,7 +136,6 @@ export class HomePage {
         
       }, Error => {
 
-          //console.log(Error);
           this.error(Error);
 
       });

@@ -30,11 +30,8 @@ export class ArchivoPage implements OnInit {
 
     for (let i = 0; i < this.fechas.length; i++) {
 
-      //console.log(this.fechas[i], parseInt(fecha));
-
       if (parseInt(this.fechas[i]) == parseInt(fecha)) {
 
-        //this.numeros = this.combinaciones[i];
         console.log(this.combinaciones[i][0], this.combinaciones[i][1], this.combinaciones[i][2], this.combinaciones[i][3], this.combinaciones[i][4]);
 
         for (let x = 0; x < this.combinaciones[i].length; x++) {

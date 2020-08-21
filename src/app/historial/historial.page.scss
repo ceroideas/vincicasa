@@ -4,15 +4,6 @@
 	font-size: 14px;
 }
 #ue{
-	/*text-align: left;
-	color: white;
-	background: #09B7DA; 
-	font-family: 'roboto';
-	font-size: 14px;
-	position: relative;
-	left: 10%;
-	margin: none;*/
-
 	text-align: center !important;
     color: white;
     background: #09B7DA;
@@ -25,7 +16,6 @@
 	width: 90%;
 	margin-top: 0%;
 	margin: auto;
-	// height: 10%;
 }
 .datos, #number {
 	[id*="ultime"] {
@@ -58,10 +48,6 @@
 	content: "";
 	clear: both;
 }
-/*.datos #ultime0 b, #ultime1 b, #ultime2 b, #ultime3 b, #ultime4 b, #number #ultime0 b, #ultime1 b, #ultime2 b, #ultime3 b, #ultime4 b{
-	position: relative;
-	top: 37.5%;
-}*/
 
 #ultime0, #ultime2, #ultime4{
 	background-image: url('/assets/fondo-numero-rojo-balnco.png');
@@ -82,17 +68,13 @@
 	}
 }
 #ucc{
-	// height: 100%;
 	width: 100%;
 	position: relative;
 	margin: auto;
 }
 #ucp{
-	// height: 100%;
-	// width: 33.33%;
 	position: relative;
 	margin: auto;
-	// top: 15%;
 }
 #vincite{
 	color: white;
@@ -100,8 +82,6 @@
 	margin-top: 8px;
 	margin-bottom: 8px;
 	width: 90%;
-	// margin-left: 6.5%;
-	// height: 90%;
 }
 #resultados{
 	--background: #09B7DA;
@@ -167,83 +147,6 @@
 .green {
 	color: #00ff00 !important;
 }
-/*@media only screen and(min-height: 1024px ){
-	.datos, #number {
-		[id*="ultime"] {
-			width: 20%;
-			height: 130px;
-			text-align: center;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: 40px 40px;
-			float: left;
-			font-size: 40px;
-		}
-	}
-	#number{
-		background: white;
-		border-radius: 10px;
-		height: 250px;
-		width: 90%;
-		margin-left: 5%;
-	}/*
-	.datos, #number{
-		b{
-			font-size: 40px;
-			position: relative;
-			top: 230%;
-		}
-	} */
-	/*.datos, #number{
-		/*[id*="ultime"]{
-			b {
-				position: relative;
-				top: 0%;
-			}
-		}
-	}
-	#dia b, #ucc, #ucp, #fecha p{
-		font-size: 150%;
-	}
-	.datos, #number {
-		[id*="ultime"] {
-			b{
-				position: relative;
-				top: 32.5%;
-			}
-		}
-	}
-}
-@media only screen and(min-height: 1024px ){
-	.datos, #number {
-		[id*="ultime"] {
-			width: 20%;
-			height: 150px;
-			text-align: center;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: 40px 40px;
-			float: left;
-			font-size: 40px;
-		}
-	}
-	#number{
-		background: white;
-		border-radius: 10px;
-		height: 280px;
-		width: 90%;
-		margin-left: 5%;
-	}
-	.datos, #number {
-		[id*="ultime"] {
-			b{
-				position: relative;
-				top: 35%;
-			}
-		}
-	}
-}*/
-
 .verde#ultime0, .verde#ultime2, .verde#ultime4{
 	background-image: url('/assets/fondo-numero-rojo-verde.png') !important;
 }

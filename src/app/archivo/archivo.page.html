@@ -21,7 +21,6 @@
         </ion-col>
     </ion-row>
     <ion-button size="large" expand="full" shape="round" id="verifica" (click)="verifica()">VERIFICA</ion-button>
-   <!-- <p id="fechas">{{ fecha }}</p>-->
     <ion-row id="datos">
         <ion-col *ngFor="let schedina of numeros; let x = index" [ngClass]="'numeros' + (x + 1)" disable="fecha.length > 0">
             <b>{{ schedina }}</b>

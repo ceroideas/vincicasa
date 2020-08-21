@@ -1,50 +1,3 @@
-
-	<!--<div id="semana">
-		<table id="titulo">
-			<tr>
-				<td>
-					<b id="title">ULTIME 7 ESTRAZIONI</b>
-				</td>
-			</tr>
-		</table>
-		<table id="datos" *ngFor="let d of dias; let i = index">
-			<tr>
-				<td id="date">
-					<span>
-						<b>{{ d }}</b>
-					</span>
-					<br>
-					<b>{{ fechas[i] }}</b>
-				</td>
-				<td *ngFor="let n of numeros[i]; let x = index" id="numbers{{ x }}">
-					<b id="numeri">{{ n }}</b>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div id="umes">
-		<table id="titulo2">
-			<tr>
-				<td>
-					<b id="title2">ULTIMI RISULTATI</b>
-				</td>
-			</tr>
-		</table>
-		<table id="datos2" *ngFor="let d of dias2; let i = index">
-			<tr>
-				<td id="date2">
-					<span>
-						<b>{{ d }}</b>
-					</span>
-					<br>
-					<b>{{ fechas2[i] }}</b>
-				</td>
-				<td *ngFor="let n of numeros2[i]; let x = index" id="numeros{{ x }}">
-					<b>{{ n }}</b>
-				</td>
-			</tr>
-		</table>
-	</div>-->
 <ion-content id="body">
 	<ion-toolbar id="head">
 		<ion-menu-button menu="main-menu" slot="start" color="light"></ion-menu-button>
@@ -139,21 +92,6 @@
 				<ion-col id="ultime{{ x }}" *ngFor="let n of numeros[i]; let x = index">
 					<b>{{ n }}</b>
 				</ion-col>
-					<!--<ion-col id="ultime0">
-						<b>5</b>
-					</ion-col>
-					<ion-col id="ultime1">
-						<b>10</b>
-					</ion-col>
-					<ion-col id="ultime2">
-						<b>15</b>
-					</ion-col>
-					<ion-col id="ultime3">
-						<b>20</b>
-					</ion-col>
-					<ion-col id="ultime4">
-						<b>25</b>
-					</ion-col>-->
 			</ion-row>
 		</div>
 	</div>
