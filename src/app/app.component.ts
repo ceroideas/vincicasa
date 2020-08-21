@@ -45,9 +45,9 @@ export class AppComponent {
       this.scrapping();
     }
 
-    if (localStorage.getItem('u30') == '' || localStorage.getItem('u30') == undefined) {
+    /*if (localStorage.getItem('u30') == '' || localStorage.getItem('u30') == undefined) {
       this.scrapping2();
-    }
+    }*/
 
     if (localStorage.getItem('e200') == '' || localStorage.getItem('e200') == undefined) {
       this.scrapping3();
@@ -172,20 +172,23 @@ export class AppComponent {
   }
 
   scrapping(){
-    this.service.tabla().subscribe((data: any) => {
+    //this.service.tabla().subscribe((data: any) => {
 
-      let info = [data['dias'][0]];
+      /*let info = [data['dias'][0]];
       let info2 = [data['fechas'][0]];
-      let info3 = [data['numeros'][0]];
+      let info3 = [data['numeros'][0]];*/
       let dias = [];
       let fechas = [];
       let numeros = [];
       let ultimos = [];
+      let data = JSON.parse(localStorage.getItem('e200f'));
+      let data2 = JSON.parse(localStorage.getItem('e200n'));
       let meses = ["GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"];
+      let days = ["DOMENICA", "SABATO", "VENERDÌ", "GIOVEDÌ", "MERCOLEDÌ", "MARTEDÌ", "LUNEDÌ"];
       //let numbers = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]; 
       // console.log(data);
 
-      for (let i = 7; i >= 0; i--) {
+      /*for (let i = 7; i >= 0; i--) {
 
         let obj = info[i];
 
@@ -195,11 +198,17 @@ export class AppComponent {
 
         }
 
+      }*/
+
+      for (let i = 0; i < 7; i++) {
+        dias.push(data[i]);
+        numeros.push(data2[i]);
       }
 
       localStorage.setItem('dias', JSON.stringify(dias));
+      localStorage.setItem('numeros', JSON.stringify(numeros));
 
-      for (let i = 7; i >= 0; i--) {
+      /*for (let i = 7; i >= 0; i--) {
 
         let obj = info2[i];
 
@@ -209,18 +218,19 @@ export class AppComponent {
 
         }
 
-      }
+      }*/
 
-      for (let i = 0; i < fechas.length; ++i) {
+      for (let i = 0; i < 7; ++i) {
 
         let mes =  moment().subtract(i, 'd').format('M');
         fechas[i] = moment().subtract(i, 'd').format('DD') + ' ' + meses[parseInt(mes)] + ' ' + moment().subtract(i, 'd').format('Y');
-        //fechas[i] = fechas[i].replace(data, meses[i]);
+        //dias[i] = moment().subtract(i, 'd').format('DD') + ' ' + days[parseInt(mes)] + ' ' + moment().subtract(i, 'd').format('Y');
+        fechas[i] = fechas[i].replace(data, meses[i]);
         
 
       }
 
-      console.log(fechas);
+      //console.log(fechas);
       localStorage.setItem('fechas', JSON.stringify(fechas));
 
       /*let _keys = Object.keys(info3[0]);
@@ -242,7 +252,7 @@ export class AppComponent {
 
       //localStorage.setItem('ultimos', JSON.stringify(ultimos));
       
-      for (let i = 0; i <= 7; i++) {
+      /*for (let i = 0; i <= 7; i++) {
 
         let obj = info3[i];
 
@@ -250,7 +260,7 @@ export class AppComponent {
 
           numeros.push(obj[key]);
 
-        }
+        }*/
 
         /*for (let key in info3[i].dia1) {
 
@@ -258,23 +268,24 @@ export class AppComponent {
           numeros.push(info3[i].dia1[key]);
 
         }*/
+        //localStorage.setItem('numeros', JSON.stringify(numeros));
 
       }
       
       
-      localStorage.setItem('numeros', JSON.stringify(numeros));
+      //localStorage.setItem('numeros', JSON.stringify(numeros));
 
       // console.log(this.ultimes);
       //console.log(data['numeros'][0].dia1);
 
       // console.log(this.ultimes);
 
-    }, Error => {
-      console.log(Error)
-    });
-  }
+   // }, Error => {
+      //console.log(Error)
+    //});
+  //}
 
-  scrapping2(){
+  /*scrapping2(){
     this.service.tabla2().subscribe((data: any) => {
 
       let info = [data['dias'][0]];
@@ -326,7 +337,7 @@ export class AppComponent {
       console.log(fechas);
       localStorage.setItem('u30f', JSON.stringify(fechas));
 
-      /*let _keys = Object.keys(info3[0]);
+      let _keys = Object.keys(info3[0]);
 
       for (let k in _keys) {
 
@@ -341,7 +352,7 @@ export class AppComponent {
         // console.log(this.numeros);
         
         ultimos.push(numeros);
-      }*/
+      }
 
       //localStorage.setItem('ultimos', JSON.stringify(ultimos));
       
@@ -355,12 +366,12 @@ export class AppComponent {
 
         }
 
-        /*for (let key in info3[i].dia1) {
+        for (let key in info3[i].dia1) {
 
           console.log('key',key);
           numeros.push(info3[i].dia1[key]);
 
-        }*/
+        }
 
       }
       
@@ -376,6 +387,7 @@ export class AppComponent {
       console.log(Error)
     });
   }
+  */
 
   scrapping3(){
     this.service.tabla3().subscribe((data: any) => {
@@ -385,17 +397,13 @@ export class AppComponent {
       let json = JSON.parse(data);
       let fechas = [];
       let numeros = [];
+      let arrayn = [];
       //let meses = ["GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"];
 
       for (let i = 0; i < 200; i++) {
 
         let obj = json[i]["numeriEstratti"];
-
-        for (let key in obj) {
-
-          numeros.push(obj[key]);
-
-        }
+        numeros.push(obj);
 
       }
 

@@ -3,7 +3,12 @@
 	--color: white;
 }
 #grafico{
-	color: white;
+	margin: auto;
+	/*color: white !important;*/
+	font-size: 12px !important;
+	//margin-top: 10px;
+	height: 80% !important;
+	//width: 300px !important;*/
 }
 #titulo{
 	text-align: center;
@@ -12,7 +17,7 @@
 	margin: auto;
 	margin-right: 30px;
 }
-[id*="tab-button-tab"]{
+[id*="tab-button-tab"], ion-tab-button{
 	background: #297CA8;
 	color: white !important;
 	font-size: 8px;
