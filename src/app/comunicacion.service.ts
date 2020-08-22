@@ -43,7 +43,7 @@ export class ComunicacionService {
   }
 
   number(numeros: Numeros): Observable<any>{
-    const url = 'http://localhost:5000/numeros';
+    const url = 'https://reinaldobranchi.pythonanywhere.com/numeros';
     const headers = {'Content-type': 'application/json'};
     const json = JSON.stringify(numeros);
     return this.http.post(url, json, {'headers': headers});
@@ -55,7 +55,7 @@ export class ComunicacionService {
   }
   
   tabla3(): Observable<any>{
-    const url = 'http://localhost:5000/scrapper3';
+    const url = 'https://reinaldobranchi.pythonanywhere.com/scrapper3';
     return this.http.get(url);
   }
   
