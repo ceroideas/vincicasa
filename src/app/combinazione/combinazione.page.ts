@@ -34,7 +34,7 @@ export class CombinazionePage implements OnInit {
 
   constructor(private service: ComunicacionService) {
 
-  	if (!this.contador) {
+  	if (!this.contador || this.contador == undefined) {
   		this.contador = 0;
   	}
 
@@ -62,6 +62,7 @@ export class CombinazionePage implements OnInit {
   	
   	}else{
   		
+      this.random();
   		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 
   	}
@@ -98,10 +99,6 @@ export class CombinazionePage implements OnInit {
 
   	}
 
-    if (moment(moment().format('YYYY-MM-DD 19:28'))) {
-      this.random();
-    }
-
   }
 
   getRandomArbitrary(min, max, n:any = [], exc:any = []){
@@ -130,6 +127,16 @@ export class CombinazionePage implements OnInit {
   }
 
   random(){
+
+    if (this.combinacion.length > 0) {
+      
+      this.contador++;
+    
+    }else{
+      
+      this.contador = 0;
+
+    }
 
 		this.combinacion = [];
 		let omitir = [];
@@ -160,7 +167,6 @@ export class CombinazionePage implements OnInit {
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 		localStorage.setItem('ultimos', JSON.stringify(this.ultimos.reverse()));
 		localStorage.setItem('ufechas', JSON.stringify(this.fechas.reverse()));
-		this.contador++;
 		localStorage.setItem('contador', JSON.stringify(this.contador));
 		localStorage.setItem('horaClick',moment().format('YYYY-MM-DD HH:mm:ss'));
 
