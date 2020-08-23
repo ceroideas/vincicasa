@@ -10,40 +10,53 @@ import * as moment from 'moment';
 export class ArchivoPage implements OnInit {
 
   usuario: string = localStorage.getItem("correo");
-  fechas: string = JSON.parse(localStorage.getItem("e200f"));
-  combinaciones: any = JSON.parse(localStorage.getItem("e200n"));
+  fechas: any = [];
+  combinaciones: any = [];
   numeros: any[] = [];
   fecha: any;
 
   constructor(private comunicacion: ComunicacionService) { }
 
   ngOnInit() {
+
   	this.comunicacion.changeData(this.usuario);
+
+    if (localStorage.getItem('e200f') && JSON.parse(localStorage.getItem('e200f')).length > 0) {
+
+      this.fechas = JSON.parse(localStorage.getItem("e200f"));
+      this.combinaciones = JSON.parse(localStorage.getItem("e200n"));
+
+    }
+
   }
 
   verifica(){
     
-    this.numeros = [];
-    let formato = moment(this.fecha).format('YYYY-MM-DD').split("-");
-    let fecha = formato[0] + formato[1] + formato[2];
-    this.fecha = fecha;
+    if (this.combinaciones && this.combinaciones.length > 0) {
 
-    for (let i = 0; i < this.fechas.length; i++) {
+      this.numeros = [];
+      let formato = moment(this.fecha).format('YYYY-MM-DD').split("-");
+      let fecha = formato[0] + formato[1] + formato[2];
+      this.fecha = fecha;
 
-      if (parseInt(this.fechas[i]) == parseInt(fecha)) {
+      for (let i = 0; i < this.fechas.length; i++) {
 
-        console.log(this.combinaciones[i][0], this.combinaciones[i][1], this.combinaciones[i][2], this.combinaciones[i][3], this.combinaciones[i][4]);
+        if (parseInt(this.fechas[i]) == parseInt(fecha)) {
 
-        for (let x = 0; x < this.combinaciones[i].length; x++) {
+          console.log(this.combinaciones[i][0], this.combinaciones[i][1], this.combinaciones[i][2], this.combinaciones[i][3], this.combinaciones[i][4]);
 
-          this.numeros.push(this.combinaciones[i][x].toString());
+          for (let x = 0; x < this.combinaciones[i].length; x++) {
+
+            this.numeros.push(this.combinaciones[i][x].toString());
+
+          }
+
+          break;
 
         }
 
-        break;
-
       }
-
+      
     }
 
   }

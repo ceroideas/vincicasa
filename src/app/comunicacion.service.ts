@@ -29,33 +29,33 @@ export class ComunicacionService {
   }
 
   registros(registro: Registro): Observable<any>{
-  	const url = 'https://reinaldobranchi.pythonanywhere.com/registro';
+  	const url = 'https://axelrace.pythonanywhere.com/registro';
   	const headers = {'Content-type': 'application/json'};
   	const json = JSON.stringify(registro);
   	return this.http.post(url, json, {'headers': headers});
   }
 
   sesion(sesion: Sesion): Observable<any>{
-  	const url = 'https://reinaldobranchi.pythonanywhere.com/sesion';
+  	const url = 'https://axelrace.pythonanywhere.com/sesion';
   	const headers = {'Content-type': 'application/json'};
   	const json = JSON.stringify(sesion);
   	return this.http.post(url, json, {'headers': headers});
   }
 
   number(numeros: Numeros): Observable<any>{
-    const url = 'https://reinaldobranchi.pythonanywhere.com/numeros';
+    const url = 'https://axelrace.pythonanywhere.com/numeros';
     const headers = {'Content-type': 'application/json'};
     const json = JSON.stringify(numeros);
     return this.http.post(url, json, {'headers': headers});
   }
 
   cierre(): Observable<any>{
-    const url = 'https://reinaldobranchi.pythonanywhere.com/cerrar';
+    const url = 'https://axelrace.pythonanywhere.com/cerrar';
     return this.http.get(url);
   }
   
   tabla3(): Observable<any>{
-    const url = 'https://reinaldobranchi.pythonanywhere.com/scrapper3';
+    const url = 'https://axelrace.pythonanywhere.com/scrapper3';
     return this.http.get(url);
   }
   

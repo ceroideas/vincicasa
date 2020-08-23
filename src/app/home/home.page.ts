@@ -106,7 +106,6 @@ export class HomePage {
 
     }else{
 
-      localStorage.setItem('correo', this.isesion.correo);
       const encryptp = CryptoJS.AES.encrypt(this.isesion.password, this.contrasena).toString();
       const jsono = {
         correo: this.isesion.correo,
@@ -124,6 +123,7 @@ export class HomePage {
 
           if (contrasenadec === this.isesion.password) {
 
+            localStorage.setItem('correo', this.isesion.correo);
             this.router.navigateByUrl('/feed');
 
           }else{

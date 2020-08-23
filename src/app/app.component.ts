@@ -54,7 +54,7 @@ export class AppComponent {
 
   logout() {
 
-    localStorage.removeItem('correo');
+    localStorage.clear();
     this.nav.navigateRoot('home');
 
   }
@@ -65,12 +65,13 @@ export class AppComponent {
     this.service.data$.subscribe(res => this.user = res);
 
     if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined || localStorage.getItem('fechas') == '' || localStorage.getItem('fechas') == undefined) {
-      this.scrapping();
+      this.scrapping3();
+      //this.scrapping();
     }
 
-    if (localStorage.getItem('e200') == '' || localStorage.getItem('e200') == undefined) {
-      this.scrapping3();
-    }
+    /*if (localStorage.getItem('e200') == '' || localStorage.getItem('e200') == undefined) {
+      this.scrapping();
+    }*/
 
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
@@ -225,77 +226,87 @@ export class AppComponent {
   }
 
   scrapping3(){
+
     this.service.tabla3().subscribe((data: any) => {
 
-      localStorage.setItem('e200', data[0]);
-      localStorage.setItem('fnumeros', data[1]);
-      localStorage.setItem('ifnumeros', data[2]);
+      /*if (data = 'Error al obtener los datos') {
 
-      let json = JSON.parse(data[0]);
-      let json2 = JSON.parse(data[1]);
-      let json3 = JSON.parse(data[2]);
-      let fechas = [];
-      let numeros = [];
-      let arrayn = [];
-      let frecuentes = [];
-      let frecuencia = [];
-      let infrecuentes = [];
-      let infrecuencia = [];
+        this.alerta('Error al obtener los datos');
 
-      for (let i = 0; i < 200; i++) {
+      }else{*/
 
-        let obj = json[i]["numeriEstratti"];
-        numeros.push(obj);
+        localStorage.setItem('e200', data[0]);
+        localStorage.setItem('fnumeros', data[1]);
+        localStorage.setItem('ifnumeros', data[2]);
 
-      }
+        let json = JSON.parse(data[0]);
+        let json2 = JSON.parse(data[1]);
+        let json3 = JSON.parse(data[2]);
+        let fechas = [];
+        let numeros = [];
+        let arrayn = [];
+        let frecuentes = [];
+        let frecuencia = [];
+        let infrecuentes = [];
+        let infrecuencia = [];
 
-      for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 200; i++) {
 
-        let obj = json[i]["progressivo"];
-        fechas.push(obj);
+          let obj = json[i]["numeriEstratti"];
+          numeros.push(obj);
 
-      }
+        }
 
-      for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 200; i++) {
 
-        let obj = json2["frequenti"][i]["numero"];
+          let obj = json[i]["progressivo"];
+          fechas.push(obj);
 
-        frecuentes.push(obj);
+        }
 
-      }
+        for (let i = 0; i < 10; i++) {
 
-      for (let i = 0; i < 10; i++) {
+          let obj = json2["frequenti"][i]["numero"];
 
-        let obj2 = json2["frequenti"][i]["frequenza"];
+          frecuentes.push(obj);
 
-        frecuencia.push(obj2);
+        }
 
-      }
+        for (let i = 0; i < 10; i++) {
 
-      for (let i = 0; i < 10; i++) {
+          let obj2 = json2["frequenti"][i]["frequenza"];
 
-        let obj = json3["ritardatari"][i]["numero"];
+          frecuencia.push(obj2);
 
-        infrecuentes.push(obj);
+        }
 
-      }
+        for (let i = 0; i < 10; i++) {
 
-      for (let i = 0; i < 10; i++) {
+          let obj = json3["ritardatari"][i]["numero"];
 
-        let obj2 = json3["ritardatari"][i]["ritardo"];
+          infrecuentes.push(obj);
 
-        infrecuencia.push(obj2);
+        }
 
-      }
+        for (let i = 0; i < 10; i++) {
 
-      localStorage.setItem('e200f', JSON.stringify(fechas));
-      localStorage.setItem('e200n', JSON.stringify(numeros));
-      localStorage.setItem('frecuentes', JSON.stringify(frecuentes));
-      localStorage.setItem('frecuencia', JSON.stringify(frecuencia));
-      localStorage.setItem('infrecuentes', JSON.stringify(infrecuentes));
-      localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));
+          let obj2 = json3["ritardatari"][i]["ritardo"];
+
+          infrecuencia.push(obj2);
+
+        }
+
+        localStorage.setItem('e200f', JSON.stringify(fechas));
+        localStorage.setItem('e200n', JSON.stringify(numeros));
+        localStorage.setItem('frecuentes', JSON.stringify(frecuentes));
+        localStorage.setItem('frecuencia', JSON.stringify(frecuencia));
+        localStorage.setItem('infrecuentes', JSON.stringify(infrecuentes));
+        localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));
+        
+      //}
 
     });
+
   }
 
   scrapping(){

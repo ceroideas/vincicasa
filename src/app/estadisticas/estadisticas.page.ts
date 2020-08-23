@@ -17,7 +17,10 @@ export class EstadisticasPage implements OnInit {
   ngOnInit() {
 
     this.service.changeData(this.usuario);
-    this.calculos();
+
+    if (localStorage.getItem('e200n') && JSON.parse(localStorage.getItem('e200n')).length > 0) {
+      this.calculos();
+    }
 
   }
 
