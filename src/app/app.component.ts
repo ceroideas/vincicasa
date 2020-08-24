@@ -330,7 +330,7 @@ export class AppComponent {
     for (let i = 0; i < 7; ++i) {
 
       let mes =  moment().subtract(i, 'd').format('M');
-      fechas[i] = moment().subtract(i, 'd').format('DD') + ' ' + meses[parseInt(mes)] + ' ' + moment().subtract(i, 'd').format('Y');
+      fechas[i] = moment().subtract(i, 'd').format('DD') + ' ' + meses[parseInt(mes) - 1] + ' ' + moment().subtract(i, 'd').format('Y');
       fechas[i] = fechas[i].replace(data, meses[i]);
       
 
