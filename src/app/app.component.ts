@@ -302,7 +302,7 @@ export class AppComponent {
         localStorage.setItem('frecuencia', JSON.stringify(frecuencia));
         localStorage.setItem('infrecuentes', JSON.stringify(infrecuentes));
         localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));
-        
+        this.scrapping();
       //}
 
     });
