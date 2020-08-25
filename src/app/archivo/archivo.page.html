@@ -17,7 +17,7 @@
       <img src="../assets/monedas-2.png" id="fondo">
     </div>
 
-    <ion-row>
+    <!--<ion-row>
         <ion-col id="fecha">
             <p id="title">SELEZIONA LA DATA</p>
             <ion-datetime class="ion-no-padding ion-no-margion" style="padding: 10px 16px" displayFormat="DD MMM YYYY" display-timezone="utc"
@@ -30,7 +30,23 @@
             </ion-datetime>
         </ion-col>
     </ion-row>
-    <ion-button size="large" expand="full" shape="round" id="verifica" (click)="verifica()">VERIFICA</ion-button>
+    <ion-button size="large" expand="full" shape="round" id="verifica" (click)="verifica()">VERIFICA</ion-button>-->
+    <ion-row id="fecha">
+        <ion-col id="fecha">
+            <p id="title">SELEZIONA LA DATA</p>
+            <div id="date" (click)="mostrar()">
+                <p>DATA</p>
+            </div>
+        </ion-col>
+    </ion-row>
+    <ion-calendar [(ngModel)]="fecha"
+      name="fecha"
+      [options]="optionsRange"
+      (click)="verifica($event)"
+      [type]="type"
+      [format]="'DD MMM YYYY'"
+      id="calendario">
+    </ion-calendar>
     <ion-row id="datos">
         <ion-col *ngFor="let schedina of numeros; let x = index" [ngClass]="'numeros' + (x + 1)" disable="fecha.length > 0">
             <b>{{ schedina }}</b>

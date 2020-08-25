@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ArchivoPageRoutingModule } from './archivo-routing.module';
 
 import { ArchivoPage } from './archivo.page';
+import { CalendarModule } from 'ion2-calendar';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ArchivoPageRoutingModule
+    ArchivoPageRoutingModule,
+    CalendarModule
   ],
   declarations: [ArchivoPage]
 })

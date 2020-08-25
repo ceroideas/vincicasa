@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ComunicacionService } from '../comunicacion.service';
 import * as moment from 'moment';
+import { CalendarComponentOptions } from 'ion2-calendar';
 
 @Component({
   selector: 'app-archivo',
@@ -15,6 +16,7 @@ export class ArchivoPage implements OnInit {
   combinaciones: any = [];
   numeros: any[] = [];
   fecha: any;
+  type: "string";
 
   constructor(private comunicacion: ComunicacionService, public alert: AlertController) { }
 
@@ -31,9 +33,34 @@ export class ArchivoPage implements OnInit {
 
   }
 
-  verifica(){
+  /*d: any = new Date();
+  f: any = new Date();
+  this.d.setDate(d.getDate()-5);*/
+  desde: any = moment().subtract(199, 'd');
+  hasta: any = moment();
+  
+  optionsRange: CalendarComponentOptions = {
+    monthFormat: 'DD MMM YYYY',
+    weekdays: ['DOM', 'LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB'],
+    weekStart: 1,
+    pickMode: 'single',
+    from: this.desde,
+    to: this.hasta
+  };
 
-    console.log(this.fecha);
+  /*onChange($event) {
+    console.log($event);
+  }*/
+  mostrar(){
+
+    let calendario = document.getElementById("calendario");
+    calendario.style.display = 'block';
+
+  }
+
+  verifica($event){
+
+    //console.log(this.fecha);
     
     if (this.combinaciones && this.combinaciones.length > 0) {
 

@@ -120,18 +120,18 @@ export class AppComponent {
 
     let mostrar_hora = () => {
 
-      let mins8 = moment(moment().format('YYYY-MM-DD 19:28'));
+      let mins8 = moment(moment().format('YYYY-MM-DD 20:00'));
       let now;
 
       let restante = mins8.diff(moment(),'seconds');
 
       if (restante < 0) {
 
-        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 19:28'));
+        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 20:00'));
 
       }else{
 
-        now = moment(moment().format('YYYY-MM-DD 19:28'));
+        now = moment(moment().format('YYYY-MM-DD 20:00'));
 
       }
       
