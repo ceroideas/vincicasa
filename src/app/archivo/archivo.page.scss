@@ -252,12 +252,21 @@
 #calendario{
 	border-radius: 10px;
 	width: 95%;
-	height: 50%;
 	margin: auto;
 	display: block;
 	position: absolute;
-	top: 35%;
+	top: 30%;
 	left: 2.5%;
 	z-index: 100;
 	display: none;
+}
+@media only screen and(min-height: 800px){
+	#calendario{
+		top: 40%;
+	}
+}
+@media only screen and(min-height: 1000px){
+	#calendario{
+		top: 50%;
+	}
 }
