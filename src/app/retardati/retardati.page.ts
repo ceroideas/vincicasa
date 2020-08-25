@@ -8,7 +8,7 @@ import { ComunicacionService } from '../comunicacion.service';
 })
 export class RetardatiPage implements OnInit {
 
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
   data1: any[] = [];
   data2: any[] = [];
   numeros: any[] = [];

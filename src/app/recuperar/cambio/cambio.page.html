@@ -1,0 +1,18 @@
+<ion-content id="body">
+	<div id="presentacion">
+		<ion-toolbar id="tools">
+		    <ion-label id="titulo">CAMBIA LA PASSWORD</ion-label>
+		</ion-toolbar>
+		<img src="../assets/icono superior.png" id="million">
+		<img src="../assets/monedas-2.png" id="fondo">
+	</div>
+	<form method="POST" (ngSubmit)="cambio(f)" id="fsesion" style="margin-top: -8px">
+	  <ion-item id="entrada2" lines="none" style="margin-top: 0">
+      	<ion-input placeholder="INSERIRE LA PASSWORD" type="password" id="email" autocomplete="off" name="contrasena" [(ngModel)]="contrasena"></ion-input>
+      </ion-item>
+      <ion-item id="entrada2" lines="none" style="margin-top: 20PX">
+      	<ion-input placeholder="CONFERMARE" type="password" id="email" autocomplete="off" name="confirmar" [(ngModel)]="confirmar"></ion-input>
+      </ion-item>
+      <ion-button expand="full" size="large" shape="round" id="dona" type="submit">OK</ion-button>
+    </form>
+</ion-content>

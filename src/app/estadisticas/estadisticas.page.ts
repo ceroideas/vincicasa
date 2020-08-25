@@ -9,7 +9,7 @@ import Chart from 'chart.js';
 })
 export class EstadisticasPage implements OnInit {
 
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
   salidas: any[] = [];
 
   constructor(private service: ComunicacionService) { }
@@ -59,7 +59,7 @@ export class EstadisticasPage implements OnInit {
     let array = [];
       let array2 = [];
 
-      for (let i = 0; i <= 55; ++i) {
+      for (let i = 1; i <= 55; ++i) {
 
         array.push(i.toString());
         array2.push(i);

@@ -14,7 +14,7 @@ export class CombinazionePage implements OnInit {
 	combinacion: any = [];
 	ultimos: any[3] = [];
 	fechas: any[3] = [];
-	usuario: string = localStorage.getItem('correo');
+	usuario: string = localStorage.getItem('usuario');
 	hoy: any = moment();
 	contador: number = parseInt(JSON.parse(localStorage.getItem('contador')));
 

@@ -11,7 +11,7 @@ export class HistorialPage implements OnInit {
   dias: any = []; 
   fechas: any = [];
   numeros: any = [];
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
 
   constructor(private comunicacion: ComunicacionService) { }
 
@@ -19,7 +19,7 @@ export class HistorialPage implements OnInit {
 
     this.comunicacion.changeData(this.usuario);
     this.dias = JSON.parse(localStorage.getItem('dias'));
-    this.fechas = JSON.parse(localStorage.getItem('fechas'));
+    this.fechas = JSON.parse(localStorage.getItem('e200f'));
     this.numeros = JSON.parse(localStorage.getItem('numeros'));
 
   }

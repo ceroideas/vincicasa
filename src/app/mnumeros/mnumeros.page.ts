@@ -19,7 +19,9 @@ export class MnumerosPage implements OnInit {
   combinacion: any = [];
   final: any = [];
   colores: string;
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
+
+  timeout;
 
   constructor(private service: ComunicacionService) {
     this.colores = null;
@@ -87,7 +89,9 @@ export class MnumerosPage implements OnInit {
 
   validar(){
 
-    setTimeout(()=>{
+    clearTimeout(this.timeout);
+    
+    this.timeout = setTimeout(()=>{
       this.colores = null;
     },5000)
 

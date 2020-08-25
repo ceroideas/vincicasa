@@ -8,7 +8,7 @@ import { ComunicacionService } from '../comunicacion.service';
 })
 export class ManualPage implements OnInit {
 
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
 
   constructor(private service: ComunicacionService) { }
 

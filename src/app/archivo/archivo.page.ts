@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { ComunicacionService } from '../comunicacion.service';
 import * as moment from 'moment';
 
@@ -9,13 +10,13 @@ import * as moment from 'moment';
 })
 export class ArchivoPage implements OnInit {
 
-  usuario: string = localStorage.getItem("correo");
+  usuario: string = localStorage.getItem("usuario");
   fechas: any = [];
   combinaciones: any = [];
   numeros: any[] = [];
   fecha: any;
 
-  constructor(private comunicacion: ComunicacionService) { }
+  constructor(private comunicacion: ComunicacionService, public alert: AlertController) { }
 
   ngOnInit() {
 
@@ -31,31 +32,41 @@ export class ArchivoPage implements OnInit {
   }
 
   verifica(){
+
+    console.log(this.fecha);
     
     if (this.combinaciones && this.combinaciones.length > 0) {
 
       this.numeros = [];
-      let formato = moment(this.fecha).format('YYYY-MM-DD').split("-");
-      let fecha = formato[0] + formato[1] + formato[2];
-      this.fecha = fecha;
+      let formato = moment(this.fecha).format('YYYYMMDD')/*.split("-")*/;
+      // let fecha = formato[0] + formato[1] + formato[2];
+      // this.fecha = formato;
 
-      for (let i = 0; i < this.fechas.length; i++) {
+      let i = this.fechas.findIndex( x=>x==parseInt(formato) );
 
-        if (parseInt(this.fechas[i]) == parseInt(fecha)) {
+      if (i != -1) {
+        for (let x = 0; x < this.combinaciones[i].length; x++) {
 
-          console.log(this.combinaciones[i][0], this.combinaciones[i][1], this.combinaciones[i][2], this.combinaciones[i][3], this.combinaciones[i][4]);
-
-          for (let x = 0; x < this.combinaciones[i].length; x++) {
-
-            this.numeros.push(this.combinaciones[i][x].toString());
-
-          }
-
-          break;
+          this.numeros.push(this.combinaciones[i][x].toString());
 
         }
-
+      }else{
+        this.alert.create({message:"Nessun risultato per il giorno selezionato"}).then(a=>a.present());
       }
+
+
+      // for (let i = 0; i < this.fechas.length; i++) {
+
+      //   if (parseInt(this.fechas[i]) == parseInt(formato)) {
+
+      //     console.log(this.combinaciones[i][0], this.combinaciones[i][1], this.combinaciones[i][2], this.combinaciones[i][3], this.combinaciones[i][4]);
+
+
+      //     break;
+
+      //   }
+
+      // }
       
     }
 

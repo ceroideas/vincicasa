@@ -5,8 +5,42 @@
 	font-size: 12px;
 }
 #tools{
+	--background: transparent;
+	--box-shadow: none;
+	--color: white;
+	--border-style: transparent;
+	box-shadow: none;
+	margin-left: 1.5%;
+}
+#body{
+	--background: #09B7DA;
+}
+#menu{
+	background: #09B7DA;
+	color: white;
+	width: 60%;
+	height: 100%;
+	animation-name: slide;
+	animation-duration: 200ms;
+	display: none;
 	z-index: 2;
-	--background: transparent !important;
+}
+@keyframes slide{
+	from{
+		width: 0%;
+	}
+	to{
+		width: 60%;
+	}
+}
+#tools p{
+	display: block;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    left: -28px;
+    width: 100%;
+    text-align: center;
 }
 #titulo{
 	text-align: center;
@@ -15,27 +49,10 @@
 	margin: auto;
 	margin-right: 30px;
 }
-#million, #fondo{
-	height: 300px;
-	width: 100%;
-	position: absolute;
-	top: 0%;
-	left: 0%;
-	right: 0%;
-}
-#million{
-	z-index: 1;
-}
-#fondo{
-	background-image: url('/assets/aro-luz.png');
-	background-size: 300px 300px;
-    background-repeat: no-repeat;
-    background-position: center;
-	z-index: 0;
-}
 #fecha{
-	position: absolute;
-	top: 305px;
+	// position: absolute;
+	// top: 305px;
+	margin: 16px 0;
 	display: flex;
 	--background: transparent !important;
 }
@@ -54,11 +71,11 @@
 	height: 50px;
 	margin: auto;
 	position: relative;
-	top: 320px;
+	// top: 320px;
 }
 #datos{
 	position: relative;
-	top: 400px;
+	top: 20px;
 	margin: auto;
 	width: 300px;
 }
@@ -88,114 +105,140 @@
 	margin-left: 15%;
 	font-size: 14px;
 }
-@media only screen and(min-height: 800px){
-	#million, #fondo{
-		height: 400px;
-	}
-	#fecha{
-		top: 405px;
-	}
-	#verifica{
-		top: 420px;
-	}
-	#fechas{
-		top: 480px;
-	}
-	#datos{
-		top: 500px;
-	}
-	#fondo{
-		background-size: 400px 400px;
-	}
-	[class*="numeros"]{
-		height: 50px;
-		width: 50px;
-		background-size: 50px 50px;
-		margin: auto;
-	}
+// @media only screen and(min-height: 800px){
+// 	#million, #fondo{
+// 		height: 400px;
+// 	}
+// 	#fecha{
+// 		top: 405px;
+// 	}
+// 	#verifica{
+// 		top: 420px;
+// 	}
+// 	#fechas{
+// 		top: 480px;
+// 	}
+// 	#datos{
+// 		top: 500px;
+// 	}
+// 	#fondo{
+// 		background-size: 400px 400px;
+// 	}
+// 	[class*="numeros"]{
+// 		height: 50px;
+// 		width: 50px;
+// 		background-size: 50px 50px;
+// 		margin: auto;
+// 	}
+// }
+// @media only screen and(max-height: 800px) and(max-width: 300px){
+// 	[class*="numeros"]{
+// 		height: 40px;
+// 		width: 40px;
+// 		background-size: 40px 40px;
+// 		margin: auto;
+// 	}
+// 	#datos{
+// 		width: auto;
+// 	}
+// }
+// @media only screen and(min-height: 1000px){
+// 	.toolbar-container, #body, #tools{
+// 		font-size: 14px;
+// 	}
+// 	#million, #fondo{
+// 		height: 500px;
+// 	}
+// 	#fecha{
+// 		top: 505px;
+// 	}
+// 	#verifica{
+// 		top: 520px;
+// 	}
+// 	#fechas{
+// 		top: 580px;
+// 	}
+// 	#datos{
+// 		top: 600px;
+// 	}
+// 	#fondo{
+// 		background-size: 500px 500px;
+// 	}
+// 	[class*="numeros"]{
+// 		height: 80px;
+// 		width: 80px;
+// 		background-size: 80px 80px;
+// 		margin: auto;
+// 		b{
+// 			font-size: 16px;
+// 		}
+// 	}
+// 	#datos{
+// 		width: auto;
+// 	}
+// }
+// @media only screen and(min-height: 1300px){
+// 	.toolbar-container, #body, #tools{
+// 		font-size: 18px;
+// 	}
+// 	#million, #fondo{
+// 		height: 600px;
+// 	}
+// 	#fecha{
+// 		top: 605px;
+// 	}
+// 	#verifica{
+// 		top: 720px;
+// 		width: 350px;
+// 		height: 75px;
+// 		font-size: 20px;
+// 	}
+// 	#fechas{
+// 		top: 800px;
+// 		font-size: 20px;
+// 	}
+// 	#datos{
+// 		top: 850px;
+// 	}
+// 	#fondo{
+// 		background-size: 600px 600px;
+// 	}
+// 	[class*="numeros"]{
+// 		height: 100px;
+// 		width: 100px;
+// 		background-size: 100px 100px;
+// 		margin: auto;
+// 		b{
+// 			font-size: 18px;
+// 		}
+// 	}
+// 	#datos{
+// 		width: auto;
+// 	}
+// }
+
+#million, #fondo{
+  width: 80%;
+  position: absolute;
+  z-index: 1;
+  margin: auto;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
 }
-@media only screen and(max-height: 800px) and(max-width: 300px){
-	[class*="numeros"]{
-		height: 40px;
-		width: 40px;
-		background-size: 40px 40px;
-		margin: auto;
-	}
-	#datos{
-		width: auto;
-	}
+#fondo {
+  width: 90%;
+  z-index: 0;
 }
-@media only screen and(min-height: 1000px){
-	.toolbar-container, #body, #tools{
-		font-size: 14px;
-	}
-	#million, #fondo{
-		height: 500px;
-	}
-	#fecha{
-		top: 505px;
-	}
-	#verifica{
-		top: 520px;
-	}
-	#fechas{
-		top: 580px;
-	}
-	#datos{
-		top: 600px;
-	}
-	#fondo{
-		background-size: 500px 500px;
-	}
-	[class*="numeros"]{
-		height: 80px;
-		width: 80px;
-		background-size: 80px 80px;
-		margin: auto;
-		b{
-			font-size: 16px;
-		}
-	}
-	#datos{
-		width: auto;
-	}
-}
-@media only screen and(min-height: 1300px){
-	.toolbar-container, #body, #tools{
-		font-size: 18px;
-	}
-	#million, #fondo{
-		height: 600px;
-	}
-	#fecha{
-		top: 605px;
-	}
-	#verifica{
-		top: 720px;
-		width: 350px;
-		height: 75px;
-		font-size: 20px;
-	}
-	#fechas{
-		top: 800px;
-		font-size: 20px;
-	}
-	#datos{
-		top: 850px;
-	}
-	#fondo{
-		background-size: 600px 600px;
-	}
-	[class*="numeros"]{
-		height: 100px;
-		width: 100px;
-		background-size: 100px 100px;
-		margin: auto;
-		b{
-			font-size: 18px;
-		}
-	}
-	#datos{
-		width: auto;
-	}
+#presentacion {
+  h2 {
+    width: 100%;
+  }
+  position: relative;
+  height: 350px;
+  background-image: url(/assets/aro-luz.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
 }

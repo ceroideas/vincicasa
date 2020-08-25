@@ -29,10 +29,10 @@ export class VerificaPage implements OnInit {
 
     this.comunicacion.changeData(this.usuario);
     this.dias = JSON.parse(localStorage.getItem('dias'));
-    this.fechas = JSON.parse(localStorage.getItem('fechas'));
+    this.fechas = JSON.parse(localStorage.getItem('e200f'));
     this.numerosx = JSON.parse(localStorage.getItem('numeros'));
 
-  	for (let i = 0; i < this.ultimos.length; ++i) {
+  	for (let i = 0; i < this.ultimos.length; i++) {
 
         this.fechas.push(moment().subtract(i, 'd').format('DD') + '/' + moment().subtract(i, 'd').format('MM') + '/' + moment().subtract(i, 'd').format('YYYY'));
         

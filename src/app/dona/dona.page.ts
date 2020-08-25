@@ -8,7 +8,7 @@ import { ComunicacionService } from '../comunicacion.service';
 })
 export class DonaPage implements OnInit {
 
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
 
   constructor(private comunicacion: ComunicacionService) { }
 

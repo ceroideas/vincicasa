@@ -67,6 +67,10 @@ const routes: Routes = [
     path: 'frequenti',
     loadChildren: () => import('./frequenti/frequenti.module').then( m => m.FrequentiPageModule)
   },
+  {
+    path: 'recuperar',
+    loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+  },
 ];
 
 @NgModule({

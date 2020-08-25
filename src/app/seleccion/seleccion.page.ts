@@ -20,7 +20,7 @@ export class SeleccionPage implements OnInit {
   combinazione: any = [];
   final: any = [];
   colores: string;
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
 
   constructor(private service: ComunicacionService, public nav: NavController) { }
 

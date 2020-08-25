@@ -80,7 +80,8 @@ export class HomePage {
 
           }else{
 
-            localStorage.setItem('usuario', this.formulario.correo);
+            localStorage.setItem('correo', this.formulario.correo);
+            localStorage.setItem('usuario', this.formulario.nombre);
             this.router.navigateByUrl('/manual');
 
           }
@@ -124,6 +125,7 @@ export class HomePage {
           if (contrasenadec === this.isesion.password) {
 
             localStorage.setItem('correo', this.isesion.correo);
+            localStorage.setItem('usuario', data.nombre);
             this.router.navigateByUrl('/feed');
 
           }else{

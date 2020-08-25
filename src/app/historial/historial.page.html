@@ -62,7 +62,7 @@
 	</ion-row>
 	<div id="estrazioni" id="number" *ngFor="let d of dias; let i = index">
 		<ion-row id="fecha">
-			<p>ESTRAZIONE <!-- {{ d }} --> <span style="float: right;">{{ fechas[i] }}</span></p>
+			<p>ESTRAZIONE <!-- {{ d }} --> <span style="float: right;">{{ fechas[i] - 1 | fechas }}</span></p>
 		</ion-row>
 		<ion-row id="dia">
 			<ion-col>

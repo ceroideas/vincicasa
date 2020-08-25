@@ -58,5 +58,20 @@ export class ComunicacionService {
     const url = 'https://axelrace.pythonanywhere.com/scrapper3';
     return this.http.get(url);
   }
+
+  recuperar(mail: string) {
+    const url = 'https://axelrace.pythonanywhere.com/recuperar';
+    const headers = {'Content-type': 'application/json'};
+    const json = {"correo": mail}
+    const correo = JSON.stringify(json);
+    return this.http.post(url, correo, {'headers': headers});
+  }
+
+  cambiar(datos: any) {
+    const url = 'https://axelrace.pythonanywhere.com/cambio';
+    const headers = {'Content-type': 'application/json'};
+    const json = JSON.stringify(datos);
+    return this.http.post(url, json, {'headers': headers});
+  }
   
 }

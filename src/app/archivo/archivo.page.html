@@ -1,18 +1,28 @@
 <ion-content id="body">
-    <ion-toolbar id="tools">
+    <!-- <ion-toolbar id="tools">
         <ion-buttons slot="start">
             <ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
         </ion-buttons>
         <ion-title id="titulo">VERIFICA SCHEDINA</ion-title>
     </ion-toolbar>
     <img src="../assets/icono superior.png" id="million">
-    <img src="../assets/monedas-2.png" id="fondo">
+    <img src="../assets/monedas-2.png" id="fondo"> -->
+
+    <div id="presentacion">
+      <ion-toolbar id="tools">
+        <ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
+        <p id="millionday">CHANCE MILLIONDAY</p>
+      </ion-toolbar>
+      <img src="../assets/icono superior.png" id="million">
+      <img src="../assets/monedas-2.png" id="fondo">
+    </div>
+
     <ion-row>
         <ion-col id="fecha">
             <p id="title">SELEZIONA LA DATA</p>
             <ion-datetime class="ion-no-padding ion-no-margion" style="padding: 10px 16px" displayFormat="DD MMM YYYY" display-timezone="utc"
                 monthShortNames="gen, feb, mar, apr, mai, jun, lug, aug, set, ott, nov, dec"
-                placeholder="DATA DI NASCITA"
+                placeholder="DATA"
                 cancel-text="Chiudi"
                 done-text="Ok"
                 id="date"

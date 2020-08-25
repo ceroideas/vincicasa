@@ -13,7 +13,7 @@ import * as moment from 'moment';
 })
 export class FeedPage implements OnInit {
 
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
   horas: any = [];
 
   constructor(private menu: MenuController, private comunicacion: ComunicacionService, private router: Router) {
