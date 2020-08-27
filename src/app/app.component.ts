@@ -170,6 +170,22 @@ export class AppComponent {
 
           this.alerta('Hai raggiunto ' + puntos + ' punti!');
 
+          const json = {
+
+            "correo": localStorage.getItem('correo'),
+            "usuario": localStorage.getItem('usuario'),
+            "puntos": puntos
+
+          };
+
+          this.service.ganador(json).subscribe((data:any)=>{
+
+          }, Error => {
+
+            this.alerta(Error);
+
+          });
+
         }
 
         localStorage.removeItem('numeros');
