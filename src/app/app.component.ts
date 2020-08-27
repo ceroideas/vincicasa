@@ -65,13 +65,10 @@ export class AppComponent {
     this.service.data$.subscribe(res => this.user = res);
 
     if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined || localStorage.getItem('fechas') == '' || localStorage.getItem('fechas') == undefined) {
+     
       this.scrapping3();
-      //this.scrapping();
+   
     }
-
-    /*if (localStorage.getItem('e200') == '' || localStorage.getItem('e200') == undefined) {
-      this.scrapping();
-    }*/
 
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
@@ -235,12 +232,6 @@ export class AppComponent {
 
     this.service.tabla3().subscribe((data: any) => {
 
-      /*if (data = 'Error al obtener los datos') {
-
-        this.alerta('Error al obtener los datos');
-
-      }else{*/
-
         localStorage.setItem('e200', data[0]);
         localStorage.setItem('fnumeros', data[1]);
         localStorage.setItem('ifnumeros', data[2]);
@@ -309,7 +300,6 @@ export class AppComponent {
         localStorage.setItem('infrecuentes', JSON.stringify(infrecuentes));
         localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));
         this.scrapping();
-      //}
 
     });
 
