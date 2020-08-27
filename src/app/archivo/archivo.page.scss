@@ -77,11 +77,13 @@
 	height: 50px;
 	margin: auto;
 	position: relative;
+	margin-bottom: 20px;
 	// top: 320px;
 }
 #datos{
-	position: absolute;
+	//position: absolute;
 	bottom: 5%;
+	margin-bottom: 20px !important;
 	margin: auto;
 	width: 80%;
 	left: 10%;
@@ -128,11 +130,11 @@
 	width: 95%;
 	margin: auto;
 	display: block;
-	position: absolute;
-	top: 30%;
-	left: 2.5%;
+	position: relative;
+	top: -40px;
+	//left: 2.5%;
 	z-index: 100;
-	display: none;
+	display: block;
 }
 #presentacion {
   h2 {
@@ -187,6 +189,19 @@
 		font-size: 40px;
 	}
 }
+@media only screen and(min-height: 1000px){
+	#calendario{
+		top: 40%;
+	}
+	[class*="numeros"]{
+		height: 80px;
+		width: 80px;
+		background-size: 80px 80px;
+		b{
+			font-size: 25px;
+		}
+	}
+}
 @media only screen and(min-width: 1000px){
 	#presentacion{
 		height: 800px;
@@ -205,18 +220,5 @@
 	}
 	#calendario{
 		top: 50%;
-	}
-}
-@media only screen and(min-height: 800px){
-	#calendario{
-		top: 40%;
-	}
-	[class*="numeros"]{
-		height: 80px;
-		width: 80px;
-		background-size: 80px 80px;
-		b{
-			font-size: 25px;
-		}
 	}
 }

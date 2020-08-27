@@ -1,4 +1,4 @@
-<ion-content id="body">
+<ion-content id="body" #content>
     <!-- <ion-toolbar id="tools">
         <ion-buttons slot="start">
             <ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
@@ -31,14 +31,14 @@
         </ion-col>
     </ion-row>
     <ion-button size="large" expand="full" shape="round" id="verifica" (click)="verifica()">VERIFICA</ion-button>-->
-    <ion-row id="fecha">
+   <!-- <ion-row id="fecha">
         <ion-col id="fecha">
             <p id="title">SELEZIONA LA DATA</p>
             <div id="date" (click)="mostrar()">
                 <p>DATA</p>
             </div>
         </ion-col>
-    </ion-row>
+    </ion-row>-->
     <ion-calendar [(ngModel)]="fecha"
       name="fecha"
       [options]="optionsRange"

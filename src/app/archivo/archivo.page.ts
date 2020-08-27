@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ComunicacionService } from '../comunicacion.service';
 import * as moment from 'moment';
@@ -10,6 +10,8 @@ import { CalendarComponentOptions } from 'ion2-calendar';
   styleUrls: ['./archivo.page.scss'],
 })
 export class ArchivoPage implements OnInit {
+
+  @ViewChild('content') private content: any;
 
   usuario: string = localStorage.getItem("usuario");
   fechas: any = [];
@@ -61,6 +63,10 @@ export class ArchivoPage implements OnInit {
   verifica($event){
 
     //console.log(this.fecha);
+
+    let h = (document.getElementById('body') as HTMLElement).offsetHeight;
+
+    this.content.scrollToBottom(h);
     
     if (this.combinaciones && this.combinaciones.length > 0) {
 
