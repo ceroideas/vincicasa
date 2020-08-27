@@ -73,5 +73,12 @@ export class ComunicacionService {
     const json = JSON.stringify(datos);
     return this.http.post(url, json, {'headers': headers});
   }
+
+  ganador(datos: any) {
+    const url = 'https://axelrace.pythonanywhere.com/ganador';
+    const headers = {'Content-type': 'application/json'};
+    const json = JSON.stringify(datos);
+    return this.http.post(url, json, {'headers': headers});
+  }
   
 }

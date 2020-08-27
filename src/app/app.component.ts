@@ -111,10 +111,6 @@ export class AppComponent {
       }
     }
   }
- 
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
 
   reloj(){
 
@@ -159,6 +155,22 @@ export class AppComponent {
 
         this.sorteo();
         let jugada = localStorage.getItem('combinacion');
+        let ganador = JSON.parse(localStorage.getItem('ultimos'))[0];
+        let puntos = 0;
+
+        for (let i = 0; i <= ganador.length; ++i) {
+
+          if (jugada[i] == ganador[i]) {
+            puntos++;
+          }
+
+        }
+
+        if (puntos > 0) {
+
+          this.alerta('Hai raggiunto ' + puntos + ' punti!');
+
+        }
 
         localStorage.removeItem('numeros');
         localStorage.removeItem('fechas');
@@ -175,29 +187,7 @@ export class AppComponent {
         localStorage.removeItem('e200n');
 
         this.scrapping3();
-
-        this.sleep(5000);
-
         this.scrapping();
-
-        this.sleep(5000);
-
-        let ganador = JSON.parse(localStorage.getItem('ultimos'))[0];
-        let puntos = 0;
-
-        for (let i = 0; i <= ganador.length; ++i) {
-
-          if (jugada[i] == ganador[i]) {
-            puntos++
-          }
-
-        }
-
-        if (puntos > 0) {
-
-          this.alerta('Has acertado ' + puntos + 'puntos!');
-
-        }
 
       }
 
