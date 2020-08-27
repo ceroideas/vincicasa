@@ -174,7 +174,7 @@ export class AppComponent {
 
             "correo": localStorage.getItem('correo'),
             "usuario": localStorage.getItem('usuario'),
-            "puntos": puntos
+            "puntos": puntos.toString()
 
           };
 
