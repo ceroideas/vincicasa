@@ -28,43 +28,29 @@
 	z-index: 1;
 }
 #dona{
-	margin-top: 10%;
-	width: 75%;
-	margin-left: 12.5%;
+	width: 300px;
+	margin: auto !important;
+	margin-top: 10% !important;
 	--background: white;
 	--color: #50CBE4;
 	font-weight: bolder;
 	--box-shadow: 0px 15px 15px #0898B5;
 }
 #million, #fondo{
-  width: 80%;
+  width: 300px;
   position: absolute;
   z-index: 1;
   margin: auto;
-  bottom: 0;
   top: 0;
-  left: 0;
-  right: 0;
 }
 #fondo {
   width: 90%;
   z-index: 0;
 }
-#presentacion {
-  h2 {
-    width: 100%;
-  }
-  position: relative;
-  height: 350px;
-  background-image: url(/assets/aro-luz.png);
-  background-size: cover;
-  background-position: center;
-  display: flex;
-}
 #email{
-	width: 80%;
+	width: 250px;
     height: 50px;
-    margin: auto;
+    margin: auto !important;
     background: white;
     border-radius: 12.5px;
     --padding-start: 15px;
@@ -74,4 +60,90 @@
 }
 #fsesion{
 	margin-top: 7.5% !important;
+}
+#presentacion {
+  h2 {
+    width: 300px;
+    margin: auto;
+  }
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  background-image: url(/assets/aro-luz.png), url(/assets/monedas-2.png);
+  background-size: 300px 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+}
+@media only screen and(min-width: 350px){
+	#presentacion{
+		height: 350px;
+		width: 350px;
+		background-size: 350px 350px;
+	}
+	#million{
+		height: 350px;
+		width: 350px;
+	}
+}
+@media only screen and(min-width: 400px){
+	#presentacion{
+		height: 400px;
+		width: 400px;
+		background-size: 400px 400px;
+	}
+	#million{
+		height: 400px;
+		width: 400px;
+	}
+}
+@media only screen and(min-width: 750px){
+	#presentacion{
+		height: 550px;
+		width: 800px;
+		background-size: 550px 550px;
+	}
+	#million{
+		height: 550px;
+		width: 800px;
+	}
+	#mday{
+		font-size: 50px;
+	}
+	#chance{
+		font-size: 40px;
+	}
+}
+@media only screen and(min-width: 1000px){
+	#presentacion{
+		height: 800px;
+		width: 1000px;
+		background-size: 800px 800px;
+	}
+	#million{
+		height: 800px;
+		width: 1000px;
+	}
+	#mday{
+		font-size: 60px;
+	}
+	#chance{
+		font-size: 50px;
+	}
+	#calendario{
+		top: 50%;
+	}
+}
+@media only screen and(min-height: 800px){
+	#calendario{
+		top: 40%;
+	}
+	[class*="numeros"]{
+		height: 80px;
+		width: 80px;
+		background-size: 80px 80px;
+		b{
+			font-size: 25px;
+		}
+	}
 }

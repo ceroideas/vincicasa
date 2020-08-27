@@ -22,10 +22,29 @@
 	--color: #09B7DA;
 	--background: white;
 	font-weight: bolder;
+	margin: auto !important;
 }
 #info{
 	margin: auto;
 	color: white;
 	text-align: center;
 	margin-bottom: 10%;
+	font-size: 14px;
+}
+@media only screen and(min-width: 750px){
+	#info{
+		font-size: 25px;
+	}
+	#tutorial{
+		margin-left: 40%;
+	}
+	#continuar{
+		width: 500px;
+		height: 80px;
+		font-size: 30px;
+		margin-top: 75px !important;
+	}
+	#instrucciones{
+		font-size: 20px !important;
+	}
 }

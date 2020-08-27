@@ -112,142 +112,16 @@
 	margin-left: 15%;
 	font-size: 14px;
 }
-// @media only screen and(min-height: 800px){
-// 	#million, #fondo{
-// 		height: 400px;
-// 	}
-// 	#fecha{
-// 		top: 405px;
-// 	}
-// 	#verifica{
-// 		top: 420px;
-// 	}
-// 	#fechas{
-// 		top: 480px;
-// 	}
-// 	#datos{
-// 		top: 500px;
-// 	}
-// 	#fondo{
-// 		background-size: 400px 400px;
-// 	}
-// 	[class*="numeros"]{
-// 		height: 50px;
-// 		width: 50px;
-// 		background-size: 50px 50px;
-// 		margin: auto;
-// 	}
-// }
-// @media only screen and(max-height: 800px) and(max-width: 300px){
-// 	[class*="numeros"]{
-// 		height: 40px;
-// 		width: 40px;
-// 		background-size: 40px 40px;
-// 		margin: auto;
-// 	}
-// 	#datos{
-// 		width: auto;
-// 	}
-// }
-// @media only screen and(min-height: 1000px){
-// 	.toolbar-container, #body, #tools{
-// 		font-size: 14px;
-// 	}
-// 	#million, #fondo{
-// 		height: 500px;
-// 	}
-// 	#fecha{
-// 		top: 505px;
-// 	}
-// 	#verifica{
-// 		top: 520px;
-// 	}
-// 	#fechas{
-// 		top: 580px;
-// 	}
-// 	#datos{
-// 		top: 600px;
-// 	}
-// 	#fondo{
-// 		background-size: 500px 500px;
-// 	}
-// 	[class*="numeros"]{
-// 		height: 80px;
-// 		width: 80px;
-// 		background-size: 80px 80px;
-// 		margin: auto;
-// 		b{
-// 			font-size: 16px;
-// 		}
-// 	}
-// 	#datos{
-// 		width: auto;
-// 	}
-// }
-// @media only screen and(min-height: 1300px){
-// 	.toolbar-container, #body, #tools{
-// 		font-size: 18px;
-// 	}
-// 	#million, #fondo{
-// 		height: 600px;
-// 	}
-// 	#fecha{
-// 		top: 605px;
-// 	}
-// 	#verifica{
-// 		top: 720px;
-// 		width: 350px;
-// 		height: 75px;
-// 		font-size: 20px;
-// 	}
-// 	#fechas{
-// 		top: 800px;
-// 		font-size: 20px;
-// 	}
-// 	#datos{
-// 		top: 850px;
-// 	}
-// 	#fondo{
-// 		background-size: 600px 600px;
-// 	}
-// 	[class*="numeros"]{
-// 		height: 100px;
-// 		width: 100px;
-// 		background-size: 100px 100px;
-// 		margin: auto;
-// 		b{
-// 			font-size: 18px;
-// 		}
-// 	}
-// 	#datos{
-// 		width: auto;
-// 	}
-// }
-
 #million, #fondo{
-  width: 80%;
+  width: 300px;
   position: absolute;
   z-index: 1;
   margin: auto;
-  bottom: 0;
   top: 0;
-  left: 0;
-  right: 0;
 }
 #fondo {
   width: 90%;
   z-index: 0;
-}
-#presentacion {
-  h2 {
-    width: 100%;
-  }
-  position: relative;
-  height: 350px;
-  background-image: url(/assets/aro-luz.png);
-  background-size: cover;
-  background-position: center;
-  display: flex;
 }
 #calendario{
 	border-radius: 10px;
@@ -260,13 +134,89 @@
 	z-index: 100;
 	display: none;
 }
+#presentacion {
+  h2 {
+    width: 300px;
+    margin: auto;
+  }
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  background-image: url(/assets/aro-luz.png), url(/assets/monedas-2.png);
+  background-size: 300px 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+}
+@media only screen and(min-width: 350px){
+	#presentacion{
+		height: 350px;
+		width: 350px;
+		background-size: 350px 350px;
+	}
+	#million{
+		height: 350px;
+		width: 350px;
+	}
+}
+@media only screen and(min-width: 400px){
+	#presentacion{
+		height: 400px;
+		width: 400px;
+		background-size: 400px 400px;
+	}
+	#million{
+		height: 400px;
+		width: 400px;
+	}
+}
+@media only screen and(min-width: 750px){
+	#presentacion{
+		height: 550px;
+		width: 800px;
+		background-size: 550px 550px;
+	}
+	#million{
+		height: 550px;
+		width: 800px;
+	}
+	#mday{
+		font-size: 50px;
+	}
+	#chance{
+		font-size: 40px;
+	}
+}
+@media only screen and(min-width: 1000px){
+	#presentacion{
+		height: 800px;
+		width: 1000px;
+		background-size: 800px 800px;
+	}
+	#million{
+		height: 800px;
+		width: 1000px;
+	}
+	#mday{
+		font-size: 60px;
+	}
+	#chance{
+		font-size: 50px;
+	}
+	#calendario{
+		top: 50%;
+	}
+}
 @media only screen and(min-height: 800px){
 	#calendario{
 		top: 40%;
 	}
-}
-@media only screen and(min-height: 1000px){
-	#calendario{
-		top: 50%;
+	[class*="numeros"]{
+		height: 80px;
+		width: 80px;
+		background-size: 80px 80px;
+		b{
+			font-size: 25px;
+		}
 	}
 }

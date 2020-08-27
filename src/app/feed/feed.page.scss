@@ -59,9 +59,9 @@
 	z-index: 2;
 }
 #fondo{
-	margin-top: -20%;
-	height: 50%;
-	width: 100%;
+	margin: auto;
+	height: 300px;
+	width: 300px;
 	z-index: 1;
 	
 }
@@ -131,28 +131,84 @@
 	border-radius: 80px;
 }
 
-#million,#fondo{
-  width: 80%;
-  position: absolute;
-   z-index: 1;
+#million, #fondo{
+  width: 300px;
+  z-index: 1;
   margin: auto;
-  bottom: 0;
+  position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
 }
 #fondo {
-  width: 90%;
-  z-index: 0;
+  width: 300px;
+  margin: auto;
 }
 #presentacion {
   h2 {
-    width: 100%;
+    width: 300px;
+    margin: auto;
   }
-  position: relative;
-  height: 350px;
-  background-image: url(/assets/aro-luz.png);
-  background-size: cover;
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  background-image: url(/assets/aro-luz.png), url(/assets/monedas-2.png);
+  background-size: 300px 300px;
   background-position: center;
-  display: flex;
+  background-repeat: no-repeat;
+  display: block;
+}
+@media only screen and(min-width: 350px){
+	#presentacion{
+		height: 350px;
+		width: 350px;
+		background-size: 350px 350px;
+	}
+	#million{
+		height: 350px;
+		width: 350px;
+	}
+}
+@media only screen and(min-width: 400px){
+	#presentacion{
+		height: 400px;
+		width: 400px;
+		background-size: 400px 400px;
+	}
+	#million{
+		height: 400px;
+		width: 400px;
+	}
+}
+@media only screen and(min-width: 750px){
+	#presentacion{
+		height: 550px;
+		width: 800px;
+		background-size: 550px 550px;
+	}
+	#million{
+		height: 550px;
+		width: 800px;
+	}
+	#mday{
+		font-size: 50px;
+	}
+	#chance{
+		font-size: 40px;
+	}
+}
+@media only screen and(min-width: 1000px){
+	#presentacion{
+		height: 800px;
+		width: 1000px;
+		background-size: 800px 800px;
+	}
+	#million{
+		height: 800px;
+		width: 1000px;
+	}
+	#mday{
+		font-size: 60px;
+	}
+	#chance{
+		font-size: 50px;
+	}
 }
