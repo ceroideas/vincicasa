@@ -12,6 +12,7 @@ export class HistorialPage implements OnInit {
   fechas: any = [];
   numeros: any = [];
   usuario: string = localStorage.getItem('usuario');
+  ganadores: any = JSON.parse(localStorage.getItem('ganadores'));
 
   constructor(private comunicacion: ComunicacionService) { }
 

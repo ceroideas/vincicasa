@@ -198,6 +198,7 @@ export class AppComponent {
         localStorage.removeItem('e200');
         localStorage.removeItem('e200f');
         localStorage.removeItem('e200n');
+        localStorage.removeItem('ganadores');
 
         this.reloj();
         this.scrapping3();
@@ -247,6 +248,17 @@ export class AppComponent {
         let frecuencia = [];
         let infrecuentes = [];
         let infrecuencia = [];
+        let ganadores = [];
+
+        for (let i = 0; i < 4; i++) {
+
+          if (JSON.parse(data[3]).dettaglioConcorso.dettaglioVincite.vincite[i]) {
+
+            ganadores.push(JSON.parse(data[3]).dettaglioConcorso.dettaglioVincite.vincite[i]);
+
+          }
+    
+        }
 
         for (let i = 0; i < 200; i++) {
 
@@ -300,6 +312,7 @@ export class AppComponent {
         localStorage.setItem('frecuencia', JSON.stringify(frecuencia));
         localStorage.setItem('infrecuentes', JSON.stringify(infrecuentes));
         localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));
+        localStorage.setItem('ganadores', JSON.stringify(ganadores));
         this.scrapping();
 
     });

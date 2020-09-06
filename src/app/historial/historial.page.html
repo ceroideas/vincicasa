@@ -30,28 +30,10 @@
 	</ion-row>
 	<ion-item id="resultados" lines="none">
 		<table id="vincite">
-			<tr id="v">
-				<td>Nessuna</td>
-				<td>Punti 5</td>
-				<td>254,39€</td>
-			</tr>
-				
-			<tr id="v">
-				<td>1</td>
-				<td>Punti 4</td>
-				<td>254,39€</td>
-			</tr>
-
-			<tr id="v">
-				<td>29</td>
-				<td>Punti 3</td>
-				<td>254,39€</td>
-			</tr>
-
-			<tr id="v">
-				<td>430</td>
-				<td>Punti 2</td>
-				<td>254,39€</td>
+			<tr id="v" *ngFor="let g of ganadores; let i = index">
+				<td>{{ g.numero }}</td>
+				<td>Punti {{ 5- i }}</td>
+				<td>{{ g.quota.importo }}</td>
 			</tr>
 		</table>
 	</ion-item>
