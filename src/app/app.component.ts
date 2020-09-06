@@ -199,6 +199,7 @@ export class AppComponent {
         localStorage.removeItem('e200f');
         localStorage.removeItem('e200n');
 
+        this.reloj();
         this.scrapping3();
         this.scrapping();
 
@@ -323,7 +324,7 @@ export class AppComponent {
     localStorage.setItem('dias', JSON.stringify(dias));
     localStorage.setItem('numeros', JSON.stringify(numeros));
 
-    for (let i = 0; i < 7; ++i) {
+    for (let i = 0; i < 7; i++) {
 
       let mes =  moment().subtract(i, 'd').format('M');
       fechas[i] = moment().subtract(i, 'd').format('DD') + ' ' + meses[parseInt(mes)-1] + ' ' + moment().subtract(i, 'd').format('Y');
