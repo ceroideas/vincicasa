@@ -59,3 +59,21 @@ p{
 	font-size: 12px;
 	width: 100px;
 }
+#orden{
+	background: white;
+    width: 220px;
+    margin: auto;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    p{
+    	display: inline-block;
+    	color: #09B7DA;
+    	margin: auto;
+    	text-align: center;
+    	font-size: 12px;
+    	font-weight: bolder;
+    }
+    z-index: 101;
+}

@@ -24,14 +24,29 @@ export class FrequentiPage implements OnInit {
 
     if (localStorage.getItem('infrecuentes') && JSON.parse(localStorage.getItem('infrecuentes')).length > 0) {
 
+      this.insertar();
+      
+    }
+
+  }
+
+  insertar(){
       this.data1 = JSON.parse(localStorage.getItem('frecuentes'));
       this.data2 = JSON.parse(localStorage.getItem('frecuencia'));
       this.numeros = [this.data1[0], this.data1[1], this.data1[2], this.data1[3], this.data1[4]];
       this.frecuencia = [this.data2[0], this.data2[1], this.data2[2], this.data2[3], this.data2[4]];
       this.numeros2 = [this.data1[5], this.data1[6], this.data1[7], this.data1[8], this.data1[9]];
       this.frecuencia2 = [this.data2[5], this.data2[6], this.data2[7], this.data2[8], this.data2[9]];
-      
-    }
+  }
+
+  ordenar(){
+
+    alert('Funciona');
+    
+    this.frecuencia = this.frecuencia.sort((a,b)=> a - b);
+    this.frecuencia2 = this.frecuencia2.sort((a,b)=> a - b);
+
+    console.log(this.frecuencia, this.frecuencia2);
 
   }
 

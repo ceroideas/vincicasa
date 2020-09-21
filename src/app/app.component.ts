@@ -72,8 +72,8 @@ export class AppComponent {
 
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
-    let pm8 = moment(moment().format('YYYY-MM-DD 20:00'));
-    let pm8p1 = moment(moment().format('YYYY-MM-DD 20:00')).add(1,'day');
+    let pm8 = moment(moment().format('YYYY-MM-DD 19:05'));
+    let pm8p1 = moment(moment().format('YYYY-MM-DD 19:05')).add(1,'day');
     let diff = (pm8p1.diff(hora,'seconds'))/3600;
     let diff2 = hora.diff(horaClick,'seconds')/3600;
 
@@ -113,18 +113,18 @@ export class AppComponent {
 
     let mostrar_hora = () => {
 
-      let mins8 = moment(moment().format('YYYY-MM-DD 20:00'));
+      let mins8 = moment(moment().format('YYYY-MM-DD 19:05'));
       let now;
 
       let restante = mins8.diff(moment(),'seconds');
 
       if (restante < 0) {
 
-        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 20:00'));
+        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 19:05'));
 
       }else{
 
-        now = moment(moment().format('YYYY-MM-DD 20:00'));
+        now = moment(moment().format('YYYY-MM-DD 19:05'));
 
       }
       

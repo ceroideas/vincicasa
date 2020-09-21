@@ -62,7 +62,10 @@ export class EstadisticasPage implements OnInit {
 
       for (let i = 1; i <= 55; ++i) {
 
-        array.push(i.toString());
+        if (i < 51) {
+          array.push(i.toString());
+        }
+        
         array2.push(i);
 
       }

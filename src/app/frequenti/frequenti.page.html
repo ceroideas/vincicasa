@@ -5,6 +5,9 @@
     	</ion-buttons>
     	<ion-title id="titulo">NUMERI PIÜ FREQUENTI</ion-title>
     </ion-toolbar>
+    <div (click)="ordenar()" id="orden">
+    	<p>ORDINA PER NUMERO</p>
+    </div>
 	<div id="contenedor">
 		<ion-row class="numeros" *ngFor="let numero of numeros; let i = index">
 			<ion-col class="numero1">
