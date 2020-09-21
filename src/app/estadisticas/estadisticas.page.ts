@@ -11,6 +11,7 @@ export class EstadisticasPage implements OnInit {
 
   usuario: string = localStorage.getItem('usuario');
   salidas: any[] = [];
+  estracciones: number;
 
   constructor(private service: ComunicacionService) { }
 
@@ -19,19 +20,19 @@ export class EstadisticasPage implements OnInit {
     this.service.changeData(this.usuario);
 
     if (localStorage.getItem('e200n') && JSON.parse(localStorage.getItem('e200n')).length > 0) {
-      this.calculos(30);
+      //this.calculos(event);
     }
 
   }
 
-  calculos(estraccion){
+  calculos(selected = this.estracciones){
 
     let numeros = JSON.parse(localStorage.getItem('e200n'));
     let numero = 0;
 
     for (let i = 1; i < 56; i++) {
 
-      for (let a = 0; a < estraccion; a++) {
+      for (let a = 0; a < this.estracciones; a++) {
 
         for (let x = 0; x < numeros[a].length; x++) {
 
@@ -50,7 +51,7 @@ export class EstadisticasPage implements OnInit {
 
     }
 
-    this.grafico(30);
+    this.grafico(selected);
 
   }
 

@@ -5,9 +5,9 @@
     	</ion-buttons>
     	<ion-title id="titulo">ANALISI PRESENZE</ion-title>
     </ion-toolbar>
-    <ion-select placeholder="ULTIME 30 ESTRAZIONI" name="estracciones" (change)="cambio()" [(ngModel)]="estracciones" id="estracciones">
-      <ion-select-option value="30" (click)="cambio(30)">ULTIME 30 ESTRAZIONI</ion-select-option>
-      <ion-select-option value="60" (click)="cambio(60)">ULTIME 60 ESTRAZIONI</ion-select-option>
+    <ion-select placeholder="ULTIME 30 ESTRAZIONI" name="estracciones" (ionChange)="calculos(estracciones)" [(ngModel)]="estracciones" id="estracciones">
+      <ion-select-option value="30">ULTIME 30 ESTRAZIONI</ion-select-option>
+      <ion-select-option value="60">ULTIME 60 ESTRAZIONI</ion-select-option>
     </ion-select>
 	<canvas id="grafico" width="400px"></canvas>
 	<ion-tabs id="menufoot">
