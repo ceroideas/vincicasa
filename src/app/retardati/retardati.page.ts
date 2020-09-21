@@ -36,13 +36,9 @@ export class RetardatiPage implements OnInit {
   }
 
   ordenar(){
-
-    alert('Funciona');
     
-    this.frecuencia = this.frecuencia.sort((a,b)=> a - b);
-    this.frecuencia2 = this.frecuencia2.sort((a,b)=> a - b);
-
-    console.log(this.frecuencia, this.frecuencia2);
+    this.numeros = this.numeros.sort((a,b)=> a - b);
+    this.numeros2 = this.numeros2.sort((a,b)=> a - b);
 
   }
 
