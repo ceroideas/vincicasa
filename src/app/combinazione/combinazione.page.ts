@@ -148,7 +148,7 @@ export class CombinazionePage implements OnInit {
 		}
 
 		for (var i = 0; i < (5 - this.incluir.length); i++) {	
-			this.combinacion.push( this.getRandomArbitrary(1,55, this.combinacion, this.excluir) );
+			this.combinacion.push( this.getRandomArbitrary(1, 55, this.combinacion, this.excluir) );
 		}
 
 		this.combinacion = this.combinacion.sort((a,b)=> a - b);
@@ -160,15 +160,25 @@ export class CombinazionePage implements OnInit {
 
 		}
 
-		this.ultimos.push(this.combinacion);
-		this.fechas.push(this.hoy);
-		
+    let final = this.ultimos.length;
+
+    if (this.combinacion.length > 0) {
+      
+      this.ultimos[final - 1] = this.combinacion;
+      this.fechas[final - 1] = this.hoy;
+
+    }else{
+
+      this.ultimos.push(this.combinacion);
+      this.fechas.push(this.hoy);
+
+    }
 
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 		localStorage.setItem('ultimos', JSON.stringify(this.ultimos.reverse()));
 		localStorage.setItem('ufechas', JSON.stringify(this.fechas.reverse()));
 		localStorage.setItem('contador', JSON.stringify(this.contador));
-		localStorage.setItem('horaClick',moment().format('YYYY-MM-DD HH:mm:ss'));
+		localStorage.setItem('horaClick', moment().format('YYYY-MM-DD HH:mm:ss'));
 
 	}
 

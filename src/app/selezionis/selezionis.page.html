@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>selezionis</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content id="body">
+	<ion-header id="head">
+	  <ion-toolbar id="tools">
+	  	<ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
+	  	<ion-title id="titulo">SELEZIONA IL SISTEMA</ion-title>
+	  </ion-toolbar>
+	</ion-header>
+	<ion-row *ngFor="let t of checks" lines="none" class=filas>
+		<ion-col>
+			<ion-checkbox></ion-checkbox>
+			<p>{{ t }}</p>
+		</ion-col>
+	</ion-row>
+	<p id="alerta">Fai clic su continua per selezionare i numeri</p>
+	<ion-button routerLink="/seleccion2" routerDirection="root" shape="round" id="continuar">CONTINUA</ion-button>
 </ion-content>

@@ -1,0 +1,57 @@
+.toolbar-container, #body, #tools, #head{
+	--background: #09B7DA;
+	--color: white;
+	display: flex;
+}
+#titulo{
+	font-family: 'geometos';
+	font-size: 14px;
+	margin: auto;
+	text-align: center;
+	position: relative;
+	left: -7.5%;
+}
+.filas{
+	width: auto !important;
+	display: flex !important;
+	font-family: 'geometos';
+	font-size: 12px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+
+	ion-col{
+		margin: auto;
+		display: flex;
+
+		p, ion-checkbox{
+			margin: auto;
+		}
+		ion-checkbox{
+			margin-left: 0;
+		}
+		p{
+			position: relative;
+			left: 10px;
+		}
+		ion-checkbox{
+			--height: 10px;
+			--width: 10px;
+			display: inline-table;
+		}
+	}
+}
+#continuar{
+	margin: auto;
+	display: block;
+	margin-top: 10px;
+	--background: white;
+	--color: #09B7DA;
+	width: 200px;
+}
+#alerta{
+	font-family: 'geometos';
+	font-size: 9px;
+	margin: auto;
+	text-align: center;
+	margin-top: 120px;
+}
