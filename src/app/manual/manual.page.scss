@@ -10,6 +10,7 @@
 }
 #instrucciones{
 	width: 90%;
+	height: 450px;
 	background: white;
 	border-radius: 15px;
 	margin: auto;
@@ -18,11 +19,9 @@
 	color: black;
 }
 #continuar{
-	margin-top: 10%;
 	--color: #09B7DA;
 	--background: white;
 	font-weight: bolder;
-	margin: auto !important;
 }
 #info{
 	margin: auto;
