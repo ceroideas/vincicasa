@@ -19,6 +19,8 @@ export class HomePage {
   formulario = new Registro();
   isesion = new Sesion();
   contrasena: string = "$a1e5i5o2u";
+  valor = false;
+  condiciones = false;
 
   constructor(public nav: NavController, public alertController: AlertController, private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
     this.menu.enable(false);
@@ -57,9 +59,9 @@ export class HomePage {
   }
   
   registrarse(f: NgForm){
-    if (this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined) {
+    if (this.condiciones == false || this.valor == false || this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined || this.formulario.sexo == undefined) {
       
-      this.alerta('Todos los campos son obligatorios');
+      this.alerta('tutti i campi sono obbligatori');
 
     }else{
 
@@ -70,13 +72,14 @@ export class HomePage {
           nombre: this.formulario.nombre,
           correo: this.formulario.correo,
           fecha: this.formulario.fecha,
-          password: encryptp
+          password: encryptp,
+          sexo: this.formulario.sexo
         }
         
         this.comunicacion.registros(jsono).subscribe((data:any) => {
           if (data.respuesta == 'registrado') {
             
-            this.alerta('Usuario ya existe');
+            this.alerta("L'utente esiste già");
 
           }else{
 
@@ -93,7 +96,7 @@ export class HomePage {
 
       }else{
 
-        this.alerta('Las contraseñas no coinciden');
+        this.alerta('Le passwords non corrispondono');
 
       }
     }
@@ -103,7 +106,7 @@ export class HomePage {
 
     if (this.isesion.correo == undefined || this.isesion.password == undefined) {
       
-      this.alerta('Todos los campos son obligatorios');
+      this.alerta('tutti i campi sono obbligatori');
 
     }else{
 
@@ -118,7 +121,7 @@ export class HomePage {
         
         if(data.respuesta == 'nousuario'){
 
-          this.alerta('Usuario no registrado');
+          this.alerta("L'utente esiste già");
 
         }else{
 
@@ -130,7 +133,7 @@ export class HomePage {
 
           }else{
             
-            this.alerta('Las contraseñas no coinciden');
+            this.alerta('Le passwords non corrispondono');
           
           }
 

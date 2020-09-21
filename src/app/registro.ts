@@ -4,4 +4,5 @@ export class Registro {
 	correo: string;
 	fecha: any;
 	password: string;
+	sexo: string;
 }

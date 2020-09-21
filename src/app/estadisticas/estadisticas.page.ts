@@ -19,19 +19,19 @@ export class EstadisticasPage implements OnInit {
     this.service.changeData(this.usuario);
 
     if (localStorage.getItem('e200n') && JSON.parse(localStorage.getItem('e200n')).length > 0) {
-      this.calculos();
+      this.calculos(30);
     }
 
   }
 
-  calculos(){
+  calculos(estraccion){
 
     let numeros = JSON.parse(localStorage.getItem('e200n'));
     let numero = 0;
 
     for (let i = 1; i < 56; i++) {
 
-      for (let a = 0; a < numeros.length; a++) {
+      for (let a = 0; a < estraccion; a++) {
 
         for (let x = 0; x < numeros[a].length; x++) {
 
@@ -50,11 +50,11 @@ export class EstadisticasPage implements OnInit {
 
     }
 
-    this.grafico();
+    this.grafico(30);
 
   }
 
-  grafico() {
+  grafico(ultimas) {
 
     let array = [];
       let array2 = [];
@@ -76,7 +76,6 @@ export class EstadisticasPage implements OnInit {
         labels: array,
         datasets: [
             {
-                label: "ULTIME 200 ESTRAZIONI",
                 data: this.salidas,
                 backgroundColor: gradiente
             }]
@@ -89,6 +88,8 @@ export class EstadisticasPage implements OnInit {
                 responsive: true,
                 maintainAspectRatio: false,
                 legend: {
+
+                    display: false,
                     labels: {
                         fontColor: "white",
                         fontSize: 18

@@ -393,3 +393,12 @@ ion-menu-button {
     z-index: 5;
   }
 }
+
+#titulo, #ue, ion-toolbar > #millionday, #tutorial{
+  color: #FFF100 !important;
+  --webkit-text-stroke: 1px black !important;
+  font-weight: bolder !important;
+  font-size: 18px !important;
+  --text-align: center !important;
+  font-family: "sf ui display" !important;
+}
