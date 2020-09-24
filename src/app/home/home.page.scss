@@ -61,7 +61,7 @@ h2{
 #botones2{
   margin-top: 5%;
   --color: #50CBE4;
-  width: 250px;
+  width: 80%;
   font-weight: bolder;
   --box-shadow: 0px 15px 15px #0898B5;
   border-radius: 100px;
@@ -69,13 +69,13 @@ h2{
   margin: auto;
 }
 #entrada2{
-  width: 250px;
+  width: 80%;
   border-radius: 10px;
   margin: auto; 
 }
 #csesion, #psesion{
-  --placeholder-font-weight: bold;
-  --placeholder-color: gray;
+  // --placeholder-font-weight: bold;
+  // --placeholder-color: gray;
 }
 .ir{
   margin: auto;
@@ -93,7 +93,8 @@ a p{
 }
 [name="formulario.fecha"], #sexo{
   /*display: block;*/
-  color: black;
+  // color: black;
+  width: 100%;
   background-color: #fff;
   border-radius: 8px;
   /*width: 250px;
@@ -101,7 +102,7 @@ a p{
   text-align: left;
   padding: 16px;
   display: inline-block;
-  margin-left: 10px;
+  // margin-left: 10px;
 }
 
 .pt-16 {

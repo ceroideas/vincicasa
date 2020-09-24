@@ -28,6 +28,14 @@ export class HomePage {
 
   ngOnInit(){
 
+    const ionSelects = document.querySelectorAll('ion-select');
+    ionSelects.forEach((sel) => {
+      sel.shadowRoot.querySelectorAll('.select-icon-inner')
+        .forEach((elem) => {
+          elem.setAttribute('style', 'display: none;');
+        });
+    });
+
     if (localStorage.getItem('correo')) {
       this.nav.navigateRoot('feed');
     }
@@ -121,7 +129,7 @@ export class HomePage {
         
         if(data.respuesta == 'nousuario'){
 
-          this.alerta("L'utente esiste già");
+          this.alerta("L'utente non esiste");
 
         }else{
 

@@ -11,17 +11,18 @@ export class EstadisticasPage implements OnInit {
 
   usuario: string = localStorage.getItem('usuario');
   salidas: any[] = [];
-  estracciones: number;
+  estracciones: number = 30;
 
   constructor(private service: ComunicacionService) { }
 
   ngOnInit() {
 
     this.service.changeData(this.usuario);
+    this.calculos();
 
-    if (localStorage.getItem('e200n') && JSON.parse(localStorage.getItem('e200n')).length > 0) {
-      //this.calculos(event);
-    }
+    /*if (localStorage.getItem('e200n') && JSON.parse(localStorage.getItem('e200n')).length > 0) {
+      
+    }*/
 
   }
 

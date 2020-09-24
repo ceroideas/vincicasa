@@ -17,6 +17,10 @@ export class CombinazionePage implements OnInit {
 	usuario: string = localStorage.getItem('usuario');
 	hoy: any = moment();
 	contador: number = parseInt(JSON.parse(localStorage.getItem('contador')));
+  hour: any;
+  minute: any;
+  second: any;
+  tiempo: any = [];
 
 	meses = ['gennaio',
 			'febbraio',
@@ -45,6 +49,7 @@ export class CombinazionePage implements OnInit {
   ngOnInit() {
 
   	this.service.changeData(this.usuario);
+    this.reloj();
 
   	if (localStorage.getItem('excluidos') && localStorage.getItem('excluidos') != undefined) {
   		
@@ -119,14 +124,20 @@ export class CombinazionePage implements OnInit {
   	}
 
   	if (a > 0) {
-  		return this.getRandomArbitrary(min,max,n);
+
+  		return this.getRandomArbitrary(min, max, n);
+
   	}else{
+
   		return number;
+
   	}
 
   }
 
   random(){
+
+    alert('Ejecutando 2...');
 
     if (this.combinacion.length > 0) {
       
@@ -162,12 +173,12 @@ export class CombinazionePage implements OnInit {
 
     let final = this.ultimos.length;
 
-    if (this.combinacion.length > 0) {
+    if (this.combinacion.length > 0 && final > 0) {
       
       this.ultimos[final - 1] = this.combinacion;
       this.fechas[final - 1] = this.hoy;
 
-    }else{
+    }else if(this.combinacion.length == 0 && final > 0) {
 
       this.ultimos.push(this.combinacion);
       this.fechas.push(this.hoy);
@@ -181,5 +192,60 @@ export class CombinazionePage implements OnInit {
 		localStorage.setItem('horaClick', moment().format('YYYY-MM-DD HH:mm:ss'));
 
 	}
+
+  reloj(){
+
+    let mostrar_hora = () => {
+
+      let mins8 = moment(moment().format('YYYY-MM-DD 19:06'));
+      let now;
+
+      let restante = mins8.diff(moment(),'seconds');
+
+      if (restante < 0) {
+
+        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 19:06'));
+
+      }else{
+
+        now = moment(moment().format('YYYY-MM-DD 19:06'));
+
+      }
+      
+      let seconds = now.diff(moment(),'seconds');
+
+      this.hour = Math.floor(Math.abs(seconds) / 3600);
+
+      this.hour = (this.hour < 10)? '0' + this.hour : this.hour;
+
+      this.minute = Math.floor((Math.abs(seconds) / 60) % 60);
+
+      this.minute = (this.minute < 10)? '0' + this.minute : this.minute;
+
+      this.second = Math.abs(seconds) % 60;
+
+      this.second = (this.second < 10)? '0' + this.second : this.second;
+
+      this.tiempo = [this.hour, this.minute, this.second];
+
+      this.service.reloj(this.tiempo);
+
+      console.log(this.second);
+
+      if (this.hour == 0 && this.minute == 0 && this.second == 0) {
+
+        this.combinacion = [];
+        localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
+        alert('Ejecutando...');
+        this.random();
+        this.reloj();
+
+      }
+
+    }
+
+    let intervalo = setInterval(mostrar_hora, 1000);
+
+  }
 
 }

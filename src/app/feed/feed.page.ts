@@ -70,9 +70,8 @@ export class FeedPage implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-  reloj()
-  {
-    console.log('reloj');
+  reloj(){
+    //console.log('reloj');
     function CountdownTracker(label, value){
 
       var el = document.createElement('span');
@@ -171,22 +170,22 @@ export class FeedPage implements OnInit {
         }
       }
 
-      setTimeout(updateClock,500);
+      setTimeout(updateClock, 500);
     }
 
-    let mins8 = moment(moment().format('YYYY-MM-DD 20:00'));
+    let mins8 = moment(moment().format('YYYY-MM-DD 19:05'));
     let now;
 
     let restante = mins8.diff(moment(),'seconds');
 
     if (restante < 0) {
-      now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 20:00'));
+      now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 19:05'));
     }else{
-      now = moment(moment().format('YYYY-MM-DD 20:00'));
+      now = moment(moment().format('YYYY-MM-DD 19:05'));
     }
 
     var deadline = new Date(Date.parse(now));
-    var c = new Clock(deadline, function(){ alert('countdown complete') });
+    var c = new Clock(deadline, function(){ this.reloj()/*alert('countdown complete')*/ });
     document.getElementById('tiempo').appendChild(c.el);
 
   }

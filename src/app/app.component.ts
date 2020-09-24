@@ -54,7 +54,10 @@ export class AppComponent {
 
   logout() {
 
-    localStorage.clear();
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('correo');
+    localStorage.removeItem('excluidos');
+    localStorage.removeItem('incluidos');
     this.nav.navigateRoot('home');
 
   }
@@ -200,9 +203,9 @@ export class AppComponent {
         localStorage.removeItem('e200n');
         localStorage.removeItem('ganadores');
 
-        this.reloj();
         this.scrapping3();
         this.scrapping();
+        this.reloj();
 
       }
 
