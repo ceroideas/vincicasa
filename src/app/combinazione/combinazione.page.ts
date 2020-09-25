@@ -173,15 +173,15 @@ export class CombinazionePage implements OnInit {
 
     let final = this.ultimos.length;
 
-    if (this.combinacion.length > 0 && final > 0) {
-      
-      this.ultimos[final - 1] = this.combinacion;
-      this.fechas[final - 1] = this.hoy;
-
-    }else if(this.combinacion.length == 0 && final > 0) {
+    if(this.combinacion.length == 0 && this.contador == 0){
 
       this.ultimos.push(this.combinacion);
       this.fechas.push(this.hoy);
+
+    }else if (this.combinacion.length > 0 && final > 0 && this.contador == 1) {
+      
+      this.ultimos[final - 1] = this.combinacion;
+      this.fechas[final - 1] = this.hoy;
 
     }
 
@@ -235,6 +235,7 @@ export class CombinazionePage implements OnInit {
       if (this.hour == 0 && this.minute == 0 && this.second == 0) {
 
         this.combinacion = [];
+
         localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
         alert('Ejecutando...');
         this.random();
