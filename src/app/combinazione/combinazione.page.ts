@@ -180,7 +180,7 @@ export class CombinazionePage implements OnInit {
       /*this.ultimos.splice(0, 1, this.combinacion);
       this.fechas.splice(0, 1, this.fechas);*/
 
-    if (this.combinacion == 0) {
+    if (this.contador == 0) {
       
       this.ultimos.push(this.combinacion);
       this.fechas.push(this.fechas);
