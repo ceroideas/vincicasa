@@ -175,13 +175,14 @@ export class CombinazionePage implements OnInit {
 
     let final = this.ultimos.length;
 
-    if (this.combinacion.length > 0 && final > 0 && this.contador == 1) {
+    /*if (this.combinacion.length > 0 && final > 0 && this.contador == 1) {*/
       
-      this.ultimos.splice(0, 1, this.combinacion);
-      this.fechas.splice(0, 1, this.fechas);
-      
-      this.ultimos = this.ultimos.reverse();
-      this.fechas = this.fechas.reverse();
+      /*this.ultimos.splice(0, 1, this.combinacion);
+      this.fechas.splice(0, 1, this.fechas);*/
+      this.ultimos.push(this.combinacion);
+      this.fechas.push(this.fechas);
+      /*this.ultimos = this.ultimos.reverse();
+      this.fechas = this.fechas.reverse();*/
       /*this.ultimos = this.ultimos.reverse();
       this.fechas = this.fechas.reverse();*/
       /*this.ultimos = this.ultimos.unshift(this.combinacion);
@@ -189,18 +190,19 @@ export class CombinazionePage implements OnInit {
       /*this.ultimos[0] = this.combinacion;
       this.fechas[0] = this.hoy;*/
 
-    }else{
+   /* }else{
 
       /*this.ultimos = this.ultimos.unshift(this.combinacion);
       this.hoy = this.ultimos.unshift(this.hoy);*/
-      this.ultimos.splice(0, 0, this.combinacion);
-      this.fechas.splice(0, 0, this.hoy);
+      /*this.ultimos.splice(final, 0, this.combinacion);
+      this.fechas.splice(final, 0, this.hoy);*/
       /*this.ultimos.push(this.combinacion);
       this.fechas.push(this.hoy);
       this.ultimos = this.ultimos.reverse();
       this.fechas = this.fechas.reverse();*/
 
-    }
+
+  /*  }*/
 
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 		localStorage.setItem('ultimos', JSON.stringify(this.ultimos.reverse()));
