@@ -185,7 +185,7 @@ export class FeedPage implements OnInit {
     }
 
     var deadline = new Date(Date.parse(now));
-    var c = new Clock(deadline, function(){ this.reloj()/*alert('countdown complete')*/ });
+    var c = new Clock(deadline, function(){/*this.reloj()alert('countdown complete')*/ });
     document.getElementById('tiempo').appendChild(c.el);
 
   }

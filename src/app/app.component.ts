@@ -86,24 +86,28 @@ export class AppComponent {
 
     }else{
 
-      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las 20:00 hasta hoy a las 20:00
+      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las 19:05 hasta hoy a las 19:05
 
         let d = pm8.diff(horaClick,'seconds')/3600;
 
         if (d > 24) {
           console.log('borrar contador')
           localStorage.removeItem('contador');
+        }else{
+          // localStorage.setItem('contador','1');
         }
         
         console.log('desde el dia anterior', d);
         
-      }else{ // en caso contrario se cuenta a partir de hoy a las 20:00 hasta mañana a las 20:00
+      }else{ // en caso contrario se cuenta a partir de hoy a las 19:05 hasta mañana a las 19:05
 
         let d = pm8p1.diff(horaClick,'seconds')/3600;
 
         if (d > 24) {
           console.log('borrar contador')
           localStorage.removeItem('contador');
+        }else{
+          // localStorage.setItem('contador','1');
         }
 
         console.log('hasta el dia siguiente', d);
@@ -121,7 +125,7 @@ export class AppComponent {
 
       let restante = mins8.diff(moment(),'seconds');
 
-      if (restante < 0) {
+      if (restante <= 0) {
 
         now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 19:05'));
 
@@ -132,6 +136,8 @@ export class AppComponent {
       }
       
       let seconds = now.diff(moment(),'seconds');
+
+      // console.log(seconds);
 
       this.hour = Math.floor(Math.abs(seconds) / 3600);
 
@@ -149,7 +155,11 @@ export class AppComponent {
 
       this.service.reloj(this.tiempo);
 
-      if (this.hour == 0 && this.minute == 0 && this.second == 0) {
+      // console.log(this.second, seconds);
+
+      // if (this.hour == 0 && this.minute == 0 && this.second == 0) {
+      if (seconds == 86400) {
+
 
         console.log('El sorteo ha finalizado');
 
@@ -172,9 +182,9 @@ export class AppComponent {
 
           const json = {
 
-            "correo": localStorage.getItem('correo'),
-            "usuario": localStorage.getItem('usuario'),
-            "puntos": puntos.toString()
+            correo: localStorage.getItem('correo'),
+            usuario: localStorage.getItem('usuario'),
+            puntos: puntos.toString()
 
           };
 
@@ -188,28 +198,29 @@ export class AppComponent {
 
         }
 
-        localStorage.removeItem('numeros');
-        localStorage.removeItem('fechas');
-        localStorage.removeItem('dias');
-        localStorage.removeItem('ultimos');
-        localStorage.removeItem('contador');
-        localStorage.removeItem('infrecuentes');
-        localStorage.removeItem('infrecuencia');
-        localStorage.removeItem('frecuentes');
-        localStorage.removeItem('frecuencia');
-        localStorage.removeItem('combinacion');
-        localStorage.removeItem('e200');
-        localStorage.removeItem('e200f');
-        localStorage.removeItem('e200n');
-        localStorage.removeItem('ganadores');
+        // localStorage.removeItem('numeros');
+        // localStorage.removeItem('fechas');
+        // localStorage.removeItem('dias');
+        // localStorage.removeItem('ultimos');
+        // localStorage.removeItem('contador');
+        // localStorage.removeItem('infrecuentes');
+        // localStorage.removeItem('infrecuencia');
+        // localStorage.removeItem('frecuentes');
+        // localStorage.removeItem('frecuencia');
+        // localStorage.removeItem('combinacion');
+        // localStorage.removeItem('e200');
+        // localStorage.removeItem('e200f');
+        // localStorage.removeItem('e200n');
+        // localStorage.removeItem('ganadores');
 
         this.scrapping3();
         this.scrapping();
+        clearInterval(intervalo);
         this.reloj();
 
       }
 
-  }
+    }
 
     let intervalo = setInterval(mostrar_hora, 1000);
 

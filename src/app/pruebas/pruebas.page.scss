@@ -1,0 +1,33 @@
+#tools{
+	--background: #FF8633;
+	--color: white;
+}
+#contenedor{
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	height: 100%;
+	width: 100%;
+}
+#contenedor img{
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	height: 50%;
+	width: 100%;
+}
+form{
+	background: #FF8633;
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	height: 50%;
+	width: 100%;
+}
+#n1, #n2, #n3, #n4, #n5{
+	margin-top: 80%;
+	--background: transparent;
+}
+form #prueba{
+	margin-top: 30%;
+}

@@ -75,6 +75,9 @@
     "cordova-plugin-ionic-webview": "^4.0.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5"
   },
+  "browser": {
+    "crypto": false
+  },
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
