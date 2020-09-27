@@ -175,11 +175,6 @@ export class CombinazionePage implements OnInit {
 
     let final = this.ultimos.length;
 
-    /*if (this.combinacion.length > 0 && final > 0 && this.contador == 1) {*/
-      
-      /*this.ultimos.splice(0, 1, this.combinacion);
-      this.fechas.splice(0, 1, this.fechas);*/
-
     if (this.contador == 0) {
       
       this.ultimos.push(this.combinacion);
@@ -188,31 +183,9 @@ export class CombinazionePage implements OnInit {
     }else{
 
       this.ultimos[final] = this.combinacion;
+      this.fechas = this.hoy;
 
     }
-    
-      /*this.ultimos = this.ultimos.reverse();
-      this.fechas = this.fechas.reverse();*/
-      /*this.ultimos = this.ultimos.reverse();
-      this.fechas = this.fechas.reverse();*/
-      /*this.ultimos = this.ultimos.unshift(this.combinacion);
-      this.hoy = this.ultimos.unshift(this.hoy);*/
-      /*this.ultimos[0] = this.combinacion;
-      this.fechas[0] = this.hoy;*/
-
-   /* }else{
-
-      /*this.ultimos = this.ultimos.unshift(this.combinacion);
-      this.hoy = this.ultimos.unshift(this.hoy);*/
-      /*this.ultimos.splice(final, 0, this.combinacion);
-      this.fechas.splice(final, 0, this.hoy);*/
-      /*this.ultimos.push(this.combinacion);
-      this.fechas.push(this.hoy);
-      this.ultimos = this.ultimos.reverse();
-      this.fechas = this.fechas.reverse();*/
-
-
-  /*  }*/
 
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 		localStorage.setItem('ultimos', JSON.stringify(this.ultimos.reverse()));
@@ -259,14 +232,12 @@ export class CombinazionePage implements OnInit {
 
       this.service.reloj(this.tiempo);
 
-      console.log(this.second);
-
       if (this.hour == 0 && this.minute == 0 && this.second == 0) {
 
         this.combinacion = [];
 
         localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
-        //alert('Ejecutando...');
+        
         this.random();
         this.reloj();
 
