@@ -183,7 +183,7 @@ export class CombinazionePage implements OnInit {
     if (this.contador == 0) {
       
       this.ultimos.push(this.combinacion);
-      this.fechas.push(this.fechas);
+      this.fechas.push(this.hoy);
 
     }else{
 
