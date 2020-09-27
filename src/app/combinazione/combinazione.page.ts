@@ -179,8 +179,18 @@ export class CombinazionePage implements OnInit {
       
       /*this.ultimos.splice(0, 1, this.combinacion);
       this.fechas.splice(0, 1, this.fechas);*/
+
+    if (this.combinacion == 0) {
+      
       this.ultimos.push(this.combinacion);
       this.fechas.push(this.fechas);
+
+    }else{
+
+      this.ultimos[final] = this.combinacion;
+
+    }
+    
       /*this.ultimos = this.ultimos.reverse();
       this.fechas = this.fechas.reverse();*/
       /*this.ultimos = this.ultimos.reverse();
@@ -256,7 +266,7 @@ export class CombinazionePage implements OnInit {
         this.combinacion = [];
 
         localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
-        alert('Ejecutando...');
+        //alert('Ejecutando...');
         this.random();
         this.reloj();
 
