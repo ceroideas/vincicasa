@@ -30,7 +30,7 @@ export class AppComponent {
 
       this.deeplinks.route({
 
-       '/restaurar/cambio': CambioPage
+       '/cambio': CambioPage
 
      }).subscribe(match => {
        
