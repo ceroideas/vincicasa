@@ -10,6 +10,7 @@ import { ComunicacionService } from '../comunicacion.service';
 export class MnumerosPage implements OnInit {
 
   numeros: any = [1, 8, 15, 22, 29, 36, 43, 50];
+  numeros1: any = [1, 8, 15, 22, 29, 36, 43, 50];
   numeros2: any = [2, 9, 16, 23, 30, 37, 44, 51];
   numeros3: any = [3, 10, 17, 24, 31, 38, 45, 52];
   numeros4: any = [4, 11, 18, 25, 32, 39, 46, 53];
@@ -95,12 +96,47 @@ export class MnumerosPage implements OnInit {
       this.colores = null;
     },5000)
 
-    console.log(this.combinacion);
+    // console.log(this.combinacion);
     const combinazione = this.combinacion.sort((a, b) => a - b);
     const semaforo = document.getElementById("rvalidacion");
     const colores = ['green', 'yellow', 'red'];
     const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
     let nprimos = 0;
+
+    let c:Boolean;
+    let coincidencias = [];
+
+    for (var i = 0; i < combinazione.length; i++) {
+      
+      for (var j = 1; j <= 7; j++) {
+
+        let cn = this['numeros'+j].findIndex(x=>x==combinazione[i]);
+        if (cn != -1) {
+           coincidencias.push(cn);
+        }
+
+      }
+
+    }
+
+    function checkIfArrayIsUnique(arr) {
+      var map = {}, i, size;
+
+      for (i = 0, size = arr.length; i < size; i++){
+          if (map[arr[i]]){
+              return false;
+          }
+
+          map[arr[i]] = true;
+      }
+
+      return true;
+    }
+
+    c = checkIfArrayIsUnique(coincidencias);
+
+    console.log(c);
+
 
     for (let i = 0; i <= combinazione.length; i++) {
 
@@ -116,16 +152,21 @@ export class MnumerosPage implements OnInit {
       }
     }
 
-    console.log(nprimos);
+
+    // console.log(nprimos);
 
     if (nprimos >= 4) {
-      return this.colores = colores[1];
+      if (c) {
+        return this.colores = colores[1];
+      }else{
+        return this.colores = colores[2];
+      }
+      // return this.colores = colores[1];
     }
 
     // regla 1
     let a = 0;
     let b = 0;
-    let c = 0;
     
     for (let i = 0; i < combinazione.length; i++) {
 
@@ -146,15 +187,22 @@ export class MnumerosPage implements OnInit {
     
     console.log(1, a, b);
 
-    if (a >= 3) {
-      return this.colores = colores[2];
+    if (a >= 2) {
+
+      if (b < 2) {
+        if (c) {
+          return this.colores = colores[1];
+        }else{
+          return this.colores = colores[2];
+        }
+      }
     }
-    if(a >= 2) {
-      return this.colores = colores[1];
-    }
-    if(a >= 2 || b >= 2) {
-      return this.colores = colores[1];
-    }
+    // if(a >= 2) {
+    //   return this.colores = colores[1];
+    // }
+    // if(a >= 2 || b >= 2) {
+    //   return this.colores = colores[1];
+    // }
     // regla 2
     
     for (let h = 2; h <= 13; h++) {
@@ -180,15 +228,22 @@ export class MnumerosPage implements OnInit {
 
       console.log(h, a, b);
       
-      if (a >= 3) {
-        return this.colores = colores[2];
+      if (a >= 2) {
+
+        if (b < 2) {
+          if (c) {
+            return this.colores = colores[1];
+          }else{
+            return this.colores = colores[2];
+          }
+        }
       }
-      if(a >= 2) {
-        return this.colores = colores[1];
-      }
-      if(a >= 2 || b >= 2) {
-        return this.colores = colores[1];
-      }
+      // if(a >= 2) {
+      //   return this.colores = colores[1];
+      // }
+      // if(a >= 2 || b >= 2) {
+      //   return this.colores = colores[1];
+      // }
       
     }
 

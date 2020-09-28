@@ -92,3 +92,8 @@
 		background-image: url('/assets/fondo-numero-azul-verde.png');
 	}
 }
+
+ion-footer:before {
+	content: "";
+	background: none !important;
+}

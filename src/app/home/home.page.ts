@@ -66,6 +66,8 @@ export class HomePage {
     await alert.present();
   }
   
+  
+
   registrarse(f: NgForm){
     if (this.condiciones == false || this.valor == false || this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined || this.formulario.sexo == undefined) {
       
@@ -88,6 +90,9 @@ export class HomePage {
 
           l.present();
           this.comunicacion.registros(jsono).subscribe((data:any) => {
+            
+            l.dismiss();
+
             if (data.respuesta == 'registrado') {
               
               this.alerta("L'utente esiste già");
@@ -101,18 +106,18 @@ export class HomePage {
             }
           }, Error => {
 
+            l.dismiss();
             this.error(Error);
 
           });
           
-          l.dismiss();
 
 
-          }, e => {
+          }/*, e => {
 
             e.dismiss();
 
-        });
+        }*/);
 
       }else{
 
@@ -143,6 +148,8 @@ export class HomePage {
         this.comunicacion.sesion(jsono).subscribe((data:any) => {
 
           const contrasenadec = CryptoJS.AES.decrypt(data.respuesta.trim(), this.contrasena.trim()).toString(CryptoJS.enc.Utf8);
+
+          l.dismiss();
           
           if(data.respuesta == 'nousuario'){
 
@@ -166,17 +173,19 @@ export class HomePage {
           
         }, Error => {
 
+            l.dismiss();
+
             this.error(Error);
 
         });
 
-        l.dismiss();
+        // l.dismiss();
 
-      }, e => {
+      }/*, e => {
 
           e.dismiss();
 
-      });
+      }*/);
       
     }
     

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController, NavController } from '@ionic/angular';
 import { ComunicacionService } from '../comunicacion.service';
 import * as moment from 'moment';
 
@@ -39,7 +40,7 @@ export class CombinazionePage implements OnInit {
 			'dicembre'];
 
 
-  constructor(private service: ComunicacionService) {
+  constructor(private service: ComunicacionService, public alert: AlertController, public nav: NavController) {
 
   	if (!this.contador || this.contador == undefined) {
   		this.contador = 0;
@@ -127,6 +128,16 @@ export class CombinazionePage implements OnInit {
   		localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
 
   	}
+
+    setTimeout(()=>{
+
+      if (localStorage.getItem('random')) {
+        localStorage.removeItem('random');
+        this.random();
+      }
+      
+    },1000)
+
 
   }
 
@@ -308,6 +319,24 @@ export class CombinazionePage implements OnInit {
     this.intervalo = null;
     this.intervalo = setInterval(mostrar_hora, 1000);
 
+  }
+
+  modifica()
+  {
+    this.alert.create({message:'Modifica combinazione', buttons: [
+    {
+      text:"Vuoi modificarlo manualmente?",
+      handler: ()=> {
+        this.random();
+      }
+    },{
+      text:"Vuoi cambiare le regole?",
+      handler: ()=> {
+        localStorage.setItem('no-menu-return-back','1');
+        this.nav.navigateRoot('selezionis');
+      }
+    }
+    ]}).then(a=>a.present())
   }
 
 }

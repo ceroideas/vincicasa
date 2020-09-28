@@ -8,7 +8,9 @@
 #grafico{
 	margin: auto;
 	font-size: 12px !important;
-	height: 80% !important;
+	// height: 80% !important;
+	width: 80% !important;
+	height: 900px !important;
 }
 #titulo{
 	text-align: center;
@@ -25,6 +27,15 @@
 }
 #estracciones{
 	border: 1px solid white;
-    width: 220px;
+    width: 250px;
+    text-align: center;
     margin: auto;
+    border-radius: 6px;
+}
+#side-left {
+	writing-mode: tb-rl;
+    transform: rotate(-180deg);
+    position: absolute;
+    margin-left: 4%;
+    margin-top: 60px;
 }

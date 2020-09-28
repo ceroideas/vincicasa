@@ -3,24 +3,24 @@
 		<ion-buttons slot="start">
 			<ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
     	</ion-buttons>
-    	<ion-title id="titulo">NUMERI PIÜ FREQUENTI</ion-title>
+    	<ion-title id="titulo">NUMERI PIÙ FREQUENTI</ion-title>
     </ion-toolbar>
     <div (click)="ordenar()" id="orden">
-    	<p>ORDINA PER NUMERO</p>
+    	<span>{{order}}</span>
     </div>
 	<div id="contenedor">
 		<ion-row class="numeros" *ngFor="let numero of numeros; let i = index">
 			<ion-col class="numero1">
 				<div class="c1">
-					<label>{{ numero }}</label>
+					<label>{{ numero.num }}</label>
 				</div>
-				<p>E'uscito per {{ frecuencia[i] }} Estrazioni</p>
+				<p>E'uscito per {{ numero.freq }} Estrazioni</p>
 			</ion-col>
 			<ion-col class="numero2">
 				<div class="c2">
-					<label>{{ numeros2[i] }}</label>
+					<label>{{ numeros2[i].num }}</label>
 				</div>
-				<p>E'uscito per {{ frecuencia2[i] }} Estrazioni</p>
+				<p>E'uscito per {{ numeros2[i].freq }} Estrazioni</p>
 			</ion-col>
 		</ion-row>
 	</div>
@@ -28,19 +28,20 @@
 <ion-footer>
 	<ion-tabs id="menufoot">
 	  <ion-tab-bar slot="bottom">
-	    <ion-tab-button routerLink="/frequenti" routerDirection="root" id="mb1">
-	      <ion-icon name="home"></ion-icon>
-	      <ion-label>PIÜ FREQUENTI</ion-label>
+	    <ion-tab-button routerLink="/frequenti" id="mb1">
+	      <!-- <ion-icon name="home"></ion-icon> -->
+	      <img src="assets/piu-frecuenti.png" alt="" style="width: 24px;">
+	      <ion-label style="margin-top: 6px; border-bottom: 2px solid gold">PIÜ FREQUENTI</ion-label>
 	    </ion-tab-button>
 
-	    <ion-tab-button routerLink="/retardati" routerDirection="root" id="mb2">
+	    <ion-tab-button routerLink="/retardati" id="mb2">
 	      <ion-icon src="../assets/bingo.svg"></ion-icon>
-	      <ion-label>NUMERI RETARDATARI</ion-label>
+	      <ion-label style="margin-top: 6px;">NUMERI RITARDATARI</ion-label>
 	    </ion-tab-button>
 
-	    <ion-tab-button routerLink="/estadisticas" routerDirection="root" id="mb3">
+	    <ion-tab-button routerLink="/estadisticas" id="mb3">
 	      <ion-icon src="../assets/statistics.svg"></ion-icon>
-	      <ion-label>ANALISI PRESENZE</ion-label>
+	      <ion-label style="margin-top: 6px;">ANALISI PRESENZE</ion-label>
 	    </ion-tab-button>
 	  </ion-tab-bar>
 	</ion-tabs>

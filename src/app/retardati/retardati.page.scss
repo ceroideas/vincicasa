@@ -58,21 +58,25 @@ p{
 	font-family: 'geometos';
 	font-size: 12px;
 	width: 100px;
+	top: 2px;
+	line-height: 1.5;
+    position: relative;
 }
 #orden{
 	background: white;
-    width: 220px;
+    width: fit-content;
     margin: auto;
-    height: 35px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    // height: 35px;
+    margin-top: 15px;
+	margin-bottom: 15px;
     display: flex;
-    p{
+    padding: 10px 16px;
+    span{
     	display: inline-block;
     	color: #09B7DA;
     	margin: auto;
     	text-align: center;
-    	font-size: 12px;
+    	font-size: 14px;
     	font-weight: bolder;
     }
     z-index: 101;

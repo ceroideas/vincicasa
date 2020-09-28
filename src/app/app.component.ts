@@ -7,6 +7,8 @@ import { ComunicacionService } from './comunicacion.service';
 import * as moment from 'moment';
 import { MenuController, AlertController } from '@ionic/angular';
 import { Numeros } from './numeros';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { CambioPage } from './recuperar/cambio/cambio.page';
 
 @Component({
   selector: 'app-root',
@@ -22,9 +24,23 @@ export class AppComponent {
   tiempo: any = [];
   numeros = new Numeros();
 
-  constructor(public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController) { 
+  constructor(public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController, private deeplinks: Deeplinks) { 
 
     this.menuCtrl.toggle(); 
+
+      this.deeplinks.route({
+
+       '/restaurar/cambio': CambioPage
+
+     }).subscribe(match => {
+       
+       console.log('Ruta encontrada', match);
+
+     }, nomatch => {
+     
+       console.error('Tengo un deeplink que no \' encontré', nomatch);
+
+   });
 
   }
 

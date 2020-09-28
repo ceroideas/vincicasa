@@ -405,3 +405,7 @@ ion-menu-button {
 ion-footer{
   height: 52px !important;
 }
+
+ion-select::part(icon) {
+ display: none !important;
+}

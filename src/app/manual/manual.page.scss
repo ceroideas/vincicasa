@@ -3,14 +3,21 @@
 } 
 #tutorial{
 	--text-align: center;
-	color: white;
-	margin-left: 30%;
-	font-family: 'geometos';
-	font-size: 14px;
+    color: white;
+    // margin-left: 30%;
+    font-family: "geometos";
+    font-size: 14px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    top: 18px;
 }
 #instrucciones{
 	width: 90%;
-	height: 450px;
+	height: auto;
 	background: white;
 	border-radius: 15px;
 	margin: auto;
@@ -45,5 +52,12 @@
 	}
 	#instrucciones{
 		font-size: 20px !important;
+		text-align: justify;
 	}
+}
+
+p {
+	font-family: arial;
+	text-align: justify;
+	font-size: 14px;
 }

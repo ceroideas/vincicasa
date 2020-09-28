@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-selezionis',
@@ -15,9 +16,43 @@ export class SelezionisPage implements OnInit {
   	"SEMPLIFICA LE VARIABILI - La combinazione viene data considerando un numero ridotto delle variabili."
   ];
 
-  constructor() { }
+  checked:any = [];
+
+  returnBack = false;
+
+  constructor(public nav: NavController) {
+    if (localStorage.getItem('no-menu-return-back')) {
+      this.returnBack = true;
+    }
+
+  }
 
   ngOnInit() {
+    if (localStorage.getItem('checks')) {
+      this.checked = JSON.parse(localStorage.getItem('checks'));
+    }
+  }
+
+  seleccionar(i)
+  {
+    let exists = this.checked.findIndex(x=>x==i);
+
+    if (exists === -1) {
+      this.checked.push(i)
+    }else{
+      this.checked.splice(exists,1);
+    }
+
+    console.log(this.checked);
+
+    localStorage.setItem('checks',JSON.stringify(this.checked));
+  }
+
+  goToCombinazione()
+  {
+    localStorage.removeItem('no-menu-return-back');
+    localStorage.setItem('random','1');
+    this.nav.navigateRoot('combinazione');
   }
 
 }

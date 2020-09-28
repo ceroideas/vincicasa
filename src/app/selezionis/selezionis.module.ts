@@ -8,11 +8,14 @@ import { SelezionisPageRoutingModule } from './selezionis-routing.module';
 
 import { SelezionisPage } from './selezionis.page';
 
+import { PipesModule } from '../pipes/pipes.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    PipesModule,
     SelezionisPageRoutingModule
   ],
   declarations: [SelezionisPage]

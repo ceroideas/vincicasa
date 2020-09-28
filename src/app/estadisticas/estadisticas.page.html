@@ -5,27 +5,37 @@
     	</ion-buttons>
     	<ion-title id="titulo">ANALISI PRESENZE</ion-title>
     </ion-toolbar>
-    <ion-select placeholder="ULTIME 30 ESTRAZIONI" name="estracciones" (ionChange)="calculos(estracciones)" [(ngModel)]="estracciones" id="estracciones">
-      <ion-select-option value="30">ULTIME 30 ESTRAZIONI</ion-select-option>
-      <ion-select-option value="60">ULTIME 60 ESTRAZIONI</ion-select-option>
+    <ion-select placeholder="ULTIME 50 ESTRAZIONI" name="estracciones" (ionChange)="calculos(estracciones)" [(ngModel)]="estracciones" id="estracciones">
+      <ion-select-option selected value="50">ULTIME 50 ESTRAZIONI</ion-select-option>
+      <ion-select-option value="100">ULTIME 100 ESTRAZIONI</ion-select-option>
     </ion-select>
-	<canvas id="grafico" width="400px"></canvas>
+
+    <span id="side-left">ELENCO NUMERI</span>
+
+    <span style="margin: 16px 15%;display: block;">FRECUENZA DI USCITA</span>
+
+	<canvas style="width: 80%; margin: auto;" id="grafico"></canvas>
+
+</ion-content>
+
+<ion-footer>
 	<ion-tabs id="menufoot">
 	  <ion-tab-bar slot="bottom">
 	    <ion-tab-button routerLink="/frequenti" id="mb1">
-	      <ion-icon name="home"></ion-icon>
-	      <ion-label>PIÜ FREQUENTI</ion-label>
+	      <!-- <ion-icon name="home"></ion-icon> -->
+	      <img src="assets/piu-frecuenti.png" alt="" style="width: 24px;">
+	      <ion-label style="margin-top: 6px;">PIÜ FREQUENTI</ion-label>
 	    </ion-tab-button>
 
 	    <ion-tab-button routerLink="/retardati" id="mb2">
 	      <ion-icon src="../assets/bingo.svg"></ion-icon>
-	      <ion-label>NUMERI RITARDATARI</ion-label>
+	      <ion-label style="margin-top: 6px;">NUMERI RITARDATARI</ion-label>
 	    </ion-tab-button>
 
 	    <ion-tab-button routerLink="/estadisticas" id="mb3">
 	      <ion-icon src="../assets/statistics.svg"></ion-icon>
-	      <ion-label>ANALISI PRESENZE</ion-label>
+	      <ion-label style="margin-top: 6px; border-bottom: 2px solid gold">ANALISI PRESENZE</ion-label>
 	    </ion-tab-button>
 	  </ion-tab-bar>
 	</ion-tabs>
-</ion-content>
+</ion-footer>

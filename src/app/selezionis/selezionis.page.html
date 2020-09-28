@@ -5,15 +5,18 @@
 	  	<ion-title id="titulo">SELEZIONA IL SISTEMA</ion-title>
 	  </ion-toolbar>
 	</ion-header>
+
 	<p id="as">Affinare il sistema</p>
-	<ion-row *ngFor="let t of checks" lines="none" class=filas>
+	<ion-row *ngFor="let t of checks; let i = index" lines="none" class=filas>
 		<ion-col>
-			<ion-item class="items" lines="none">
-				<ion-checkbox></ion-checkbox>
+			<ion-item class="items" lines="none" (click)="seleccionar(i)">
+				<ion-checkbox [checked]="i | verificar:checked:true"></ion-checkbox>
 				<p>{{ t }}</p>
 			</ion-item>
 		</ion-col>
 	</ion-row>
 	<p id="alerta">Fai clic su continua per selezionare i numeri</p>
-	<ion-button routerLink="/seleccion2" routerDirection="root" shape="round" id="continuar">CONTINUA</ion-button>
+
+	<ion-button *ngIf="returnBack" (click)="goToCombinazione()" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button>
+	<ion-button *ngIf="!returnBack" routerLink="/seleccion2" routerDirection="root" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button>
 </ion-content>

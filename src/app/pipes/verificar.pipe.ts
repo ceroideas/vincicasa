@@ -5,7 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class VerificarPipe implements PipeTransform {
 
-  transform(value: unknown, combinacion): unknown {
+  transform(value: unknown, combinacion, checks = false): unknown {
+  	if (checks) {
+  		return combinacion.findIndex(x=>x==value) != -1;
+  	}
     return combinacion.find(x => x == value);
   }
 

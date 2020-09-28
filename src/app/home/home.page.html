@@ -16,7 +16,7 @@
         <ion-row>
           <ion-col>
             <ion-item id="entrada2" lines="none">
-              <ion-input placeholder="MAIL" type="text" name="formulario.correo" [(ngModel)]="formulario.correo" autocomplete="off"></ion-input>
+              <ion-input placeholder="E-MAIL" type="text" name="formulario.correo" [(ngModel)]="formulario.correo" autocomplete="off"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -67,19 +67,20 @@
           </ion-col>
         </ion-row>
         
-        <ion-row style="width: 80%; margin: auto;">
+        <ion-row style="width: 95%; margin: auto;">
           
           <ion-col>
             <ion-list style="background: transparent;">
               <ion-item lines="none" style="--background: transparent;">
-                <ion-label style="--color: white; word-break: break-all; white-space: normal;">Ho letto ed accetto l’informativa privacy</ion-label>
-                <ion-checkbox slot="end" [(ngModel)]="valor" name="valor"></ion-checkbox>
+                <label style="color: white; font-size: 14px; white-space: normal; text-align: center; width: 100%;">Ho letto ed accetto <a href="https://google.com" style="color: lightblue" target="_blank">l’informativa privacy</a>
+                  <input type="checkbox" [(ngModel)]="valor" name="valor" style="position: relative; margin-left: 8px; top: 3px; width: 16px; height: 16px;">
+                </label>
               </ion-item>
-              <ion-item lines="none" style="--background: transparent;">
-                <ion-label style="--color: white; word-break: break-all; white-space: normal;">Ho letto ed accetto le condizioni d’uso</ion-label>
+              <!-- <ion-item lines="none" style="--background: transparent;">
+                <ion-label style="--color: white; font-size: 12px; white-space: normal;">Ho letto ed accetto le condizioni d’uso</ion-label>
 
                 <ion-checkbox slot="end" [(ngModel)]="condiciones" name="condiciones"></ion-checkbox>
-              </ion-item>
+              </ion-item> -->
             </ion-list>
           </ion-col>
 
@@ -106,7 +107,7 @@
       <ion-row>
         <ion-col>
           <ion-item id="entrada2" lines="none" style="margin-top: 0">
-            <ion-input placeholder="USER" [(ngModel)]="isesion.correo" name="isesion.correo" type="email" id="" autocomplete="off"></ion-input>
+            <ion-input placeholder="E-MAIL" [(ngModel)]="isesion.correo" name="isesion.correo" type="email" id="" autocomplete="off"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
