@@ -2,6 +2,8 @@
 	--background: #09B7DA;
 	--color: white;
 	display: flex;
+	font-family: 'geometos';
+	font-size: 11px;
 }
 #titulo{
 	font-family: 'geometos';
@@ -11,13 +13,21 @@
 	position: relative;
 	left: -7.5%;
 }
+.items{
+	--background: transparent;
+	--color: white;
+	font-size: 12px;
+}
+#as{
+	font-size: 12px;
+	display: block;
+	text-align: center;
+}
 .filas{
 	width: auto !important;
 	display: flex !important;
 	font-family: 'geometos';
 	font-size: 12px;
-	margin-bottom: 15px;
-	margin-top: 15px;
 
 	ion-col{
 		margin: auto;
