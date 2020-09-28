@@ -5,7 +5,7 @@ import * as CryptoJS from 'crypto-js';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../comunicacion.service';
 import { Router } from  '@angular/router';
-import { MenuController, NavController, AlertController } from  '@ionic/angular';
+import { MenuController, NavController, AlertController, LoadingController } from  '@ionic/angular';
 import * as moment from 'moment';
 
 @Component({
@@ -22,7 +22,7 @@ export class HomePage {
   valor = false;
   condiciones = false;
 
-  constructor(public nav: NavController, public alertController: AlertController, private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
+  constructor(public nav: NavController, public loading: LoadingController, public alertController: AlertController, private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
     this.menu.enable(false);
   }
 
@@ -83,22 +83,34 @@ export class HomePage {
           password: encryptp,
           sexo: this.formulario.sexo
         }
-        
-        this.comunicacion.registros(jsono).subscribe((data:any) => {
-          if (data.respuesta == 'registrado') {
-            
-            this.alerta("L'utente esiste già");
 
-          }else{
+        this.loading.create().then(l => {
 
-            localStorage.setItem('correo', this.formulario.correo);
-            localStorage.setItem('usuario', this.formulario.nombre);
-            this.router.navigateByUrl('/manual');
+          l.present();
+          this.comunicacion.registros(jsono).subscribe((data:any) => {
+            if (data.respuesta == 'registrado') {
+              
+              this.alerta("L'utente esiste già");
 
-          }
-        }, Error => {
+            }else{
 
-          this.error(Error);
+              localStorage.setItem('correo', this.formulario.correo);
+              localStorage.setItem('usuario', this.formulario.nombre);
+              this.router.navigateByUrl('/manual');
+
+            }
+          }, Error => {
+
+            this.error(Error);
+
+          });
+          
+          l.dismiss();
+
+
+          }, e => {
+
+            e.dismiss();
 
         });
 
@@ -123,35 +135,49 @@ export class HomePage {
         correo: this.isesion.correo,
         password: encryptp
       }
-      this.comunicacion.sesion(jsono).subscribe((data:any) => {
 
-        const contrasenadec = CryptoJS.AES.decrypt(data.respuesta.trim(), this.contrasena.trim()).toString(CryptoJS.enc.Utf8);
-        
-        if(data.respuesta == 'nousuario'){
+      this.loading.create().then(l => {
 
-          this.alerta("L'utente non esiste");
+        l.present();
 
-        }else{
+        this.comunicacion.sesion(jsono).subscribe((data:any) => {
 
-          if (contrasenadec === this.isesion.password) {
+          const contrasenadec = CryptoJS.AES.decrypt(data.respuesta.trim(), this.contrasena.trim()).toString(CryptoJS.enc.Utf8);
+          
+          if(data.respuesta == 'nousuario'){
 
-            localStorage.setItem('correo', this.isesion.correo);
-            localStorage.setItem('usuario', data.nombre);
-            this.router.navigateByUrl('/feed');
+            this.alerta("L'utente non esiste");
 
           }else{
+
+            if (contrasenadec === this.isesion.password) {
+
+              localStorage.setItem('correo', this.isesion.correo);
+              localStorage.setItem('usuario', data.nombre);
+              this.router.navigateByUrl('/feed');
+
+            }else{
+              
+              this.alerta('Le passwords non corrispondono');
             
-            this.alerta('Le passwords non corrispondono');
-          
+            }
+
           }
+          
+        }, Error => {
 
-        }
-        
-      }, Error => {
+            this.error(Error);
 
-          this.error(Error);
+        });
+
+        l.dismiss();
+
+      }, e => {
+
+          e.dismiss();
 
       });
+      
     }
     
   }
