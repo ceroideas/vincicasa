@@ -29,7 +29,7 @@ export class RecuperarPage implements OnInit {
     await alert.present();
   }
 
-  cambio(f: NgForm){
+  cambio(){
 
   	this.comunicacion.recuperar(this.correo).subscribe((data:any) => {
 

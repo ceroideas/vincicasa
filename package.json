@@ -56,7 +56,9 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "card.io.cordova.mobilesdk": "^2.1.0",
     "codelyzer": "^5.1.2",
+    "cordova-android": "^9.0.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^4.0.0",
@@ -75,9 +77,6 @@
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
   },
-  "browser": {
-    "crypto": false
-  },
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
@@ -86,7 +85,17 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
-    }
+      "cordova-plugin-ionic-keyboard": {},
+      "com.paypal.cordova.mobilesdk": {},
+      "ionic-plugin-deeplinks": {
+        "URL_SCHEME": "loteria",
+        "DEEPLINK_SCHEME": "https",
+        "DEEPLINK_HOST": "ceroideas.es",
+        "ANDROID_PATH_PREFIX": "/"
+      }
+    },
+    "platforms": [
+      "android"
+    ]
   }
 }

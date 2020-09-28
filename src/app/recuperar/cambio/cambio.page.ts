@@ -33,7 +33,7 @@ export class CambioPage implements OnInit {
     await alert.present();
   }
 
-  cambio(F: NgForm){
+  cambio(){
 
     const encryptp = CryptoJS.AES.encrypt(this.contrasena, this.contrasenac).toString();
 
