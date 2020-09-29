@@ -30,9 +30,11 @@ export class AppComponent {
 
       this.deeplinks.route({
 
-       '/cambio': CambioPage
+       '/recuperar': CambioPage
 
      }).subscribe(match => {
+
+       this.nav.navigateForward('/recuperar/cambio');
        
        console.log('Ruta encontrada', match);
 

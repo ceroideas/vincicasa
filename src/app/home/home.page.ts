@@ -69,7 +69,7 @@ export class HomePage {
   
 
   registrarse(f: NgForm){
-    if (this.condiciones == false || this.valor == false || this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined || this.formulario.sexo == undefined) {
+    if (/*this.condiciones == false || */this.valor == false || this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined || this.formulario.sexo == undefined) {
       
       this.alerta('tutti i campi sono obbligatori');
 

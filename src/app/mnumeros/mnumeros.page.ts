@@ -103,37 +103,18 @@ export class MnumerosPage implements OnInit {
     const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
     let nprimos = 0;
 
-    let c:Boolean;
+    let c = 0;
     let coincidencias = [];
 
-    for (var i = 0; i < combinazione.length; i++) {
-      
-      for (var j = 1; j <= 7; j++) {
+    for (let i = 0; i < combinazione.length; i++) {
 
-        let cn = this['numeros'+j].findIndex(x=>x==combinazione[i]);
-        if (cn != -1) {
-           coincidencias.push(cn);
+      if (combinazione[i+1] !== undefined) {
+
+        if (combinazione[i]+1 == combinazione[i+1]) {
+          c++;
         }
-
       }
-
     }
-
-    function checkIfArrayIsUnique(arr) {
-      var map = {}, i, size;
-
-      for (i = 0, size = arr.length; i < size; i++){
-          if (map[arr[i]]){
-              return false;
-          }
-
-          map[arr[i]] = true;
-      }
-
-      return true;
-    }
-
-    c = checkIfArrayIsUnique(coincidencias);
 
     console.log(c);
 
@@ -152,16 +133,10 @@ export class MnumerosPage implements OnInit {
       }
     }
 
-
     // console.log(nprimos);
 
     if (nprimos >= 4) {
-      if (c) {
         return this.colores = colores[1];
-      }else{
-        return this.colores = colores[2];
-      }
-      // return this.colores = colores[1];
     }
 
     // regla 1
@@ -189,25 +164,25 @@ export class MnumerosPage implements OnInit {
 
     if (a >= 2) {
 
-      if (b < 2) {
-        if (c) {
-          return this.colores = colores[1];
-        }else{
+      if (b >= a) {
+        if (c >= 1) {
           return this.colores = colores[2];
         }
+        return this.colores = colores[1];
+      }else{
+        if (c >= 1) {
+          return this.colores = colores[2];
+        }
+        return this.colores = colores[0];
       }
     }
-    // if(a >= 2) {
-    //   return this.colores = colores[1];
-    // }
-    // if(a >= 2 || b >= 2) {
-    //   return this.colores = colores[1];
-    // }
+
     // regla 2
     
     for (let h = 2; h <= 13; h++) {
       
       a = 0;
+      b = 0;
       
       for (let i = 0; i < combinazione.length; i++) {
 
@@ -220,7 +195,7 @@ export class MnumerosPage implements OnInit {
 
           }else{
 
-            b=0;
+            b = 0;
 
           }
         }
@@ -230,20 +205,18 @@ export class MnumerosPage implements OnInit {
       
       if (a >= 2) {
 
-        if (b < 2) {
-          if (c) {
-            return this.colores = colores[1];
-          }else{
+        if (b >= a) {
+          if (c >= 1) {
             return this.colores = colores[2];
           }
+          return this.colores = colores[1];
+        }else{
+          if (c >= 1) {
+            return this.colores = colores[2];
+          }
+          return this.colores = colores[0];
         }
       }
-      // if(a >= 2) {
-      //   return this.colores = colores[1];
-      // }
-      // if(a >= 2 || b >= 2) {
-      //   return this.colores = colores[1];
-      // }
       
     }
 
