@@ -22,6 +22,9 @@ export class CombinazionePage implements OnInit {
   second: any;
   tiempo: any = [];
 
+  
+  intervalo: any;
+
 	meses = ['gennaio',
 			'febbraio',
 			'marzo',
@@ -44,6 +47,8 @@ export class CombinazionePage implements OnInit {
 
   	this.hoy = this.hoy.format('DD') + ' ' + this.meses[ this.hoy.format('M')-1 ] + ' ' + this.hoy.format('YYYY');
 
+    // console.log(this.hoy)
+
   }
 
   ngOnInit() {
@@ -61,9 +66,35 @@ export class CombinazionePage implements OnInit {
 
   	}
 
+    if (localStorage.getItem('ufechas') && localStorage.getItem('ufechas') != undefined) {
+
+      this.fechas = JSON.parse(localStorage.getItem('ufechas'));
+
+      if (this.hoy != this.fechas[0]) {
+
+        this.contador = 0;
+        this.combinacion = [];
+
+        this.random();
+      }
+      //this.fechas = this.fechas.reverse();
+    
+    }else{
+
+      this.fechas = [];
+      localStorage.setItem('ufechas', JSON.stringify(this.fechas));
+
+    }
+
   	if (localStorage.getItem('combinacion') && localStorage.getItem('combinacion') != undefined) {
+
+      let fechas = JSON.parse(localStorage.getItem('ufechas'));
   		
-  		this.combinacion = JSON.parse(localStorage.getItem('combinacion'));
+      if (fechas.findIndex(x=>x==this.hoy) == -1) {
+        this.random();
+      }else{
+  		  this.combinacion = JSON.parse(localStorage.getItem('combinacion'));
+      }
   	
   	}else{
   		
@@ -79,18 +110,6 @@ export class CombinazionePage implements OnInit {
   	}else{
 
   		localStorage.setItem('incluidos', JSON.stringify(this.incluir));
-
-  	}
-
-  	if (localStorage.getItem('ufechas') && localStorage.getItem('ufechas') != undefined) {
-
-  		this.fechas = JSON.parse(localStorage.getItem('ufechas'));
-      //this.fechas = this.fechas.reverse();
-  	
-  	}else{
-
-  		this.fechas = [];
-  		localStorage.setItem('ufechas', JSON.stringify(this.fechas));
 
   	}
 
@@ -139,15 +158,17 @@ export class CombinazionePage implements OnInit {
 
   random(){
 
-    alert('Ejecutando 2...');
+    this.fechas = this.fechas.reverse();
+    let ultimos = JSON.parse(localStorage.getItem('ultimos')).reverse();
+    // this.ultimos = this.ultimos.reverse();
 
-    if (this.combinacion.length > 0) {
+    if (this.combinacion.length == 0) {
       
-      this.contador++;
+      this.contador = 0;
     
     }else{
       
-      this.contador = 0;
+      this.contador = 1;
 
     }
 
@@ -160,38 +181,45 @@ export class CombinazionePage implements OnInit {
 			}
 		}
 
+    console.log(this.combinacion);
+
 		for (var i = 0; i < (5 - this.incluir.length); i++) {	
 			this.combinacion.push( this.getRandomArbitrary(1, 55, this.combinacion, this.excluir) );
 		}
 
 		this.combinacion = this.combinacion.sort((a,b)=> a - b);
 
-		if (this.ultimos.length == 3 && this.fechas.length == 3) {
+    let final = ultimos.length;
 
-			this.fechas.shift();
-			this.ultimos.shift();
+    if (this.contador == 1) {
 
-		}
-
-    let final = this.ultimos.length;
-
-    if (this.contador == 0) {
-      
-      this.ultimos.push(this.combinacion);
-      this.fechas.push(this.hoy);
+      console.log(1)
+      ultimos[final - 1] = this.combinacion;
+      this.fechas[final - 1] = this.hoy;
 
     }else{
 
-      this.ultimos[final] = this.combinacion;
-      this.fechas = this.hoy;
+      console.log(2)
+
+      ultimos.push(this.combinacion);
+      this.fechas.push(this.hoy);
 
     }
 
+    if (ultimos.length == 4 && this.fechas.length == 4) {
+
+      this.fechas.shift();
+      ultimos.shift();
+
+    }
+
+    localStorage.setItem('ultimos', JSON.stringify(ultimos.reverse()));
+    localStorage.setItem('ufechas', JSON.stringify(this.fechas.reverse()));
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
-		localStorage.setItem('ultimos', JSON.stringify(this.ultimos.reverse()));
-		localStorage.setItem('ufechas', JSON.stringify(this.fechas.reverse()));
 		localStorage.setItem('contador', JSON.stringify(this.contador));
 		localStorage.setItem('horaClick', moment().format('YYYY-MM-DD HH:mm:ss'));
+    
+    this.ultimos = ultimos;
 
 	}
 
@@ -239,13 +267,14 @@ export class CombinazionePage implements OnInit {
         localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
         
         this.random();
-        this.reloj();
+        clearInterval(this.intervalo);
 
       }
 
     }
 
-    let intervalo = setInterval(mostrar_hora, 1000);
+    this.intervalo = null;
+    this.intervalo = setInterval(mostrar_hora, 1000);
 
   }
 
