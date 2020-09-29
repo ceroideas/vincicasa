@@ -103,7 +103,7 @@ export class MnumerosPage implements OnInit {
     const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
     let nprimos = 0;
 
-    let c = 0;
+    let seguidos = 0;
     let coincidencias = [];
 
     for (let i = 0; i < combinazione.length; i++) {
@@ -111,12 +111,12 @@ export class MnumerosPage implements OnInit {
       if (combinazione[i+1] !== undefined) {
 
         if (combinazione[i]+1 == combinazione[i+1]) {
-          c++;
+          seguidos++;
         }
       }
     }
 
-    console.log(c);
+    console.log(seguidos);
 
 
     for (let i = 0; i <= combinazione.length; i++) {
@@ -135,54 +135,20 @@ export class MnumerosPage implements OnInit {
 
     // console.log(nprimos);
 
-    if (nprimos >= 4) {
-        return this.colores = colores[1];
+    if (nprimos == 5 || seguidos == 3) {
+      return this.colores = colores[2];
+    }
+
+    if (nprimos == 4 || seguidos == 2) {
+      return this.colores = colores[1];
     }
 
     // regla 1
     let a = 0;
-    let b = 0;
     
-    for (let i = 0; i < combinazione.length; i++) {
-
-      if (combinazione[i+1] !== undefined) {
-
-        if (combinazione[i]+1 == combinazione[i+1]) {
-
-          a++;
-          b++;
-
-        }else{
-
-          b = 0;
-
-        }
-      }
-    }
-    
-    console.log(1, a, b);
-
-    if (a >= 2) {
-
-      if (b >= a) {
-        if (c >= 1) {
-          return this.colores = colores[2];
-        }
-        return this.colores = colores[1];
-      }else{
-        if (c >= 1) {
-          return this.colores = colores[2];
-        }
-        return this.colores = colores[0];
-      }
-    }
-
-    // regla 2
-    
-    for (let h = 2; h <= 13; h++) {
+    for (let h = 1; h <= 13; h++) {
       
       a = 0;
-      b = 0;
       
       for (let i = 0; i < combinazione.length; i++) {
 
@@ -191,36 +157,24 @@ export class MnumerosPage implements OnInit {
           if (combinazione[i]+h == combinazione[i + 1]) {
 
             a++;
-            b++;
-
-          }else{
-
-            b = 0;
 
           }
         }
       }
 
-      console.log(h, a, b);
+      console.log(h, a);
       
-      if (a >= 2) {
-
-        if (b >= a) {
-          if (c >= 1) {
-            return this.colores = colores[2];
-          }
-          return this.colores = colores[1];
-        }else{
-          if (c >= 1) {
-            return this.colores = colores[2];
-          }
-          return this.colores = colores[0];
+      if (a >= 3) {
+        return this.colores = colores[2];
+      }else if(a >= 2){
+        if (seguidos > 0) {
+          return this.colores = colores[2];
         }
       }
       
     }
 
-    this.colores = colores[0];
+    return this.colores = colores[0];
 
   }
 
