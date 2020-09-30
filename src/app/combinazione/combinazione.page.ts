@@ -159,7 +159,10 @@ export class CombinazionePage implements OnInit {
   random(){
 
     this.fechas = this.fechas.reverse();
-    let ultimos = JSON.parse(localStorage.getItem('ultimos')).reverse();
+    let ultimos = [];
+    if (localStorage.getItem('ultimos')) {
+      ultimos = JSON.parse(localStorage.getItem('ultimos')).reverse();
+    }
     // this.ultimos = this.ultimos.reverse();
 
     if (this.combinacion.length == 0) {
@@ -218,7 +221,7 @@ export class CombinazionePage implements OnInit {
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 		localStorage.setItem('contador', JSON.stringify(this.contador));
 		localStorage.setItem('horaClick', moment().format('YYYY-MM-DD HH:mm:ss'));
-    
+
     this.ultimos = ultimos;
 
 	}
@@ -241,7 +244,8 @@ export class CombinazionePage implements OnInit {
         now = moment(moment().format('YYYY-MM-DD 19:06'));
 
       }
-      
+
+
       let seconds = now.diff(moment(),'seconds');
 
       this.hour = Math.floor(Math.abs(seconds) / 3600);
@@ -260,6 +264,8 @@ export class CombinazionePage implements OnInit {
 
       this.service.reloj(this.tiempo);
 
+      // console.log(this.second);
+
       if (this.hour == 0 && this.minute == 0 && this.second == 0) {
 
         this.combinacion = [];
@@ -267,7 +273,8 @@ export class CombinazionePage implements OnInit {
         localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
         
         this.random();
-        clearInterval(this.intervalo);
+        console.log('rein');
+        //clearInterval(this.intervalo);
 
       }
 
