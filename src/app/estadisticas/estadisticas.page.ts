@@ -27,7 +27,11 @@ export class EstadisticasPage implements OnInit {
   }
 
   abrir(){
-    document.getElementById("estracciones").style.display = "block";
+    if (document.getElementById("estracciones").style.display == 'none') {
+      document.getElementById("estracciones").style.display = "block";
+    }else{
+      document.getElementById("estracciones").style.display = 'none';
+    }
   }
 
   cerrar(){
@@ -82,7 +86,9 @@ export class EstadisticasPage implements OnInit {
     for (let i = 1; i <= 55; ++i) {
 
       if (i <= 55) {
+
         array.push(i.toString());
+
       }
 
     }
@@ -131,6 +137,8 @@ export class EstadisticasPage implements OnInit {
                         }
                     }],
                     xAxes: [{
+                        labels: ["0.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "10.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "20.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "30.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "40.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "50.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "50+"],
+                        type: 'category',
                         position: "top",
                         ticks:{
                           fontColor: 'white',

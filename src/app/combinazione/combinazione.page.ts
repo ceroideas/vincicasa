@@ -323,14 +323,14 @@ export class CombinazionePage implements OnInit {
 
   modifica()
   {
-    this.alert.create({message:'Modifica combinazione', buttons: [
+    this.alert.create({header:'Modifica combinazione',message:'Vuoi cambiare le regole?', buttons: [
     {
-      text:"Vuoi modificarlo manualmente?",
+      text:"Con il sistema attuale",
       handler: ()=> {
         this.random();
       }
     },{
-      text:"Vuoi cambiare le regole?",
+      text:"Con nuove impostazioni del sistema",
       handler: ()=> {
         localStorage.setItem('no-menu-return-back','1');
         this.nav.navigateRoot('selezionis');

@@ -104,7 +104,8 @@
 			<ion-button shape="round" id="verifica" (click)="espalda()">RICOMINCIA</ion-button>
 		</ion-col>
 		<ion-col>
-			<ion-button shape="round" id="verifica" (click)="guardar()">SALVA</ion-button>
+			<ion-button *ngIf="returnBack" (click)="goToCombinazione()" shape="round" id="verifica">SALVA</ion-button>
+			<ion-button *ngIf="!returnBack" shape="round" id="verifica" (click)="guardar()">SALVA</ion-button>
 		</ion-col>
 	</ion-row>
 </ion-content>

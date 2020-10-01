@@ -9,19 +9,21 @@
     	<span>{{order}}</span>
     </div>
 	<div id="contenedor">
-		<ion-row class="numeros" *ngFor="let numero of numeros; let i = index">
-			<ion-col class="numero1">
-				<div class="c1">
-					<label>{{ numero.num }}</label>
+		<ion-row class="numeros">
+			<ion-col size="6" class="numero1" *ngFor="let numero of numeros; let i = index">
+				<div class="interior">
+					<div class="c1">
+						<label>{{ numero.num }}</label>
+					</div>
+					<p>E'uscito per <br> {{ numero.freq }} Estrazioni</p>
 				</div>
-				<p>E'uscito per {{ numero.freq }} Estrazioni</p>
 			</ion-col>
-			<ion-col class="numero2">
+			<!-- <ion-col class="numero2" *ngIf="numeros2[i]">
 				<div class="c2">
 					<label>{{ numeros2[i].num }}</label>
 				</div>
-				<p>E'uscito per {{ numeros2[i].freq }} Estrazioni</p>
-			</ion-col>
+				<p>E'uscito per <br> {{ numeros2[i].freq }} Estrazioni</p>
+			</ion-col> -->
 		</ion-row>
 	</div>
 </ion-content>

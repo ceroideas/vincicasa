@@ -18,14 +18,7 @@ export class SelezionisPage implements OnInit {
 
   checked:any = [];
 
-  returnBack = false;
-
-  constructor(public nav: NavController) {
-    if (localStorage.getItem('no-menu-return-back')) {
-      this.returnBack = true;
-    }
-
-  }
+  constructor(public nav: NavController) { }
 
   ngOnInit() {
     if (localStorage.getItem('checks')) {
@@ -46,13 +39,6 @@ export class SelezionisPage implements OnInit {
     console.log(this.checked);
 
     localStorage.setItem('checks',JSON.stringify(this.checked));
-  }
-
-  goToCombinazione()
-  {
-    localStorage.removeItem('no-menu-return-back');
-    localStorage.setItem('random','1');
-    this.nav.navigateRoot('combinazione');
   }
 
 }

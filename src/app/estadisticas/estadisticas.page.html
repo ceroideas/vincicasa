@@ -9,9 +9,17 @@
     	<div (click)="abrir()" id="boton" style="--background: #09B7DA; text-align: center; border: 1px solid white; width: 60%; height: 7.5% !important; margin: auto; border-radius: 2.5px;">
     		<p style="margin: 5px;">ULTIME {{ estracciones }} ESTRAZIONI</p>
     	</div>
-	    <ion-list id="estracciones" style="background: #09B7DA; border: 1px solid white; border-radius: 0px; margin-top: 10px; display: none;">
-	      <ion-item (click)="calculos(50)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0;">ULTIME 50 ESTRAZIONI</ion-item>
-	      <ion-item (click)="calculos(100)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0;">ULTIME 100 ESTRAZIONI</ion-item>
+	    <ion-list class="ion-no-padding" id="estracciones" style="background: #09B7DA; border: 1px solid white; border-radius: 0px; margin-top: 10px; display: none;margin: auto;left: 0px;right: 0px;">
+	      <ion-item (click)="calculos(50)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0; text-align: center;">ULTIME 50 ESTRAZIONI
+	      	<span slot="end" style="margin: 0;">
+	      		<ion-icon *ngIf="estracciones == 50" style="color: #0f0" name="checkmark-outline"></ion-icon>
+	      	</span>
+	      </ion-item>
+	      <ion-item (click)="calculos(100)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0; text-align: center;">ULTIME 100 ESTRAZIONI
+	      	<span slot="end" style="margin: 0;">
+	      		<ion-icon *ngIf="estracciones == 100" style="color: #0f0" name="checkmark-outline"></ion-icon>
+	      	</span>
+	      </ion-item>
 	    </ion-list>
     </div>
 

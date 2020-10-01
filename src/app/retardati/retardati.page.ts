@@ -16,7 +16,7 @@ export class RetardatiPage implements OnInit {
   numeros2: any[] = [];
   frecuencia2: any[] = [];
 
-  order = "ORDINA PER NUMERO";
+  order = "ORDINA PER RISULTATI";
 
   constructor(private service: ComunicacionService) { }
 
@@ -40,26 +40,82 @@ export class RetardatiPage implements OnInit {
   }
 
   insertar(){
-      this.data1 = JSON.parse(localStorage.getItem('infrecuentes'));
-      this.data2 = JSON.parse(localStorage.getItem('infrecuencia'));
 
-      this.numeros = [
-        {num:this.data1[0],freq:this.data2[0]},
-        {num:this.data1[1],freq:this.data2[1]},
-        {num:this.data1[2],freq:this.data2[2]},
-        {num:this.data1[3],freq:this.data2[3]},
-        {num:this.data1[4],freq:this.data2[4]}];
+    let ultimos = JSON.parse(localStorage.getItem('e200n'));
+    let frecuencia = [];
 
-      // this.frecuencia = [, this.data2[1], this.data2[2], this.data2[3], this.data2[4]];
+    for (let i = 1; i <= 55; i++) {
 
-      this.numeros2 = [
-        {num:this.data1[5],freq:this.data2[5]},
-        {num:this.data1[6],freq:this.data2[6]},
-        {num:this.data1[7],freq:this.data2[7]},
-        {num:this.data1[8],freq:this.data2[8]},
-        {num:this.data1[9],freq:this.data2[9]}];
+      let a = 0;
+      let b = 0;
+      let c = 0;
 
-      // this.frecuencia2 = [this.data2[5], this.data2[6], this.data2[7], this.data2[8], this.data2[9]];
+      for (let j in ultimos) {
+        if (ultimos[j].filter(x=>x==i).length == 0) {
+          a++;
+          b++;
+        }else{
+          if (b > c) {
+            c = b;
+            b = 0;
+          }
+        }
+
+      }
+
+      frecuencia.push({numero:i,frecuencia:b});
+    }
+
+    //console.log(frecuencia);
+
+    let limit = 55;
+
+    for (var h = 0; h < limit; h++) {
+      if (frecuencia[h] !== undefined) {
+        this.numeros.push({num:frecuencia[h].numero,freq:frecuencia[h].frecuencia || 0})
+      }
+    }
+
+    // for (h = limit; h < limit*2; h++) {
+    //   if (frecuencia[h] !== undefined) {
+    //     this.numeros2.push({num:frecuencia[h].numero,freq:frecuencia[h].frecuencia || 0})
+    //   }
+    // }
+
+
+      // this.data1 = JSON.parse(localStorage.getItem('frecuentes'));
+      // this.data2 = JSON.parse(localStorage.getItem('frecuencia'));
+
+      // this.numeros = [
+      //   {num:this.data1[0],freq:this.data2[0]},
+      //   {num:this.data1[1],freq:this.data2[1]},
+      //   {num:this.data1[2],freq:this.data2[2]},
+      //   {num:this.data1[3],freq:this.data2[3]},
+      //   {num:this.data1[4],freq:this.data2[4]}];
+
+      // this.numeros2 = [
+      //   {num:this.data1[5],freq:this.data2[5]},
+      //   {num:this.data1[6],freq:this.data2[6]},
+      //   {num:this.data1[7],freq:this.data2[7]},
+      //   {num:this.data1[8],freq:this.data2[8]},
+      //   {num:this.data1[9],freq:this.data2[9]}];
+
+      // this.data1 = JSON.parse(localStorage.getItem('infrecuentes'));
+      // this.data2 = JSON.parse(localStorage.getItem('infrecuencia'));
+
+      // this.numeros = [
+      //   {num:this.data1[0],freq:this.data2[0]},
+      //   {num:this.data1[1],freq:this.data2[1]},
+      //   {num:this.data1[2],freq:this.data2[2]},
+      //   {num:this.data1[3],freq:this.data2[3]},
+      //   {num:this.data1[4],freq:this.data2[4]}];
+
+      // this.numeros2 = [
+      //   {num:this.data1[5],freq:this.data2[5]},
+      //   {num:this.data1[6],freq:this.data2[6]},
+      //   {num:this.data1[7],freq:this.data2[7]},
+      //   {num:this.data1[8],freq:this.data2[8]},
+      //   {num:this.data1[9],freq:this.data2[9]}];
   }
 
   ordenar(){

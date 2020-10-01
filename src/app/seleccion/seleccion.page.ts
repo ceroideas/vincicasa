@@ -22,7 +22,13 @@ export class SeleccionPage implements OnInit {
   colores: string;
   usuario: string = localStorage.getItem('usuario');
 
-  constructor(private service: ComunicacionService, public nav: NavController) { }
+  returnBack = false;
+
+  constructor(private service: ComunicacionService, public nav: NavController) {
+    if (localStorage.getItem('no-menu-return-back')) {
+      this.returnBack = true;
+    }
+  }
 
   ngOnInit() {
 
@@ -143,6 +149,24 @@ export class SeleccionPage implements OnInit {
     localStorage.removeItem('excluidos');
 
     
+  }
+
+  goToCombinazione()
+  {
+    let excluidos = [];
+
+    for (let i = 0; i < this.combinacion.length; ++i) {
+
+      excluidos.push(this.combinacion[i]); 
+
+    }
+
+    localStorage.removeItem('excluidos');
+    localStorage.setItem('excluidos', JSON.stringify(excluidos));
+    
+    localStorage.removeItem('no-menu-return-back');
+    localStorage.setItem('random','1');
+    this.nav.navigateRoot('combinazione');
   }
 
 }
