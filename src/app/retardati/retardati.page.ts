@@ -50,7 +50,6 @@ export class RetardatiPage implements OnInit {
       let b = 0;
 
       for (let j in ultimos) {
-        console.log(j);
         if (ultimos[j].filter(x=>x==i).length == 0) {
           a++;
         }else{
