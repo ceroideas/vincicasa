@@ -102,7 +102,7 @@ export class EstadisticasPage implements OnInit {
             }]
     };
 
-    console.log(MeSeData);
+    //console.log(MeSeData);
     let MeSeChart = new Chart(canvas, {
             type: 'horizontalBar',
             data: MeSeData,
