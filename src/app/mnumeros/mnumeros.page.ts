@@ -57,7 +57,7 @@ export class MnumerosPage implements OnInit {
 
     }
 
-    console.log(this.combinacion);
+    //console.log(this.combinacion);
     
   }
 
@@ -84,7 +84,7 @@ export class MnumerosPage implements OnInit {
 
     }
 
-    console.log(this.combinacion);
+    //console.log(this.combinacion);
 
   }
 
@@ -129,7 +129,7 @@ export class MnumerosPage implements OnInit {
       }
     }
 
-    console.log(seguidos);
+    //console.log(seguidos);
 
 
     for (let i = 0; i <= combinazione.length; i++) {
@@ -175,7 +175,7 @@ export class MnumerosPage implements OnInit {
         }
       }
 
-      console.log(h, a);
+      //console.log(h, a);
       
       if (a >= 3) {
         return this.colores = colores[2];
