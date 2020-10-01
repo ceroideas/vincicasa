@@ -9,12 +9,12 @@ import { ComunicacionService } from '../comunicacion.service';
 export class RetardatiPage implements OnInit {
 
   usuario: string = localStorage.getItem('usuario');
-  data1: any[] = [];
-  data2: any[] = [];
+  // data1: any[] = [];
+  // data2: any[] = [];
   numeros: any[] = [];
-  frecuencia: any[] = [];
-  numeros2: any[] = [];
-  frecuencia2: any[] = [];
+  // frecuencia: any[] = [];
+  // numeros2: any[] = [];
+  // frecuencia2: any[] = [];
 
   order = "ORDINA PER RISULTATI";
 
@@ -119,12 +119,12 @@ export class RetardatiPage implements OnInit {
   ordenar(){
     if (this.order == "ORDINA PER NUMERO") {
       this.numeros = this.numeros.sort((a,b)=> a.num - b.num);
-      this.numeros2 = this.numeros2.sort((a,b)=> a.num - b.num);
+      // this.numeros2 = this.numeros2.sort((a,b)=> a.num - b.num);
 
       this.order = "ORDINA PER RISULTATI";
     }else{
-      this.numeros = this.numeros.sort((a,b)=> a.freq - b.freq);
-      this.numeros2 = this.numeros2.sort((a,b)=> a.freq - b.freq);
+      this.numeros = this.numeros.sort((a,b)=> b.freq - a.freq);
+      // this.numeros2 = this.numeros2.sort((a,b)=> a.freq - b.freq);
 
       this.order = "ORDINA PER NUMERO";
     }
