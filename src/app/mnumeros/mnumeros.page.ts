@@ -105,6 +105,19 @@ export class MnumerosPage implements OnInit {
 
     let seguidos = 0;
     let coincidencias = [];
+    let u200 = JSON.parse(localStorage.getItem('e200n'));
+
+    for (let i = 0; i < u200.length; ++i) {
+
+      let 
+
+      for (let x = 0; x < length; ++x) {
+        if (combinazione[x] == u200[i][x]) {
+          
+        }
+      }
+
+    }
 
     for (let i = 0; i < combinazione.length; i++) {
 
