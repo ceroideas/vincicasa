@@ -17,7 +17,7 @@ export class FechasPipe implements PipeTransform {
   	let d = f[6]+f[7];
 
   	if (tipo == 'dia') {
-  		return moment(y + '-' + m + '-' + d).day()-1;
+  		return moment(y + '-' + m + '-' + d).day();
   	}
 
     return d+' '+meses[m-1]+' '+y;

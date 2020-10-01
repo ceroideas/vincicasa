@@ -27,7 +27,11 @@ export class EstadisticasPage implements OnInit {
   }
 
   abrir(){
-    document.getElementById("estracciones").style.display = "block";
+    if (document.getElementById("estracciones").style.display == 'none') {
+      document.getElementById("estracciones").style.display = "block";
+    }else{
+      document.getElementById("estracciones").style.display = 'none';
+    }
   }
 
   cerrar(){

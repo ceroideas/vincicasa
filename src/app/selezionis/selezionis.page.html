@@ -17,6 +17,6 @@
 	</ion-row>
 	<p id="alerta">Fai clic su continua per selezionare i numeri</p>
 
-	<ion-button *ngIf="returnBack" (click)="goToCombinazione()" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button>
-	<ion-button *ngIf="!returnBack" routerLink="/seleccion2" routerDirection="root" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button>
+	<!-- <ion-button *ngIf="returnBack" (click)="goToCombinazione()" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button> -->
+	<ion-button routerLink="/seleccion2" routerDirection="root" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button>
 </ion-content>

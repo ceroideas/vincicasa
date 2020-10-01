@@ -20,17 +20,20 @@
 	margin: auto;
 }
 .numero1, .numero2{
-	height: 50px;
-	width: 100px;
-	margin: 1.5%;
-	border: 1px solid white;
-	display: flex;
-	text-align: center;
+	.interior	{
+		// margin: 1.5%;
+		width: 100%;
+		border: 1px solid white;
+		height: 50px;
+		display: flex;
+		text-align: center;
+		padding: 1.5%;
+	}
 }
-.c1{
+.numeros .numero1:nth-child(even) .interior .c1{
 	background-image: url('/assets/fondo-numero-rojo-balnco.png');
 }
-.c2{
+.numeros .numero1:nth-child(odd) .interior .c1{
 	background-image: url('/assets/fondo-numero-azul-blanco.png');
 }
 .c1, .c2{
@@ -57,8 +60,8 @@ p{
 	text-align: right;
 	font-family: 'geometos';
 	font-size: 12px;
-	width: 100px;
-	top: 2px;
+	width: 150px;
+	top: 4px;
 	line-height: 1.5;
     position: relative;
 }
