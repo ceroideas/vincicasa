@@ -63,7 +63,7 @@ export class RetardatiPage implements OnInit {
 
       }
 
-      frecuencia.push({numero:i,frecuencia:b});
+      frecuencia.push({numero:i,frecuencia:c});
     }
 
     console.log(frecuencia);
