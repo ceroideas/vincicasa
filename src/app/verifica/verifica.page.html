@@ -88,25 +88,25 @@
 		</ion-row>
 		<ion-row id="dia">
 			<ion-col>
-				<b [ngClass]="i == 0 ? 'green' : '' ">LUN</b>
+				<b [ngClass]="(fechas[i] | fechas:'dia') == 0 ? 'green' : '' ">LUN</b>
 			</ion-col>
 			<ion-col>
-				<b [ngClass]="i == 1 ? 'green' : '' ">MAR</b>
+				<b [ngClass]="(fechas[i] | fechas:'dia') == 1 ? 'green' : '' ">MAR</b>
 			</ion-col>
 			<ion-col>
-				<b [ngClass]="i == 2 ? 'green' : '' ">MER</b>
+				<b [ngClass]="(fechas[i] | fechas:'dia') == 2 ? 'green' : '' ">MER</b>
 			</ion-col>
 			<ion-col>
-				<b [ngClass]="i == 3 ? 'green' : '' ">GIO</b>
+				<b [ngClass]="(fechas[i] | fechas:'dia') == 3 ? 'green' : '' ">GIO</b>
 			</ion-col>
 			<ion-col>
-				<b [ngClass]="i == 4 ? 'green' : '' ">VEN</b>
+				<b [ngClass]="(fechas[i] | fechas:'dia') == 4 ? 'green' : '' ">VEN</b>
 			</ion-col>
 			<ion-col>
-				<b [ngClass]="i == 5 ? 'green' : '' ">SAB</b>
+				<b [ngClass]="(fechas[i] | fechas:'dia') == 5 ? 'green' : '' ">SAB</b>
 			</ion-col>
 			<ion-col>
-				<b [ngClass]="i == 6 ? 'green' : '' ">DOM</b>
+				<b [ngClass]="(fechas[i] | fechas:'dia') == 6 ? 'green' : '' ">DOM</b>
 			</ion-col>
 		</ion-row>
 		<div class="datos">

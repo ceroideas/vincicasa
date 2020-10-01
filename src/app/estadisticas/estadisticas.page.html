@@ -5,10 +5,15 @@
     	</ion-buttons>
     	<ion-title id="titulo">ANALISI PRESENZE</ion-title>
     </ion-toolbar>
-    <ion-select placeholder="ULTIME 50 ESTRAZIONI" name="estracciones" (ionChange)="calculos(estracciones)" [(ngModel)]="estracciones" id="estracciones">
-      <ion-select-option selected value="50">ULTIME 50 ESTRAZIONI</ion-select-option>
-      <ion-select-option value="100">ULTIME 100 ESTRAZIONI</ion-select-option>
-    </ion-select>
+    <div id="desplegable">
+    	<div (click)="abrir()" id="boton" style="--background: #09B7DA; text-align: center; border: 1px solid white; width: 60%; height: 7.5% !important; margin: auto; border-radius: 2.5px;">
+    		<p style="margin: 5px;">ULTIME {{ estracciones }} ESTRAZIONI</p>
+    	</div>
+	    <ion-list id="estracciones" style="background: #09B7DA; border: 1px solid white; border-radius: 0px; margin-top: 10px; display: none;">
+	      <ion-item (click)="calculos(50)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0;">ULTIME 50 ESTRAZIONI</ion-item>
+	      <ion-item (click)="calculos(100)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0;">ULTIME 100 ESTRAZIONI</ion-item>
+	    </ion-list>
+    </div>
 
     <span id="side-left">ELENCO NUMERI</span>
 
