@@ -85,11 +85,12 @@ export class AppComponent {
     this.reloj();
     this.service.data$.subscribe(res => this.user = res);
 
-    if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined || localStorage.getItem('fechas') == '' || localStorage.getItem('fechas') == undefined) {
+    /*if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined || localStorage.getItem('fechas') == '' || localStorage.getItem('fechas') == undefined) {
      
       this.scrapping3();
    
-    }
+    }*/
+    this.scrapping3();
 
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
@@ -302,7 +303,10 @@ export class AppComponent {
         for (let i = 0; i < 200; i++) {
 
           let obj = json[i]["progressivo"];
+
           fechas.push(obj);
+
+          //console.log(obj);
 
         }
 

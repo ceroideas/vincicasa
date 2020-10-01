@@ -53,6 +53,23 @@ export class EstadisticasPage implements OnInit {
 
     }
 
+   /* let salidas = [0, 10, 20, 30, 40, 50];
+
+    for (let i = 0; i < this.salidas.length; i++) {
+
+      for (let x = 1; x < salidas.length; x++) {
+
+        if (this.salidas[i] == salidas[x] || this.salidas[i] < salidas[x] && salidas[x - 1] < this.salidas[i]) {
+
+          this.salidas[i] = salidas[x];
+          console.log(this.salidas[i]);
+
+        }
+
+      } 
+
+    }*/
+
     this.grafico(/*selected*/);
 
   }

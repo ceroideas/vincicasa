@@ -107,7 +107,7 @@ export class MnumerosPage implements OnInit {
     let coincidencias = [];
     let u200 = JSON.parse(localStorage.getItem('e200n'));
 
-    for (let i = 0; i < u200.length; ++i) {
+    /*for (let i = 0; i < u200.length; ++i) {
 
       let 
 
@@ -117,7 +117,7 @@ export class MnumerosPage implements OnInit {
         }
       }
 
-    }
+    }*/
 
     for (let i = 0; i < combinazione.length; i++) {
 
