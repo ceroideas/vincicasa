@@ -103,12 +103,37 @@ export class EstadisticasPage implements OnInit {
         labels: array,
         datasets: [
             {
+                barThickness: 6,
                 data: this.salidas,
                 backgroundColor: gradiente
             }]
     };
 
     //console.log(MeSeData);
+
+    let labels = [];
+
+    for (var i = 0; i <= 60; i++) {
+
+      if (i%10 == 0) {
+
+        if (i == 60) {
+
+          labels.push('50+');
+
+        }else{
+
+          labels.push(i+'.');
+
+        }
+
+      }else{
+
+        labels.push('');
+        
+      }
+    }
+
     let MeSeChart = new Chart(canvas, {
             type: 'horizontalBar',
             data: MeSeData,
@@ -137,7 +162,7 @@ export class EstadisticasPage implements OnInit {
                         }
                     }],
                     xAxes: [{
-                        labels: ["0.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "10.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "20.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "30.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "40.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "50.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "50+"],
+                        labels: labels,//["0.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "10.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "20.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "30.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "40.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "50.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "50+"],
                         type: 'category',
                         position: "top",
                         ticks:{
