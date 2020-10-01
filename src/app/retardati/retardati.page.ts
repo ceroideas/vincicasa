@@ -48,25 +48,24 @@ export class RetardatiPage implements OnInit {
 
       let a = 0;
       let b = 0;
-      let c = 0;
 
       for (let j in ultimos) {
+        console.log(j);
         if (ultimos[j].filter(x=>x==i).length == 0) {
           a++;
-          b++;
         }else{
-          if (b > c) {
-            c = b;
-            b = 0;
+          if (a > b) {
+            b = a;
           }
+          a = 0;
         }
 
       }
 
-      frecuencia.push({numero:i,frecuencia:c});
+      frecuencia.push({numero:i,frecuencia:b});
     }
 
-    console.log(frecuencia);
+    // console.log(frecuencia);
 
     let limit = 55;
 
