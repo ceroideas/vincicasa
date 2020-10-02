@@ -40,15 +40,7 @@ export class EstadisticasPage implements OnInit {
 
   calculos(valor){
 
-    if (valor == 50) {
-
-      this.estracciones = 50;
-
-    }else{
-
-      this.estracciones = 100;
-
-    }
+    this.estracciones = valor;
 
     let numeros = JSON.parse(localStorage.getItem('e200n'));
     let numero = 0;
@@ -61,13 +53,11 @@ export class EstadisticasPage implements OnInit {
         for (let x = 0; x < numeros[a].length; x++) {
 
           if (i == numeros[a][x]) {
-
             numero++;
-            this.salidas[i-1] = numero;
-
           }
-
         }
+        
+        this.salidas[i-1] = numero;
         
       }
 
@@ -75,11 +65,11 @@ export class EstadisticasPage implements OnInit {
 
     }
 
-    this.grafico(/*selected*/);
+    this.grafico();
 
   }
 
-  grafico(/*ultimas*/) {
+  grafico() {
 
     let array = [];
 
@@ -109,28 +99,17 @@ export class EstadisticasPage implements OnInit {
             }]
     };
 
-    //console.log(MeSeData);
-
     let labels = [];
 
     for (var i = 0; i <= 60; i++) {
-
       if (i%10 == 0) {
-
         if (i == 60) {
-
           labels.push('50+');
-
         }else{
-
           labels.push(i+'.');
-
         }
-
       }else{
-
         labels.push('');
-        
       }
     }
 
@@ -149,7 +128,6 @@ export class EstadisticasPage implements OnInit {
                 },
                 scales: {
                     yAxes: [{
-                        autoSkip: false,
                         ticks:{
                           fontColor: 'white',
                           fontSize: 12,
@@ -162,15 +140,18 @@ export class EstadisticasPage implements OnInit {
                         }
                     }],
                     xAxes: [{
-                        labels: labels,//["0.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "10.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "20.", " ", " ", " ", " ", " ", " ", " ", " ", " ", "30.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "40.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "50.", " ", " ", " ", " ", " ", " ", " ", " ", " ",  "50+"],
+                        labels: labels,
                         type: 'category',
                         position: "top",
                         ticks:{
+                          autoSkip: true,
+                          autoSkipPadding: 5,
                           fontColor: 'white',
                           fontSize: 14
                         },
                         // stacked: true,
                         gridLines: {
+                          // display: false,
                           color: 'white'
                         }
                     }]

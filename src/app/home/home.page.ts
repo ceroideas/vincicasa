@@ -107,7 +107,9 @@ export class HomePage {
           }, Error => {
 
             l.dismiss();
-            this.error(Error);
+
+            console.log(Error);
+            //this.error(Error);
 
           });
           

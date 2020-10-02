@@ -9,12 +9,12 @@ import { ComunicacionService } from '../comunicacion.service';
 export class RetardatiPage implements OnInit {
 
   usuario: string = localStorage.getItem('usuario');
-  data1: any[] = [];
-  data2: any[] = [];
+  // data1: any[] = [];
+  // data2: any[] = [];
   numeros: any[] = [];
-  frecuencia: any[] = [];
-  numeros2: any[] = [];
-  frecuencia2: any[] = [];
+  // frecuencia: any[] = [];
+  // numeros2: any[] = [];
+  // frecuencia2: any[] = [];
 
   order = "ORDINA PER RISULTATI";
 
@@ -48,25 +48,21 @@ export class RetardatiPage implements OnInit {
 
       let a = 0;
       let b = 0;
-      let c = 0;
 
       for (let j in ultimos) {
         if (ultimos[j].filter(x=>x==i).length == 0) {
           a++;
-          b++;
         }else{
-          if (b > c) {
-            c = b;
-            b = 0;
+          if (a > b) {
+            b = a;
           }
+          a = 0;
         }
 
       }
 
       frecuencia.push({numero:i,frecuencia:b});
     }
-
-    //console.log(frecuencia);
 
     let limit = 55;
 
@@ -121,12 +117,12 @@ export class RetardatiPage implements OnInit {
   ordenar(){
     if (this.order == "ORDINA PER NUMERO") {
       this.numeros = this.numeros.sort((a,b)=> a.num - b.num);
-      this.numeros2 = this.numeros2.sort((a,b)=> a.num - b.num);
+      // this.numeros2 = this.numeros2.sort((a,b)=> a.num - b.num);
 
       this.order = "ORDINA PER RISULTATI";
     }else{
-      this.numeros = this.numeros.sort((a,b)=> a.freq - b.freq);
-      this.numeros2 = this.numeros2.sort((a,b)=> a.freq - b.freq);
+      this.numeros = this.numeros.sort((a,b)=> b.freq - a.freq);
+      // this.numeros2 = this.numeros2.sort((a,b)=> a.freq - b.freq);
 
       this.order = "ORDINA PER NUMERO";
     }

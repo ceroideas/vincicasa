@@ -19,7 +19,7 @@ export class VerificaPage implements OnInit {
   combinacion: any = [];
   ultimos: any[] = JSON.parse(localStorage.getItem('numeros'));
   fechas: any[] = [];
-  usuario: string = localStorage.getItem('correo');
+  usuario: string = localStorage.getItem('usuario');
   dias: any[] = [];
   numerosx: any[] = [];
 
