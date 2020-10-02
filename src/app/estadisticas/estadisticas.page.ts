@@ -40,7 +40,7 @@ export class EstadisticasPage implements OnInit {
 
   calculos(valor){
 
-    this.estracciones = 100;
+    this.estracciones = valor;
 
     let numeros = JSON.parse(localStorage.getItem('e200n'));
     let numero = 0;
@@ -128,7 +128,6 @@ export class EstadisticasPage implements OnInit {
                 },
                 scales: {
                     yAxes: [{
-                        autoSkip: false,
                         ticks:{
                           fontColor: 'white',
                           fontSize: 12,
@@ -141,18 +140,18 @@ export class EstadisticasPage implements OnInit {
                         }
                     }],
                     xAxes: [{
-
                         labels: labels,
                         type: 'category',
                         position: "top",
                         ticks:{
-                          autoSkip: false,
+                          autoSkip: true,
+                          autoSkipPadding: 5,
                           fontColor: 'white',
                           fontSize: 14
                         },
                         // stacked: true,
                         gridLines: {
-                          display: false,
+                          // display: false,
                           color: 'white'
                         }
                     }]
