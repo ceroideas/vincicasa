@@ -48,8 +48,6 @@ export class FrequentiPage implements OnInit {
       frecuencia.push({numero:i,frecuencia:a});
     }
 
-    // console.log(frecuencia);
-
     let limit = 55;
 
     for (var h = 0; h < limit; h++) {

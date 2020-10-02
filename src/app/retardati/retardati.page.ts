@@ -64,8 +64,6 @@ export class RetardatiPage implements OnInit {
       frecuencia.push({numero:i,frecuencia:b});
     }
 
-    // console.log(frecuencia);
-
     let limit = 55;
 
     for (var h = 0; h < limit; h++) {

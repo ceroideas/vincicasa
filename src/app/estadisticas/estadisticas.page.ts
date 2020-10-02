@@ -86,7 +86,9 @@ export class EstadisticasPage implements OnInit {
     for (let i = 1; i <= 55; ++i) {
 
       if (i <= 55) {
+
         array.push(i.toString());
+
       }
 
     }
@@ -105,6 +107,20 @@ export class EstadisticasPage implements OnInit {
                 backgroundColor: gradiente
             }]
     };
+
+    let labels = [];
+
+    for (var i = 0; i <= 60; i++) {
+      if (i%10 == 0) {
+        if (i == 60) {
+          labels.push('50+');
+        }else{
+          labels.push(i+'.');
+        }
+      }else{
+        labels.push('');
+      }
+    }
 
     //console.log(MeSeData);
     let MeSeChart = new Chart(canvas, {
@@ -135,13 +151,17 @@ export class EstadisticasPage implements OnInit {
                         }
                     }],
                     xAxes: [{
+                        labels: labels,
+                        type: 'category',
                         position: "top",
                         ticks:{
+                          autoSkip: false,
                           fontColor: 'white',
                           fontSize: 14
                         },
                         // stacked: true,
                         gridLines: {
+                          display: false,
                           color: 'white'
                         }
                     }]
