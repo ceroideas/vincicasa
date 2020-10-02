@@ -93,6 +93,7 @@ export class EstadisticasPage implements OnInit {
         labels: array,
         datasets: [
             {
+                barThickness: 6,
                 data: this.salidas,
                 backgroundColor: gradiente
             }]
@@ -112,7 +113,6 @@ export class EstadisticasPage implements OnInit {
       }
     }
 
-    //console.log(MeSeData);
     let MeSeChart = new Chart(canvas, {
             type: 'horizontalBar',
             data: MeSeData,
@@ -141,6 +141,7 @@ export class EstadisticasPage implements OnInit {
                         }
                     }],
                     xAxes: [{
+
                         labels: labels,
                         type: 'category',
                         position: "top",
