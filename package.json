@@ -36,7 +36,7 @@
     "cordova-plugin-calendar": "^5.1.5",
     "cordova-plugin-datepicker": "^0.9.3",
     "crypto-js": "^4.0.0",
-    "ion2-calendar": "^3.0.0-rc.0",
+    "ion2-calendar": "git+https://github.com/shaneparsons/ion2-calendar.git#76ae1e241183500a377647b363c931a03aa50bca",
     "ionic-plugin-deeplinks": "^1.0.20",
     "ionicons": "^5.1.2",
     "moment": "^2.27.0",
@@ -58,7 +58,6 @@
     "@types/node": "^12.11.1",
     "card.io.cordova.mobilesdk": "^2.1.0",
     "codelyzer": "^5.1.2",
-    "cordova-android": "^9.0.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^4.0.0",
@@ -108,8 +107,6 @@
         "DEEPLINK_5_HOST": " "
       }
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": []
   }
 }
