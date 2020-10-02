@@ -40,15 +40,7 @@ export class EstadisticasPage implements OnInit {
 
   calculos(valor){
 
-    if (valor == 50) {
-
-      this.estracciones = 50;
-
-    }else{
-
-      this.estracciones = 100;
-
-    }
+    this.estracciones = 100;
 
     let numeros = JSON.parse(localStorage.getItem('e200n'));
     let numero = 0;
@@ -61,13 +53,11 @@ export class EstadisticasPage implements OnInit {
         for (let x = 0; x < numeros[a].length; x++) {
 
           if (i == numeros[a][x]) {
-
             numero++;
-            this.salidas[i-1] = numero;
-
           }
-
         }
+        
+        this.salidas[i-1] = numero;
         
       }
 
@@ -75,11 +65,11 @@ export class EstadisticasPage implements OnInit {
 
     }
 
-    this.grafico(/*selected*/);
+    this.grafico();
 
   }
 
-  grafico(/*ultimas*/) {
+  grafico() {
 
     let array = [];
 
