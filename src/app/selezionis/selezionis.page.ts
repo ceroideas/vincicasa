@@ -9,11 +9,11 @@ import { NavController } from '@ionic/angular';
 export class SelezionisPage implements OnInit {
 
   checks = [
-  	"NUMERI CASUALI – Combinazione casuale dei numeri.",
-  	"DAMMI LA SECONDA – Una volta eseguito il calcolo  analizza e muta lo stesso.",
-  	"SALTA LA FUNZIONE – esegui un cambio di calcolo.",
-  	"VINCOLA LE VARIABILI – il calcolo finale vincola alcune variabili in modo random.",
-  	"SEMPLIFICA LE VARIABILI - La combinazione viene data considerando un numero ridotto delle variabili."
+  	"ESEGUI UN DOPPIO PROCESSO DI CALCOLO – La combinazione viene riformulata dopo il primo processo.",
+  	"ESEGUI UN METODO DI RIDUZIONE – considerando un numero ridotto delle variabili.",
+  	"ESTRAPOLA UN SISTEMA – Fornisce la combinazione basandosi su un sistema di numeri casuali.",
+  	"SALTA LA FUNZIONE – Il processo considera un numero di calcolo più semplice.",
+  	"VINCOLA LE VARIABILI – nel calcolo sono vincolati delle variabili in modo random."
   ];
 
   checked:any = [];

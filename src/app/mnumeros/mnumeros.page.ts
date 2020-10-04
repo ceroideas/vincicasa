@@ -103,21 +103,41 @@ export class MnumerosPage implements OnInit {
     const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
     let nprimos = 0;
 
+    // pares
+
+    let comp = 0;
+
+    for (var i = 0; i < combinazione.length; i++) {
+      if (combinazione[i]%2 == 0) {
+        comp++;
+      }
+    }
+
+    if (comp==5) {
+      console.log('TODOS SON PARES, Naranja');
+      return this.colores = colores[1];
+    }
+
+    comp = 0;
+
+    for (var i = 0; i < combinazione.length; i++) {
+      if (combinazione[i]%2 == 1) {
+        comp++;
+      }
+    }
+
+    if (comp==5) {
+      console.log('TODOS SON IMPARES, Naranja');
+      return this.colores = colores[1];
+    }
+
+
+    // impares
+
+
     let seguidos = 0;
     let coincidencias = [];
     let u200 = JSON.parse(localStorage.getItem('e200n'));
-
-    /*for (let i = 0; i < u200.length; ++i) {
-
-      let 
-
-      for (let x = 0; x < length; ++x) {
-        if (combinazione[x] == u200[i][x]) {
-          
-        }
-      }
-
-    }*/
 
     for (let i = 0; i < combinazione.length; i++) {
 

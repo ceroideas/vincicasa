@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController, ModalController } from '@ionic/angular';
 import { ComunicacionService } from '../comunicacion.service';
+
+import { ModalSeleccionPage } from '../pages/modal-seleccion/modal-seleccion.page';
+import { EventsService } from '../services/events.service';
+
 import * as moment from 'moment';
 
 @Component({
@@ -40,7 +44,18 @@ export class CombinazionePage implements OnInit {
 			'dicembre'];
 
 
-  constructor(private service: ComunicacionService, public alert: AlertController, public nav: NavController) {
+  constructor(private service: ComunicacionService, public alert: AlertController, public nav: NavController, public modal: ModalController, public events: EventsService) {
+
+    this.events.destroy('doRandom');
+    this.events.destroy('doCambio');
+
+    this.events.subscribe('doRandom',()=>{
+      this.random();
+    });
+    this.events.subscribe('doCambio',()=>{
+      localStorage.setItem('no-menu-return-back','1');
+      this.nav.navigateRoot('selezionis');
+    });
 
   	if (!this.contador || this.contador == undefined) {
   		this.contador = 0;
@@ -321,22 +336,28 @@ export class CombinazionePage implements OnInit {
 
   }
 
-  modifica()
+  async modifica()
   {
-    this.alert.create({header:'Modifica combinazione',message:'Vuoi cambiare le regole?', buttons: [
-    {
-      text:"Con il sistema attuale",
-      handler: ()=> {
-        this.random();
-      }
-    },{
-      text:"Con nuove impostazioni del sistema",
-      handler: ()=> {
-        localStorage.setItem('no-menu-return-back','1');
-        this.nav.navigateRoot('selezionis');
-      }
-    }
-    ]}).then(a=>a.present())
+    const modal = await this.modal.create({
+      component: ModalSeleccionPage,
+      cssClass: 'selection-modal'
+    });
+    return await modal.present();
+
+    // this.alert.create({header:'Modifica combinazione',message:'Vuoi cambiare le regole?', buttons: [
+    // {
+    //   text:"Con il sistema attuale",
+    //   handler: ()=> {
+    //     this.random();
+    //   }
+    // },{
+    //   text:"Con nuove impostazioni del sistema",
+    //   handler: ()=> {
+    //     localStorage.setItem('no-menu-return-back','1');
+    //     this.nav.navigateRoot('selezionis');
+    //   }
+    // }
+    // ]}).then(a=>a.present())
   }
 
 }

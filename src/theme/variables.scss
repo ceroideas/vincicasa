@@ -410,3 +410,12 @@ ion-footer{
 ion-select::part(icon) {
  display: none !important;
 }
+
+.selection-modal {
+  .modal-wrapper {
+    width: 260px !important;
+    height: 180px !important;
+    margin: auto !important;
+    border-radius: 6px;
+  }
+}

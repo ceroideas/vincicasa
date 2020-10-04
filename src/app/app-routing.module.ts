@@ -74,7 +74,11 @@ const routes: Routes = [
   {
     path: 'selezionis',
     loadChildren: () => import('./selezionis/selezionis.module').then( m => m.SelezionisPageModule)
+  },  {
+    path: 'modal-seleccion',
+    loadChildren: () => import('./pages/modal-seleccion/modal-seleccion.module').then( m => m.ModalSeleccionPageModule)
   },
+
 ];
 
 @NgModule({

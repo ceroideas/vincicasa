@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSlides } from '@ionic/angular';
 import { ComunicacionService } from '../comunicacion.service';
 
 @Component({
@@ -7,6 +8,12 @@ import { ComunicacionService } from '../comunicacion.service';
   styleUrls: ['./manual.page.scss'],
 })
 export class ManualPage implements OnInit {
+
+  slideOpts = {
+	scrollbar: true,
+  }
+
+  @ViewChild('dSlides') slides: IonSlides;
 
   usuario: string = localStorage.getItem('usuario');
 

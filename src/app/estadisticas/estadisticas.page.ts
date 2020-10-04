@@ -86,8 +86,8 @@ export class EstadisticasPage implements OnInit {
     let div: any =  document.getElementById("grafico");
     let canvas: any = div.getContext("2d");
     let gradiente = canvas.createLinearGradient(0, 0, 450, 0);
-    gradiente.addColorStop(0, 'gold');   
-    gradiente.addColorStop(1, 'gold');
+    gradiente.addColorStop(0, 'orange');   
+    gradiente.addColorStop(1, 'orange');
 
     let MeSeData = {
         labels: array,
@@ -136,6 +136,7 @@ export class EstadisticasPage implements OnInit {
                         },
                         stacked: true,
                         gridLines: {
+                          display: false,
                           color: 'white'
                         }
                     }],
