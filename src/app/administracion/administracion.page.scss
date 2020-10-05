@@ -1,0 +1,32 @@
+ion-card{
+	text-align: center;
+	ion-icon{
+		font-size: 5em;
+	}
+}
+#salir{
+	--background: #FB0000;
+	--color: white;
+}
+#ganadores{
+	--background: #FBE800;
+	--color: #3B3B3B;
+}
+#donadores{
+	--background: #37D035;
+	--color: white;
+}
+#usuarios{
+	--background: #2ADEE3;
+	--color: white;
+}
+#panel{
+	text-align: center;
+}
+.datos{
+	font-size: 12px;
+}
+td{
+	padding: 5px 5px 5px 5px;
+	font-size: 12px;
+}

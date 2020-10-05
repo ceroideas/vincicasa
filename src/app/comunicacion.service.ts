@@ -80,5 +80,15 @@ export class ComunicacionService {
     const json = JSON.stringify(datos);
     return this.http.post(url, json, {'headers': headers});
   }
+
+  usuarios(): Observable<any>{
+    const url = 'https://axelrace.pythonanywhere.com/usuarios';
+    return this.http.get(url);
+  }
+
+  ganadores(): Observable<any>{
+    const url = 'https://axelrace.pythonanywhere.com/winners';
+    return this.http.get(url);
+  }
   
 }
