@@ -36,6 +36,7 @@
     "cordova-android": "9.0.0",
     "cordova-plugin-calendar": "^5.1.5",
     "cordova-plugin-datepicker": "^0.9.3",
+    "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "crypto-js": "^4.0.0",
     "ion2-calendar": "git+https://github.com/shaneparsons/ion2-calendar.git#76ae1e241183500a377647b363c931a03aa50bca",
     "ionic-plugin-deeplinks": "^1.0.20",
@@ -106,7 +107,8 @@
         "DEEPLINK_4_HOST": " ",
         "DEEPLINK_5_SCHEME": " ",
         "DEEPLINK_5_HOST": " "
-      }
+      },
+      "cordova-plugin-local-notification": {}
     },
     "platforms": [
       "android"
