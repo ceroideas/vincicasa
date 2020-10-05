@@ -162,7 +162,7 @@ export class HomePage {
             if (contrasenadec === this.isesion.password) {
 
               localStorage.setItem('correo', this.isesion.correo);
-              localStorage.setItem('usuario', data.nombre);
+              localStorage.setItem('usuario', JSON.stringify(data));
               this.router.navigateByUrl('/feed');
 
             }else{

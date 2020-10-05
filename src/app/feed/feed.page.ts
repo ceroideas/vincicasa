@@ -13,7 +13,7 @@ import * as moment from 'moment';
 })
 export class FeedPage implements OnInit {
 
-  usuario: string = localStorage.getItem('usuario');
+  usuario: any = JSON.parse(localStorage.getItem('usuario'));
   horas: any = [];
 
   constructor(private menu: MenuController, private comunicacion: ComunicacionService, private router: Router) {
@@ -21,7 +21,7 @@ export class FeedPage implements OnInit {
   }
 
   ngOnInit() {
-    this.comunicacion.changeData(this.usuario);
+    this.comunicacion.changeData(this.usuario.nombre);
     this.reloj();
   }
 
