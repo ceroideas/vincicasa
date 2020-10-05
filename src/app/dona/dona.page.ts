@@ -64,7 +64,9 @@ export class DonaPage implements OnInit {
       monto: this.monto
     };
 
-    this.comunicacion.pago(jsono).subscribe((data:any)=>{
+    this.comunicacion.pago(jsono).subscribe((data:any)=>{ }, Error => {
+
+      console.log(Error);
 
     });
     /*this.payPal.init({
