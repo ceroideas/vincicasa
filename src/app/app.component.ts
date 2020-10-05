@@ -9,6 +9,7 @@ import { MenuController, AlertController } from '@ionic/angular';
 import { Numeros } from './numeros';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { CambioPage } from './recuperar/cambio/cambio.page';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent {
   tiempo: any = [];
   numeros = new Numeros();
 
-  constructor(public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController, private deeplinks: Deeplinks) { 
+  constructor(private localNotifications: LocalNotifications, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController, private deeplinks: Deeplinks) { 
 
     this.menuCtrl.toggle(); 
 
@@ -256,6 +257,13 @@ export class AppComponent {
       correo: this.numeros.correo,
       puntos: puntos
     }
+
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'Hai raggiunto ' + puntos + ' punti!',
+      sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
+      data: {secret: ''}//{ secret: key }
+    });
 
     this.service.number(this.numeros).subscribe((data:any) => { }, Error => {
 
