@@ -78,6 +78,10 @@ const routes: Routes = [
     path: 'modal-seleccion',
     loadChildren: () => import('./pages/modal-seleccion/modal-seleccion.module').then( m => m.ModalSeleccionPageModule)
   },
+  {
+    path: 'administracion',
+    loadChildren: () => import('./administracion/administracion.module').then( m => m.AdministracionPageModule)
+  },
 
 ];
 

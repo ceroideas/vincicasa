@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ADMINISTRACIÓN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<ion-card text-center padding id="ganadores" (click)="activador('GANADORES')">
+					<ion-icon name="trophy-outline"></ion-icon>
+					<h2>GANADORES</h2>
+				</ion-card>
+			</ion-col>
+			<ion-col>
+				<ion-card text-center padding id="donadores" (click)="activador('DONADORES')">
+					<ion-icon name="cash-outline"></ion-icon>
+					<h2>DONADORES</h2>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-card text-center padding id="usuarios" (click)="activador('USUARIOS')">
+					<ion-icon name="person-outline"></ion-icon>
+					<h2>USUARIOS</h2>
+				</ion-card>
+			</ion-col>
+			<ion-col>
+				<ion-card text-center padding id="salir" (click)="salir()">
+					<ion-icon name="log-in-outline"></ion-icon>
+					<h2>SALIR</h2>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<p id="panel">{{ funcion }}</p>
+	<ion-list *ngIf="funcion == 'USUARIOS'">
+		<ion-item *ngFor="let data of datos.nombres; let i = index">
+			<ion-row>
+				<ion-col>
+					<ion-label class="datos">{{ datos.nombres[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.correos[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.fechas[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.sexos[i] }}</ion-label>
+				</ion-col>
+			</ion-row>
+		</ion-item>
+	</ion-list>
+	<ion-list *ngIf="funcion == 'GANADORES'">
+		<ion-item *ngFor="let data of datos.aciertos; let i = index">
+			<ion-row>
+				<th>
+					<tr>
+						<td>CORREOS</td>
+						<td>COMBINACIÓN</td>
+						<td>FECHA DE JUEGO</td>
+						<td>PUNTOS</td>
+					</tr>
+				</th>
+				<ion-col>
+					<ion-label class="datos">{{ datos.correos[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.numeros[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.fechas[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.aciertos[i] }}</ion-label>
+				</ion-col>
+			</ion-row>
+		</ion-item>
+	</ion-list>
+</ion-content>

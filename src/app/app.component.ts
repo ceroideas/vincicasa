@@ -182,7 +182,6 @@ export class AppComponent {
 
         console.log('El sorteo ha finalizado');
 
-        this.sorteo();
         let jugada = localStorage.getItem('combinacion');
         let ganador = JSON.parse(localStorage.getItem('ultimos'))[0];
         let puntos = 0;
@@ -194,6 +193,8 @@ export class AppComponent {
           }
 
         }
+
+        this.sorteo(puntos);
 
         if (puntos > 0) {
 
@@ -245,7 +246,7 @@ export class AppComponent {
 
   }
 
-  sorteo(){
+  sorteo(puntos){
 
     this.numeros.numero = localStorage.getItem('combinacion');
     this.numeros.correo = localStorage.getItem('correo');
@@ -253,6 +254,7 @@ export class AppComponent {
     const jsono = {
       nombre: this.numeros.numero,
       correo: this.numeros.correo,
+      puntos: puntos
     }
 
     this.service.number(this.numeros).subscribe((data:any) => { }, Error => {
