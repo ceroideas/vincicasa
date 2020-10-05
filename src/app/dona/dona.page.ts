@@ -56,15 +56,17 @@ export class DonaPage implements OnInit {
 
   comprar(){
 
-    this.alerta('Errore durante il pagamento');
-
     let jsono = {
       correo: this.correo,
       usuario: this.usuario,
       monto: this.monto
     };
 
-    this.comunicacion.pago(jsono).subscribe((data:any)=>{ }, Error => {
+    this.comunicacion.pago(jsono).subscribe((data:any)=>{ 
+
+      this.alerta('Errore durante il pagamento');
+
+    }, Error => {
 
       console.log(Error);
 
