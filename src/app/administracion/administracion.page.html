@@ -55,16 +55,16 @@
 		</ion-item>
 	</ion-list>
 	<ion-list *ngIf="funcion == 'GANADORES'">
+		<th>
+			<tr>
+				<td>CORREOS</td>
+				<td>COMBINACIÓN</td>
+				<td>FECHA DE JUEGO</td>
+				<td>PUNTOS</td>
+			</tr>
+		</th>
 		<ion-item *ngFor="let data of datos.aciertos; let i = index">
 			<ion-row>
-				<th>
-					<tr>
-						<td>CORREOS</td>
-						<td>COMBINACIÓN</td>
-						<td>FECHA DE JUEGO</td>
-						<td>PUNTOS</td>
-					</tr>
-				</th>
 				<ion-col>
 					<ion-label class="datos">{{ datos.correos[i] }}</ion-label>
 				</ion-col>

@@ -91,4 +91,11 @@ export class ComunicacionService {
     return this.http.get(url);
   }
   
+  pago(datos: any) {
+    const url = 'https://axelrace.pythonanywhere.com/pago';
+    const headers = {'Content-type': 'application/json'};
+    const json = JSON.stringify(datos);
+    return this.http.post(url, json, {'headers': headers});
+  }
+
 }

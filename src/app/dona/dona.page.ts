@@ -56,7 +56,18 @@ export class DonaPage implements OnInit {
 
   comprar(){
 
-    this.payPal.init({
+    this.alerta('Errore durante il pagamento');
+
+    let jsono = {
+      correo: this.correo,
+      usuario: this.usuario,
+      monto: this.monto
+    };
+
+    this.comunicacion.pago(jsono).subscribe((data:any)=>{
+
+    });
+    /*this.payPal.init({
 
       PayPalEnvironmentProduction: "",
       PayPalEnvironmentSandbox: "client id"
@@ -86,7 +97,7 @@ export class DonaPage implements OnInit {
 
       })
 
-    });
+    });*/
 
   }
 
