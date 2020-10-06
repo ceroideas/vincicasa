@@ -3,4 +3,5 @@ export class Numeros {
 	numero: string;
 	correo: string;
 	puntos: string;
+	usuario: string;
 }

@@ -258,7 +258,7 @@ export class AppComponent {
       let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
       let puntos = 0;
 
-      for (let i = 0; i <= ganador.length; i++) {
+      for (let i = 1; i <= ganador.length; i++) {
 
         if (jugada[i] == ganador[i]) {
           puntos++;
@@ -269,27 +269,31 @@ export class AppComponent {
       console.log("puntos: ", puntos);
 
       if (puntos >= 2) {
+
         this.sorteo(puntos);
 
         // if (puntos > 0) {
 
           // this.alerta('Hai raggiunto ' + puntos + ' punti!');
 
-          const json = {
+         // const json = {
 
-            correo: localStorage.getItem('correo'),
-            usuario: localStorage.getItem('usuario'),
-            puntos: puntos.toString()
+        this.numeros.correo = localStorage.getItem('correo'),
+        this.numeros.numero = jugada,
+        this.numeros.puntos = puntos.toString();
+        this.numeros.usuario = localStorage.getItem('usuario');
 
-          };
+        //};
 
-          this.service.ganador(json).subscribe((data:any)=>{
+        console.log(this.numeros);
 
-          }, Error => {
+        this.service.ganador(this.numeros).subscribe((data:any)=>{
 
-            this.alerta(Error);
+        }, Error => {
 
-          });
+          this.alerta(Error);
+
+        });
 
         // }
       }
@@ -300,8 +304,10 @@ export class AppComponent {
 
     localStorage.setItem('last-notification',moment().format('YYYY-MM-DD HH:mm'));
 
-    this.numeros.numero = localStorage.getItem('combinacion');
-    this.numeros.correo = localStorage.getItem('correo');
+    this.numeros.numero = localStorage.getItem('combinacion'),
+    this.numeros.correo = localStorage.getItem('correo'),
+    this.numeros.puntos = puntos.toString();
+
     let mess = "";
 
     if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
@@ -309,11 +315,11 @@ export class AppComponent {
     if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
     if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
 
-    const jsono = {
+    /*const jsono = {
       nombre: this.numeros.numero,
       correo: this.numeros.correo,
       puntos: puntos.toString()
-    }
+    }*/
 
     this.localNotifications.schedule({
       id: 1,
