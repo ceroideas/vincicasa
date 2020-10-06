@@ -55,16 +55,16 @@
 		</ion-item>
 	</ion-list>
 	<ion-list *ngIf="funcion == 'GANADORES'">
+		<th>
+			<tr>
+				<td>CORREOS</td>
+				<td>COMBINACIÓN</td>
+				<td>FECHA DE JUEGO</td>
+				<td>PUNTOS</td>
+			</tr>
+		</th>
 		<ion-item *ngFor="let data of datos.aciertos; let i = index">
 			<ion-row>
-				<th>
-					<tr>
-						<td>CORREOS</td>
-						<td>COMBINACIÓN</td>
-						<td>FECHA DE JUEGO</td>
-						<td>PUNTOS</td>
-					</tr>
-				</th>
 				<ion-col>
 					<ion-label class="datos">{{ datos.correos[i] }}</ion-label>
 				</ion-col>
@@ -76,6 +76,32 @@
 				</ion-col>
 				<ion-col>
 					<ion-label class="datos">{{ datos.aciertos[i] }}</ion-label>
+				</ion-col>
+			</ion-row>
+		</ion-item>
+	</ion-list>
+	<ion-list *ngIf="funcion == 'DONADORES'">
+		<th>
+			<tr>
+				<td>USUARIOS</td>
+				<td>CORREOS</td>
+				<td>FECHA DE JUEGO</td>
+				<td>MONTOS</td>
+			</tr>
+		</th>
+		<ion-item *ngFor="let data of datos.montos; let i = index">
+			<ion-row>
+				<ion-col>
+					<ion-label class="datos">{{ datos.usuarios[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.correos[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.fechas[i] }}</ion-label>
+				</ion-col>
+				<ion-col>
+					<ion-label class="datos">{{ datos.montos[i] }}</ion-label>
 				</ion-col>
 			</ion-row>
 		</ion-item>

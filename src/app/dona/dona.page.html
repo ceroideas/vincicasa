@@ -16,7 +16,7 @@
 	<label id="info">QUANTO VUOI DONARE?</label>
 	<span id="monto">
 		<span style="margin: auto;">
-		<input type="number" step="0,01" style="background-color: transparent; border: none; width: 50px; text-align: center;"> <span style="color: #50CBE4" #monto>€</span>
+		<input [(ngModel)]="monto" name="monto" type="number" step="0,01" style="background-color: transparent; border: none; width: 50px; text-align: center;"> <span style="color: #50CBE4">€</span>
 		</span>
 	</span>
 	<ion-button expand="full" size="large" shape="round" id="dona" (click)="comprar()">DONARE</ion-button>

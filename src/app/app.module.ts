@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,8 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Deeplinks
+    Deeplinks,
+    LocalNotifications
   ],
   bootstrap: [AppComponent]
 })

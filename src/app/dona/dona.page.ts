@@ -56,7 +56,23 @@ export class DonaPage implements OnInit {
 
   comprar(){
 
-    this.payPal.init({
+    let jsono = {
+      correo: this.correo,
+      usuario: this.usuario,
+      monto: this.monto
+    };
+
+    this.comunicacion.pago(jsono).subscribe((data:any)=>{ 
+
+      this.alerta('Pagamento effettuato con successo');
+
+    }, Error => {
+
+      this.alerta('Errore durante il pagamento');
+      console.log(Error);
+
+    });
+    /*this.payPal.init({
 
       PayPalEnvironmentProduction: "",
       PayPalEnvironmentSandbox: "client id"
@@ -86,7 +102,7 @@ export class DonaPage implements OnInit {
 
       })
 
-    });
+    });*/
 
   }
 
