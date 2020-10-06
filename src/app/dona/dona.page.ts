@@ -64,10 +64,11 @@ export class DonaPage implements OnInit {
 
     this.comunicacion.pago(jsono).subscribe((data:any)=>{ 
 
-      this.alerta('Errore durante il pagamento');
+      this.alerta('Pagamento effettuato con successo');
 
     }, Error => {
 
+      this.alerta('Errore durante il pagamento');
       console.log(Error);
 
     });

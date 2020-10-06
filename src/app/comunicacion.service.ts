@@ -98,4 +98,9 @@ export class ComunicacionService {
     return this.http.post(url, json, {'headers': headers});
   }
 
+  donadores(): Observable<any>{
+    const url = 'https://axelrace.pythonanywhere.com/pago';
+    return this.http.get(url);
+  }
+
 }

@@ -75,7 +75,7 @@ export class AdministracionPage implements OnInit {
 
       });
 
-      console.log(correos, fechas, name, sexos);
+      //console.log(correos, fechas, name, sexos);
 
       this.datos = { 
         correos: correos, 
@@ -84,20 +84,70 @@ export class AdministracionPage implements OnInit {
         sexos: sexos
       };
 
-      console.log(this.datos);
+      //console.log(this.datos);
 
   	}else if (nombres === 'DONADORES') {
 
-      this.comunicacion.ganadores().subscribe((data: any) => {
-        
-      });
-  		
-  		this.funcion = nombres;
+      this.funcion = nombres;
 
-  		this.datos = {
-			campo: ['Reinaldo Branchi', 'Jorge Solano'],
-			campo2: ['3$', '20$']
-		};
+      let usuarios = [], 
+        correos = [], 
+        fechas = [], 
+        montos = [];
+
+      this.comunicacion.donadores().subscribe((data: any) => {
+
+        let dato;
+        let json = data;
+
+        for (let i = 0; i < data.donadores.length; i++) {
+
+          dato = json.donadores[i].usuario;
+
+          usuarios.push(dato.toString());
+    
+        }
+
+        for (let i = 0; i < data.donadores.length; i++) {
+
+          dato = json.donadores[i].correo;
+
+          correos.push(dato.toString());
+    
+        }
+
+        for (let i = 0; i < data.donadores.length; i++) {
+
+          dato = json.donadores[i].fecha;
+
+          fechas.push(moment(dato).format('YYYY-MM-DD').toString());
+    
+        }
+
+        for (let i = 0; i < data.donadores.length; i++) {
+
+          dato = json.donadores[i].monto;
+
+          montos.push(dato.toString());
+    
+        }
+
+      }, Error => {
+
+        console.log(Error);
+
+      });
+
+      console.log(correos, fechas, usuarios, montos);
+
+      this.datos = { 
+        correos: correos, 
+        fechas: fechas, 
+        usuarios: usuarios, 
+        montos: montos
+      };
+
+      console.log(this.datos);
 
   	}else{
 
@@ -167,7 +217,7 @@ export class AdministracionPage implements OnInit {
 
       });
 
-      console.log(correos, fechas, numeros, aciertos);
+      //console.log(correos, fechas, numeros, aciertos);
 
       this.datos = { 
         correos: correos, 
@@ -176,7 +226,7 @@ export class AdministracionPage implements OnInit {
         aciertos: aciertos
       };
 
-      console.log(this.datos);
+      //console.log(this.datos);
 
   	}
 
