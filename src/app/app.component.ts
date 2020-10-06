@@ -238,7 +238,7 @@ export class AppComponent {
 
         this.scrapping3();
         this.verGanadores();
-        this.scrapping();
+        //this.scrapping();
         clearInterval(intervalo);
         this.reloj();
 
