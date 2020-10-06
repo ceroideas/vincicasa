@@ -195,28 +195,30 @@ export class AppComponent {
 
         }
 
-        this.sorteo(puntos);
+        if (puntos >= 2) {
+          this.sorteo(puntos);
 
-        if (puntos > 0) {
+          if (puntos > 0) {
 
-          this.alerta('Hai raggiunto ' + puntos + ' punti!');
+            this.alerta('Hai raggiunto ' + puntos + ' punti!');
 
-          const json = {
+            const json = {
 
-            correo: localStorage.getItem('correo'),
-            usuario: localStorage.getItem('usuario'),
-            puntos: puntos.toString()
+              correo: localStorage.getItem('correo'),
+              usuario: localStorage.getItem('usuario'),
+              puntos: puntos.toString()
 
-          };
+            };
 
-          this.service.ganador(json).subscribe((data:any)=>{
+            this.service.ganador(json).subscribe((data:any)=>{
 
-          }, Error => {
+            }, Error => {
 
-            this.alerta(Error);
+              this.alerta(Error);
 
-          });
+            });
 
+          }
         }
 
         // localStorage.removeItem('numeros');
@@ -251,6 +253,12 @@ export class AppComponent {
 
     this.numeros.numero = localStorage.getItem('combinacion');
     this.numeros.correo = localStorage.getItem('correo');
+    let mess = "";
+
+    if (puntos == 2) {mess = "Complimenti! hai vinto";}
+    if (puntos == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
+    if (puntos == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+    if (puntos == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
 
     const jsono = {
       nombre: this.numeros.numero,
@@ -260,7 +268,7 @@ export class AppComponent {
 
     this.localNotifications.schedule({
       id: 1,
-      text: 'Hai raggiunto ' + puntos + ' punti!',
+      text: 'Hai raggiunto ' + puntos + ' punti! '+mess,
       sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
       data: {secret: ''}//{ secret: key }
     });

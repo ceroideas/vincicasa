@@ -62,17 +62,7 @@ export class DonaPage implements OnInit {
       monto: this.monto
     };
 
-    this.comunicacion.pago(jsono).subscribe((data:any)=>{ 
-
-      this.alerta('Pagamento effettuato con successo');
-
-    }, Error => {
-
-      this.alerta('Errore durante il pagamento');
-      console.log(Error);
-
-    });
-    /*this.payPal.init({
+    this.payPal.init({
 
       PayPalEnvironmentProduction: "",
       PayPalEnvironmentSandbox: "client id"
@@ -92,7 +82,18 @@ export class DonaPage implements OnInit {
         let pago = new PayPalPayment(this.monto.toString(), 'EUR', '', 'Sale', detalles);
         this.payPal.renderSinglePaymentUI(pago).then((Response) => {
 
-          this.alerta('Pagamento effettuato con successo');
+          // this.alerta('Pagamento effettuato con successo');
+
+          this.comunicacion.pago(jsono).subscribe((data:any)=>{ 
+
+            this.alerta('Pagamento effettuato con successo');
+
+          }, Error => {
+
+            this.alerta('Errore durante il pagamento');
+            console.log(Error);
+
+          });
 
         }, () =>{
 
@@ -102,7 +103,7 @@ export class DonaPage implements OnInit {
 
       })
 
-    });*/
+    });
 
   }
 
