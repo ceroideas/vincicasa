@@ -260,7 +260,7 @@ export class AppComponent {
 
       for (let i = 0; i <= ganador.length; i++) {
 
-        if (jugada[i] === ganador[i]) {
+        if (jugada[i] == ganador[i]) {
           puntos++;
         }
 
