@@ -221,9 +221,6 @@ export class AppComponent {
 
         console.log('El sorteo ha finalizado');
 
-
-        this.verGanadores();
-
         // localStorage.removeItem('numeros');
         // localStorage.removeItem('fechas');
         // localStorage.removeItem('dias');
@@ -240,6 +237,7 @@ export class AppComponent {
         // localStorage.removeItem('ganadores');
 
         this.scrapping3();
+        this.verGanadores();
         this.scrapping();
         clearInterval(intervalo);
         this.reloj();
