@@ -260,13 +260,13 @@ export class AppComponent {
 
       for (let i = 0; i <= ganador.length; i++) {
 
-        if (jugada[i] == ganador[i]) {
+        if (jugada[i] === ganador[i]) {
           puntos++;
         }
 
       }
 
-      console.log("puntos",puntos);
+      console.log("puntos: ", puntos);
 
       if (puntos >= 2) {
         this.sorteo(puntos);
