@@ -18,7 +18,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 })
 export class AppComponent {
 
-  user: string;
+  user: any;
   hour: any;
   minute: any;
   second: any;
@@ -84,7 +84,7 @@ export class AppComponent {
   ngOnInit(){
 
     this.reloj();
-    this.service.data$.subscribe(res => this.user = res);
+    this.service.data$.subscribe(res => {this.user = res; console.log(typeof res)});
 
     /*if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined || localStorage.getItem('fechas') == '' || localStorage.getItem('fechas') == undefined) {
      
@@ -134,6 +134,45 @@ export class AppComponent {
 
       }
     }
+
+    let lastNotification = moment(localStorage.getItem('last-notification'));
+    hora = moment();
+    pm8 = moment(moment().format('YYYY-MM-DD 19:05'));
+    pm8p1 = moment(moment().format('YYYY-MM-DD 19:05')).add(1,'day');
+    diff = (pm8p1.diff(hora,'seconds'))/3600;
+    diff2 = hora.diff(lastNotification,'seconds')/3600;
+
+    if (diff2 > 24) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
+      
+      console.log('enviar notificacion directamente')
+      this.verGanadores();
+
+    }else{
+
+      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las 19:05 hasta hoy a las 19:05
+
+        let d = pm8.diff(lastNotification,'seconds')/3600;
+
+        if (d > 24) {
+          console.log('enviar notificacion 1')
+          this.verGanadores();
+        }else{
+          // localStorage.setItem('contador','1');
+        }
+        
+      }else{ // en caso contrario se cuenta a partir de hoy a las 19:05 hasta mañana a las 19:05
+
+        let d = pm8p1.diff(lastNotification,'seconds')/3600;
+
+        if (d > 24) {
+          console.log('enviar notificacion 2')
+          this.verGanadores();
+        }else{
+          // localStorage.setItem('contador','1');
+        }
+
+      }
+    }
   }
 
   reloj(){
@@ -180,46 +219,10 @@ export class AppComponent {
       // if (this.hour == 0 && this.minute == 0 && this.second == 0) {
       if (seconds == 86400) {
 
-
         console.log('El sorteo ha finalizado');
 
-        let jugada = localStorage.getItem('combinacion');
-        let ganador = JSON.parse(localStorage.getItem('ultimos'))[0];
-        let puntos = 0;
 
-        for (let i = 0; i <= ganador.length; ++i) {
-
-          if (jugada[i] == ganador[i]) {
-            puntos++;
-          }
-
-        }
-
-        if (puntos >= 2) {
-          this.sorteo(puntos);
-
-          if (puntos > 0) {
-
-            this.alerta('Hai raggiunto ' + puntos + ' punti!');
-
-            const json = {
-
-              correo: localStorage.getItem('correo'),
-              usuario: localStorage.getItem('usuario'),
-              puntos: puntos.toString()
-
-            };
-
-            this.service.ganador(json).subscribe((data:any)=>{
-
-            }, Error => {
-
-              this.alerta(Error);
-
-            });
-
-          }
-        }
+        this.verGanadores();
 
         // localStorage.removeItem('numeros');
         // localStorage.removeItem('fechas');
@@ -249,7 +252,55 @@ export class AppComponent {
 
   }
 
+  verGanadores()
+  {
+
+    if (localStorage.getItem('combinacion')) {
+      let jugada = JSON.parse(localStorage.getItem('combinacion'));
+      let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
+      let puntos = 0;
+
+      for (let i = 0; i <= ganador.length; i++) {
+
+        if (jugada[i] == ganador[i]) {
+          puntos++;
+        }
+
+      }
+
+      console.log("puntos",puntos);
+
+      if (puntos >= 2) {
+        this.sorteo(puntos);
+
+        // if (puntos > 0) {
+
+          // this.alerta('Hai raggiunto ' + puntos + ' punti!');
+
+          const json = {
+
+            correo: localStorage.getItem('correo'),
+            usuario: localStorage.getItem('usuario'),
+            puntos: puntos.toString()
+
+          };
+
+          this.service.ganador(json).subscribe((data:any)=>{
+
+          }, Error => {
+
+            this.alerta(Error);
+
+          });
+
+        // }
+      }
+    }
+  }
+
   sorteo(puntos){
+
+    localStorage.setItem('last-notification',moment().format('YYYY-MM-DD HH:mm'));
 
     this.numeros.numero = localStorage.getItem('combinacion');
     this.numeros.correo = localStorage.getItem('correo');
@@ -269,7 +320,7 @@ export class AppComponent {
     this.localNotifications.schedule({
       id: 1,
       text: 'Hai raggiunto ' + puntos + ' punti! '+mess,
-      sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
+      // sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
       data: {secret: ''}//{ secret: key }
     });
 

@@ -161,9 +161,9 @@ export class HomePage {
             
             if(data.respuesta == 'nousuario'){
 
-              localStorage.setItem('correo', this.isesion.correo);
-              localStorage.setItem('usuario', JSON.stringify(data));
-              this.router.navigateByUrl('/feed');
+              // localStorage.setItem('correo', this.isesion.correo);
+              // localStorage.setItem('usuario', JSON.stringify(data));
+              // this.router.navigateByUrl('/feed');
               this.alerta("L'utente non esiste");
 
             }else{
@@ -171,7 +171,7 @@ export class HomePage {
               if (contrasenadec === this.isesion.password) {
 
                 localStorage.setItem('correo', this.isesion.correo);
-                localStorage.setItem('usuario', data.nombre);
+                localStorage.setItem('usuario', JSON.stringify(data));
                 this.router.navigateByUrl('/feed');
 
               }else{
