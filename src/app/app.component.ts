@@ -258,11 +258,21 @@ export class AppComponent {
       let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
       let puntos = 0;
 
-      for (let i = 1; i <= ganador.length; i++) {
+      for (let i = 0; i < ganador.length; i++) {
 
-        if (jugada[i] == ganador[i]) {
-          puntos = puntos + 1;
+        for (let x = 0; x < ganador.length; x++) {
+
+          if (jugada[i] == ganador[x]) {
+
+            puntos++;
+
+          }
+
         }
+
+        /*if (jugada[i] == ganador[i]) {
+          puntos = puntos + 1;
+        }*/
 
       }
 
