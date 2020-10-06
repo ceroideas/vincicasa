@@ -304,20 +304,20 @@ export class AppComponent {
     this.numeros.correo = localStorage.getItem('correo');
     let mess = "";
 
-    if (puntos == 2) {mess = "Complimenti! hai vinto";}
-    if (puntos == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
-    if (puntos == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
-    if (puntos == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+    if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
+    if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
+    if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+    if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
 
     const jsono = {
       nombre: this.numeros.numero,
       correo: this.numeros.correo,
-      puntos: puntos
+      puntos: puntos.toString()
     }
 
     this.localNotifications.schedule({
       id: 1,
-      text: 'Hai raggiunto ' + puntos + ' punti! '+mess,
+      text: 'Hai raggiunto ' + puntos + ' punti! '+ mess,
       // sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
       data: {secret: ''}//{ secret: key }
     });
