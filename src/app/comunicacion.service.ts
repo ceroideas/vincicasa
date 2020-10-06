@@ -25,7 +25,7 @@ export class ComunicacionService {
   data$ = this.data.asObservable();
 
   changeData(data: string) {
-    this.data.next(data);
+    this.data.next(JSON.parse(data));
   }
 
   registros(registro: Registro): Observable<any>{
