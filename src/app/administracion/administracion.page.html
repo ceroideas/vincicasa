@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ADMINISTRACIÓN</ion-title>
+    <ion-title>ADMIN</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,13 +8,13 @@
 	<ion-grid>
 		<ion-row>
 			<ion-col>
-				<ion-card text-center padding id="ganadores" (click)="activador('GANADORES')">
+				<ion-card text-center padding id="ganadores" (click)="activador('VINCITORI')">
 					<img src="../assets/ganadores.png">
 					<h2>VINCITORI</h2>
 				</ion-card>
 			</ion-col>
 			<ion-col>
-				<ion-card text-center padding id="donadores" (click)="activador('DONADORES')">
+				<ion-card text-center padding id="donadores" (click)="activador('DONATORI')">
 					<img src="../assets/donar.png">
 					<h2>DONATORI</h2>
 				</ion-card>
@@ -22,7 +22,7 @@
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<ion-card text-center padding id="usuarios" (click)="activador('USUARIOS')">
+				<ion-card text-center padding id="usuarios" (click)="activador('UTENTI')">
 					<img src="../assets/usuarios.png">
 					<h2>UTENTI</h2>
 				</ion-card>
@@ -36,7 +36,7 @@
 		</ion-row>
 	</ion-grid>
 	<p id="panel">{{ funcion }}</p>
-	<ion-list *ngIf="funcion == 'USUARIOS'">
+	<ion-list *ngIf="funcion == 'UTENTI'">
 		<ion-item *ngFor="let data of datos.nombres; let i = index">
 			<ion-row>
 				<ion-col>
@@ -54,13 +54,13 @@
 			</ion-row>
 		</ion-item>
 	</ion-list>
-	<ion-list *ngIf="funcion == 'GANADORES'">
+	<ion-list *ngIf="funcion == 'VINCITORI'">
 		<th>
 			<tr>
-				<td>CORREOS</td>
-				<td>COMBINACIÓN</td>
-				<td>FECHA DE JUEGO</td>
-				<td>PUNTOS</td>
+				<td>MAIL</td>
+				<td>COMBINAZIONE</td>
+				<td>DATA DEL GIOCO</td>
+				<td>PUNTI</td>
 			</tr>
 		</th>
 		<ion-item *ngFor="let data of datos.aciertos; let i = index">
@@ -80,12 +80,12 @@
 			</ion-row>
 		</ion-item>
 	</ion-list>
-	<ion-list *ngIf="funcion == 'DONADORES'">
+	<ion-list *ngIf="funcion == 'DONATORI'">
 		<th>
 			<tr>
-				<td>USUARIOS</td>
-				<td>CORREOS</td>
-				<td>FECHA DE JUEGO</td>
+				<td>UTENTI</td>
+				<td>MAIL</td>
+				<td>DATA DEL GIOCO</td>
 				<td>MONTOS</td>
 			</tr>
 		</th>
