@@ -221,7 +221,6 @@ export class AppComponent {
 
         console.log('El sorteo ha finalizado');
 
-        this.verGanadores();
         // localStorage.removeItem('numeros');
         // localStorage.removeItem('fechas');
         // localStorage.removeItem('dias');
@@ -283,10 +282,18 @@ export class AppComponent {
 
         this.sorteo(puntos);
 
+        // if (puntos > 0) {
+
+          // this.alerta('Hai raggiunto ' + puntos + ' punti!');
+
+         // const json = {
+
         this.numeros.correo = localStorage.getItem('correo'),
         this.numeros.numero = jugada,
         this.numeros.puntos = puntos.toString();
         this.numeros.usuario = localStorage.getItem('usuario');
+
+        //};
 
         console.log(this.numeros);
 
@@ -297,6 +304,8 @@ export class AppComponent {
           this.alerta(Error);
 
         });
+
+        // }
       }
     }
   }
@@ -452,7 +461,6 @@ export class AppComponent {
       let mes =  moment().subtract(i, 'd').format('M');
       fechas[i] = moment().subtract(i, 'd').format('DD') + ' ' + meses[parseInt(mes)-1] + ' ' + moment().subtract(i, 'd').format('Y');
       fechas[i] = fechas[i].replace(data, meses[i]);
-      
 
     }
 
