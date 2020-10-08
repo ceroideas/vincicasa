@@ -13,7 +13,7 @@
 			<ion-col class="columna">
 				<div *ngFor="let numero of numeros" class="n1">
 					<input type="checkbox" name="" id="numero{{ numero }}" [checked]="numero | verificar: combinacion" (change)="seleccionar($event, numero)">
-					<label for="numero{{ numero }}">
+					<label for="numero{{ numero }}" [ngClass]="(numero | disabled) ? 'disabled' : ''">
 						<b class="valores">
 							{{ numero }}
 						</b>
@@ -23,7 +23,7 @@
 			<ion-col class="columna">
 				<div *ngFor="let numero of numeros2" class="n2">
 					<input type="checkbox" name="" id="numero{{ numero }}" [checked]="numero | verificar: combinacion" (change)="seleccionar2($event, numero)">
-					<label for="numero{{ numero }}">
+					<label for="numero{{ numero }}" [ngClass]="(numero | disabled) ? 'disabled' : ''">
 						<b class="valores">
 							{{ numero }}
 						</b>
@@ -33,7 +33,7 @@
 			<ion-col class="columna">
 				<div *ngFor="let numero of numeros3" class="n1">
 					<input type="checkbox" name="" id="numero{{ numero }}" [checked]="numero | verificar: combinacion" (change)="seleccionar($event, numero)">
-					<label for="numero{{ numero }}">
+					<label for="numero{{ numero }}" [ngClass]="(numero | disabled) ? 'disabled' : ''">
 						<b class="valores">
 							{{ numero }}
 						</b>
@@ -43,7 +43,7 @@
 			<ion-col class="columna">
 				<div *ngFor="let numero of numeros4" class="n2">
 					<input type="checkbox" name="" id="numero{{ numero }}" [checked]="numero | verificar: combinacion" (change)="seleccionar2($event, numero)">
-					<label for="numero{{ numero }}">
+					<label for="numero{{ numero }}" [ngClass]="(numero | disabled) ? 'disabled' : ''">
 						<b class="valores">
 							{{ numero }}
 						</b>
@@ -53,7 +53,7 @@
 			<ion-col class="columna">
 				<div *ngFor="let numero of numeros5" class="n1">
 					<input type="checkbox" name="" id="numero{{ numero }}" [checked]="numero | verificar: combinacion" (change)="seleccionar($event, numero)">
-					<label for="numero{{ numero }}">
+					<label for="numero{{ numero }}" [ngClass]="(numero | disabled) ? 'disabled' : ''">
 						<b class="valores">
 							{{ numero }}
 						</b>
@@ -63,7 +63,7 @@
 			<ion-col class="columna">
 				<div *ngFor="let numero of numeros6" class="n2">
 					<input type="checkbox" name="" id="numero{{ numero }}" [checked]="numero | verificar: combinacion" (change)="seleccionar2($event, numero)">
-					<label for="numero{{ numero }}">
+					<label for="numero{{ numero }}" [ngClass]="(numero | disabled) ? 'disabled' : ''">
 						<b class="valores">
 							{{ numero }}
 						</b>
@@ -73,7 +73,7 @@
 			<ion-col class="columna">
 				<div *ngFor="let numero of numeros7" class="n1">
 					<input type="checkbox" name="" id="numero{{ numero }}" [checked]="numero | verificar: combinacion" (change)="seleccionar($event, numero)">
-					<label for="numero{{ numero }}">
+					<label for="numero{{ numero }}" [ngClass]="(numero | disabled) ? 'disabled' : ''">
 						<b class="valores">
 							{{ numero }}
 						</b>

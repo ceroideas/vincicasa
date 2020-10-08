@@ -132,3 +132,7 @@
 		background-image: url('/assets/fondo-numero-azul-verde.png');
 	}
 }
+
+.disabled {
+	filter: grayscale(1);
+}

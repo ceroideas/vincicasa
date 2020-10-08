@@ -23,11 +23,13 @@ export class SeleccionPage implements OnInit {
   usuario: string = localStorage.getItem('usuario');
 
   returnBack = false;
+  incluidos:any = [];
 
   constructor(private service: ComunicacionService, public nav: NavController) {
     if (localStorage.getItem('no-menu-return-back')) {
       this.returnBack = true;
     }
+    this.incluidos = JSON.parse(localStorage.getItem('incluidos'));
   }
 
   ngOnInit() {
@@ -37,6 +39,15 @@ export class SeleccionPage implements OnInit {
 
       this.combinacion = JSON.parse(localStorage.getItem('excluidos'));
       this.combinazione = this.combinacion.sort((a, b) => a - b);
+
+      for(let i in this.incluidos) {
+        let idx = this.combinacion.findIndex(x=>x==this.incluidos[i]);
+        if (idx != -1) {
+          this.combinacion.splice(idx,1);
+        }
+      }
+
+      localStorage.setItem('excluidos', JSON.stringify(this.combinacion));
 
     }
 
@@ -63,6 +74,13 @@ export class SeleccionPage implements OnInit {
 
     let seleccion = numero;
     let valor = 'numero' + numero.toString();
+
+    for(let i in this.incluidos){
+      if (this.incluidos[i] == numero){
+        event.target.checked = false;
+        return false;
+      }
+    }
 
     if (event.target.checked && this.combinacion.length < 5) {
 
@@ -93,6 +111,13 @@ export class SeleccionPage implements OnInit {
 
     let seleccion = numero;
     let valor = 'numero' + numero.toString();
+
+    for(let i in this.incluidos){
+      if (this.incluidos[i] == numero){
+        event.target.checked = false;
+        return false;
+      }
+    }
 
     if (event.target.checked && this.combinacion.length < 5) {
 
