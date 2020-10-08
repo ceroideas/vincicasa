@@ -37,6 +37,14 @@
 	</ion-grid>
 	<p id="panel">{{ funcion }}</p>
 	<ion-list *ngIf="funcion == 'UTENTI'">
+		<th>
+			<tr>
+				<td>NOME</td>
+				<td>MAIL</td>
+				<td>DATA DI NASCITA</td>
+				<td>SESSO</td>
+			</tr>
+		</th>
 		<ion-item *ngFor="let data of datos.nombres; let i = index">
 			<ion-row>
 				<ion-col>
@@ -86,7 +94,7 @@
 				<td>UTENTI</td>
 				<td>MAIL</td>
 				<td>DATA DEL GIOCO</td>
-				<td>MONTOS</td>
+				<td>IMPORTI</td>
 			</tr>
 		</th>
 		<ion-item *ngFor="let data of datos.montos; let i = index">
