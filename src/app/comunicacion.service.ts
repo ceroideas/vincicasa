@@ -46,6 +46,7 @@ export class ComunicacionService {
     const url = 'https://axelrace.pythonanywhere.com/numeros';
     const headers = {'Content-type': 'application/json'};
     const json = JSON.stringify(numeros);
+    console.log(json, numeros);
     return this.http.post(url, json, {'headers': headers});
   }
 
@@ -74,10 +75,10 @@ export class ComunicacionService {
     return this.http.post(url, json, {'headers': headers});
   }
 
-  ganador(datos: any) {
+  ganador(numeros: Numeros) {
     const url = 'https://axelrace.pythonanywhere.com/ganador';
     const headers = {'Content-type': 'application/json'};
-    const json = JSON.stringify(datos);
+    const json = JSON.stringify(numeros);
     return this.http.post(url, json, {'headers': headers});
   }
 

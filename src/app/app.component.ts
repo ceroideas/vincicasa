@@ -221,9 +221,7 @@ export class AppComponent {
 
         console.log('El sorteo ha finalizado');
 
-
         this.verGanadores();
-
         // localStorage.removeItem('numeros');
         // localStorage.removeItem('fechas');
         // localStorage.removeItem('dias');
@@ -240,7 +238,8 @@ export class AppComponent {
         // localStorage.removeItem('ganadores');
 
         this.scrapping3();
-        this.scrapping();
+        this.verGanadores();
+        //this.scrapping();
         clearInterval(intervalo);
         this.reloj();
 
@@ -260,40 +259,44 @@ export class AppComponent {
       let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
       let puntos = 0;
 
-      for (let i = 0; i <= ganador.length; i++) {
+      for (let i = 0; i < ganador.length; i++) {
 
-        if (jugada[i] == ganador[i]) {
-          puntos++;
+        for (let x = 0; x < ganador.length; x++) {
+
+          if (jugada[i] == ganador[x]) {
+
+            puntos++;
+
+          }
+
         }
+
+        /*if (jugada[i] == ganador[i]) {
+          puntos = puntos + 1;
+        }*/
 
       }
 
-      console.log("puntos",puntos);
+      console.log("puntos: ", puntos);
 
       if (puntos >= 2) {
+
         this.sorteo(puntos);
 
-        // if (puntos > 0) {
+        this.numeros.correo = localStorage.getItem('correo'),
+        this.numeros.numero = jugada,
+        this.numeros.puntos = puntos.toString();
+        this.numeros.usuario = localStorage.getItem('usuario');
 
-          // this.alerta('Hai raggiunto ' + puntos + ' punti!');
+        console.log(this.numeros);
 
-          const json = {
+        this.service.ganador(this.numeros).subscribe((data:any)=>{
 
-            correo: localStorage.getItem('correo'),
-            usuario: localStorage.getItem('usuario'),
-            puntos: puntos.toString()
+        }, Error => {
 
-          };
+          this.alerta(Error);
 
-          this.service.ganador(json).subscribe((data:any)=>{
-
-          }, Error => {
-
-            this.alerta(Error);
-
-          });
-
-        // }
+        });
       }
     }
   }
@@ -302,24 +305,26 @@ export class AppComponent {
 
     localStorage.setItem('last-notification',moment().format('YYYY-MM-DD HH:mm'));
 
-    this.numeros.numero = localStorage.getItem('combinacion');
-    this.numeros.correo = localStorage.getItem('correo');
+    this.numeros.numero = localStorage.getItem('combinacion'),
+    this.numeros.correo = localStorage.getItem('correo'),
+    this.numeros.puntos = puntos.toString();
+
     let mess = "";
 
-    if (puntos == 2) {mess = "Complimenti! hai vinto";}
-    if (puntos == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
-    if (puntos == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
-    if (puntos == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+    if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
+    if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
+    if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+    if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
 
-    const jsono = {
+    /*const jsono = {
       nombre: this.numeros.numero,
       correo: this.numeros.correo,
-      puntos: puntos
-    }
+      puntos: puntos.toString()
+    }*/
 
     this.localNotifications.schedule({
       id: 1,
-      text: 'Hai raggiunto ' + puntos + ' punti! '+mess,
+      text: 'Hai raggiunto ' + puntos + ' punti! '+ mess,
       // sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
       data: {secret: ''}//{ secret: key }
     });

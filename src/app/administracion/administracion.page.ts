@@ -11,7 +11,7 @@ import * as moment from 'moment';
 export class AdministracionPage implements OnInit {
 
 	datos: any;
-	funcion: string = 'USUARIOS';
+	funcion: string = 'UTENTI';
 
   constructor(private comunicacion: ComunicacionService, public nav: NavController) { }
 
@@ -23,7 +23,7 @@ export class AdministracionPage implements OnInit {
 
   activador(nombres){
 
-  	if (nombres === 'USUARIOS') {
+  	if (nombres === 'UTENTI') {
 
       this.funcion = nombres;
 
@@ -86,7 +86,7 @@ export class AdministracionPage implements OnInit {
 
       //console.log(this.datos);
 
-  	}else if (nombres === 'DONADORES') {
+  	}else if (nombres === 'DONATORI') {
 
       this.funcion = nombres;
 
@@ -151,7 +151,7 @@ export class AdministracionPage implements OnInit {
 
   	}else{
 
-      this.funcion = 'GANADORES';
+      this.funcion = 'VINCITORI';
 
       let numeros = [], 
         correos = [], 
