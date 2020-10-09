@@ -75,25 +75,25 @@ export class HomePage {
 
     }else{
 
-      if (this.formulario.password == this.confirmar) {
+      if (this.formulario.password === this.confirmar) {
 
         const encryptp = CryptoJS.AES.encrypt(this.formulario.password, this.contrasena).toString();
-        const jsono = {
-          nombre: this.formulario.nombre,
+        //const jsono = {
+          /*nombre: this.formulario.nombre,
           correo: this.formulario.correo,
-          fecha: this.formulario.fecha,
-          password: encryptp,
-          sexo: this.formulario.sexo
-        }
+          fecha: this.formulario.fecha,*/
+          this.formulario.password = encryptp;
+          /*sexo: this.formulario.sexo*/
+       // }
 
         this.loading.create().then(l => {
 
           l.present();
-          this.comunicacion.registros(jsono).subscribe((data:any) => {
+          this.comunicacion.registros(this.formulario).subscribe((data:any) => {
             
             l.dismiss();
 
-            if (data.respuesta == 'registrado') {
+            if (data.respuesta === 'registrado') {
               
               this.alerta("L'utente esiste già");
 
@@ -144,22 +144,23 @@ export class HomePage {
       }else{
 
         const encryptp = CryptoJS.AES.encrypt(this.isesion.password, this.contrasena).toString();
-        const jsono = {
+        /*const jsono = {
           correo: this.isesion.correo,
-          password: encryptp
-        }
+          password:*/ /*this.isesion.password = encryptp;*/
+       // }
 
         this.loading.create().then(l => {
 
           l.present();
 
-          this.comunicacion.sesion(jsono).subscribe((data:any) => {
+          this.comunicacion.sesion(this.isesion).subscribe((data:any) => {
 
             const contrasenadec = CryptoJS.AES.decrypt(data.respuesta.trim(), this.contrasena.trim()).toString(CryptoJS.enc.Utf8);
+            console.log(contrasenadec);
 
             l.dismiss();
             
-            if(data.respuesta == 'nousuario'){
+            if(data.respuesta === 'nousuario'){
 
               // localStorage.setItem('correo', this.isesion.correo);
               // localStorage.setItem('usuario', JSON.stringify(data));
@@ -168,7 +169,7 @@ export class HomePage {
 
             }else{
 
-              if (contrasenadec === this.isesion.password) {
+              if (contrasenadec.toString() === this.isesion.password) {
 
                 localStorage.setItem('correo', this.isesion.correo);
                 localStorage.setItem('usuario', JSON.stringify(data));

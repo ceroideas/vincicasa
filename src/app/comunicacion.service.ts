@@ -29,17 +29,18 @@ export class ComunicacionService {
   }
 
   registros(registro: Registro): Observable<any>{
-  	const url = 'https://axelrace.pythonanywhere.com/registro';
+  	//const url = 'https://axelrace.pythonanywhere.com/registro';
+    const url = 'https://axelrace.pythonanywhere.com/registro';
   	const headers = {'Content-type': 'application/json'};
-  	const json = JSON.stringify(registro);
-  	return this.http.post(url, json, {'headers': headers});
+  	//const json = JSON.stringify(registro);
+  	return this.http.post(url, registro, {'headers': headers});
   }
 
   sesion(sesion: Sesion): Observable<any>{
   	const url = 'https://axelrace.pythonanywhere.com/sesion';
   	const headers = {'Content-type': 'application/json'};
-  	const json = JSON.stringify(sesion);
-  	return this.http.post(url, json, {'headers': headers});
+  	//const json = JSON.stringify(sesion);
+  	return this.http.post(url, sesion, {'headers': headers});
   }
 
   number(numeros: Numeros): Observable<any>{
