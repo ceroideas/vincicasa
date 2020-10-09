@@ -39,8 +39,8 @@ export class ComunicacionService {
   sesion(sesion: Sesion): Observable<any>{
   	const url = 'https://axelrace.pythonanywhere.com/sesion';
   	const headers = {'Content-type': 'application/json'};
-  	const json = JSON.stringify(sesion);
-  	return this.http.post(url, json, {'headers': headers});
+  	//const json = JSON.stringify(sesion);
+  	return this.http.post(url, sesion, {'headers': headers});
   }
 
   number(numeros: Numeros): Observable<any>{

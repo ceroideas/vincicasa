@@ -146,7 +146,7 @@ export class HomePage {
         const encryptp = CryptoJS.AES.encrypt(this.isesion.password, this.contrasena).toString();
         /*const jsono = {
           correo: this.isesion.correo,
-          password:*/ this.isesion.password = encryptp;
+          password:*/ /*this.isesion.password = encryptp;*/
        // }
 
         this.loading.create().then(l => {
@@ -156,10 +156,11 @@ export class HomePage {
           this.comunicacion.sesion(this.isesion).subscribe((data:any) => {
 
             const contrasenadec = CryptoJS.AES.decrypt(data.respuesta.trim(), this.contrasena.trim()).toString(CryptoJS.enc.Utf8);
+            console.log(contrasenadec);
 
             l.dismiss();
             
-            if(data.respuesta == 'nousuario'){
+            if(data.respuesta === 'nousuario'){
 
               // localStorage.setItem('correo', this.isesion.correo);
               // localStorage.setItem('usuario', JSON.stringify(data));
@@ -168,7 +169,7 @@ export class HomePage {
 
             }else{
 
-              if (contrasenadec === this.isesion.password) {
+              if (contrasenadec.toString() === this.isesion.password) {
 
                 localStorage.setItem('correo', this.isesion.correo);
                 localStorage.setItem('usuario', JSON.stringify(data));
