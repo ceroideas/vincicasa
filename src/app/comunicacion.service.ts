@@ -29,10 +29,11 @@ export class ComunicacionService {
   }
 
   registros(registro: Registro): Observable<any>{
-  	const url = 'https://axelrace.pythonanywhere.com/registro';
+  	//const url = 'https://axelrace.pythonanywhere.com/registro';
+    const url = 'https://axelrace.pythonanywhere.com/registro';
   	const headers = {'Content-type': 'application/json'};
-  	const json = JSON.stringify(registro);
-  	return this.http.post(url, json, {'headers': headers});
+  	//const json = JSON.stringify(registro);
+  	return this.http.post(url, registro, {'headers': headers});
   }
 
   sesion(sesion: Sesion): Observable<any>{
