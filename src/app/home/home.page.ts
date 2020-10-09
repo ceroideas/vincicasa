@@ -100,7 +100,7 @@ export class HomePage {
             }else{
 
               localStorage.setItem('correo', this.formulario.correo);
-              localStorage.setItem('usuario', this.formulario.nombre);
+              localStorage.setItem('usuario', JSON.stringify(data));
               this.router.navigateByUrl('/manual');
 
             }
@@ -156,7 +156,7 @@ export class HomePage {
           this.comunicacion.sesion(this.isesion).subscribe((data:any) => {
 
             const contrasenadec = CryptoJS.AES.decrypt(data.respuesta.trim(), this.contrasena.trim()).toString(CryptoJS.enc.Utf8);
-            console.log(contrasenadec);
+            //console.log(contrasenadec);
 
             l.dismiss();
             
