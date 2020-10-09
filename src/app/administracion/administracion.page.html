@@ -36,82 +36,54 @@
 		</ion-row>
 	</ion-grid>
 	<p id="panel">{{ funcion }}</p>
-	<ion-list *ngIf="funcion == 'UTENTI'">
-		<th>
+	<table *ngIf="funcion == 'UTENTI'">
+		<thead>
 			<tr>
 				<td>NOME</td>
 				<td>MAIL</td>
 				<td>DATA DI NASCITA</td>
 				<td>SESSO</td>
 			</tr>
-		</th>
-		<ion-item *ngFor="let data of datos.nombres; let i = index">
-			<ion-row>
-				<ion-col>
-					<ion-label class="datos">{{ datos.nombres[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.correos[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.fechas[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.sexos[i] }}</ion-label>
-				</ion-col>
-			</ion-row>
-		</ion-item>
-	</ion-list>
-	<ion-list *ngIf="funcion == 'VINCITORI'">
-		<th>
+		</thead>
+		<tr *ngFor="let data of datos.nombres; let i = index">
+			<td>{{ datos.nombres[i] }}</td>
+			<td>{{ datos.correos[i] }}</td>
+			<td>{{ datos.fechas[i] }}</td>
+			<td>{{ datos.sexos[i] }}</td>
+		</tr>
+	</table>
+	<table *ngIf="funcion == 'VINCITORI'">
+		<thead>
 			<tr>
 				<td>MAIL</td>
 				<td>COMBINAZIONE</td>
 				<td>DATA DEL GIOCO</td>
 				<td>PUNTI</td>
 			</tr>
-		</th>
-		<ion-item *ngFor="let data of datos.aciertos; let i = index">
-			<ion-row>
-				<ion-col>
-					<ion-label class="datos">{{ datos.correos[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.numeros[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.fechas[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.aciertos[i] }}</ion-label>
-				</ion-col>
-			</ion-row>
-		</ion-item>
-	</ion-list>
-	<ion-list *ngIf="funcion == 'DONATORI'">
-		<th>
+		</thead>
+		<tr *ngFor="let data of datos.aciertos; let i = index">
+			<td>{{ datos.correos[i] }}</td>
+			<td>{{ datos.numeros[i] }}</td>
+			<td>{{ datos.fechas[i] }}</td>
+			<td>{{ datos.aciertos[i] }}</td>
+		</tr>
+	</table>
+	<table *ngIf="funcion == 'DONATORI'">
+		<thead>
 			<tr>
 				<td>UTENTI</td>
 				<td>MAIL</td>
 				<td>DATA DEL GIOCO</td>
 				<td>IMPORTI</td>
 			</tr>
-		</th>
-		<ion-item *ngFor="let data of datos.montos; let i = index">
-			<ion-row>
-				<ion-col>
-					<ion-label class="datos">{{ datos.usuarios[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.correos[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.fechas[i] }}</ion-label>
-				</ion-col>
-				<ion-col>
-					<ion-label class="datos">{{ datos.montos[i] }}</ion-label>
-				</ion-col>
-			</ion-row>
-		</ion-item>
-	</ion-list>
+		</thead>
+		<tbody>
+			<tr *ngFor="let data of datos.montos; let i = index">
+				<td>{{ datos.usuarios[i] }}</td>
+				<td>{{ datos.correos[i] }}</td>
+				<td>{{ datos.fechas[i] }}</td>
+				<td>{{ datos.montos[i] }}</td>
+			</tr>
+		</tbody>
+	</table>
 </ion-content>
