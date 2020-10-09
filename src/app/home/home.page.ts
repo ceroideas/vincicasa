@@ -100,8 +100,8 @@ export class HomePage {
             }else{
 
               localStorage.setItem('correo', this.formulario.correo);
-              localStorage.setItem('usuario', this.formulario.nombre);
-              this.router.navigateByUrl('/manual');
+              localStorage.setItem('usuario', JSON.stringify(data));
+              this.router.navigate(['/manual']);
 
             }
           }, Error => {
@@ -172,7 +172,7 @@ export class HomePage {
 
                 localStorage.setItem('correo', this.isesion.correo);
                 localStorage.setItem('usuario', JSON.stringify(data));
-                this.router.navigateByUrl('/feed');
+                this.router.navigate(['/feed']);
 
               }else{
                 
@@ -187,6 +187,8 @@ export class HomePage {
               l.dismiss();
 
               this.error(Error);
+
+              console.log(Error)
 
           });
 
