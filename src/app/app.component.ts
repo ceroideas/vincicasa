@@ -84,7 +84,7 @@ export class AppComponent {
   ngOnInit(){
 
     this.reloj();
-    this.service.data$.subscribe(res => {this.user = res; console.log(typeof res)});
+    this.service.data$.subscribe(res => {this.user = res; /*console.log(typeof res)*/});
 
     /*if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined || localStorage.getItem('fechas') == '' || localStorage.getItem('fechas') == undefined) {
      
