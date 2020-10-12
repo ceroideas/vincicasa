@@ -78,13 +78,9 @@ export class HomePage {
       if (this.formulario.password === this.confirmar) {
 
         const encryptp = CryptoJS.AES.encrypt(this.formulario.password, this.contrasena).toString();
-        //const jsono = {
-          /*nombre: this.formulario.nombre,
-          correo: this.formulario.correo,
-          fecha: this.formulario.fecha,*/
-          this.formulario.password = encryptp;
-          /*sexo: this.formulario.sexo*/
-       // }
+        
+        this.formulario.password = encryptp;
+        this.formulario.fecha = moment(this.formulario.fecha).format('YYYY-MM-DD');
 
         this.loading.create().then(l => {
 
