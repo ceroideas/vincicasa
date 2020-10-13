@@ -20,7 +20,7 @@ export class CombinazionePage implements OnInit {
 	ultimos: any[3] = [];
 	fechas: any[3] = [];
 	usuario: string = localStorage.getItem('usuario');
-	hoy: any = moment();
+	hoy: any;
   format: any;
 	contador: number = parseInt(JSON.parse(localStorage.getItem('contador')));
   hour: any;
@@ -44,6 +44,8 @@ export class CombinazionePage implements OnInit {
 			'novembre',
 			'dicembre'];
 
+  hh = '19:05';
+
 
   constructor(private service: ComunicacionService, public alert: AlertController, public nav: NavController, public modal: ModalController, public events: EventsService) {
 
@@ -62,11 +64,32 @@ export class CombinazionePage implements OnInit {
   		this.contador = 0;
   	}
 
-  	this.hoy = this.hoy.format('DD') + ' ' + this.meses[ this.hoy.format('M')-1 ] + ' ' + this.hoy.format('YYYY');
-    this.format = moment().format('YYYY-MM-DD');
-
     // console.log(this.hoy)
 
+    this.detectDate();
+
+  }
+
+  detectDate()
+  {
+    let hora = moment();
+    let pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).add(1,'day');
+    let diff = (pm8p1.diff(hora,'seconds'))/3600;
+
+    if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
+      
+      // console.log('día de hoy');
+      this.hoy = moment();
+      
+    }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
+
+      // console.log('día siguiente');
+      this.hoy = moment().add(1,'day');
+
+    }
+
+    this.hoy = this.hoy.format('DD') + ' ' + this.meses[ this.hoy.format('M')-1 ] + ' ' + this.hoy.format('YYYY');
+    this.format = moment().format('YYYY-MM-DD');
   }
 
   ngOnInit() {

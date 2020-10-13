@@ -15,6 +15,7 @@ export class FeedPage implements OnInit {
 
   usuario: any = localStorage.getItem('usuario');
   horas: any = [];
+  hh = "19:05";
 
   constructor(private menu: MenuController, private comunicacion: ComunicacionService, private router: Router) {
     this.menu.enable(true);
@@ -173,15 +174,15 @@ export class FeedPage implements OnInit {
       setTimeout(updateClock, 500);
     }
 
-    let mins8 = moment(moment().format('YYYY-MM-DD 19:05'));
+    let mins8 = moment(moment().format('YYYY-MM-DD '+this.hh));
     let now;
 
     let restante = mins8.diff(moment(),'seconds');
 
     if (restante < 0) {
-      now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 19:05'));
+      now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD '+this.hh));
     }else{
-      now = moment(moment().format('YYYY-MM-DD 19:05'));
+      now = moment(moment().format('YYYY-MM-DD '+this.hh));
     }
 
     var deadline = new Date(Date.parse(now));

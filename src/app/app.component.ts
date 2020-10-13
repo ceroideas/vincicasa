@@ -25,6 +25,8 @@ export class AppComponent {
   tiempo: any = [];
   numeros = new Numeros();
 
+  hh = "19:05";
+
   constructor(private localNotifications: LocalNotifications, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController/*, private deeplinks: Deeplinks*/) { 
 
     this.menuCtrl.toggle(); 
@@ -95,8 +97,8 @@ export class AppComponent {
 
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
-    let pm8 = moment(moment().format('YYYY-MM-DD 19:05'));
-    let pm8p1 = moment(moment().format('YYYY-MM-DD 19:05')).add(1,'day');
+    let pm8 = moment(moment().format('YYYY-MM-DD '+this.hh));
+    let pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).add(1,'day');
     let diff = (pm8p1.diff(hora,'seconds'))/3600;
     let diff2 = hora.diff(horaClick,'seconds')/3600;
 
@@ -106,39 +108,37 @@ export class AppComponent {
 
     }else{
 
-      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las 19:05 hasta hoy a las 19:05
-
+      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
         let d = pm8.diff(horaClick,'seconds')/3600;
 
         if (d > 24) {
-          console.log('borrar contador')
+          // console.log('borrar contador')
           localStorage.removeItem('contador');
         }else{
           // localStorage.setItem('contador','1');
         }
         
-        console.log('desde el dia anterior', d);
+        // console.log('desde el dia anterior', d);
         
-      }else{ // en caso contrario se cuenta a partir de hoy a las 19:05 hasta mañana a las 19:05
-
+      }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
         let d = pm8p1.diff(horaClick,'seconds')/3600;
 
         if (d > 24) {
-          console.log('borrar contador')
+          // console.log('borrar contador')
           localStorage.removeItem('contador');
         }else{
           // localStorage.setItem('contador','1');
         }
 
-        console.log('hasta el dia siguiente', d);
+        // console.log('hasta el dia siguiente', d);
 
       }
     }
 
     let lastNotification = moment(localStorage.getItem('last-notification'));
     hora = moment();
-    pm8 = moment(moment().format('YYYY-MM-DD 19:05'));
-    pm8p1 = moment(moment().format('YYYY-MM-DD 19:05')).add(1,'day');
+    pm8 = moment(moment().format('YYYY-MM-DD '+this.hh));
+    pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).add(1,'day');
     diff = (pm8p1.diff(hora,'seconds'))/3600;
     diff2 = hora.diff(lastNotification,'seconds')/3600;
 
@@ -149,8 +149,7 @@ export class AppComponent {
 
     }else{
 
-      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las 19:05 hasta hoy a las 19:05
-
+      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
         let d = pm8.diff(lastNotification,'seconds')/3600;
 
         if (d > 24) {
@@ -160,8 +159,7 @@ export class AppComponent {
           // localStorage.setItem('contador','1');
         }
         
-      }else{ // en caso contrario se cuenta a partir de hoy a las 19:05 hasta mañana a las 19:05
-
+      }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
         let d = pm8p1.diff(lastNotification,'seconds')/3600;
 
         if (d > 24) {
@@ -179,18 +177,18 @@ export class AppComponent {
 
     let mostrar_hora = () => {
 
-      let mins8 = moment(moment().format('YYYY-MM-DD 19:05'));
+      let mins8 = moment(moment().format('YYYY-MM-DD '+this.hh));
       let now;
 
       let restante = mins8.diff(moment(),'seconds');
 
       if (restante <= 0) {
 
-        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 19:05'));
+        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD '+this.hh));
 
       }else{
 
-        now = moment(moment().format('YYYY-MM-DD 19:05'));
+        now = moment(moment().format('YYYY-MM-DD '+this.hh));
 
       }
       
