@@ -308,7 +308,19 @@ export class CombinazionePage implements OnInit {
 			}
 		}
 
-    console.log(this.combinacion);
+    /**/
+
+    const colores = ['green', 'yellow', 'red'];
+
+    this.validar();
+
+    if (this.colores !== colores[0]) {
+
+      return this.random();
+
+    }
+
+    /**/
 
 		for (var i = 0; i < (5 - this.incluir.length); i++) {	
 			this.combinacion.push( this.getRandomArbitrary(1, 55, this.combinacion, this.excluir) );
@@ -347,16 +359,6 @@ export class CombinazionePage implements OnInit {
 
     //   ultimos.push(this.combinacion);
     //   this.fechas.push(this.hoy);
-
-    // }
-
-    // const colores = ['green', 'yellow', 'red'];
-
-    // this.validar();
-
-    // if (this.colores !== colores[0]) {
-
-    //   return this.random();
 
     // }
 
@@ -485,7 +487,7 @@ export class CombinazionePage implements OnInit {
     const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
     let nprimos = 0;
 
-    console.log('validar',combinazione);
+    // console.log('validar',combinazione);
 
     // pares
 
