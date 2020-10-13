@@ -21,6 +21,7 @@ export class CombinazionePage implements OnInit {
 	fechas: any[3] = [];
 	usuario: string = localStorage.getItem('usuario');
 	hoy: any = moment();
+  format: any;
 	contador: number = parseInt(JSON.parse(localStorage.getItem('contador')));
   hour: any;
   minute: any;
@@ -62,6 +63,7 @@ export class CombinazionePage implements OnInit {
   	}
 
   	this.hoy = this.hoy.format('DD') + ' ' + this.meses[ this.hoy.format('M')-1 ] + ' ' + this.hoy.format('YYYY');
+    this.format = moment().format('YYYY-MM-DD');
 
     // console.log(this.hoy)
 
@@ -89,7 +91,7 @@ export class CombinazionePage implements OnInit {
 
       this.fechas = JSON.parse(localStorage.getItem('ufechas'));
 
-      if (this.hoy != this.fechas[0]) {
+      if (this.hoy != this.fechas[0].fecha) {
 
         this.contador = 0;
         this.combinacion = [];
@@ -109,7 +111,7 @@ export class CombinazionePage implements OnInit {
 
       let fechas = JSON.parse(localStorage.getItem('ufechas'));
   		
-      if (fechas.findIndex(x=>x==this.hoy) == -1) {
+      if (fechas.findIndex(x=>x.fecha==this.hoy) == -1) {
         this.random(true);
       }else{
   		  this.combinacion = JSON.parse(localStorage.getItem('combinacion'));
@@ -153,13 +155,79 @@ export class CombinazionePage implements OnInit {
       
     },1000)
 
+    this.start();
 
+  }
+
+  start()
+  {
+    let dias = [];
+    let dia = moment().subtract(1,'day');
+    let limit = moment().subtract(4,'days');
+    let numeros = JSON.parse(localStorage.getItem('ultimos'));
+    let fechas = JSON.parse(localStorage.getItem('ufechas'));
+
+    while(dia.format('YYYY-MM-DD') != limit.format('YYYY-MM-DD')){
+      dias.push(dia.format('YYYY-MM-DD'));
+
+      dia.subtract(1,'day');
+    }
+
+    for (let i in dias) {
+      let idx = this.fechas.findIndex(x=>x.format==dias[i]);
+      let actual = [];
+      if (idx == -1) {
+
+        if (this.incluir) {
+          for (let h in this.incluir) {
+            actual.push(this.incluir[h]);
+          }
+        }
+
+        for (let n = 0; n < (5 - this.incluir.length); n++) {  
+          actual.push( this.getRandomArbitrary(1, 55, actual, this.excluir) );
+        }
+
+        actual = actual.sort((a,b)=> a - b);
+
+        let new_i = parseInt(i)+1;
+
+        console.log(new_i);
+
+        // if (new_i == 3) {
+        //   new_i = 2;
+        // }
+        if (new_i == 4) {
+          new_i = 3;
+        }
+        numeros.splice(new_i, 0, actual);
+        let d:any = moment(dias[i]);
+        let f = d.format('DD') + ' ' + this.meses[ d.format('M')-1 ] + ' ' + d.format('YYYY');
+        fechas.splice(new_i, 0, {fecha:f,format:dias[i]});
+
+      }
+    }
+ 
+    let new_numbers = [];
+    let new_dates = [];
+
+    for(let i = 0; i < 4; i++) {
+      new_numbers.push(numeros[i]);
+      new_dates.push(fechas[i]);
+    }
+
+    this.fechas = new_dates;
+    this.ultimos = new_numbers;
+
+    localStorage.setItem('ufechas',JSON.stringify(new_dates));
+    localStorage.setItem('ultimos',JSON.stringify(new_numbers));
   }
 
   getRandomArbitrary(min, max, n:any = [], exc:any = []){
 
 	  let number = Math.floor(Math.random() * (max - min) + min);
 	  let a = 0;
+    let b = 0;
 
   	for (let i = 0; i < n.length; i++) {
   		if (n[i] == number) {
@@ -169,11 +237,13 @@ export class CombinazionePage implements OnInit {
 
   	for (let i = 0; i < exc.length; i++) {
   		if (exc[i] == number) {
-  			a++;
+  			b++;
   		}
   	}
 
-  	if (a > 0) {
+    // console.log(a,b)
+
+  	if (a > 0 || b > 0) {
 
   		return this.getRandomArbitrary(min, max, n);
 
@@ -223,7 +293,7 @@ export class CombinazionePage implements OnInit {
 
     let final = ultimos.length;
 
-    let idx = this.fechas.findIndex(x=>x==this.hoy);
+    let idx = this.fechas.findIndex(x=>x.fecha==this.hoy);
 
     if (idx != -1) {
 
@@ -236,7 +306,7 @@ export class CombinazionePage implements OnInit {
       // console.log(2)
 
       ultimos.push(this.combinacion);
-      this.fechas.push(this.hoy);
+      this.fechas.push({fecha:this.hoy,format:this.format});
 
     }
 
@@ -255,7 +325,7 @@ export class CombinazionePage implements OnInit {
 
     // }
 
-    if (ultimos.length == 4 && this.fechas.length == 4) {
+    if (ultimos.length == 5 && this.fechas.length == 5) {
 
       this.fechas.shift();
       ultimos.shift();
