@@ -350,15 +350,15 @@ export class CombinazionePage implements OnInit {
 
     // }
 
-    const colores = ['green', 'yellow', 'red'];
+    // const colores = ['green', 'yellow', 'red'];
 
-    this.validar();
+    // this.validar();
 
-    if (this.colores !== colores[0]) {
+    // if (this.colores !== colores[0]) {
 
-      return this.random();
+    //   return this.random();
 
-    }
+    // }
 
     if (ultimos.length == 5 && this.fechas.length == 5) {
 
