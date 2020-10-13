@@ -419,3 +419,13 @@ ion-select::part(icon) {
     border-radius: 6px;
   }
 }
+
+.swiper-wrapper {
+  margin-bottom: 20px !important;
+}
+
+.swiper-pagination.swiper-pagination-bullets {
+  bottom: -3px !important;
+  --bullet-background: red;
+  --bullet-background-active: blue;
+}

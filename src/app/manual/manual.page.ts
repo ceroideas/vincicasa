@@ -10,7 +10,7 @@ import { ComunicacionService } from '../comunicacion.service';
 export class ManualPage implements OnInit {
 
   slideOpts = {
-	scrollbar: true,
+    spaceBetween:5
   }
 
   @ViewChild('dSlides') slides: IonSlides;
