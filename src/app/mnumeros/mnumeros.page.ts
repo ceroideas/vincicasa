@@ -139,6 +139,17 @@ export class MnumerosPage implements OnInit {
     let coincidencias = [];
     let u200 = JSON.parse(localStorage.getItem('e200n'));
 
+    let combinacion = [];
+    for (let h in combinazione) {
+      combinacion.push(combinazione[h].toString());
+    }
+
+    for (let h in u200) {
+      if (JSON.stringify(combinacion) == JSON.stringify(u200[h])) {
+        return this.colores = colores[1];
+      }
+    }
+
     for (let i = 0; i < combinazione.length; i++) {
 
       if (combinazione[i+1] !== undefined) {

@@ -61,10 +61,10 @@ export class ComunicacionService {
     return this.http.get(url);
   }
 
-  recuperar(mail: string) {
+  recuperar(mail: string, codigo: string) {
     const url = 'https://axelrace.pythonanywhere.com/recuperar';
     const headers = {'Content-type': 'application/json'};
-    const json = {"correo": mail}
+    const json = {"correo": mail, "codigo": codigo}
     const correo = JSON.stringify(json);
     return this.http.post(url, correo, {'headers': headers});
   }

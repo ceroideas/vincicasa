@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../comunicacion.service';
-import { AlertController } from  '@ionic/angular';
+import { AlertController, NavController, LoadingController } from  '@ionic/angular';
 
 @Component({
   selector: 'app-recuperar',
@@ -12,7 +12,21 @@ export class RecuperarPage implements OnInit {
 
   correo: string;
 
-  constructor(private comunicacion: ComunicacionService, public alertController: AlertController) { }
+  step = 1;
+
+  codigo;
+
+  constructor(private comunicacion: ComunicacionService, public alertController: AlertController, public nav: NavController, public load: LoadingController) { }
+
+  makeid() {
+    var text = "";
+    var possible = "0123456789";
+
+    for (var i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  }
 
   ngOnInit() {
   }
@@ -20,7 +34,7 @@ export class RecuperarPage implements OnInit {
   async alerta(alerta) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Advertencia:',
+      header: 'Avviso:',
       subHeader: '',
       message: alerta,
       buttons: ['OK']
@@ -31,26 +45,49 @@ export class RecuperarPage implements OnInit {
 
   cambio(){
 
-  	this.comunicacion.recuperar(this.correo).subscribe((data:any) => {
+    this.load.create().then(l=>{
+      l.present();
 
-  		if(data.respuesta == 'nousuario'){
+      let codigo = this.makeid();
 
-          this.alerta('Usuario no registrado');
+      localStorage.setItem('codigo',codigo);
 
-        }else{
+    	this.comunicacion.recuperar(this.correo,codigo).subscribe((data:any) => {
 
-          this.alerta('conferma la tua email');
-          localStorage.setItem("cambiomail", this.correo);
+        l.dismiss();
 
-        }
+    		if(data.respuesta == 'nousuario'){
 
-  	}, Error =>{
+            this.alerta('Usuario no registrado');
 
-  		this.alerta('Invio fallito');
-  		console.log(Error);
+          }else{
 
-  	});
+            this.alerta('conferma la tua email');
+            localStorage.setItem("cambiomail", this.correo);
 
+            this.step = 2;
+
+          }
+
+    	}, Error =>{
+
+        l.dismiss();
+
+    		this.alerta('Invio fallito');
+    		console.log(Error);
+
+    	});
+    })
+
+  }
+
+  confirm()
+  {
+    if (localStorage.getItem('codigo') == this.codigo) {
+      this.nav.navigateRoot('recuperar/cambio');
+    }else{
+      this.alerta('Il codice non è corretto');
+    }
   }
   
 }

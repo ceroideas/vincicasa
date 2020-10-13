@@ -26,13 +26,22 @@ ion-card{
 .datos{
 	font-size: 12px;
 }
-th{
-	display: flex;
-}
+// th{
+// 	display: flex;
+// }
 tr{
 	margin: auto;
 }
 td, tr{
 	padding: 5px 10px 0px 5px;
 	font-size: 12px;
+}
+
+.bbb {
+	td {
+		border-bottom: 1px solid #333;
+	}
+}
+table {
+	width: 100%;
 }

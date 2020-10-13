@@ -42,9 +42,10 @@ export class ArchivoPage implements OnInit {
   hasta: any = moment();
   
   optionsRange: CalendarComponentOptions = {
-    monthFormat: 'DD MMM YYYY',
+    monthFormat: 'MMM YYYY',
+    monthPickerFormat: ['GEN', 'FEB', 'MAR', 'APR', 'MAG', 'GIU', 'LUG', 'AGO', 'SET', 'OTT', 'NOV', 'DIC'],
     weekdays: ['DOM', 'LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB'],
-    weekStart: 1,
+    weekStart: 0,
     pickMode: 'single',
     from: this.desde,
     to: this.hasta

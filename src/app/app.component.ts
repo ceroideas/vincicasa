@@ -7,7 +7,7 @@ import { ComunicacionService } from './comunicacion.service';
 import * as moment from 'moment';
 import { MenuController, AlertController } from '@ionic/angular';
 import { Numeros } from './numeros';
-import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+// import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { CambioPage } from './recuperar/cambio/cambio.page';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
@@ -25,25 +25,25 @@ export class AppComponent {
   tiempo: any = [];
   numeros = new Numeros();
 
-  constructor(private localNotifications: LocalNotifications, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController, private deeplinks: Deeplinks) { 
+  constructor(private localNotifications: LocalNotifications, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController/*, private deeplinks: Deeplinks*/) { 
 
     this.menuCtrl.toggle(); 
 
-      this.deeplinks.route({
+   //    this.deeplinks.route({
 
-       '/recuperar': CambioPage
+   //     '/recuperar': CambioPage
 
-     }).subscribe(match => {
+   //   }).subscribe(match => {
 
-       this.nav.navigateForward('/recuperar/cambio');
+   //     this.nav.navigateForward('/recuperar/cambio');
        
-       console.log('Ruta encontrada', match);
+   //     console.log('Ruta encontrada', match);
 
-     }, nomatch => {
+   //   }, nomatch => {
      
-       console.error('Tengo un deeplink que no \' encontré', nomatch);
+   //     console.error('Tengo un deeplink que no \' encontré', nomatch);
 
-   });
+   // });
 
   }
 

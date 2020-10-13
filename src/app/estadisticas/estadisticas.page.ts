@@ -146,7 +146,7 @@ export class EstadisticasPage implements OnInit {
                         position: "top",
                         ticks:{
                           autoSkip: true,
-                          autoSkipPadding: 5,
+                          autoSkipPadding: 2.5,
                           fontColor: 'white',
                           fontSize: 14
                         },

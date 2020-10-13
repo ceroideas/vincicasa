@@ -53,22 +53,27 @@ export class RetardatiPage implements OnInit {
         if (ultimos[j].filter(x=>x==i).length == 0) {
           a++;
         }else{
-          if (a > b) {
-            b = a;
-          }
-          a = 0;
+          break;
         }
+        // else{
+        //   if (a > b) {
+        //     b = a;
+        //   }
+        //   a = 0;
+        // }
 
       }
 
-      frecuencia.push({numero:i,frecuencia:b});
+      frecuencia.push({numero:i,frecuencia:a});
     }
 
     let limit = 55;
 
     for (var h = 0; h < limit; h++) {
       if (frecuencia[h] !== undefined) {
+
         this.numeros.push({num:frecuencia[h].numero,freq:frecuencia[h].frecuencia || 0})
+
       }
     }
 
@@ -115,7 +120,7 @@ export class RetardatiPage implements OnInit {
   }
 
   ordenar(){
-    if (this.order == "ORDINA PER NUMERO") {
+    if (this.order == "ORDINA PER PIÙ RITARDATARIO") {
       this.numeros = this.numeros.sort((a,b)=> a.num - b.num);
       // this.numeros2 = this.numeros2.sort((a,b)=> a.num - b.num);
 
@@ -124,7 +129,7 @@ export class RetardatiPage implements OnInit {
       this.numeros = this.numeros.sort((a,b)=> b.freq - a.freq);
       // this.numeros2 = this.numeros2.sort((a,b)=> a.freq - b.freq);
 
-      this.order = "ORDINA PER NUMERO";
+      this.order = "ORDINA PER PIÙ RITARDATARIO";
     }
     
 

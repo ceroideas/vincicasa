@@ -82,7 +82,7 @@ export class FrequentiPage implements OnInit {
   }
 
   ordenar(){
-    if (this.order == "ORDINA PER NUMERO") {
+    if (this.order == "ORDINA PER PIÙ FREQUENTE") {
       this.numeros = this.numeros.sort((a,b)=> a.num - b.num);
       // this.numeros2 = this.numeros2.sort((a,b)=> a.num - b.num);
 
@@ -91,7 +91,7 @@ export class FrequentiPage implements OnInit {
       this.numeros = this.numeros.sort((a,b)=> b.freq - a.freq);
       // this.numeros2 = this.numeros2.sort((a,b)=> a.freq - b.freq);
 
-      this.order = "ORDINA PER NUMERO";
+      this.order = "ORDINA PER PIÙ FREQUENTE";
     }
     
 

@@ -28,7 +28,7 @@
 	z-index: 1;
 }
 #dona{
-	margin-top: 10% !important;
+	// margin-top: 10% !important;
 	width: 300px;
 	margin: auto;
 	--background: white;
@@ -146,4 +146,29 @@
 			font-size: 25px;
 		}
 	}
+}
+
+.ir{
+  margin: auto;
+  text-align: center;
+  font-size: 16px;
+}
+a{
+	font-family: arial !important;
+  color: gray;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+  color: white;
+  font-weight: 100;
+}
+a p{
+  color: black;
+  display: inline;
+}
+
+.pt-16 {
+	padding-top: 16px;
+	padding-bottom: 16px;
 }
