@@ -27,6 +27,8 @@ export class CombinazionePage implements OnInit {
   minute: any;
   second: any;
   tiempo: any = [];
+  colores: any;
+  timeout;
 
   
   intervalo: any;
@@ -348,6 +350,16 @@ export class CombinazionePage implements OnInit {
 
     // }
 
+    const colores = ['green', 'yellow', 'red'];
+
+    this.validar();
+
+    if (this.colores !== colores[0]) {
+
+      return this.random();
+
+    }
+
     if (ultimos.length == 5 && this.fechas.length == 5) {
 
       this.fechas.shift();
@@ -456,6 +468,142 @@ export class CombinazionePage implements OnInit {
     //   }
     // }
     // ]}).then(a=>a.present())
+  }
+
+  validar(){
+
+    // clearTimeout(this.timeout);
+    
+    // this.timeout = setTimeout(()=>{
+    //   this.colores = null;
+    // },5000)
+
+    // console.log(this.combinacion);
+    const combinazione = this.combinacion.sort((a, b) => a - b);
+    const semaforo = document.getElementById("rvalidacion");
+    const colores = ['green', 'yellow', 'red'];
+    const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
+    let nprimos = 0;
+
+    console.log('validar',combinazione);
+
+    // pares
+
+    let comp = 0;
+
+    for (var i = 0; i < combinazione.length; i++) {
+      if (combinazione[i]%2 == 0) {
+        comp++;
+      }
+    }
+
+    if (comp==5) {
+      console.log('TODOS SON PARES, Naranja');
+      return this.colores = colores[1];
+    }
+
+    comp = 0;
+
+    for (var i = 0; i < combinazione.length; i++) {
+      if (combinazione[i]%2 == 1) {
+        comp++;
+      }
+    }
+
+    if (comp==5) {
+      console.log('TODOS SON IMPARES, Naranja');
+      return this.colores = colores[1];
+    }
+
+
+    // impares
+
+
+    let seguidos = 0;
+    let coincidencias = [];
+    let u200 = JSON.parse(localStorage.getItem('e200n'));
+
+    let combinacion = [];
+    for (let h in combinazione) {
+      combinacion.push(combinazione[h].toString());
+    }
+
+    for (let h in u200) {
+      if (JSON.stringify(combinacion) == JSON.stringify(u200[h])) {
+        return this.colores = colores[1];
+      }
+    }
+
+    for (let i = 0; i < combinazione.length; i++) {
+
+      if (combinazione[i+1] !== undefined) {
+
+        if (combinazione[i]+1 == combinazione[i+1]) {
+          seguidos++;
+        }
+      }
+    }
+
+    //console.log(seguidos);
+
+
+    for (let i = 0; i <= combinazione.length; i++) {
+
+      let numero = combinazione[i];
+
+      for (let x = 0; x < primos.length; x++) {
+
+        let primo = primos[x];
+
+        if (numero == primo) {
+          nprimos++;
+        }
+      }
+    }
+
+    // console.log(nprimos);
+
+    if (nprimos == 5 || seguidos == 3) {
+      return this.colores = colores[2];
+    }
+
+    if (nprimos == 4 || seguidos == 2) {
+      return this.colores = colores[1];
+    }
+
+    // regla 1
+    let a = 0;
+    
+    for (let h = 1; h <= 13; h++) {
+      
+      a = 0;
+      
+      for (let i = 0; i < combinazione.length; i++) {
+
+        if (combinazione[i+1] !== undefined) {
+
+          if (combinazione[i]+h == combinazione[i + 1]) {
+
+            a++;
+
+          }
+        }
+      }
+
+      //console.log(h, a);
+      
+      if (a >= 3) {
+        return this.colores = colores[2];
+      }else if(a >= 2){
+        if (seguidos > 0) {
+          return this.colores = colores[2];
+        }
+      }
+      
+    }
+
+    return this.colores = colores[0];
+
   }
 
 }
