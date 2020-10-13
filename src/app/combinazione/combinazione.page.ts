@@ -265,13 +265,18 @@ export class CombinazionePage implements OnInit {
     localStorage.setItem('ultimos', JSON.stringify(ultimos.reverse()));
     localStorage.setItem('ufechas', JSON.stringify(this.fechas.reverse()));
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
+
     if (automatico) {
+
       localStorage.removeItem('horaClick');
       localStorage.removeItem('contador');
       localStorage.setItem('horaAutomatico', moment().format('YYYY-MM-DD HH:mm:ss'));
+
     }else{
+
 		  localStorage.setItem('contador', JSON.stringify(this.contador));
 		  localStorage.setItem('horaClick', moment().format('YYYY-MM-DD HH:mm:ss'));
+      
     }
 
     this.ultimos = ultimos;
