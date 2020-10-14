@@ -62,7 +62,7 @@ export class RecuperarPage implements OnInit {
 
           }else{
 
-            this.alerta('conferma la tua email');
+            this.alerta('Controlla la tua email ed inserisci il codice ricevuto');
             localStorage.setItem("cambiomail", this.correo);
 
             this.step = 2;

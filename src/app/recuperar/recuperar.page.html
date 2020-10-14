@@ -7,8 +7,29 @@
 		<!--<img src="../assets/monedas-2.png" id="fondo">-->
 	</div>
 	
-	<form method="POST" (ngSubmit)="cambio()" id="fsesion" style="margin-top: -8px" *ngIf="step == 1">
+	<form method="POST" (ngSubmit)="cambio()" id="fsesion" style="margin-top: 8px !important" *ngIf="step == 1">
+    <label style="width: 90%;
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+    font-family: arial;
+    line-height: 1.5;">
+        Inserisci la mail con cui ti sei registrato per ricevere un link per cambiare la password
+      </label>
+
 	  <ion-item id="entrada2" lines="none" style="margin-top: 0">
+
+      <!-- <div>
+        
+      <label>
+        Inserisci la mail con cui ti sei registrato per ricevere un link per cambiare la password
+      </label>
+
+        <br>
+
+      </div> -->
       	<ion-input placeholder="INSERISCI L'EMAIL" type="email" id="email" autocomplete="off" name="correo" [(ngModel)]="correo"></ion-input>
       </ion-item>
       
@@ -18,12 +39,12 @@
           </ion-col>
         </ion-row>
 
-      <ion-button expand="full" style="margin-bottom: 16px;" size="large" shape="round" id="dona" type="submit">INVIARE</ion-button>
+      <ion-button expand="full" style="margin-bottom: 16px;" size="large" shape="round" id="dona" type="submit">INVIA CODICE</ion-button>
     </form>
 
     <form method="POST" (ngSubmit)="confirm()" id="fsesion" style="margin-top: -8px" *ngIf="step == 2">
 	  <ion-item id="entrada2" lines="none" style="margin-top: 0">
-      	<ion-input placeholder="INSERISCI L'CODICE" type="text" id="email" autocomplete="off" name="codigo" [(ngModel)]="codigo"></ion-input>
+      	<ion-input placeholder="INSERISCI IL CODICE" type="text" id="email" autocomplete="off" name="codigo" [(ngModel)]="codigo"></ion-input>
       </ion-item>
 
       	<ion-row class="ir pt-16">

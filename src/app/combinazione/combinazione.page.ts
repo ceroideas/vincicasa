@@ -308,11 +308,19 @@ export class CombinazionePage implements OnInit {
 			}
 		}
 
+		for (var i = 0; i < (5 - this.incluir.length); i++) {	
+			this.combinacion.push( this.getRandomArbitrary(1, 55, this.combinacion, this.excluir) );
+		}
+
+		this.combinacion = this.combinacion.sort((a,b)=> a - b);
+
     /**/
 
     const colores = ['green', 'yellow', 'red'];
 
     this.validar();
+
+    console.log(this.combinacion);
 
     if (this.colores !== colores[0]) {
 
@@ -321,12 +329,6 @@ export class CombinazionePage implements OnInit {
     }
 
     /**/
-
-		for (var i = 0; i < (5 - this.incluir.length); i++) {	
-			this.combinacion.push( this.getRandomArbitrary(1, 55, this.combinacion, this.excluir) );
-		}
-
-		this.combinacion = this.combinacion.sort((a,b)=> a - b);
 
     let final = ultimos.length;
 

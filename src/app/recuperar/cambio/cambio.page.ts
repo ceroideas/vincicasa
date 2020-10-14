@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../../comunicacion.service';
-import { AlertController } from  '@ionic/angular';
+import { AlertController, LoadingController } from  '@ionic/angular';
 import { Router } from  '@angular/router';
 import * as CryptoJS from 'crypto-js';
 
@@ -16,7 +16,7 @@ export class CambioPage implements OnInit {
   confirmar: string;
   contrasenac: string = "$a1e5i5o2u";
 
-  constructor(private comunicacion: ComunicacionService, public alertController: AlertController, private router: Router) { }
+  constructor(private comunicacion: ComunicacionService, public alertController: AlertController, private router: Router, public loading: LoadingController) { }
 
   ngOnInit() {
   }
@@ -43,31 +43,39 @@ export class CambioPage implements OnInit {
 
   	};
 
-  	this.comunicacion.cambiar(json).subscribe((data:any) => {
+    this.loading.create().then(l=>{
+      l.present()
 
-  		if(data.respuesta == 'nousuario'){
+    	this.comunicacion.cambiar(json).subscribe((data:any) => {
 
-          this.alerta('Utente non registrato');
+        l.dismiss();
 
-        }else{
+    		if(data.respuesta == 'nousuario'){
 
-        	if (this.contrasena == this.confirmar) {
+            this.alerta('Utente non registrato');
 
-        		this.alerta('Modifica effettuata con successo');
-        		localStorage.removeItem('cambiomail');
-        		this.router.navigateByUrl('/home');
+          }else{
 
-        	}else{
-        		this.alerta('le passwords non corrispondono');
-        	}
-        }
+          	if (this.contrasena == this.confirmar) {
 
-  	}, Error =>{
+          		this.alerta('Modifica effettuata con successo');
+          		localStorage.removeItem('cambiomail');
+          		this.router.navigateByUrl('/home');
 
-  		this.alerta('Impossibile modificare la password');
-  		console.log(Error);
+          	}else{
+          		this.alerta('Le password inserite non coincidono, riprova');
+          	}
+          }
 
-  	});
+    	}, Error =>{
+
+        l.dismiss();
+
+    		this.alerta('Impossibile modificare la password');
+    		console.log(Error);
+
+    	});
+    })
 
   }
 

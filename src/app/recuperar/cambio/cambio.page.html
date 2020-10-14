@@ -13,6 +13,13 @@
       <ion-item id="entrada2" lines="none" style="margin-top: 20PX">
       	<ion-input placeholder="CONFERMARE" type="password" id="email" autocomplete="off" name="confirmar" [(ngModel)]="confirmar"></ion-input>
       </ion-item>
+      
+      <ion-row class="ir pt-16">
+          <ion-col>
+            <a (click)="nav.back()">Hai già un account? <p>accesso</p></a>
+          </ion-col>
+        </ion-row>
+
       <ion-button style="margin-bottom: 16px;" expand="full" size="large" shape="round" id="dona" type="submit">OK</ion-button>
     </form>
 </ion-content>

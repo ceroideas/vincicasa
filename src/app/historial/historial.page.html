@@ -18,9 +18,9 @@
 		</div>
 	</div>
 	<ion-row id="uc">
-		<ion-col>
+		<!-- <ion-col>
 			<b id="ucp">VINCITE</b>
-		</ion-col>
+		</ion-col> -->
 		<ion-col>
 			<b id="ucp">CATEGORIE</b>
 		</ion-col>
@@ -31,9 +31,10 @@
 	<ion-item id="resultados" lines="none">
 		<table id="vincite">
 			<tr id="v" *ngFor="let g of ganadores; let i = index">
-				<td>{{ g.numero }}</td>
+				<!-- <td>{{ g.numero }}</td> -->
 				<td>Punti {{ 5- i }}</td>
-				<td>{{ g.quota.importo }}</td>
+				<!-- <td>{{ g.quota.importo }}</td> -->
+				<td>{{ imports[i] }}</td>
 			</tr>
 		</table>
 	</ion-item>

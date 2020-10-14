@@ -48,7 +48,7 @@ export class EstadisticasPage implements OnInit {
 
     for (let i = 1; i <= 55; i++) {
 
-      for (let a = 1; a <= this.estracciones; a++) {
+      for (let a = 0; a < this.estracciones; a++) {
 
         for (let x = 0; x < numeros[a].length; x++) {
 

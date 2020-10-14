@@ -17,11 +17,11 @@
      <!-- <img src="../assets/monedas-2.png" id="fondo">-->
     </div>
 
-    <!--<ion-row>
+    <ion-row>
         <ion-col id="fecha">
             <p id="title">SELEZIONA LA DATA</p>
-            <ion-datetime class="ion-no-padding ion-no-margion" style="padding: 10px 16px" displayFormat="DD MMM YYYY" display-timezone="utc"
-                monthShortNames="gen, feb, mar, apr, mai, jun, lug, aug, set, ott, nov, dec"
+            <ion-datetime class="ion-no-padding ion-no-margion" style="padding: 10px 16px; border-radius: 3px" displayFormat="DD MMM YYYY" display-timezone="utc"
+                monthShortNames="GEN, FEB, MAR, APR, MAI, JUN, LUG, AUG, SET, OTT, NOV, DEC"
                 placeholder="DATA"
                 cancel-text="Chiudi"
                 done-text="Ok"
@@ -30,7 +30,7 @@
             </ion-datetime>
         </ion-col>
     </ion-row>
-    <ion-button size="large" expand="full" shape="round" id="verifica" (click)="verifica()">VERIFICA</ion-button>-->
+    <ion-button size="large" expand="full" shape="round" id="verifica" (click)="verifica()">VERIFICA</ion-button>
    <!-- <ion-row id="fecha">
         <ion-col id="fecha">
             <p id="title">SELEZIONA LA DATA</p>
@@ -39,14 +39,14 @@
             </div>
         </ion-col>
     </ion-row>-->
-    <ion-calendar [(ngModel)]="fecha"
+    <!-- <ion-calendar [(ngModel)]="fecha"
       name="fecha"
       [options]="optionsRange"
       (click)="verifica($event)"
       [type]="type"
       [format]="'DD MMM YYYY'"
       id="calendario">
-    </ion-calendar>
+    </ion-calendar> -->
     <ion-row id="datos">
         <ion-col *ngFor="let schedina of numeros; let x = index" [ngClass]="'numeros' + (x + 1)" disable="fecha.length > 0">
             <b>{{ schedina }}</b>
