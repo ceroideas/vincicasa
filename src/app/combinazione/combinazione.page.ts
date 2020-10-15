@@ -266,11 +266,12 @@ export class CombinazionePage implements OnInit {
   		}
   	}
 
-    // console.log(a,b)
 
   	if (a > 0 || b > 0) {
 
-  		return this.getRandomArbitrary(min, max, n);
+      console.log(a,b);
+
+  		return this.getRandomArbitrary(min, max, n, exc);
 
   	}else{
 
@@ -280,12 +281,15 @@ export class CombinazionePage implements OnInit {
 
   }
 
-  random(automatico = false){
+  random(automatico = false, reverse = true){
 
-    this.fechas = this.fechas.reverse();
+    // if (reverse) {
+    //   this.fechas = this.fechas.reverse();
+    // }
+
     let ultimos = [];
     if (localStorage.getItem('ultimos')) {
-      ultimos = JSON.parse(localStorage.getItem('ultimos')).reverse();
+      ultimos = JSON.parse(localStorage.getItem('ultimos'));
     }
     // this.ultimos = this.ultimos.reverse();
 
@@ -320,11 +324,12 @@ export class CombinazionePage implements OnInit {
 
     this.validar();
 
-    console.log(this.combinacion);
 
     if (this.colores !== colores[0]) {
+      
+      console.log(this.combinacion);
 
-      return this.random();
+      return this.random(false, false);
 
     }
 
@@ -364,6 +369,11 @@ export class CombinazionePage implements OnInit {
 
     // }
 
+
+    this.fechas = this.fechas.sort((a,b)=> a.format - b.format);
+
+    // console.log('fechas',this.fechas);
+
     if (ultimos.length == 5 && this.fechas.length == 5) {
 
       this.fechas.shift();
@@ -371,8 +381,8 @@ export class CombinazionePage implements OnInit {
 
     }
 
-    localStorage.setItem('ultimos', JSON.stringify(ultimos.reverse()));
-    localStorage.setItem('ufechas', JSON.stringify(this.fechas.reverse()));
+    localStorage.setItem('ultimos', JSON.stringify(ultimos));
+    localStorage.setItem('ufechas', JSON.stringify(this.fechas));
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 
     if (automatico) {

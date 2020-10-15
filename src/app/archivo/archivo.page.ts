@@ -61,7 +61,7 @@ export class ArchivoPage implements OnInit {
 
   }
 
-  verifica($event){
+  verifica(){
 
     //console.log(this.fecha);
 

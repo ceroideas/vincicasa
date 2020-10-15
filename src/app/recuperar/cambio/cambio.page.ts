@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../../comunicacion.service';
-import { AlertController, LoadingController } from  '@ionic/angular';
+import { AlertController, LoadingController, NavController } from  '@ionic/angular';
 import { Router } from  '@angular/router';
 import * as CryptoJS from 'crypto-js';
 
@@ -16,7 +16,7 @@ export class CambioPage implements OnInit {
   confirmar: string;
   contrasenac: string = "$a1e5i5o2u";
 
-  constructor(private comunicacion: ComunicacionService, public alertController: AlertController, private router: Router, public loading: LoadingController) { }
+  constructor(private comunicacion: ComunicacionService, public alertController: AlertController, private router: Router, public loading: LoadingController, public nav: NavController) { }
 
   ngOnInit() {
   }
