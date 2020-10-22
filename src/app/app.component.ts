@@ -142,7 +142,7 @@ export class AppComponent {
     diff = (pm8p1.diff(hora,'seconds'))/3600;
     diff2 = hora.diff(lastNotification,'seconds')/3600;
 
-    if (diff2 > 24) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
+    if (diff2 > 24 || !diff2) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
       
       console.log('enviar notificacion directamente')
       this.verGanadores();
@@ -276,7 +276,7 @@ export class AppComponent {
 
       console.log("puntos: ", puntos);
 
-      if (puntos >= 2) {
+      if (puntos >= 0) {
 
         this.sorteo(puntos);
 
@@ -317,6 +317,9 @@ export class AppComponent {
     this.numeros.puntos = puntos.toString();
 
     let mess = "";
+
+    if (parseInt(puntos) == 0) {mess = "Il concorso è finito, non hai fortuna";}
+    if (parseInt(puntos) == 1) {mess = "Il concorso è finito, non hai fortuna";}
 
     if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
     if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}

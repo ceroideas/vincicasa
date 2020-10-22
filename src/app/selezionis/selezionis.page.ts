@@ -41,4 +41,9 @@ export class SelezionisPage implements OnInit {
     localStorage.setItem('checks',JSON.stringify(this.checked));
   }
 
+  cambiarAutomatico()
+  {
+    // localStorage.setItem('cambiarAutomatico','1');
+  }
+
 }
