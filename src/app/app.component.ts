@@ -251,27 +251,36 @@ export class AppComponent {
   verGanadores()
   {
 
-    if (localStorage.getItem('combinacion')) {
-      let jugada = JSON.parse(localStorage.getItem('combinacion'));
-      let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
+    if (localStorage.getItem('ufechas')) {
+
+
+
+      let fechas = JSON.parse(localStorage.getItem('ufechas'));
+      let ganador = JSON.parse(localStorage.getItem('e200'))[0];
+
+      let jugada = fechas.find(x=> x.format.replaceAll('-','') == ganador.progressivo);
+
+      if (!jugada) {
+        return false;
+      }
+
+      jugada = jugada.combinacion;
+
+      console.log(jugada);
+
       let puntos = 0;
 
-      for (let i = 0; i < ganador.length; i++) {
+      for (let i = 0; i < ganador.numeriEstratti.length; i++) {
 
-        for (let x = 0; x < ganador.length; x++) {
+        for (let x = 0; x < ganador.numeriEstratti.length; x++) {
 
-          if (jugada[i] == ganador[x]) {
+          if (jugada[i] == ganador.numeriEstratti[x]) {
 
             puntos++;
 
           }
 
         }
-
-        /*if (jugada[i] == ganador[i]) {
-          puntos = puntos + 1;
-        }*/
-
       }
 
       console.log("puntos: ", puntos);
@@ -280,18 +289,10 @@ export class AppComponent {
 
         this.sorteo(puntos);
 
-        // if (puntos > 0) {
-
-          // this.alerta('Hai raggiunto ' + puntos + ' punti!');
-
-         // const json = {
-
         this.numeros.correo = localStorage.getItem('correo'),
         this.numeros.numero = jugada,
         this.numeros.puntos = puntos.toString();
         this.numeros.usuario = localStorage.getItem('usuario');
-
-        //};
 
         console.log(this.numeros);
 
@@ -302,8 +303,6 @@ export class AppComponent {
           this.alerta(Error);
 
         });
-
-        // }
       }
     }
   }
@@ -351,7 +350,7 @@ export class AppComponent {
 
     this.service.tabla3().subscribe((data: any) => {
 
-      console.log(data);
+      // console.log(data);
 
         localStorage.setItem('e200', data[0]);
         localStorage.setItem('fnumeros', data[1]);

@@ -80,37 +80,55 @@ export class CombinazionePage implements OnInit {
 
     if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
       
-      // console.log('día de hoy');
+      console.log('día de hoy');
       this.hoy = moment();
       
     }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
 
-      // console.log('día siguiente');
+      console.log('día siguiente');
       this.hoy = moment().add(1,'day');
 
     }
 
+    console.log(this.hoy);
+
+    this.format = moment(this.hoy).format('YYYY-MM-DD');
     this.hoy = this.hoy.format('DD') + ' ' + this.meses[ this.hoy.format('M')-1 ] + ' ' + this.hoy.format('YYYY');
-    this.format = moment().format('YYYY-MM-DD');
+
+    this.preStart();
   }
 
   ngOnInit() {
 
-    let horaAutomatico = moment(localStorage.getItem('horaAutomatico'));
-    console.log(horaAutomatico);
+    this.preStart();
 
-  	this.service.changeData(this.usuario);
+  }
+
+  preStart() {
+    let horaAutomatico = moment(localStorage.getItem('horaAutomatico'));
+
+    this.service.changeData(this.usuario);
     this.reloj();
 
-  	if (localStorage.getItem('excluidos') && localStorage.getItem('excluidos') != undefined) {
-  		
-  		this.excluir = JSON.parse(localStorage.getItem('excluidos'));
-  	
-  	}else{
-  		
-  		localStorage.setItem('excluidos', JSON.stringify(this.excluir));
+    if (localStorage.getItem('incluidos') && localStorage.getItem('incluidos') != undefined) {
+      
+      this.incluir = JSON.parse(localStorage.getItem('incluidos'));
 
-  	}
+    }else{
+
+      localStorage.setItem('incluidos', JSON.stringify(this.incluir));
+
+    }
+
+    if (localStorage.getItem('excluidos') && localStorage.getItem('excluidos') != undefined) {
+      
+      this.excluir = JSON.parse(localStorage.getItem('excluidos'));
+    
+    }else{
+      
+      localStorage.setItem('excluidos', JSON.stringify(this.excluir));
+
+    }
 
     if (localStorage.getItem('ufechas') && localStorage.getItem('ufechas') != undefined) {
 
@@ -132,43 +150,33 @@ export class CombinazionePage implements OnInit {
 
     }
 
-  	if (localStorage.getItem('combinacion') && localStorage.getItem('combinacion') != undefined) {
+    if (localStorage.getItem('combinacion') && localStorage.getItem('combinacion') != undefined) {
 
       let fechas = JSON.parse(localStorage.getItem('ufechas'));
-  		
+      
       if (fechas.findIndex(x=>x.fecha==this.hoy) == -1) {
         this.random(true);
       }else{
-  		  this.combinacion = JSON.parse(localStorage.getItem('combinacion'));
+        this.combinacion = JSON.parse(localStorage.getItem('combinacion'));
       }
-  	
-  	}else{
-  		
+    
+    }else{
+      
       this.random(true);
-  		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
+      localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 
-  	}
+    }
 
-  	if (localStorage.getItem('incluidos') && localStorage.getItem('incluidos') != undefined) {
-  		
-  		this.incluir = JSON.parse(localStorage.getItem('incluidos'));
+    // if (localStorage.getItem('ultimos') && localStorage.getItem('ultimos') != undefined) {
 
-  	}else{
+    //   this.ultimos = JSON.parse(localStorage.getItem('ultimos'));
+    
+    // }else{
 
-  		localStorage.setItem('incluidos', JSON.stringify(this.incluir));
+    //   this.ultimos = [];
+    //   localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
 
-  	}
-
-  	// if (localStorage.getItem('ultimos') && localStorage.getItem('ultimos') != undefined) {
-
-  	// 	this.ultimos = JSON.parse(localStorage.getItem('ultimos'));
-  	
-  	// }else{
-
-  	// 	this.ultimos = [];
-  	// 	localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
-
-  	// }
+    // }
 
     setTimeout(()=>{
 
@@ -180,14 +188,13 @@ export class CombinazionePage implements OnInit {
     },1000)
 
     this.start();
-
   }
 
   start()
   {
     let dias = [];
-    let dia = moment().subtract(0,'day');
-    let limit = moment().subtract(4,'days');
+    let dia = moment(this.format).subtract(0,'day');
+    let limit = moment(this.format).subtract(4,'days');
     let fechas = JSON.parse(localStorage.getItem('ufechas'));
     let new_fechas = [];
 
@@ -195,6 +202,8 @@ export class CombinazionePage implements OnInit {
       dias.push(dia.format('YYYY-MM-DD'));
       dia.subtract(1,'day');
     }
+
+    // console.log(dias,this.format);
 
     for (let i in dias) {
       let idx = this.fechas.findIndex(x=>x.format==dias[i]);
@@ -271,7 +280,7 @@ export class CombinazionePage implements OnInit {
 
   }
 
-  random(automatico = false, reverse = true){
+  random(automatico = false){
 
     // if (reverse) {
     //   this.fechas = this.fechas.reverse();
@@ -319,7 +328,7 @@ export class CombinazionePage implements OnInit {
       
       console.log(this.combinacion);
 
-      return this.random(false, false);
+      return this.random(false);
 
     }
 
@@ -407,18 +416,18 @@ export class CombinazionePage implements OnInit {
 
     let mostrar_hora = () => {
 
-      let mins8 = moment(moment().format('YYYY-MM-DD 19:06'));
+      let mins8 = moment(moment().format('YYYY-MM-DD '+this.hh));
       let now;
 
       let restante = mins8.diff(moment(),'seconds');
 
       if (restante <= 0) {
 
-        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD 19:06'));
+        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD '+this.hh));
 
       }else{
 
-        now = moment(moment().format('YYYY-MM-DD 19:06'));
+        now = moment(moment().format('YYYY-MM-DD '+this.hh));
 
       }
 
@@ -441,6 +450,8 @@ export class CombinazionePage implements OnInit {
 
       this.service.reloj(this.tiempo);
 
+      // console.log(seconds);
+
       // if (this.hour == 0 && this.minute == 0 && this.second == 0) {
       if (seconds == 86400) {
 
@@ -448,7 +459,10 @@ export class CombinazionePage implements OnInit {
 
         localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
         
-        this.random(true);
+        // this.random(true);
+        setTimeout(()=>{
+          this.detectDate();
+        },3000)
         console.log('rein');
         //clearInterval(this.intervalo);
 

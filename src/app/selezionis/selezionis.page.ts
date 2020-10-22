@@ -43,7 +43,7 @@ export class SelezionisPage implements OnInit {
 
   cambiarAutomatico()
   {
-    // localStorage.setItem('cambiarAutomatico','1');
+    localStorage.setItem('no-menu-return-back','1');
   }
 
 }
