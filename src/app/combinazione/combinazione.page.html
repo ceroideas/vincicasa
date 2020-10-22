@@ -9,33 +9,33 @@
 	</div>
 	<ion-row style="margin-top: -8px;">
 		<ion-col id="hoy">
-			LA TUA COMBINAZIONE <br> {{ hoy }}
+			LA TUA COMBINAZIONE <br> {{ fechas[0].fecha }}
 		</ion-col>
 	</ion-row>
-	<ion-row id="combinacion" *ngIf="combinacion.length > 0">
+	<ion-row id="combinacion" *ngIf="fechas[0]?.combinacion.length > 0">
 		<ion-col class="columna">
 			<div class="n1">
-				<b>{{ combinacion[0] }}</b>
+				<b>{{ fechas[0].combinacion[0] }}</b>
 			</div>
 		</ion-col>
 		<ion-col class="columna2">
 			<div class="n2">
-				<b>{{ combinacion[1] }}</b>
+				<b>{{ fechas[0].combinacion[1] }}</b>
 			</div>
 		</ion-col>
 		<ion-col class="columna">
 			<div class="n1">
-				<b>{{ combinacion[2] }}</b>
+				<b>{{ fechas[0].combinacion[2] }}</b>
 			</div>
 		</ion-col>
 		<ion-col class="columna2">
 			<div class="n2">
-				<b>{{ combinacion[3] }}</b>
+				<b>{{ fechas[0].combinacion[3] }}</b>
 			</div>
 		</ion-col>
 		<ion-col class="columna">
 			<div class="n1">
-				<b>{{ combinacion[4] }}</b>
+				<b>{{ fechas[0].combinacion[4] }}</b>
 			</div>
 		</ion-col>
 	</ion-row>
@@ -44,10 +44,11 @@
 		<ion-button shape="round" size="large" id="modifica" (click)="modifica()">MODIFICA COMBINAZIONE</ion-button>
 	</div>
 	<p id="combo">ULTIME 3 COMBINAZIONI</p>
-	<ion-row id="uc" *ngIf="fechas.length > 0 && ultimos.length > 0">
+	<!-- <ion-row id="uc" *ngIf="fechas.length > 0 && ultimos.length > 0"> -->
+	<ion-row id="uc" *ngIf="fechas.length > 0">
 		<div *ngFor="let fecha of fechas; let i = index">
 			<ion-row *ngIf="i < 4 && i > 0">
-				<ion-col [ngClass]="'cn'+ (x + 1)" *ngFor="let ultimo of ultimos[i]; let x = index">
+				<ion-col [ngClass]="'cn'+ (x + 1)" *ngFor="let ultimo of fecha.combinacion; let x = index">
 					<label>{{ ultimo }}</label>
 				</ion-col>
 				<ion-col>

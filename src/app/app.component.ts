@@ -348,6 +348,8 @@ export class AppComponent {
 
     this.service.tabla3().subscribe((data: any) => {
 
+      console.log(data);
+
         localStorage.setItem('e200', data[0]);
         localStorage.setItem('fnumeros', data[1]);
         localStorage.setItem('ifnumeros', data[2]);
@@ -383,7 +385,7 @@ export class AppComponent {
 
         for (let i = 0; i < 200; i++) {
 
-          let obj = json[i]["progressivo"];
+          let obj = moment(new Date(json[i]["data"])).format('YYYYMMDD');
 
           fechas.push(obj);
 
@@ -446,7 +448,7 @@ export class AppComponent {
     let meses = ["GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"];
     let days = ["DOMENICA", "SABATO", "VENERDÌ", "GIOVEDÌ", "MERCOLEDÌ", "MARTEDÌ", "LUNEDÌ"];
   
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i <= 7; i++) {
       dias.push(data[i]);
       numeros.push(data2[i]);
     }

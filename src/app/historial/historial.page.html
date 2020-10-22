@@ -43,39 +43,41 @@
 			<b id="ucc">ULTIME 7 ESTRAZIONI</b>
 		</ion-col>
 	</ion-row>
-	<div id="estrazioni" id="number" *ngFor="let d of dias; let i = index">
-		<ion-row id="fecha">
-			<p>ESTRAZIONE <!-- {{ d }} --> <span style="float: right;">{{ fechas[i] | fechas }}</span></p>
-		</ion-row>
-		<ion-row id="dia">
-			<ion-col>
-				<b [ngClass]="(fechas[i] | fechas:'dia') == 1 ? 'green' : '' ">LUN</b>
-			</ion-col>
-			<ion-col>
-				<b [ngClass]="(fechas[i] | fechas:'dia') == 2 ? 'green' : '' ">MAR</b>
-			</ion-col>
-			<ion-col>
-				<b [ngClass]="(fechas[i] | fechas:'dia') == 3 ? 'green' : '' ">MER</b>
-			</ion-col>
-			<ion-col>
-				<b [ngClass]="(fechas[i] | fechas:'dia') == 4 ? 'green' : '' ">GIO</b>
-			</ion-col>
-			<ion-col>
-				<b [ngClass]="(fechas[i] | fechas:'dia') == 5 ? 'green' : '' ">VEN</b>
-			</ion-col>
-			<ion-col>
-				<b [ngClass]="(fechas[i] | fechas:'dia') == 6 ? 'green' : '' ">SAB</b>
-			</ion-col>
-			<ion-col>
-				<b [ngClass]="(fechas[i] | fechas:'dia') == 0 ? 'green' : '' ">DOM</b>
-			</ion-col>
-		</ion-row>
-		<div class="datos">
-			<ion-row id="tab">
-				<ion-col id="ultime{{ x }}" *ngFor="let n of numeros[i]; let x = index">
-					<b>{{ n }}</b>
+	<div *ngFor="let d of dias; let i = index">
+		<div id="estrazioni" id="number" *ngIf="i > 0">
+			<ion-row id="fecha">
+				<p>ESTRAZIONE <!-- {{ d }} --> <span style="float: right;">{{ fechas[i] | fechas }}</span></p>
+			</ion-row>
+			<ion-row id="dia">
+				<ion-col>
+					<b [ngClass]="(fechas[i] | fechas:'dia') == 1 ? 'green' : '' ">LUN</b>
+				</ion-col>
+				<ion-col>
+					<b [ngClass]="(fechas[i] | fechas:'dia') == 2 ? 'green' : '' ">MAR</b>
+				</ion-col>
+				<ion-col>
+					<b [ngClass]="(fechas[i] | fechas:'dia') == 3 ? 'green' : '' ">MER</b>
+				</ion-col>
+				<ion-col>
+					<b [ngClass]="(fechas[i] | fechas:'dia') == 4 ? 'green' : '' ">GIO</b>
+				</ion-col>
+				<ion-col>
+					<b [ngClass]="(fechas[i] | fechas:'dia') == 5 ? 'green' : '' ">VEN</b>
+				</ion-col>
+				<ion-col>
+					<b [ngClass]="(fechas[i] | fechas:'dia') == 6 ? 'green' : '' ">SAB</b>
+				</ion-col>
+				<ion-col>
+					<b [ngClass]="(fechas[i] | fechas:'dia') == 0 ? 'green' : '' ">DOM</b>
 				</ion-col>
 			</ion-row>
+			<div class="datos">
+				<ion-row id="tab">
+					<ion-col id="ultime{{ x }}" *ngFor="let n of numeros[i]; let x = index">
+						<b>{{ n }}</b>
+					</ion-col>
+				</ion-row>
+			</div>
 		</div>
 	</div>
 </ion-content>

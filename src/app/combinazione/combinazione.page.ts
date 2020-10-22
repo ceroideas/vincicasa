@@ -159,17 +159,16 @@ export class CombinazionePage implements OnInit {
 
   	}
 
-  	if (localStorage.getItem('ultimos') && localStorage.getItem('ultimos') != undefined) {
+  	// if (localStorage.getItem('ultimos') && localStorage.getItem('ultimos') != undefined) {
 
-  		this.ultimos = JSON.parse(localStorage.getItem('ultimos'));
-      //this.ultimos = this.ultimos.reverse();
+  	// 	this.ultimos = JSON.parse(localStorage.getItem('ultimos'));
   	
-  	}else{
+  	// }else{
 
-  		this.ultimos = [];
-  		localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
+  	// 	this.ultimos = [];
+  	// 	localStorage.setItem('ultimos', JSON.stringify(this.ultimos));
 
-  	}
+  	// }
 
     setTimeout(()=>{
 
@@ -187,21 +186,23 @@ export class CombinazionePage implements OnInit {
   start()
   {
     let dias = [];
-    let dia = moment().subtract(1,'day');
+    let dia = moment().subtract(0,'day');
     let limit = moment().subtract(4,'days');
-    let numeros = JSON.parse(localStorage.getItem('ultimos'));
     let fechas = JSON.parse(localStorage.getItem('ufechas'));
+    let new_fechas = [];
 
     while(dia.format('YYYY-MM-DD') != limit.format('YYYY-MM-DD')){
       dias.push(dia.format('YYYY-MM-DD'));
-
       dia.subtract(1,'day');
     }
 
     for (let i in dias) {
       let idx = this.fechas.findIndex(x=>x.format==dias[i]);
       let actual = [];
+
       if (idx == -1) {
+
+        console.log('no existe',dias[i]);
 
         if (this.incluir) {
           for (let h in this.incluir) {
@@ -215,37 +216,26 @@ export class CombinazionePage implements OnInit {
 
         actual = actual.sort((a,b)=> a - b);
 
-        let new_i = parseInt(i)+1;
-
-        console.log(new_i);
-
-        // if (new_i == 3) {
-        //   new_i = 2;
-        // }
-        if (new_i == 4) {
-          new_i = 3;
-        }
-        numeros.splice(new_i, 0, actual);
         let d:any = moment(dias[i]);
         let f = d.format('DD') + ' ' + this.meses[ d.format('M')-1 ] + ' ' + d.format('YYYY');
-        fechas.splice(new_i, 0, {fecha:f,format:dias[i]});
+        let temp = {fecha:f,format:dias[i],date: new Date(d).getTime(),combinacion:actual};
 
+        new_fechas.push(temp);
+
+      }else{
+        new_fechas.push(fechas[idx]);
       }
     }
  
-    let new_numbers = [];
-    let new_dates = [];
+    // let new_dates = [];
 
-    for(let i = 0; i < 4; i++) {
-      new_numbers.push(numeros[i]);
-      new_dates.push(fechas[i]);
-    }
+    // for(let i = 0; i < 4; i++) {
+    //   new_dates.push(fechas[i]);
+    // }
 
-    this.fechas = new_dates;
-    this.ultimos = new_numbers;
+    this.fechas = new_fechas.sort((a,b)=> a - b);
 
-    localStorage.setItem('ufechas',JSON.stringify(new_dates));
-    localStorage.setItem('ultimos',JSON.stringify(new_numbers));
+    localStorage.setItem('ufechas',JSON.stringify(this.fechas));
   }
 
   getRandomArbitrary(min, max, n:any = [], exc:any = []){
@@ -287,10 +277,10 @@ export class CombinazionePage implements OnInit {
     //   this.fechas = this.fechas.reverse();
     // }
 
-    let ultimos = [];
-    if (localStorage.getItem('ultimos')) {
-      ultimos = JSON.parse(localStorage.getItem('ultimos'));
-    }
+    // let ultimos = [];
+    // if (localStorage.getItem('ultimos')) {
+    //   ultimos = JSON.parse(localStorage.getItem('ultimos'));
+    // }
     // this.ultimos = this.ultimos.reverse();
 
     if (this.combinacion.length == 0) {
@@ -335,23 +325,27 @@ export class CombinazionePage implements OnInit {
 
     /**/
 
-    let final = ultimos.length;
+    // let final = ultimos.length;
 
     let idx = this.fechas.findIndex(x=>x.fecha==this.hoy);
 
-    if (idx != -1) {
+    if (idx == -1) {
 
       // console.log(1)
-      ultimos[idx] = this.combinacion;
+      // ultimos[idx] = this.combinacion;
       // this.fechas[final - 1] = this.hoy;
 
-    }else{
+    // }else{
 
       // console.log(2)
 
-      ultimos.push(this.combinacion);
-      this.fechas.push({fecha:this.hoy,format:this.format});
+      // ultimos.push(this.combinacion);
+      let m:any = moment();
 
+      this.fechas.push({fecha:this.hoy,format:this.format,date: new Date( m ).getTime(),combinacion:this.combinacion});
+
+    }else{
+      this.fechas[idx].combinacion = this.combinacion;
     }
 
     // if (this.contador == 1) {
@@ -370,18 +364,25 @@ export class CombinazionePage implements OnInit {
     // }
 
 
-    this.fechas = this.fechas.sort((a,b)=> a.format - b.format);
+    this.fechas = this.fechas.sort((a,b)=> b.date - a.date);
 
     // console.log('fechas',this.fechas);
 
-    if (ultimos.length == 5 && this.fechas.length == 5) {
+    // if (ultimos.length == 5 && this.fechas.length == 5) {
+
+    //   this.fechas.shift();
+    //   ultimos.shift();
+
+    // }
+
+    if (this.fechas.length == 5) {
 
       this.fechas.shift();
-      ultimos.shift();
+      // ultimos.shift();
 
     }
 
-    localStorage.setItem('ultimos', JSON.stringify(ultimos));
+    // localStorage.setItem('ultimos', JSON.stringify(ultimos));
     localStorage.setItem('ufechas', JSON.stringify(this.fechas));
 		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 
@@ -398,7 +399,7 @@ export class CombinazionePage implements OnInit {
       
     }
 
-    this.ultimos = ultimos;
+    // this.ultimos = ultimos;
 
 	}
 

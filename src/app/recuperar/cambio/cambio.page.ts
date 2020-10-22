@@ -24,7 +24,7 @@ export class CambioPage implements OnInit {
   async alerta(alerta) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Advertencia:',
+      header: 'Avviso:',
       subHeader: '',
       message: alerta,
       buttons: ['OK']
@@ -58,7 +58,7 @@ export class CambioPage implements OnInit {
 
           	if (this.contrasena == this.confirmar) {
 
-          		this.alerta('Modifica effettuata con successo');
+          		this.alerta('La password è stata modificata correttamente');
           		localStorage.removeItem('cambiomail');
           		this.router.navigateByUrl('/home');
 
