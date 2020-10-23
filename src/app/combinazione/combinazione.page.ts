@@ -46,7 +46,7 @@ export class CombinazionePage implements OnInit {
       'novembre',
       'dicembre'];
 
-  hh = '19:05';
+  hh = '17:42';
 
 
   constructor(private service: ComunicacionService, public alert: AlertController, public nav: NavController, public modal: ModalController, public events: EventsService) {
@@ -351,7 +351,7 @@ export class CombinazionePage implements OnInit {
 
     // let final = ultimos.length;
 
-    let idx = this.fechas.findIndex(x=>x.fecha==this.hoy);
+    let idx = this.fechas.findIndex(x=>x.fecha==this.hoy && x.combinacion);
 
     if (idx == -1) {
 
