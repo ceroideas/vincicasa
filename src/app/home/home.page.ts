@@ -81,6 +81,7 @@ export class HomePage {
         
         this.formulario.password = encryptp;
         this.formulario.fecha = moment(this.formulario.fecha).format('YYYY-MM-DD');
+        this.formulario.datos = '';
 
         this.loading.create().then(l => {
 
@@ -97,6 +98,12 @@ export class HomePage {
 
               localStorage.setItem('correo', this.formulario.correo);
               localStorage.setItem('usuario', JSON.stringify(data));
+              if (data.datos != "") {
+                localStorage.setItem('ufechas', data.datos);
+              }
+              localStorage.setItem('excluidos', data.excluidos != "" ? data.excluidos : "[]");
+              localStorage.setItem('incluidos', data.incluidos != "" ? data.incluidos : "[]");
+              localStorage.setItem('checks', data.reglas != "" ? data.reglas : "[]");
 
               this.router.navigateByUrl('/manual');
 
@@ -171,8 +178,17 @@ export class HomePage {
 
               if (contrasenadec.toString() === this.isesion.password) {
 
+                console.log(data, data.datos);
+
                 localStorage.setItem('correo', this.isesion.correo);
                 localStorage.setItem('usuario', JSON.stringify(data));
+                if (data.datos != "") {
+                  localStorage.setItem('ufechas', data.datos);
+                }
+                localStorage.setItem('excluidos', data.excluidos != "" ? data.excluidos : "[]");
+                localStorage.setItem('incluidos', data.incluidos != "" ? data.incluidos : "[]");
+                localStorage.setItem('checks', data.reglas != "" ? data.reglas : "[]");
+
                 this.router.navigate(['/feed']);
 
               }else{

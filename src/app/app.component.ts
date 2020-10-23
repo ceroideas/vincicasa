@@ -29,23 +29,17 @@ export class AppComponent {
 
   constructor(private localNotifications: LocalNotifications, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController/*, private deeplinks: Deeplinks*/) { 
 
+    this.localNotifications.requestPermission().then(
+      (permission) => {
+        if (permission) {
+          // Create the notification
+          console.log('diste permisos')
+
+        }
+      }
+    );
+
     this.menuCtrl.toggle(); 
-
-   //    this.deeplinks.route({
-
-   //     '/recuperar': CambioPage
-
-   //   }).subscribe(match => {
-
-   //     this.nav.navigateForward('/recuperar/cambio');
-       
-   //     console.log('Ruta encontrada', match);
-
-   //   }, nomatch => {
-     
-   //     console.error('Tengo un deeplink que no \' encontré', nomatch);
-
-   // });
 
   }
 
@@ -79,6 +73,8 @@ export class AppComponent {
     localStorage.removeItem('correo');
     localStorage.removeItem('excluidos');
     localStorage.removeItem('incluidos');
+    localStorage.removeItem('ufechas');
+
     this.nav.navigateRoot('home');
 
   }
@@ -87,12 +83,6 @@ export class AppComponent {
 
     this.reloj();
     this.service.data$.subscribe(res => {this.user = res; /*console.log(typeof res)*/});
-
-    /*if (localStorage.getItem('numeros') == '' || localStorage.getItem('numeros') == undefined || localStorage.getItem('fechas') == '' || localStorage.getItem('fechas') == undefined) {
-     
-      this.scrapping3();
-   
-    }*/
     this.scrapping3();
 
     let horaClick = moment(localStorage.getItem('horaClick'));
@@ -142,7 +132,7 @@ export class AppComponent {
     diff = (pm8p1.diff(hora,'seconds'))/3600;
     diff2 = hora.diff(lastNotification,'seconds')/3600;
 
-    if (diff2 > 24 || !diff2) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
+    if (diff2 > 24) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
       
       console.log('enviar notificacion directamente')
       this.verGanadores();
@@ -177,18 +167,18 @@ export class AppComponent {
 
     let mostrar_hora = () => {
 
-      let mins8 = moment(moment().format('YYYY-MM-DD '+this.hh));
+      let mins8 = moment(moment().format('YYYY-MM-DD ' + this.hh));
       let now;
 
       let restante = mins8.diff(moment(),'seconds');
 
       if (restante <= 0) {
 
-        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD '+this.hh));
+        now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD ' + this.hh));
 
       }else{
 
-        now = moment(moment().format('YYYY-MM-DD '+this.hh));
+        now = moment(moment().format('YYYY-MM-DD ' + this.hh));
 
       }
       
@@ -212,32 +202,25 @@ export class AppComponent {
 
       this.service.reloj(this.tiempo);
 
-      // console.log(this.second, seconds);
-
-      // if (this.hour == 0 && this.minute == 0 && this.second == 0) {
       if (seconds == 86400) {
 
         console.log('El sorteo ha finalizado');
-
-        // localStorage.removeItem('numeros');
-        // localStorage.removeItem('fechas');
-        // localStorage.removeItem('dias');
-        // localStorage.removeItem('ultimos');
-        // localStorage.removeItem('contador');
-        // localStorage.removeItem('infrecuentes');
-        // localStorage.removeItem('infrecuencia');
-        // localStorage.removeItem('frecuentes');
-        // localStorage.removeItem('frecuencia');
-        // localStorage.removeItem('combinacion');
-        // localStorage.removeItem('e200');
-        // localStorage.removeItem('e200f');
-        // localStorage.removeItem('e200n');
-        // localStorage.removeItem('ganadores');
-
+        
         this.scrapping3();
         this.verGanadores();
-        //this.scrapping();
+        
         clearInterval(intervalo);
+
+        this.service.number(this.numeros).subscribe((data:any) => {
+
+           // console.log('Datos enviados');
+
+          }, Error => {
+
+                this.error(Error);
+
+        });
+
         this.reloj();
 
       }
@@ -251,48 +234,38 @@ export class AppComponent {
   verGanadores()
   {
 
-    if (localStorage.getItem('ufechas')) {
+    if (localStorage.getItem('combinacion')) {
 
-
-
-      let fechas = JSON.parse(localStorage.getItem('ufechas'));
-      let ganador = JSON.parse(localStorage.getItem('e200'))[0];
-
-      let jugada = fechas.find(x=> x.format.replaceAll('-','') == ganador.progressivo);
-
-      if (!jugada) {
-        return false;
-      }
-
-      jugada = jugada.combinacion;
-
-      console.log(jugada);
-
+      let jugada = JSON.parse(localStorage.getItem('combinacion'));
+      let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
       let puntos = 0;
 
-      for (let i = 0; i < ganador.numeriEstratti.length; i++) {
+      for (let i = 0; i < ganador.length; i++) {
 
-        for (let x = 0; x < ganador.numeriEstratti.length; x++) {
+        for (let x = 0; x < ganador.length; x++) {
 
-          if (jugada[i] == ganador.numeriEstratti[x]) {
+          if (jugada[i] == ganador[x]) {
 
             puntos++;
 
           }
 
         }
+
       }
 
       console.log("puntos: ", puntos);
 
-      if (puntos >= 0) {
+      this.sorteo(puntos);
 
-        this.sorteo(puntos);
+      if (puntos >= 2) {
 
         this.numeros.correo = localStorage.getItem('correo'),
         this.numeros.numero = jugada,
         this.numeros.puntos = puntos.toString();
         this.numeros.usuario = localStorage.getItem('usuario');
+
+        //};
 
         console.log(this.numeros);
 
@@ -303,33 +276,28 @@ export class AppComponent {
           this.alerta(Error);
 
         });
+
       }
+
     }
+
   }
 
   sorteo(puntos){
 
-    localStorage.setItem('last-notification',moment().format('YYYY-MM-DD HH:mm'));
+    localStorage.setItem('last-notification', moment().format('YYYY-MM-DD HH:mm'));
 
     this.numeros.numero = localStorage.getItem('combinacion'),
     this.numeros.correo = localStorage.getItem('correo'),
     this.numeros.puntos = puntos.toString();
+    this.numeros.fecha = moment();
 
     let mess = "";
-
-    if (parseInt(puntos) == 0) {mess = "Il concorso è finito, non hai fortuna";}
-    if (parseInt(puntos) == 1) {mess = "Il concorso è finito, non hai fortuna";}
 
     if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
     if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
     if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
     if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
-
-    /*const jsono = {
-      nombre: this.numeros.numero,
-      correo: this.numeros.correo,
-      puntos: puntos.toString()
-    }*/
 
     this.localNotifications.schedule({
       id: 1,
@@ -338,19 +306,13 @@ export class AppComponent {
       data: {secret: ''}//{ secret: key }
     });
 
-    this.service.number(this.numeros).subscribe((data:any) => { }, Error => {
-
-          this.error(Error);
-
-      });
-
   }
 
   scrapping3(){
 
     this.service.tabla3().subscribe((data: any) => {
 
-      // console.log(data);
+      console.log(data);
 
         localStorage.setItem('e200', data[0]);
         localStorage.setItem('fnumeros', data[1]);

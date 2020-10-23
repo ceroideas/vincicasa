@@ -43,6 +43,13 @@ export class ComunicacionService {
   	return this.http.post(url, sesion, {'headers': headers});
   }
 
+  actualizar_combinaciones(datos: any): Observable<any>{
+    const url = 'https://axelrace.pythonanywhere.com/actualizar';
+    const headers = {'Content-type': 'application/json'};
+    
+    return this.http.post(url, JSON.stringify(datos), {'headers': headers});
+  }
+
   number(numeros: Numeros): Observable<any>{
     const url = 'https://axelrace.pythonanywhere.com/numeros';
     const headers = {'Content-type': 'application/json'};

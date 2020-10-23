@@ -14,15 +14,15 @@ import * as moment from 'moment';
 })
 export class CombinazionePage implements OnInit {
 
-	excluir: any = [];
-	incluir: any = [];
-	combinacion: any = [];
-	ultimos: any[3] = [];
-	fechas: any[3] = [];
-	usuario: string = localStorage.getItem('usuario');
-	hoy: any;
+  excluir: any = [];
+  incluir: any = [];
+  combinacion: any = [];
+  ultimos: any[3] = [];
+  fechas: any[3] = [];
+  usuario: string = localStorage.getItem('usuario');
+  hoy: any;
   format: any;
-	contador: number = parseInt(JSON.parse(localStorage.getItem('contador')));
+  contador: number = parseInt(JSON.parse(localStorage.getItem('contador')));
   hour: any;
   minute: any;
   second: any;
@@ -33,18 +33,18 @@ export class CombinazionePage implements OnInit {
   
   intervalo: any;
 
-	meses = ['gennaio',
-			'febbraio',
-			'marzo',
-			'aprile',
-			'maggio',
-			'giugno',
-			'luglio',
-			'agosto',
-			'settembre',
-			'ottobre',
-			'novembre',
-			'dicembre'];
+  meses = ['gennaio',
+      'febbraio',
+      'marzo',
+      'aprile',
+      'maggio',
+      'giugno',
+      'luglio',
+      'agosto',
+      'settembre',
+      'ottobre',
+      'novembre',
+      'dicembre'];
 
   hh = '19:05';
 
@@ -62,9 +62,9 @@ export class CombinazionePage implements OnInit {
       this.nav.navigateRoot('selezionis');
     });
 
-  	if (!this.contador || this.contador == undefined) {
-  		this.contador = 0;
-  	}
+    if (!this.contador || this.contador == undefined) {
+      this.contador = 0;
+    }
 
     // console.log(this.hoy)
 
@@ -225,6 +225,19 @@ export class CombinazionePage implements OnInit {
 
         actual = actual.sort((a,b)=> a - b);
 
+        // const colores = ['green', 'yellow', 'red'];
+
+        // this.validar(actual);
+
+
+        // if (this.colores !== colores[0]) {
+          
+        //   console.log(actual);
+
+        //   return this.start();
+
+        // }
+
         let d:any = moment(dias[i]);
         let f = d.format('DD') + ' ' + this.meses[ d.format('M')-1 ] + ' ' + d.format('YYYY');
         let temp = {fecha:f,format:dias[i],date: new Date(d).getTime(),combinacion:actual};
@@ -245,38 +258,40 @@ export class CombinazionePage implements OnInit {
     this.fechas = new_fechas.sort((a,b)=> a - b);
 
     localStorage.setItem('ufechas',JSON.stringify(this.fechas));
+
+    this.actualizar();
   }
 
   getRandomArbitrary(min, max, n:any = [], exc:any = []){
 
-	  let number = Math.floor(Math.random() * (max - min) + min);
-	  let a = 0;
+    let number = Math.floor(Math.random() * (max - min) + min);
+    let a = 0;
     let b = 0;
 
-  	for (let i = 0; i < n.length; i++) {
-  		if (n[i] == number) {
-  			a++;
-  		}
-  	}
+    for (let i = 0; i < n.length; i++) {
+      if (n[i] == number) {
+        a++;
+      }
+    }
 
-  	for (let i = 0; i < exc.length; i++) {
-  		if (exc[i] == number) {
-  			b++;
-  		}
-  	}
+    for (let i = 0; i < exc.length; i++) {
+      if (exc[i] == number) {
+        b++;
+      }
+    }
 
 
-  	if (a > 0 || b > 0) {
+    if (a > 0 || b > 0) {
 
       console.log(a,b);
 
-  		return this.getRandomArbitrary(min, max, n, exc);
+      return this.getRandomArbitrary(min, max, n, exc);
 
-  	}else{
+    }else{
 
-  		return number;
+      return number;
 
-  	}
+    }
 
   }
 
@@ -302,26 +317,26 @@ export class CombinazionePage implements OnInit {
 
     }
 
-		this.combinacion = [];
-		let omitir = [];
+    this.combinacion = [];
+    let omitir = [];
 
-		if (this.incluir) {
-			for (let h in this.incluir) {
-				this.combinacion.push(this.incluir[h]);
-			}
-		}
+    if (this.incluir) {
+      for (let h in this.incluir) {
+        this.combinacion.push(this.incluir[h]);
+      }
+    }
 
-		for (var i = 0; i < (5 - this.incluir.length); i++) {	
-			this.combinacion.push( this.getRandomArbitrary(1, 55, this.combinacion, this.excluir) );
-		}
+    for (var i = 0; i < (5 - this.incluir.length); i++) {  
+      this.combinacion.push( this.getRandomArbitrary(1, 55, this.combinacion, this.excluir) );
+    }
 
-		this.combinacion = this.combinacion.sort((a,b)=> a - b);
+    this.combinacion = this.combinacion.sort((a,b)=> a - b);
 
     /**/
 
     const colores = ['green', 'yellow', 'red'];
 
-    this.validar();
+    this.validar(this.combinacion);
 
 
     if (this.colores !== colores[0]) {
@@ -393,7 +408,7 @@ export class CombinazionePage implements OnInit {
 
     // localStorage.setItem('ultimos', JSON.stringify(ultimos));
     localStorage.setItem('ufechas', JSON.stringify(this.fechas));
-		localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
+    localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
 
     if (automatico) {
 
@@ -403,14 +418,18 @@ export class CombinazionePage implements OnInit {
 
     }else{
 
-		  localStorage.setItem('contador', JSON.stringify(this.contador));
-		  localStorage.setItem('horaClick', moment().format('YYYY-MM-DD HH:mm:ss'));
+      localStorage.setItem('contador', JSON.stringify(this.contador));
+      localStorage.setItem('horaClick', moment().format('YYYY-MM-DD HH:mm:ss'));
       
+    }
+
+    if (this.fechas.length > 1) {
+      this.actualizar();
     }
 
     // this.ultimos = ultimos;
 
-	}
+  }
 
   reloj(){
 
@@ -499,7 +518,7 @@ export class CombinazionePage implements OnInit {
     // ]}).then(a=>a.present())
   }
 
-  validar(){
+  validar(comb){
 
     // clearTimeout(this.timeout);
     
@@ -508,7 +527,7 @@ export class CombinazionePage implements OnInit {
     // },5000)
 
     // console.log(this.combinacion);
-    const combinazione = this.combinacion.sort((a, b) => a - b);
+    const combinazione = comb.sort((a, b) => a - b);
     const semaforo = document.getElementById("rvalidacion");
     const colores = ['green', 'yellow', 'red'];
     const primos = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53];
@@ -633,6 +652,31 @@ export class CombinazionePage implements OnInit {
 
     return this.colores = colores[0];
 
+  }
+
+  actualizar()
+  {
+     let correo = {
+
+      correo: localStorage.getItem('correo'),
+      combinaciones: JSON.stringify(this.fechas),
+      incluidos: localStorage.getItem('incluidos'),
+      excluidos: localStorage.getItem('excluidos'),
+      reglas: localStorage.getItem('checks')
+
+    };
+
+    console.log(correo,"correo");
+
+    this.service.actualizar_combinaciones(correo).subscribe((data:any) => {
+
+      console.log('Datos actualizados');
+
+    }, Error => {
+
+      console.log(Error);
+
+    });
   }
 
 }

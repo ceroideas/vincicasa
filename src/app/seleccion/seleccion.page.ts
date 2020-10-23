@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ComunicacionService } from '../comunicacion.service';
 import { NavController } from '@ionic/angular';
+import { ComunicacionService } from '../comunicacion.service';
 
 @Component({
   selector: 'app-seleccion',
@@ -157,6 +157,32 @@ export class SeleccionPage implements OnInit {
     localStorage.setItem('excluidos', JSON.stringify(excluidos));
     this.nav.navigateRoot('feed');
 
+    this.actualizar();
+
+  }
+
+  actualizar()
+  {
+   let correo = {
+
+    correo: localStorage.getItem('correo'),
+    combinaciones: localStorage.getItem('ufechas') || "",
+    incluidos: localStorage.getItem('incluidos')  || "",
+    excluidos: localStorage.getItem('excluidos')  || "",
+    reglas: localStorage.getItem('checks')  || ""
+   };
+
+    console.log(correo,"correo");
+
+    this.service.actualizar_combinaciones(correo).subscribe((data:any) => {
+
+      console.log('Datos actualizados');
+
+    }, Error => {
+
+      console.log(Error);
+
+    });
   }
 
   espalda(){

@@ -10,7 +10,7 @@
 	<ion-row *ngFor="let t of checks; let i = index" lines="none" class=filas>
 		<ion-col>
 			<ion-item class="items" lines="none" (click)="seleccionar(i)">
-				<ion-checkbox [checked]="i | verificar:checked:true"></ion-checkbox>
+				<ion-checkbox style="width: 18px; height: 18px;" [checked]="i | verificar:checked:true"></ion-checkbox>
 				<p>{{ t }}</p>
 			</ion-item>
 		</ion-col>
@@ -18,5 +18,5 @@
 	<p id="alerta">Fai clic su continua per selezionare i numeri</p>
 
 	<!-- <ion-button *ngIf="returnBack" (click)="goToCombinazione()" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button> -->
-	<ion-button routerLink="/seleccion2" (click)="cambiarAutomatico()" routerDirection="root" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button>
+	<ion-button routerLink="/seleccion2" (click)="guardar()" routerDirection="root" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button>
 </ion-content>

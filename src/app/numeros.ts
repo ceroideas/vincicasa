@@ -3,5 +3,6 @@ export class Numeros {
 	numero: string;
 	correo: string;
 	puntos: string;
+	fecha: any;
 	usuario: string;
 }

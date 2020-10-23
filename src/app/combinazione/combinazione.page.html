@@ -9,7 +9,7 @@
 	</div>
 	<ion-row style="margin-top: -8px;">
 		<ion-col id="hoy">
-			LA TUA COMBINAZIONE <br> {{ fechas[0].fecha }}
+			LA TUA COMBINAZIONE <br> {{ fechas[0]?.fecha }}
 		</ion-col>
 	</ion-row>
 	<ion-row id="combinacion" *ngIf="fechas[0]?.combinacion.length > 0">
@@ -52,7 +52,7 @@
 					<label>{{ ultimo }}</label>
 				</ion-col>
 				<ion-col>
-					<label id="fechau" style="font-size: 14px;padding: 7px 0;display: block; width: 110px;">{{ fecha.fecha }}</label>
+					<label id="fechau" style="font-size: 14px; padding: 7px 0; display: block; width: 110px;">{{ fecha.fecha }}</label>
 				</ion-col>
 			</ion-row>
 		</div>

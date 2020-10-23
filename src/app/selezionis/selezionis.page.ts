@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ComunicacionService } from '../comunicacion.service';
 
 @Component({
   selector: 'app-selezionis',
@@ -18,7 +19,7 @@ export class SelezionisPage implements OnInit {
 
   checked:any = [];
 
-  constructor(public nav: NavController) { }
+  constructor(public nav: NavController, private service: ComunicacionService) { }
 
   ngOnInit() {
     if (localStorage.getItem('checks')) {
@@ -41,9 +42,34 @@ export class SelezionisPage implements OnInit {
     localStorage.setItem('checks',JSON.stringify(this.checked));
   }
 
-  cambiarAutomatico()
+  guardar()
   {
     localStorage.setItem('no-menu-return-back','1');
+    this.actualizar();
+  }
+
+  actualizar()
+  {
+   let correo = {
+
+    correo: localStorage.getItem('correo'),
+    combinaciones: localStorage.getItem('ufechas') || "",
+    incluidos: localStorage.getItem('incluidos')  || "",
+    excluidos: localStorage.getItem('excluidos')  || "",
+    reglas: localStorage.getItem('checks')  || ""
+   };
+
+    console.log(correo,"correo");
+
+    this.service.actualizar_combinaciones(correo).subscribe((data:any) => {
+
+      console.log('Datos actualizados');
+
+    }, Error => {
+
+      console.log(Error);
+
+    });
   }
 
 }
