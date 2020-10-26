@@ -46,7 +46,7 @@ export class CombinazionePage implements OnInit {
       'novembre',
       'dicembre'];
 
-  hh = '17:42';
+  hh = this.service.hSorteo;
 
 
   constructor(private service: ComunicacionService, public alert: AlertController, public nav: NavController, public modal: ModalController, public events: EventsService) {
@@ -100,7 +100,7 @@ export class CombinazionePage implements OnInit {
 
   ngOnInit() {
 
-    this.preStart();
+    // this.preStart();
 
   }
 

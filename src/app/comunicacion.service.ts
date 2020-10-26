@@ -17,6 +17,8 @@ export class ComunicacionService {
   private hora = new BehaviorSubject<any[]>([]);
   hora$ = this.hora.asObservable();
 
+  hSorteo = "19:00";
+
   reloj(horas: any){
     this.hora.next(horas);
   }

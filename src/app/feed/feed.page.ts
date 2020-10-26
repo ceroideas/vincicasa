@@ -15,14 +15,14 @@ export class FeedPage implements OnInit {
 
   usuario: any = localStorage.getItem('usuario');
   horas: any = [];
-  hh = "19:05";
+  hh = this.service.hSorteo;
 
-  constructor(private menu: MenuController, private comunicacion: ComunicacionService, private router: Router) {
+  constructor(private menu: MenuController, private service: ComunicacionService, private router: Router) {
     this.menu.enable(true);
   }
 
   ngOnInit() {
-    this.comunicacion.changeData(this.usuario);
+    this.service.changeData(this.usuario);
     this.reloj();
   }
 
@@ -30,7 +30,7 @@ export class FeedPage implements OnInit {
     let mostrar_hora = () => {
 
       this.horas = [];
-      this.comunicacion.hora$.subscribe(res => {
+      this.service.hora$.subscribe(res => {
 
         let verificar = document.getElementById("hh1");
 

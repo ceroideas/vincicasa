@@ -25,21 +25,18 @@ export class AppComponent {
   tiempo: any = [];
   numeros = new Numeros();
 
-  hh = "19:05";
+  hh = this.service.hSorteo;
 
-  constructor(private localNotifications: LocalNotifications, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController, public alertController: AlertController/*, private deeplinks: Deeplinks*/) { 
-
-    this.localNotifications.requestPermission().then(
-      (permission) => {
-        if (permission) {
-          // Create the notification
-          console.log('diste permisos')
-
-        }
-      }
-    );
+  constructor(private localNotifications: LocalNotifications, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController,
+    public alertController: AlertController/*, private deeplinks: Deeplinks*/,
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar
+    ) { 
 
     this.menuCtrl.toggle(); 
+
+    this.initializeApp();
 
   }
 
@@ -67,6 +64,14 @@ export class AppComponent {
     await alert.present();
   }
 
+  simpleNotif() {
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'Benvenuto a Millionday!!',
+      data: { secret: 'secret' }
+    });
+  }
+
   logout() {
 
     localStorage.removeItem('usuario');
@@ -77,6 +82,27 @@ export class AppComponent {
 
     this.nav.navigateRoot('home');
 
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.statusBar.show();
+      this.statusBar.overlaysWebView(false);
+      this.splashScreen.hide();
+    });
+
+    this.simpleNotif();
+
+    // this.localNotifications.requestPermission().then(
+    //   (permission) => {
+    //     if (permission) {
+    //       // Create the notification
+    //       console.log('diste permisos')
+
+    //     }
+    //   }
+    // );
   }
 
   ngOnInit(){
@@ -132,7 +158,9 @@ export class AppComponent {
     diff = (pm8p1.diff(hora,'seconds'))/3600;
     diff2 = hora.diff(lastNotification,'seconds')/3600;
 
-    if (diff2 > 24) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
+    console.log(diff);
+
+    if (diff2 > 24 || !diff2) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
       
       console.log('enviar notificacion directamente')
       this.verGanadores();
@@ -149,7 +177,7 @@ export class AppComponent {
           // localStorage.setItem('contador','1');
         }
         
-      }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
+      }else{ // en caso contrario se cuenta a partir de hoy a las this.hh hasta mañana a las this.hh
         let d = pm8p1.diff(lastNotification,'seconds')/3600;
 
         if (d > 24) {
@@ -233,10 +261,52 @@ export class AppComponent {
 
   verGanadores()
   {
+    let jugadas = JSON.parse(localStorage.getItem('ufechas'));
+    if (jugadas) {
 
-    if (localStorage.getItem('combinacion')) {
+      let meses = ['gennaio',
+      'febbraio',
+      'marzo',
+      'aprile',
+      'maggio',
+      'giugno',
+      'luglio',
+      'agosto',
+      'settembre',
+      'ottobre',
+      'novembre',
+      'dicembre'];
+    // }
+    // if (localStorage.getItem('combinacion')) {
+      let hoy:any;
+      let hora = moment();
+      let pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).add(1,'day');
+      let diff = (pm8p1.diff(hora,'seconds'))/3600;
 
-      let jugada = JSON.parse(localStorage.getItem('combinacion'));
+      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
+        
+        console.log('día de hoy');
+        hoy = moment();
+        
+      }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
+
+        console.log('día siguiente');
+        hoy = moment().add(1,'day');
+
+      }
+
+      console.log(hoy);
+
+      hoy = hoy.format('DD') + ' ' + meses[ hoy.format('M')-1 ] + ' ' + hoy.format('YYYY');
+
+      let jugada = jugadas.find(x=>x.fecha == hoy);
+
+      if (!jugada) {
+        return false;
+      }else{
+        jugada = jugada.combinacion;
+      }
+
       let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
       let puntos = 0;
 
@@ -258,7 +328,7 @@ export class AppComponent {
 
       this.sorteo(puntos);
 
-      if (puntos >= 2) {
+      if (puntos >= 0) {
 
         this.numeros.correo = localStorage.getItem('correo'),
         this.numeros.numero = jugada,
@@ -293,6 +363,8 @@ export class AppComponent {
     this.numeros.fecha = moment();
 
     let mess = "";
+
+    if (parseInt(puntos) == 0 || parseInt(puntos) == 1) {mess = "Il concorso è finito, non hai fortuna";}
 
     if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
     if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
