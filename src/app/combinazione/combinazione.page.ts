@@ -674,7 +674,7 @@ export class CombinazionePage implements OnInit {
 
     }, Error => {
 
-      console.log(Error);
+      this.actualizar();
 
     });
   }

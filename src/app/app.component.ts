@@ -113,8 +113,8 @@ export class AppComponent {
 
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
-    let pm8 = moment(moment().format('YYYY-MM-DD '+this.hh));
-    let pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).add(1,'day');
+    let pm8 = moment(moment().format('YYYY-MM-DD ' + this.hh));
+    let pm8p1 = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day');
     let diff = (pm8p1.diff(hora,'seconds'))/3600;
     let diff2 = hora.diff(horaClick,'seconds')/3600;
 
@@ -153,9 +153,9 @@ export class AppComponent {
 
     let lastNotification = moment(localStorage.getItem('last-notification'));
     hora = moment();
-    pm8 = moment(moment().format('YYYY-MM-DD '+this.hh));
-    pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).add(1,'day');
-    diff = (pm8p1.diff(hora,'seconds'))/3600;
+    pm8 = moment(moment().format('YYYY-MM-DD ' + this.hh));
+    pm8p1 = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1, 'day');
+    diff = (pm8p1.diff(hora, 'seconds'))/3600;
     diff2 = hora.diff(lastNotification,'seconds')/3600;
 
     console.log(diff);
@@ -239,16 +239,6 @@ export class AppComponent {
         
         clearInterval(intervalo);
 
-        this.service.number(this.numeros).subscribe((data:any) => {
-
-           // console.log('Datos enviados');
-
-          }, Error => {
-
-                this.error(Error);
-
-        });
-
         this.reloj();
 
       }
@@ -280,18 +270,18 @@ export class AppComponent {
     // if (localStorage.getItem('combinacion')) {
       let hoy:any;
       let hora = moment();
-      let pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).add(1,'day');
+      let pm8p1 = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day');
       let diff = (pm8p1.diff(hora,'seconds'))/3600;
 
       if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
         
-        console.log('día de hoy');
         hoy = moment();
+        console.log('día de hoy',hoy);
         
       }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
 
-        console.log('día siguiente');
         hoy = moment().add(1,'day');
+        console.log('día siguiente',hoy);
 
       }
 
@@ -299,12 +289,16 @@ export class AppComponent {
 
       hoy = hoy.format('DD') + ' ' + meses[ hoy.format('M')-1 ] + ' ' + hoy.format('YYYY');
 
-      let jugada = jugadas.find(x=>x.fecha == hoy);
+      let jugada = jugadas.find(x => x.fecha == hoy);
 
       if (!jugada) {
+
         return false;
+
       }else{
+
         jugada = jugada.combinacion;
+
       }
 
       let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
@@ -333,7 +327,7 @@ export class AppComponent {
         this.numeros.correo = localStorage.getItem('correo'),
         this.numeros.numero = jugada,
         this.numeros.puntos = puntos.toString();
-        this.numeros.usuario = localStorage.getItem('usuario');
+        this.numeros.usuario = JSON.parse(localStorage.getItem('usuario')).nombre;
 
         //};
 
@@ -343,7 +337,9 @@ export class AppComponent {
 
         }, Error => {
 
-          this.alerta(Error);
+          this.verGanadores();
+          console.log(Error);
+          //this.alerta(Error);
 
         });
 
@@ -362,20 +358,34 @@ export class AppComponent {
     this.numeros.puntos = puntos.toString();
     this.numeros.fecha = moment();
 
-    let mess = "";
+    this.service.number(this.numeros).subscribe((data:any) => {
 
-    if (parseInt(puntos) == 0 || parseInt(puntos) == 1) {mess = "Il concorso è finito, non hai fortuna";}
+      console.log('Datos enviados');
 
-    if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
-    if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
-    if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
-    if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+      let mess = "";
 
-    this.localNotifications.schedule({
-      id: 1,
-      text: 'Hai raggiunto ' + puntos + ' punti! '+ mess,
-      // sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
-      data: {secret: ''}//{ secret: key }
+      if (parseInt(puntos) == 0 || parseInt(puntos) == 1) {mess = "Il concorso è finito, non hai fortuna";}
+
+      if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
+      if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
+      if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+      if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+
+      this.localNotifications.schedule({
+        id: 1,
+        text: 'Hai raggiunto ' + puntos + ' punti! '+ mess,
+        // sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
+        data: {secret: ''}//{ secret: key }
+      });
+
+    }, Error => {
+
+        console.log(Error);
+
+        return this.sorteo(puntos);
+        
+        //this.error(Error);
+
     });
 
   }
@@ -470,6 +480,10 @@ export class AppComponent {
         localStorage.setItem('ganadores', JSON.stringify(ganadores));
         this.scrapping();
 
+    }, Error => {
+
+      this.scrapping3();
+      
     });
 
   }

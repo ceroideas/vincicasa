@@ -26,53 +26,53 @@ export class FeedPage implements OnInit {
     this.reloj();
   }
 
-  refrescar(){
-    let mostrar_hora = () => {
+  // refrescar(){
+  //   let mostrar_hora = () => {
 
-      this.horas = [];
-      this.service.hora$.subscribe(res => {
+  //     this.horas = [];
+  //     this.service.hora$.subscribe(res => {
 
-        let verificar = document.getElementById("hh1");
+  //       let verificar = document.getElementById("hh1");
 
-        if (verificar) {
+  //       if (verificar) {
 
-          verificar.innerHTML = res[0];
-          document.getElementById("mh1").innerHTML = res[1];
-          document.getElementById("sh1").innerHTML = res[2];
+  //         verificar.innerHTML = res[0];
+  //         document.getElementById("mh1").innerHTML = res[1];
+  //         document.getElementById("sh1").innerHTML = res[2];
           
-        }else{
-          clearInterval(intervalo);
-        }
+  //       }else{
+  //         clearInterval(intervalo);
+  //       }
 
-      });
-    }
-    let intervalo = setInterval(mostrar_hora, 1000);
-  }
+  //     });
+  //   }
+  //   let intervalo = setInterval(mostrar_hora, 1000);
+  // }
 
-  toggle(event){
+  // toggle(event){
 
-  	const menu = document.getElementById("menu");
-    const app = document.getElementById("game");
+  //   const menu = document.getElementById("menu");
+  //   const app = document.getElementById("game");
 
-  	if (menu.style.display == 'none') {
+  //   if (menu.style.display == 'none') {
 
-      app.style.display = 'none';
-  		menu.style.display = 'block';
+  //     app.style.display = 'none';
+  //     menu.style.display = 'block';
 
-  	}else{
+  //   }else{
 
-  		menu.style.display = 'none';
-      app.style.display = 'block';
+  //     menu.style.display = 'none';
+  //     app.style.display = 'block';
 
-  	}
-  }
+  //   }
+  // }
 
-  salir(event){
-    this.router.navigateByUrl('/home');
-  }
+  // salir(event){
+  //   this.router.navigateByUrl('/home');
+  // }
 
   reloj(){
-    //console.log('reloj');
+    console.log('reloj');
     function CountdownTracker(label, value){
 
       var el = document.createElement('span');
@@ -179,6 +179,8 @@ export class FeedPage implements OnInit {
 
     let restante = mins8.diff(moment(),'seconds');
 
+    console.log(restante)
+
     if (restante < 0) {
       now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD '+this.hh));
     }else{
@@ -186,7 +188,7 @@ export class FeedPage implements OnInit {
     }
 
     var deadline = new Date(Date.parse(now));
-    var c = new Clock(deadline, function(){/*this.reloj()alert('countdown complete')*/ });
+    var c = new Clock(deadline, ()=> {document.getElementById('tiempo').innerHTML = ""; this.reloj();/*alert('countdown complete')*/ });
     document.getElementById('tiempo').appendChild(c.el);
 
   }

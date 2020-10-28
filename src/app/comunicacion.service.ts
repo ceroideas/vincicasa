@@ -114,4 +114,9 @@ export class ComunicacionService {
     return this.http.get(url);
   }
 
+  excel(): Observable<any>{
+    const url = 'https://axelrace.pythonanywhere.com/excel';
+    return this.http.get(url);
+  }
+
 }

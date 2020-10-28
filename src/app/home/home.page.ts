@@ -203,7 +203,8 @@ export class HomePage {
 
               l.dismiss();
 
-              this.error(Error);
+              //this.error(Error);
+              this.sesion(f);
 
               console.log(Error)
 

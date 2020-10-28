@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Platform, NavController } from '@ionic/angular';
+import { Platform, NavController, AlertController, LoadingController } from '@ionic/angular';
 import { ComunicacionService } from '../comunicacion.service';
 import * as moment from 'moment';
+import * as FileSaver from 'file-saver';
+/*import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';*/
+//import { File } from '@ionic-native/file';
 
 @Component({
   selector: 'app-administracion',
@@ -13,7 +16,9 @@ export class AdministracionPage implements OnInit {
 	datos: any;
 	funcion: string = 'UTENTI';
 
-  constructor(private comunicacion: ComunicacionService, public nav: NavController) { }
+  constructor(private comunicacion: ComunicacionService, public nav: NavController, public alertController: AlertController, public loading: LoadingController /*, private transfer: FileTransfer*/) { }
+
+  /*fileTransfer: FileTransferObject = this.transfer.create();*/
 
   ngOnInit() {
 
@@ -71,6 +76,7 @@ export class AdministracionPage implements OnInit {
 
       }, Error => {
 
+        this.activador(nombres);
         console.log(Error);
 
       });
@@ -134,6 +140,7 @@ export class AdministracionPage implements OnInit {
 
       }, Error => {
 
+        this.activador(nombres);
         console.log(Error);
 
       });
@@ -213,6 +220,7 @@ export class AdministracionPage implements OnInit {
 
       }, Error => {
 
+        this.activador(nombres);
         console.log(Error);
 
       });
@@ -230,6 +238,42 @@ export class AdministracionPage implements OnInit {
 
   	}
 
+  }
+
+  /*excel() {
+
+    const url = 'https://axelrace.pythonanywhere.com/excel';
+    this.fileTransfer.download(url, 'files' + 'datos.xlsx').then((entry) => {
+      console.log('download complete: ' + entry.toURL());
+    }, (error) => {
+      // handle error
+    });
+
+  }*/
+
+  excel(){
+
+    this.loading.create().then(l=>{
+      l.present();
+
+      this.comunicacion.excel().subscribe((data: any) => {
+
+        l.dismiss();
+
+        console.log('Envío exitoso');
+
+        this.alertController.create({message:"Excel inviato per posta!"}).then(a=>a.present());
+        
+      }, Error => {
+
+        l.dismiss();
+
+        console.log(Error);
+
+        return this.excel();
+
+      });
+    })
   }
 
   salir(){
