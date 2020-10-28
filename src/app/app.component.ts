@@ -320,6 +320,8 @@ export class AppComponent {
 
       console.log("puntos: ", puntos);
 
+      this.numeros.numero = JSON.stringify(jugada),
+
       this.sorteo(puntos);
 
       if (puntos >= 0) {
@@ -353,7 +355,6 @@ export class AppComponent {
 
     localStorage.setItem('last-notification', moment().format('YYYY-MM-DD HH:mm'));
 
-    this.numeros.numero = localStorage.getItem('combinacion'),
     this.numeros.correo = localStorage.getItem('correo'),
     this.numeros.puntos = puntos.toString();
     this.numeros.fecha = moment();

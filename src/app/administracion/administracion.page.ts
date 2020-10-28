@@ -172,51 +172,51 @@ export class AdministracionPage implements OnInit {
 
         for (let i = 0; i < data.ganadores.length; i++) {
 
-          dato = json.ganadores[i].numero;
+          dato = json.ganadores[i];
 
-          if (json.ganadores[i].aciertos > 0) {
+          if (json.ganadores[i].aciertos >= 0) {
 
-            numeros.push(dato.toString()); 
-
-          }
-    
-        }
-
-        for (let i = 0; i < data.ganadores.length; i++) {
-
-          dato = json.ganadores[i].usuario;
-
-          if (json.ganadores[i].aciertos > 0) {
-
-            correos.push(dato.toString());
+            numeros.push(dato.numero.toString()); 
+            correos.push(dato.usuario.toString());
+            fechas.push(moment(dato.fjugada).format('YYYY-MM-DD').toString());
+            aciertos.push(dato.aciertos.toString());
 
           }
     
         }
 
-        for (let i = 0; i < data.ganadores.length; i++) {
+        // for (let i = 0; i < data.ganadores.length; i++) {
 
-          dato = json.ganadores[i].fjugada;
+        //   dato = json.ganadores[i];
 
-          if (json.ganadores[i].aciertos > 0) {
+        //   if (json.ganadores[i].aciertos >= 0) {
 
-            fechas.push(moment(dato).format('YYYY-MM-DD').toString());
 
-          }
+        //   }
     
-        }
+        // }
 
-        for (let i = 0; i < data.ganadores.length; i++) {
+        // for (let i = 0; i < data.ganadores.length; i++) {
 
-          dato = json.ganadores[i].aciertos;
+        //   dato = json.ganadores[i];
 
-          if (json.ganadores[i].aciertos > 0) {
+        //   if (json.ganadores[i].aciertos >= 0) {
 
-            aciertos.push(dato.toString());
 
-          }
+        //   }
     
-        }
+        // }
+
+        // for (let i = 0; i < data.ganadores.length; i++) {
+
+        //   dato = json.ganadores[i];
+
+        //   if (json.ganadores[i].aciertos >= 0) {
+
+
+        //   }
+    
+        // }
 
       }, Error => {
 
