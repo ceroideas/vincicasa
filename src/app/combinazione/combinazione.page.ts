@@ -5,6 +5,8 @@ import { ComunicacionService } from '../comunicacion.service';
 import { ModalSeleccionPage } from '../pages/modal-seleccion/modal-seleccion.page';
 import { EventsService } from '../services/events.service';
 
+import { TodayPage } from '../feed/today/today.page';
+
 import * as moment from 'moment';
 
 @Component({
@@ -80,17 +82,17 @@ export class CombinazionePage implements OnInit {
 
     if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
       
-      console.log('día de hoy');
+      // console.log('día de hoy');
       this.hoy = moment();
       
     }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
 
-      console.log('día siguiente');
+      // console.log('día siguiente');
       this.hoy = moment().add(1,'day');
 
     }
 
-    console.log(this.hoy);
+    // console.log(this.hoy);
 
     this.format = moment(this.hoy).format('YYYY-MM-DD');
     this.hoy = this.hoy.format('DD') + ' ' + this.meses[ this.hoy.format('M')-1 ] + ' ' + this.hoy.format('YYYY');
@@ -102,6 +104,15 @@ export class CombinazionePage implements OnInit {
 
     // this.preStart();
 
+  }
+
+  async presentModal()
+  {
+    const modal = await this.modal.create({
+      component: TodayPage,
+      cssClass: "todayModal"
+    });
+    return await modal.present();
   }
 
   preStart() {
@@ -140,6 +151,10 @@ export class CombinazionePage implements OnInit {
         this.combinacion = [];
 
         this.random(true);
+
+        setTimeout(()=>{
+          this.presentModal();
+        },1000)
       }
       //this.fechas = this.fechas.reverse();
     
@@ -211,7 +226,7 @@ export class CombinazionePage implements OnInit {
 
       if (idx == -1) {
 
-        console.log('no existe',dias[i]);
+        // console.log('no existe',dias[i]);
 
         if (this.incluir) {
           for (let h in this.incluir) {
@@ -283,7 +298,7 @@ export class CombinazionePage implements OnInit {
 
     if (a > 0 || b > 0) {
 
-      console.log(a,b);
+      // console.log(a,b);
 
       return this.getRandomArbitrary(min, max, n, exc);
 
@@ -341,7 +356,7 @@ export class CombinazionePage implements OnInit {
 
     if (this.colores !== colores[0]) {
       
-      console.log(this.combinacion);
+      // console.log(this.combinacion);
 
       return this.random(false);
 
@@ -482,7 +497,7 @@ export class CombinazionePage implements OnInit {
         setTimeout(()=>{
           this.detectDate();
         },3000)
-        console.log('rein');
+        // console.log('rein');
         //clearInterval(this.intervalo);
 
       }
@@ -666,7 +681,7 @@ export class CombinazionePage implements OnInit {
 
     };
 
-    console.log(correo,"correo");
+    // console.log(correo,"correo");
 
     this.service.actualizar_combinaciones(correo).subscribe((data:any) => {
 

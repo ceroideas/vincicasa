@@ -13,10 +13,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+// import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import it from '@angular/common/locales/it';
 import { registerLocaleData } from '@angular/common';
+
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 registerLocaleData(it);
 
@@ -30,7 +32,8 @@ registerLocaleData(it);
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Deeplinks,
-    LocalNotifications
+    OneSignal
+    // LocalNotifications
   ],
   bootstrap: [AppComponent]
 })

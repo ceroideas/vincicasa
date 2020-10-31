@@ -1,0 +1,49 @@
+#combinacion, #columna{
+	margin: 0;
+	text-align: center;
+	height: 64px;
+}
+#hoy{
+	text-align: center;
+	margin: auto;
+	position: relative;
+	top: -50%;
+	font-family: 'geometos';
+	font-size: 14px;
+}
+.n1, .n2{
+	height: 100%;
+	font-weight: bolder;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 45px 45px;
+	color: black;
+	display: flex;
+	text-align: center;
+}
+.n1, .cn1, .cn3, .cn5{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+.n2, .cn2, .cn4{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+.n1, .n2, [class*="c"]{
+	label, b{
+		margin: auto;
+		text-align: center;
+		display: flex;
+	}
+}
+
+#modifica{
+	width: 120px;
+	height: 45px;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	--background: #09B7DA;
+	color: #fff;
+	font-weight: bold;
+	font-size: 14px;
+	--box-shadow: 0px 10px 10px #0898B5;
+}

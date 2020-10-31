@@ -9,7 +9,8 @@ import { MenuController, AlertController } from '@ionic/angular';
 import { Numeros } from './numeros';
 // import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { CambioPage } from './recuperar/cambio/cambio.page';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+// import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent {
 
   hh = this.service.hSorteo;
 
-  constructor(private localNotifications: LocalNotifications, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController,
+  constructor(/*private localNotifications: LocalNotifications,*/private oneSignal: OneSignal, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController,
     public alertController: AlertController/*, private deeplinks: Deeplinks*/,
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -65,11 +66,11 @@ export class AppComponent {
   }
 
   simpleNotif() {
-    this.localNotifications.schedule({
-      id: 1,
-      text: 'Benvenuto a Millionday!!',
-      data: { secret: 'secret' }
-    });
+    // this.localNotifications.schedule({
+    //   id: 1,
+    //   text: 'Benvenuto a Millionday!!',
+    //   data: { secret: 'secret' }
+    // });
   }
 
   logout() {
@@ -90,9 +91,10 @@ export class AppComponent {
       this.statusBar.show();
       this.statusBar.overlaysWebView(false);
       this.splashScreen.hide();
+
+      this.initializeOnesignal();
     });
 
-    this.simpleNotif();
 
     // this.localNotifications.requestPermission().then(
     //   (permission) => {
@@ -372,12 +374,12 @@ export class AppComponent {
       if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
       if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
 
-      this.localNotifications.schedule({
-        id: 1,
-        text: 'Hai raggiunto ' + puntos + ' punti! '+ mess,
-        // sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
-        data: {secret: ''}//{ secret: key }
-      });
+      // this.localNotifications.schedule({
+      //   id: 1,
+      //   text: 'Hai raggiunto ' + puntos + ' punti! '+ mess,
+      //   // sound: ''/*isAndroid? 'file://sound.mp3': 'file://beep.caf'*/,
+      //   data: {secret: ''}//{ secret: key }
+      // });
 
     }, Error => {
 
@@ -395,7 +397,7 @@ export class AppComponent {
 
     this.service.tabla3().subscribe((data: any) => {
 
-      console.log(data);
+      // console.log(data);
 
         localStorage.setItem('e200', data[0]);
         localStorage.setItem('fnumeros', data[1]);
@@ -517,6 +519,40 @@ export class AppComponent {
 
     localStorage.setItem('fechas', JSON.stringify(fechas));
 
+  }
+
+  initializeOnesignal()
+  {
+    this.oneSignal.startInit('0b002b2a-389a-4da8-b37f-1ab653159f38', '201758780281');
+
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+    this.oneSignal.handleNotificationReceived().subscribe(() => {
+     // do something when notification is received saveOneSignalId
+    });
+
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+      // do something when a notification is opened
+      this.verGanadores();
+    });
+
+    this.oneSignal.endInit();
+
+    this.oneSignal.getIds().then((ids)=> {
+      localStorage.setItem('onesignal_id',ids.userId);
+
+      if (localStorage.getItem('correo')) {
+        let correo = localStorage.getItem('correo');
+        let onesignal_id = localStorage.getItem('onesignal_id');
+
+        this.service.saveOneSignalId({correo:correo,onesignal_id:onesignal_id})
+        .subscribe(
+          data => {console.log('ok');},
+          err => {console.log(err);}
+        );
+      }
+
+    });
   }
 
 }

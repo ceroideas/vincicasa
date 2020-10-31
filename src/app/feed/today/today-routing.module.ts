@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FeedPage } from './feed.page';
+import { TodayPage } from './today.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FeedPage
-  },
-  {
-    path: 'today',
-    loadChildren: () => import('./today/today.module').then( m => m.TodayPageModule)
+    component: TodayPage
   }
 ];
 
@@ -18,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FeedPageRoutingModule {}
+export class TodayPageRoutingModule {}

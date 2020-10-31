@@ -66,7 +66,19 @@ export class HomePage {
     await alert.present();
   }
   
-  
+  saveOnesignal()
+  {
+    if (localStorage.getItem('onesignal_id')) {
+      let correo = localStorage.getItem('correo');
+      let onesignal_id = localStorage.getItem('onesignal_id');
+
+      this.comunicacion.saveOneSignalId({correo:correo,onesignal_id:onesignal_id})
+      .subscribe(
+        data => {console.log('ok');},
+        err => {console.log(err);}
+      );
+    }
+  }
 
   registrarse(f: NgForm){
     if (/*this.condiciones == false || */this.valor == false || this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined || this.formulario.sexo == undefined) {
@@ -104,6 +116,8 @@ export class HomePage {
               localStorage.setItem('excluidos', data.excluidos != "" ? data.excluidos : "[]");
               localStorage.setItem('incluidos', data.incluidos != "" ? data.incluidos : "[]");
               localStorage.setItem('checks', data.reglas != "" ? data.reglas : "[]");
+
+              this.saveOnesignal();
 
               this.router.navigateByUrl('/manual');
 
@@ -188,6 +202,8 @@ export class HomePage {
                 localStorage.setItem('excluidos', data.excluidos != "" ? data.excluidos : "[]");
                 localStorage.setItem('incluidos', data.incluidos != "" ? data.incluidos : "[]");
                 localStorage.setItem('checks', data.reglas != "" ? data.reglas : "[]");
+
+                this.saveOnesignal();
 
                 this.router.navigate(['/feed']);
 

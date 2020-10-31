@@ -1,0 +1,47 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>today</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+	<ion-row>
+		<ion-col id="hoy">
+			LA TUA COMBINAZIONE PER OGGI È
+		</ion-col>
+	</ion-row>
+	<ion-row id="combinacion" *ngIf="fechas[0]?.combinacion.length > 0">
+		<ion-col class="columna">
+			<div class="n1">
+				<b>{{ fechas[0].combinacion[0] }}</b>
+			</div>
+		</ion-col>
+		<ion-col class="columna2">
+			<div class="n2">
+				<b>{{ fechas[0].combinacion[1] }}</b>
+			</div>
+		</ion-col>
+		<ion-col class="columna">
+			<div class="n1">
+				<b>{{ fechas[0].combinacion[2] }}</b>
+			</div>
+		</ion-col>
+		<ion-col class="columna2">
+			<div class="n2">
+				<b>{{ fechas[0].combinacion[3] }}</b>
+			</div>
+		</ion-col>
+		<ion-col class="columna">
+			<div class="n1">
+				<b>{{ fechas[0].combinacion[4] }}</b>
+			</div>
+		</ion-col>
+	</ion-row>
+
+	<div style="display: flex">
+		<ion-button shape="round" size="large" id="modifica" (click)="modal.dismiss()">ACCETA</ion-button>
+		<ion-button shape="round" size="large" id="modifica" (click)="modal.dismiss()" [routerLink]="['/combinazione']">MODIFICA</ion-button>
+	</div>
+
+</ion-content>

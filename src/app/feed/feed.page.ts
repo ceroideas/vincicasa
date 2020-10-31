@@ -1,15 +1,19 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ComunicacionService } from '../comunicacion.service';
+import { EventsService } from '../services/events.service';
 import { Numeros } from '../numeros';
 import { Router } from  '@angular/router';
-import { MenuController } from  '@ionic/angular';
+import { MenuController, ModalController } from  '@ionic/angular';
 import * as moment from 'moment';
+
+import { CombinazionePage } from '../combinazione/combinazione.page';
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.page.html',
   styleUrls: ['./feed.page.scss'],
+  providers: [CombinazionePage]
 })
 export class FeedPage implements OnInit {
 
@@ -17,7 +21,9 @@ export class FeedPage implements OnInit {
   horas: any = [];
   hh = this.service.hSorteo;
 
-  constructor(private menu: MenuController, private service: ComunicacionService, private router: Router) {
+  combinaciones;
+
+  constructor(private menu: MenuController, private service: ComunicacionService, private router: Router, public combinazione: CombinazionePage, public modal: ModalController, public events: EventsService) {
     this.menu.enable(true);
   }
 
@@ -72,7 +78,7 @@ export class FeedPage implements OnInit {
   // }
 
   reloj(){
-    console.log('reloj');
+    // console.log('reloj');
     function CountdownTracker(label, value){
 
       var el = document.createElement('span');
@@ -179,7 +185,7 @@ export class FeedPage implements OnInit {
 
     let restante = mins8.diff(moment(),'seconds');
 
-    console.log(restante)
+    // console.log(restante)
 
     if (restante < 0) {
       now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD '+this.hh));

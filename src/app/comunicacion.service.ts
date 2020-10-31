@@ -109,6 +109,13 @@ export class ComunicacionService {
     return this.http.post(url, json, {'headers': headers});
   }
 
+  saveOneSignalId(datos: any) {
+    const url = 'https://axelrace.pythonanywhere.com/saveOneSignalId';
+    const headers = {'Content-type': 'application/json'};
+    const json = JSON.stringify(datos);
+    return this.http.post(url, json, {'headers': headers});
+  }
+
   donadores(): Observable<any>{
     const url = 'https://axelrace.pythonanywhere.com/pago';
     return this.http.get(url);
