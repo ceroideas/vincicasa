@@ -28,9 +28,48 @@ export class FeedPage implements OnInit {
   }
 
   ngOnInit() {
+
     this.service.changeData(this.usuario);
     this.reloj();
+    // this.notificar();
+
   }
+
+  // notificar(){
+
+  //   let horaInicio = moment(moment().format('YYYY-MM-DD HH:mm:ss'));
+  //   let horaFin = moment(moment().format('YYYY-MM-DD ' + '19:05:00'));
+  //   let referencia;
+  //   let hora = Date();
+  //   let correo = localStorage.getItem('correo');
+
+  //   if (horaFin > horaInicio) {
+      
+  //     referencia = 0;
+
+  //   }else{
+
+  //     referencia = 1;
+
+  //   }
+
+  //   let json = {
+  //     correo: correo,
+  //     referencia: referencia,
+  //     hora: hora
+  //   }
+
+  //   this.service.notificaciones_push(json).subscribe((data) => {
+
+  //     console.log(data);
+
+  //   }, Error => {
+
+  //     return this.notificar();
+
+  //   });
+
+  // }
 
   // refrescar(){
   //   let mostrar_hora = () => {
@@ -188,7 +227,7 @@ export class FeedPage implements OnInit {
     // console.log(restante)
 
     if (restante < 0) {
-      now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD '+this.hh));
+      now = moment(moment(new Date()).add(1,'days').format('YYYY-MM-DD ' + this.hh));
     }else{
       now = moment(moment().format('YYYY-MM-DD '+this.hh));
     }

@@ -113,6 +113,11 @@ export class AppComponent {
     this.service.data$.subscribe(res => {this.user = res; /*console.log(typeof res)*/});
     this.scrapping3();
 
+    this.programarNotificaciones();
+  }
+  
+  programarNotificaciones()
+  {
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
     let pm8 = moment(moment().format('YYYY-MM-DD ' + this.hh));
@@ -162,36 +167,81 @@ export class AppComponent {
 
     console.log(diff);
 
+    let date;
+
     if (diff2 > 24 || !diff2) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
       
       console.log('enviar notificacion directamente')
       this.verGanadores();
+
+      if (diff >= 24) {
+        date = moment(moment().format('YYYY-MM-DD ' + this.hh)).format();
+      }else{
+        date = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day').format();
+      }
+
+      this.notificar(date);
 
     }else{
 
       if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
         let d = pm8.diff(lastNotification,'seconds')/3600;
 
+
         if (d > 24) {
+          date = moment(moment().format('YYYY-MM-DD ' + this.hh)).format();
+          this.notificar(date);
+          
           console.log('enviar notificacion 1')
           this.verGanadores();
         }else{
           // localStorage.setItem('contador','1');
         }
+
         
       }else{ // en caso contrario se cuenta a partir de hoy a las this.hh hasta mañana a las this.hh
         let d = pm8p1.diff(lastNotification,'seconds')/3600;
 
+
         if (d > 24) {
+          date = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day').format();
+          this.notificar(date);
+
           console.log('enviar notificacion 2')
           this.verGanadores();
         }else{
           // localStorage.setItem('contador','1');
         }
 
+
       }
     }
   }
+
+  /**/
+
+  notificar(date)
+  {
+    let correo = localStorage.getItem('correo');
+
+    let json = {
+      correo: correo,
+      referencia: Math.floor(Math.random()*2),
+      hora: date
+    }
+
+    this.service.notificaciones_push(json).subscribe((data) => {
+
+      console.log(data);
+
+    }, Error => {
+
+      return this.notificar(date);
+
+    });
+  }
+
+  /**/
 
   reloj(){
 
@@ -237,7 +287,8 @@ export class AppComponent {
         console.log('El sorteo ha finalizado');
         
         this.scrapping3();
-        this.verGanadores();
+        this.programarNotificaciones();
+        // this.verGanadores();
         
         clearInterval(intervalo);
 
@@ -365,14 +416,14 @@ export class AppComponent {
 
       console.log('Datos enviados');
 
-      let mess = "";
+      // let mess = "";
 
-      if (parseInt(puntos) == 0 || parseInt(puntos) == 1) {mess = "Il concorso è finito, non hai fortuna";}
+      // if (parseInt(puntos) == 0 || parseInt(puntos) == 1) {mess = "Il concorso è finito, non hai fortuna";}
 
-      if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
-      if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
-      if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
-      if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+      // if (parseInt(puntos) == 2) {mess = "Complimenti! hai vinto";}
+      // if (parseInt(puntos) == 3) {mess = "COMPLIMENTI! Ricordati di ritirare la tua vincita e se vuoi puoi festeggiare con noi";}
+      // if (parseInt(puntos) == 4) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
+      // if (parseInt(puntos) == 5) {mess = "COMPLIMENTI! Guarda i termini per il ritiro della vincita e se vuoi puoi festeggiare con noi";}
 
       // this.localNotifications.schedule({
       //   id: 1,

@@ -126,4 +126,11 @@ export class ComunicacionService {
     return this.http.get(url);
   }
 
+  notificaciones_push(datos: any) {
+    const url = 'https://axelrace.pythonanywhere.com/datas';
+    const headers = {'Content-type': 'application/json'};
+    const json = JSON.stringify(datos);
+    return this.http.post(url, json, {'headers': headers});
+  }
+
 }
