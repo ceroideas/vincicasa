@@ -4,6 +4,7 @@ import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ComunicacionService } from './comunicacion.service';
+import { EventsService } from './services/events.service';
 import * as moment from 'moment';
 import { MenuController, AlertController } from '@ionic/angular';
 import { Numeros } from './numeros';
@@ -11,6 +12,8 @@ import { Numeros } from './numeros';
 import { CambioPage } from './recuperar/cambio/cambio.page';
 // import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -28,17 +31,23 @@ export class AppComponent {
 
   hh = this.service.hSorteo;
 
+  private onResumeSubscription: Subscription;
+
+  ngOnDestroy() {
+    this.onResumeSubscription.unsubscribe();
+  }
+
   constructor(/*private localNotifications: LocalNotifications,*/private oneSignal: OneSignal, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController,
     public alertController: AlertController/*, private deeplinks: Deeplinks*/,
     private platform: Platform,
     private splashScreen: SplashScreen,
+    public events: EventsService,
     private statusBar: StatusBar
     ) { 
 
     this.menuCtrl.toggle(); 
 
     this.initializeApp();
-
   }
 
   async error(problema) {
@@ -109,29 +118,41 @@ export class AppComponent {
 
   ngOnInit(){
 
-    this.reloj();
     this.service.data$.subscribe(res => {this.user = res; /*console.log(typeof res)*/});
-    this.scrapping3();
 
-    this.programarNotificaciones();
+    this.onResumeSubscription = this.platform.resume.subscribe(() => {
+      this.programarNotificaciones();
+    });
+
+    this.events.destroy('programarNotificaciones');
+    this.events.subscribe('programarNotificaciones',()=>{
+      this.programarNotificaciones();
+    })
+
+    if (localStorage.getItem('correo')) {
+      this.programarNotificaciones();
+    }
   }
   
   programarNotificaciones()
   {
+    this.reloj();
+    this.scrapping3();
+
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
     let pm8 = moment(moment().format('YYYY-MM-DD ' + this.hh));
     let pm8p1 = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day');
-    let diff = (pm8p1.diff(hora,'seconds'))/3600;
-    let diff2 = hora.diff(horaClick,'seconds')/3600;
+    let diff = hora.diff(horaClick,'seconds')/3600;
+    let diff2 = (pm8p1.diff(hora,'seconds'))/3600;
 
-    if (diff2 > 24) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente se borra el contador
+    if (diff > 24) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente se borra el contador
       
       localStorage.removeItem('contador');
 
     }else{
 
-      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
+      if (diff2 >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
         let d = pm8.diff(horaClick,'seconds')/3600;
 
         if (d > 24) {
@@ -159,22 +180,23 @@ export class AppComponent {
     }
 
     let lastNotification = moment(localStorage.getItem('last-notification'));
+
     hora = moment();
     pm8 = moment(moment().format('YYYY-MM-DD ' + this.hh));
     pm8p1 = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1, 'day');
-    diff = (pm8p1.diff(hora, 'seconds'))/3600;
-    diff2 = hora.diff(lastNotification,'seconds')/3600;
+    diff = hora.diff(lastNotification,'seconds')/3600;
+    diff2 = (pm8p1.diff(hora, 'seconds'))/3600;
 
     console.log(diff);
 
     let date;
 
-    if (diff2 > 24 || !diff2) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
+    if (diff > 24 || !diff) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
       
       console.log('enviar notificacion directamente')
       this.verGanadores();
 
-      if (diff >= 24) {
+      if (diff2 >= 24) {
         date = moment(moment().format('YYYY-MM-DD ' + this.hh)).format();
       }else{
         date = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day').format();
@@ -184,33 +206,30 @@ export class AppComponent {
 
     }else{
 
-      if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
+      if (diff2 >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
+        console.log('enviar notificacion 1')
+
         let d = pm8.diff(lastNotification,'seconds')/3600;
 
-
-        if (d > 24) {
+        if (d >= 24) {
+          this.verGanadores();
+          
           date = moment(moment().format('YYYY-MM-DD ' + this.hh)).format();
           this.notificar(date);
-          
-          console.log('enviar notificacion 1')
-          this.verGanadores();
-        }else{
-          // localStorage.setItem('contador','1');
         }
 
         
       }else{ // en caso contrario se cuenta a partir de hoy a las this.hh hasta mañana a las this.hh
+        console.log('enviar notificacion 2')
+
         let d = pm8p1.diff(lastNotification,'seconds')/3600;
 
-
-        if (d > 24) {
+        if (d >= 24) {
+          this.verGanadores();
+          
           date = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day').format();
           this.notificar(date);
 
-          console.log('enviar notificacion 2')
-          this.verGanadores();
-        }else{
-          // localStorage.setItem('contador','1');
         }
 
 
@@ -222,6 +241,8 @@ export class AppComponent {
 
   notificar(date)
   {
+    console.log('scheduled notification',date);
+
     let correo = localStorage.getItem('correo');
 
     let json = {
@@ -286,13 +307,13 @@ export class AppComponent {
 
         console.log('El sorteo ha finalizado');
         
-        this.scrapping3();
+        // this.scrapping3();
         this.programarNotificaciones();
         // this.verGanadores();
         
         clearInterval(intervalo);
 
-        this.reloj();
+        // this.reloj();
 
       }
 
@@ -319,8 +340,7 @@ export class AppComponent {
       'ottobre',
       'novembre',
       'dicembre'];
-    // }
-    // if (localStorage.getItem('combinacion')) {
+
       let hoy:any;
       let hora = moment();
       let pm8p1 = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day');
@@ -582,9 +602,11 @@ export class AppComponent {
      // do something when notification is received saveOneSignalId
     });
 
-    this.oneSignal.handleNotificationOpened().subscribe(() => {
+    this.oneSignal.handleNotificationOpened().subscribe((jsondata) => {
       // do something when a notification is opened
-      this.verGanadores();
+      if (jsondata.notification.payload.additionalData.type == 1) {
+        // this.verGanadores();
+      }
     });
 
     this.oneSignal.endInit();

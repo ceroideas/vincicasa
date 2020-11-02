@@ -4,6 +4,7 @@ import { Sesion } from '../sesion';
 import * as CryptoJS from 'crypto-js';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../comunicacion.service';
+import { EventsService } from '../services/events.service';
 import { Router } from  '@angular/router';
 import { MenuController, NavController, AlertController, LoadingController } from  '@ionic/angular';
 import * as moment from 'moment';
@@ -22,7 +23,8 @@ export class HomePage {
   valor = false;
   condiciones = false;
 
-  constructor(public nav: NavController, public loading: LoadingController, public alertController: AlertController, private menu: MenuController, private comunicacion: ComunicacionService, private router: Router){
+  constructor(public nav: NavController, public loading: LoadingController, public alertController: AlertController, private menu: MenuController,
+    private comunicacion: ComunicacionService, private router: Router, public events: EventsService){
     this.menu.enable(false);
   }
 
@@ -68,6 +70,7 @@ export class HomePage {
   
   saveOnesignal()
   {
+    this.events.publish('programarNotificaciones');
     if (localStorage.getItem('onesignal_id')) {
       let correo = localStorage.getItem('correo');
       let onesignal_id = localStorage.getItem('onesignal_id');
