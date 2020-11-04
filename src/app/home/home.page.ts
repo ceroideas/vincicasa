@@ -22,6 +22,7 @@ export class HomePage {
   contrasena: string = "$a1e5i5o2u";
   valor = false;
   condiciones = false;
+  cn:string;
 
   constructor(public nav: NavController, public loading: LoadingController, public alertController: AlertController, private menu: MenuController,
     private comunicacion: ComunicacionService, private router: Router, public events: EventsService){
@@ -84,15 +85,15 @@ export class HomePage {
   }
 
   registrarse(f: NgForm){
-    if (/*this.condiciones == false || */this.valor == false || this.formulario.correo == undefined || this.formulario.password == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined || this.formulario.sexo == undefined) {
+    if (/*this.condiciones == false || */this.valor == false || this.formulario.correo == undefined || this.cn == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined || this.formulario.sexo == undefined) {
       
       this.alerta('tutti i campi sono obbligatori');
 
     }else{
 
-      if (this.formulario.password === this.confirmar) {
+      if (this.cn === this.confirmar) {
 
-        const encryptp = CryptoJS.AES.encrypt(this.formulario.password, this.contrasena).toString();
+        const encryptp = CryptoJS.AES.encrypt(this.cn, this.contrasena).toString();
         
         this.formulario.password = encryptp;
         this.formulario.fecha = moment(this.formulario.fecha).format('YYYY-MM-DD');
@@ -113,12 +114,20 @@ export class HomePage {
 
               localStorage.setItem('correo', this.formulario.correo);
               localStorage.setItem('usuario', JSON.stringify(data));
-              if (data.datos != "") {
+              if (data.datos != "" && data.datos != "[]") {
+                // localStorage.setItem('ufechas', data.datos);
                 localStorage.setItem('ufechas', data.datos);
               }
+              // localStorage.setItem('ufechas', data.datos == "" ? "[]" : data.datos);
               localStorage.setItem('excluidos', data.excluidos != "" ? data.excluidos : "[]");
               localStorage.setItem('incluidos', data.incluidos != "" ? data.incluidos : "[]");
               localStorage.setItem('checks', data.reglas != "" ? data.reglas : "[]");
+              if (data.lastNotification) {
+                localStorage.setItem('last-notification', data.lastNotification);
+              }
+              if (data.lastClick) {
+                localStorage.setItem('horaClick', data.lastClick);
+              }
 
               this.saveOnesignal();
 
@@ -199,12 +208,21 @@ export class HomePage {
 
                 localStorage.setItem('correo', this.isesion.correo);
                 localStorage.setItem('usuario', JSON.stringify(data));
-                if (data.datos != "") {
+                if (data.datos != "" && data.datos != "[]") {
                   localStorage.setItem('ufechas', data.datos);
+                  localStorage.setItem('combinacion', '['+JSON.parse(data.datos)[0].combinacion+']');
                 }
+                // localStorage.setItem('ufechas', data.datos == "" ? "[]" : data.datos);
                 localStorage.setItem('excluidos', data.excluidos != "" ? data.excluidos : "[]");
                 localStorage.setItem('incluidos', data.incluidos != "" ? data.incluidos : "[]");
                 localStorage.setItem('checks', data.reglas != "" ? data.reglas : "[]");
+
+                if (data.lastNotification) {
+                  localStorage.setItem('last-notification', data.lastNotification);
+                }
+                if (data.lastClick) {
+                  localStorage.setItem('horaClick', data.lastClick);
+                }
 
                 this.saveOnesignal();
 

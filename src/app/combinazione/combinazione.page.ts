@@ -35,7 +35,8 @@ export class CombinazionePage implements OnInit {
   
   intervalo: any;
 
-  meses = ['gennaio',
+  meses = [
+      'gennaio',
       'febbraio',
       'marzo',
       'aprile',
@@ -147,12 +148,15 @@ export class CombinazionePage implements OnInit {
 
       if (this.hoy != this.fechas[0].fecha) {
 
+        console.log('no fecha')
+
         this.contador = 0;
         this.combinacion = [];
 
         this.random(true);
 
         setTimeout(()=>{
+          console.log('aqui1')
           this.presentModal();
         },1000)
       }
@@ -171,6 +175,16 @@ export class CombinazionePage implements OnInit {
       
       if (fechas.findIndex(x=>x.fecha==this.hoy) == -1) {
         this.random(true);
+
+        if (!localStorage.getItem('last-notification')) {
+          localStorage.setItem('last-notification', moment().format('YYYY-MM-DD HH:mm'));
+        }
+
+        setTimeout(()=>{
+          console.log('aqui2')
+          this.presentModal();
+        },1000)
+
       }else{
         this.combinacion = JSON.parse(localStorage.getItem('combinacion'));
       }
@@ -179,6 +193,15 @@ export class CombinazionePage implements OnInit {
       
       this.random(true);
       localStorage.setItem('combinacion', JSON.stringify(this.combinacion));
+
+      if (!localStorage.getItem('last-notification')) {
+        localStorage.setItem('last-notification', moment().format('YYYY-MM-DD HH:mm'));
+      }
+
+      setTimeout(()=>{
+        console.log('aqui3')
+        this.presentModal();
+      },1000)
 
     }
 
@@ -226,38 +249,24 @@ export class CombinazionePage implements OnInit {
 
       if (idx == -1) {
 
-        // console.log('no existe',dias[i]);
-
-        if (this.incluir) {
-          for (let h in this.incluir) {
-            actual.push(this.incluir[h]);
-          }
-        }
-
-        for (let n = 0; n < (5 - this.incluir.length); n++) {  
-          actual.push( this.getRandomArbitrary(1, 55, actual, this.excluir) );
-        }
-
-        actual = actual.sort((a,b)=> a - b);
-
-        // const colores = ['green', 'yellow', 'red'];
-
-        // this.validar(actual);
-
-
-        // if (this.colores !== colores[0]) {
-          
-        //   console.log(actual);
-
-        //   return this.start();
-
+        // if (this.incluir) {
+        //   for (let h in this.incluir) {
+        //     actual.push(this.incluir[h]);
+        //   }
         // }
 
-        let d:any = moment(dias[i]);
-        let f = d.format('DD') + ' ' + this.meses[ d.format('M')-1 ] + ' ' + d.format('YYYY');
-        let temp = {fecha:f,format:dias[i],date: new Date(d).getTime(),combinacion:actual};
+        // for (let n = 0; n < (5 - this.incluir.length); n++) {  
+        //   actual.push( this.getRandomArbitrary(1, 55, actual, this.excluir) );
+        // }
 
-        new_fechas.push(temp);
+        // actual = actual.sort((a,b)=> a - b);
+
+
+        // let d:any = moment(dias[i]);
+        // let f = d.format('DD') + ' ' + this.meses[ d.format('M')-1 ] + ' ' + d.format('YYYY');
+        // let temp = {fecha:f,format:dias[i],date: new Date(d).getTime(),combinacion:actual};
+
+        // new_fechas.push(temp);
 
       }else{
         new_fechas.push(fechas[idx]);
@@ -675,9 +684,11 @@ export class CombinazionePage implements OnInit {
 
       correo: localStorage.getItem('correo'),
       combinaciones: JSON.stringify(this.fechas),
-      incluidos: localStorage.getItem('incluidos'),
-      excluidos: localStorage.getItem('excluidos'),
-      reglas: localStorage.getItem('checks')
+      incluidos: localStorage.getItem('incluidos')  || "",
+      excluidos: localStorage.getItem('excluidos')  || "",
+      reglas: localStorage.getItem('checks')  || "",
+      lastNotification: localStorage.getItem('last-notification') || "",
+      lastClick: localStorage.getItem('horaClick') || "",
 
     };
 

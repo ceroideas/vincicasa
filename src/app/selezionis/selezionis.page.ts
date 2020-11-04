@@ -56,7 +56,10 @@ export class SelezionisPage implements OnInit {
     combinaciones: localStorage.getItem('ufechas') || "",
     incluidos: localStorage.getItem('incluidos')  || "",
     excluidos: localStorage.getItem('excluidos')  || "",
-    reglas: localStorage.getItem('checks')  || ""
+    reglas: localStorage.getItem('checks')  || "",
+    lastNotification: localStorage.getItem('last-notification') || "",
+    lastClick: localStorage.getItem('horaClick') || "",
+    
    };
 
     console.log(correo,"correo");

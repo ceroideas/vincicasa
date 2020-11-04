@@ -89,6 +89,8 @@ export class AppComponent {
     localStorage.removeItem('excluidos');
     localStorage.removeItem('incluidos');
     localStorage.removeItem('ufechas');
+    localStorage.removeItem('horaClick');
+    localStorage.removeItem('last-notification');
 
     this.nav.navigateRoot('home');
 
@@ -130,7 +132,9 @@ export class AppComponent {
     })
 
     if (localStorage.getItem('correo')) {
-      this.programarNotificaciones();
+      setTimeout(()=>{
+        this.programarNotificaciones();
+      },500)
     }
   }
   
@@ -325,7 +329,11 @@ export class AppComponent {
 
   verGanadores()
   {
-    let jugadas = JSON.parse(localStorage.getItem('ufechas'));
+    let jugadas;
+    if (localStorage.getItem('ufechas')) {
+      jugadas = JSON.parse(localStorage.getItem('ufechas'));
+    }
+
     if (jugadas) {
 
       let meses = ['gennaio',
@@ -365,6 +373,8 @@ export class AppComponent {
       let jugada = jugadas.find(x => x.fecha == hoy);
 
       if (!jugada) {
+
+        console.log('nojugada',jugadas);
 
         return false;
 
