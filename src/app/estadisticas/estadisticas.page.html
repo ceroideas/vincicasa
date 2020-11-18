@@ -6,8 +6,9 @@
     	<ion-title id="titulo">ANALISI PRESENZE</ion-title>
     </ion-toolbar>
     <div id="desplegable">
-    	<div (click)="abrir()" id="boton" style="--background: #09B7DA; text-align: center; border: 1px solid white; width: 60%; height: 7.5% !important; margin: auto; border-radius: 2.5px;">
+    	<div (click)="abrir()" id="boton" style="--background: #09B7DA; text-align: center; border: 1px solid white; width: 60%; height: 7.5% !important; margin: auto; border-radius: 2.5px; position: relative;">
     		<p style="margin: 5px;">ULTIME {{ estracciones }} ESTRAZIONI</p>
+    		<ion-icon name="caret-down-outline"></ion-icon>
     	</div>
 	    <ion-list class="ion-no-padding" id="estracciones" style="background: #09B7DA; border: 1px solid white; border-radius: 0px; margin-top: 10px; display: none;margin: auto;left: 0px;right: 0px;">
 	      <ion-item (click)="calculos(50)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0; text-align: center;">ULTIME 50 ESTRAZIONI
@@ -25,7 +26,7 @@
 
     <span id="side-left">ELENCO NUMERI</span>
 
-    <span style="margin: 16px 15%;display: block;">NUMERO DI VOLTE PRESENTI</span>
+    <span style="margin: 16px 15%;display: block; text-align: center;">NUMERO DI VOLTE PRESENTI</span>
 
 	<canvas style="width: 80%; margin: auto;" id="grafico"></canvas>
 

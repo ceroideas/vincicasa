@@ -101,10 +101,10 @@ export class EstadisticasPage implements OnInit {
 
     let labels = [];
 
-    for (var i = 0; i <= 60; i++) {
+    for (var i = 0; i <= 50; i++) {
       if (i%10 == 0) {
-        if (i == 60) {
-          labels.push('50+');
+        if (i == 50) {
+          labels.push('45');
         }else{
           labels.push(i+'.');
         }
@@ -146,7 +146,7 @@ export class EstadisticasPage implements OnInit {
                         position: "top",
                         ticks:{
                           autoSkip: true,
-                          autoSkipPadding: 2.5,
+                          autoSkipPadding: 10,
                           fontColor: 'white',
                           fontSize: 14
                         },

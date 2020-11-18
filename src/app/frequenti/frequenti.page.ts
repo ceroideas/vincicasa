@@ -15,8 +15,8 @@ export class FrequentiPage implements OnInit {
   // frecuencia: any[] = [];
   // numeros2: any[] = [];
   // frecuencia2: any[] = [];
-
-  order = "ORDINA PER RISULTATI";
+  orden = 50;
+  order = "ORDINA PER NUMERO";
 
   constructor(private service: ComunicacionService) { }
 
@@ -81,12 +81,12 @@ export class FrequentiPage implements OnInit {
       //   {num:this.data1[9],freq:this.data2[9]}];
   }
 
-  ordenar(){
+  /*ordenar(){
     if (this.order == "ORDINA PER PIÙ FREQUENTE") {
       this.numeros = this.numeros.sort((a,b)=> a.num - b.num);
       // this.numeros2 = this.numeros2.sort((a,b)=> a.num - b.num);
 
-      this.order = "ORDINA PER RISULTATI";
+      this.order = "ORDINA PER NUMERO";
     }else{
       this.numeros = this.numeros.sort((a,b)=> b.freq - a.freq);
       // this.numeros2 = this.numeros2.sort((a,b)=> a.freq - b.freq);
@@ -94,6 +94,47 @@ export class FrequentiPage implements OnInit {
       this.order = "ORDINA PER PIÙ FREQUENTE";
     }
     
+
+  }*/
+
+  abrir(){
+
+    if (document.getElementById("estracciones1").style.display == 'none') {
+
+      document.getElementById("estracciones1").style.display = "block";
+
+    }else{
+
+      document.getElementById("estracciones1").style.display = 'none';
+
+    }
+  }
+
+  cerrar(){
+
+    document.getElementById("estracciones1").style.display = "none";
+
+  }
+
+  ordenar(valor){
+
+     if (valor == 50) {
+
+        this.orden = 50;
+        this.numeros = this.numeros.sort((a,b)=> a.num - b.num);
+        this.order = "ORDINA PER NUMERO";
+
+        this.cerrar();
+
+     }else{
+
+       this.orden = 100;
+       this.numeros = this.numeros.sort((a,b)=> b.freq - a.freq);
+       this.order = "ORDINA PER PIÙ FREQUENTE";
+
+       this.cerrar();
+
+     }
 
   }
 

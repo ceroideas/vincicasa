@@ -353,21 +353,25 @@ export class AppComponent {
       let hora = moment();
       let pm8p1 = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day');
       let diff = (pm8p1.diff(hora,'seconds'))/3600;
+      let saveHour;
 
       if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
         
-        hoy = moment();
+        hoy = moment().subtract(1,'day');
+        saveHour = moment().subtract(1,'day');
         console.log('día de hoy',hoy);
         
       }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
 
-        hoy = moment().add(1,'day');
+        hoy = moment()/*.add(1,'day')*/;
+        saveHour = moment();
         console.log('día siguiente',hoy);
 
       }
 
       console.log(hoy);
 
+      let format = hoy.format('YYYYMMDD');
       hoy = hoy.format('DD') + ' ' + meses[ hoy.format('M')-1 ] + ' ' + hoy.format('YYYY');
 
       let jugada = jugadas.find(x => x.fecha == hoy);
@@ -384,8 +388,14 @@ export class AppComponent {
 
       }
 
-      let ganador = JSON.parse(localStorage.getItem('e200n'))[0];
+      let ganador = JSON.parse(localStorage.getItem('e200')).find(x=>x.progressivo == format);
       let puntos = 0;
+
+      if (!ganador) {
+        return false;
+      }
+
+      ganador = ganador.numeriEstratti;
 
       for (let i = 0; i < ganador.length; i++) {
 
@@ -405,9 +415,9 @@ export class AppComponent {
 
       this.numeros.numero = JSON.stringify(jugada),
 
-      this.sorteo(puntos);
+      this.sorteo(puntos,saveHour);
 
-      if (puntos >= 0) {
+      if (puntos >= 2) {
 
         this.numeros.correo = localStorage.getItem('correo'),
         this.numeros.numero = jugada,
@@ -434,13 +444,13 @@ export class AppComponent {
 
   }
 
-  sorteo(puntos){
+  sorteo(puntos, hour){
 
     localStorage.setItem('last-notification', moment().format('YYYY-MM-DD HH:mm'));
 
     this.numeros.correo = localStorage.getItem('correo'),
     this.numeros.puntos = puntos.toString();
-    this.numeros.fecha = moment();
+    this.numeros.fecha = hour;
 
     this.service.number(this.numeros).subscribe((data:any) => {
 
@@ -466,7 +476,7 @@ export class AppComponent {
 
         console.log(Error);
 
-        return this.sorteo(puntos);
+        return this.sorteo(puntos, hour);
         
         //this.error(Error);
 
@@ -478,7 +488,7 @@ export class AppComponent {
 
     this.service.tabla3().subscribe((data: any) => {
 
-      // console.log(data);
+      console.log(data);
 
         localStorage.setItem('e200', data[0]);
         localStorage.setItem('fnumeros', data[1]);

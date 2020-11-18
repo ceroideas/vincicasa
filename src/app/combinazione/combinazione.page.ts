@@ -602,7 +602,7 @@ export class CombinazionePage implements OnInit {
 
     for (let h in u200) {
       if (JSON.stringify(combinacion) == JSON.stringify(u200[h])) {
-        return this.colores = colores[1];
+        return this.colores = colores[2];
       }
     }
 

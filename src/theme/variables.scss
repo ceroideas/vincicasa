@@ -438,3 +438,22 @@ ion-select::part(icon) {
   --bullet-background: red;
   --bullet-background-active: #456cb4;
 }
+
+
+.title {
+  font-size: 14px;
+  display: block;
+  line-height: 1.6;
+}
+
+ion-menu-button {
+  transform: scale(1.5);
+}
+
+[name="caret-down-outline"] {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}

@@ -55,7 +55,7 @@
 		font-size: 12px;
 	}
 }
-p{
+#numbers{
 	margin: 0;
 	margin-right: 0px;
 	color: white;
@@ -85,4 +85,14 @@ p{
     	font-weight: bolder;
     }
     z-index: 101;
+}
+#estracciones1{
+	border: 1px solid white;
+    width: 250px;
+    text-align: center;
+    margin: auto;
+    border-radius: 6px;
+    z-index: 100;
+    position: absolute;
+    margin-top: -16px !important;
 }
