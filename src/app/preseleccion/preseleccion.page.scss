@@ -1,0 +1,96 @@
+.toolbar-container, #body, #tools, #head{
+	--background: #09B7DA;
+	--color: white;
+	display: flex;
+	font-family: 'geometos';
+	font-size: 11px;
+}
+#titulo{
+	font-family: 'geometos';
+	font-size: 14px;
+	margin: auto;
+	text-align: center;
+	position: relative;
+	left: -7.5%;
+}
+.items{
+	--background: transparent;
+	--color: white;
+	font-size: 12px;
+}
+#as{
+	padding: 2.5% 0 0 0;
+	text-align: center;
+	color: white;
+	font-family: 'geometos';
+	font-size: 10px;
+	line-height: 2;
+}
+.filas{
+	width: auto !important;
+	display: flex !important;
+	font-family: 'geometos';
+	font-size: 12px;
+
+	ion-col{
+		margin: auto;
+		display: flex;
+
+		p, ion-checkbox{
+			margin: auto;
+		}
+		ion-checkbox{
+			margin-left: 0;
+		}
+		p{
+			position: relative;
+			margin-left: 10px;
+		}
+		ion-checkbox{
+			--height: 10px;
+			--width: 10px;
+			display: inline-table;
+		}
+	}
+}
+#continuar{
+	margin: auto;
+	display: block;
+	margin-top: 10px;
+	--background: white;
+	--color: #09B7DA;
+	width: 200px;
+}
+#alerta{
+	font-family: 'geometos';
+	font-size: 9px;
+	margin: auto;
+	text-align: center;
+	margin-top: 120px;
+}
+
+ .c1, .c2{
+ 	b{
+ 		margin: auto;
+ 		color: black;
+ 	}
+ }
+
+.c1{
+	background-image: url('/assets/fondo-numero-rojo-balnco.png');
+}
+.c2{
+	background-image: url('/assets/fondo-numero-azul-blanco.png');
+}
+.c1, .c2{
+	text-align: left;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
+	height: 100%;
+	display: flex;
+}
+#seleccionado{
+	height: 50px;
+	margin-top: 5%;
+}

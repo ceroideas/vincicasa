@@ -82,6 +82,10 @@ const routes: Routes = [
     path: 'administracion',
     loadChildren: () => import('./administracion/administracion.module').then( m => m.AdministracionPageModule)
   },
+  {
+    path: 'preseleccion',
+    loadChildren: () => import('./preseleccion/preseleccion.module').then( m => m.PreseleccionPageModule)
+  },
 
 ];
 

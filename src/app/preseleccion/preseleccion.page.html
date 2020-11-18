@@ -1,0 +1,85 @@
+<ion-content id="body">
+	<ion-header id="head">
+	  <ion-toolbar id="tools">
+	  	<ion-menu-button menu="main-menu" slot="start"></ion-menu-button>
+	  	<ion-title id="titulo">IMPOSTAZIONI PREDEFINITE</ion-title>
+	  </ion-toolbar>
+	</ion-header>
+
+	<!-- <p id="as">IMPOSTA UNA O PIÙ PREFERENZE PER AFFINARE IL SISTEMA. <br> ALTRIMENTI CONTINUA</p> -->
+
+	<span style="position: relative; margin: 40px; display: block;"></span>
+
+	<ion-row *ngFor="let t of checks; let i = index" lines="none" class=filas>
+		<ion-col *ngIf="i | verificar:checked:true">
+			<ion-item class="items" lines="none">
+				<ion-icon name="checkmark-outline" style="position: relative; top: -3px; font-size: 48px; color: #fff;"></ion-icon>
+				<p [innerHtml]="t"></p>
+			</ion-item>
+		</ion-col>
+	</ion-row>
+
+	<span style="position: relative; margin: 25px; display: block;"></span>
+
+	<ion-row class=filas>
+		<ion-col>
+			<ion-item class="items" lines="none" style="width: 100%;">
+
+				<p style="line-height: 1.6; width: 100%; text-align: center;">
+					<span style="font-size: 14px; text-decoration: underline;">NUMERI CHE DEVONO ESSERE PRESENTI</span> <br>
+
+					<span *ngIf="!incluidos.length">
+						Non hay ancora selezionato alcun numero.
+					</span>
+
+					<ion-row *ngIf="incluidos.length >= 1" id="seleccionado">
+						<ion-col size="" *ngIf="incluidos[0]" class="c1">
+							<b>{{ incluidos[0] }}</b>
+						</ion-col>
+						<ion-col size="" *ngIf="incluidos[1]" class="c2">
+							<b>{{ incluidos[1] }}</b>
+						</ion-col>
+					</ion-row>
+				</p>
+			</ion-item>
+		</ion-col>
+	</ion-row>
+
+	<ion-row class=filas>
+		<ion-col>
+			<ion-item class="items" lines="none" style="width: 100%;">
+				<p style="line-height: 1.6; width: 100%; text-align: center;">
+					<span style="font-size: 14px; text-decoration: underline;">NUMERI CHE NON DEVONO ESSERE PRESENTI</span> <br>
+
+					<span *ngIf="!excluidos.length">
+						Non hay ancora selezionato alcun numero.
+					</span>
+
+					<ion-row *ngIf="excluidos.length >= 1" id="seleccionado">
+						<ion-col *ngIf="excluidos[0]" class="c1">
+							<b>{{ excluidos[0] }}</b>
+						</ion-col>
+						<ion-col *ngIf="excluidos[1]" class="c2">
+							<b>{{ excluidos[1] }}</b>
+						</ion-col>
+						<ion-col *ngIf="excluidos[2]" class="c1">
+							<b>{{ excluidos[2] }}</b>
+						</ion-col>
+						<ion-col *ngIf="excluidos[3]" class="c2">
+							<b>{{ excluidos[3] }}</b>
+						</ion-col>
+						<ion-col *ngIf="excluidos[4]" class="c1">
+							<b>{{ excluidos[4] }}</b>
+						</ion-col>
+					</ion-row>
+				</p>
+			</ion-item>
+		</ion-col>
+	</ion-row>
+	<!-- <p id="alerta">Fai clic su continua per selezionare i numeri</p> -->
+
+	<span style="position: relative; margin: 25px; display: block;"></span>
+
+	<!-- <ion-button *ngIf="returnBack" (click)="goToCombinazione()" [disabled]="checked.length == 0" shape="round" id="continuar">CONTINUA</ion-button> -->
+	<ion-button routerLink="/selezionis" routerDirection="root" shape="round" id="continuar">MODIFICA REGOLE</ion-button>
+</ion-content>
