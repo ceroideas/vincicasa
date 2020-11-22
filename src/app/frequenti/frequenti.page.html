@@ -10,16 +10,16 @@
     </div>-->
     <div id="desplegable">
     	<div (click)="abrir()" id="boton1" style="--background: #09B7DA; text-align: center; border: 1px solid white; width: 60%; height: 7.5% !important; margin: auto; border-radius: 2.5px; margin-bottom: 16px; position: relative;">
-    		<p style="margin: 5px;">{{ order }}</p>
+    		<p style="margin: 5px; font-size: 13px;">{{ order }}</p>
     		<ion-icon name="caret-down-outline"></ion-icon>
     	</div>
 	    <ion-list class="ion-no-padding" id="estracciones1" style="background: #09B7DA; border: 1px solid white; border-radius: 0px; margin-top: 10px; display: none;margin: auto;left: 0px;right: 0px;">
-	      <ion-item (click)="ordenar(50)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0; text-align: center;">{{ order }}
+	      <ion-item (click)="ordenar(50)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0; text-align: center; font-size: 12px;">ORDINA PER NUMERO
 	      	<span slot="end" style="margin: 0;">
 	      		<ion-icon *ngIf="orden == 50" style="color: #0f0" name="checkmark-outline"></ion-icon>
 	      	</span>
 	      </ion-item>
-	      <ion-item (click)="ordenar(100)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0; text-align: center;">{{ order }}
+	      <ion-item (click)="ordenar(100)" (click)="cerrar()" style="--background: #09B7DA; --color: white; margin: 0; text-align: center; font-size: 12px;">ORDINA PER PIÙ FREQUENTE
 	      	<span slot="end" style="margin: 0;">
 	      		<ion-icon *ngIf="orden == 100" style="color: #0f0" name="checkmark-outline"></ion-icon>
 	      	</span>

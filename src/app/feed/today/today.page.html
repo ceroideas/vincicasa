@@ -8,10 +8,15 @@
 
 	<ion-row>
 		<ion-col id="hoy">
-			LA TUA COMBINAZIONE PER OGGI È
+			Ciao {{user.nombre}}!
+			<small>Benvenuto</small>
+		</ion-col>
+
+		<ion-col size="12" style="font-size: 18px; text-align: center;">
+			Per il menù premi <ion-icon name="menu-outline" style="font-size:32px; position:relative; top:8px;"></ion-icon> in alto a sinistra
 		</ion-col>
 	</ion-row>
-	<ion-row id="combinacion" *ngIf="fechas[0]?.combinacion.length > 0">
+	<!-- <ion-row id="combinacion" *ngIf="fechas[0]?.combinacion.length > 0">
 		<ion-col class="columna">
 			<div class="n1">
 				<b>{{ fechas[0].combinacion[0] }}</b>
@@ -37,11 +42,12 @@
 				<b>{{ fechas[0].combinacion[4] }}</b>
 			</div>
 		</ion-col>
-	</ion-row>
+	</ion-row> -->
 
 	<div style="display: flex">
-		<ion-button shape="round" size="large" id="modifica" (click)="modal.dismiss()">ACCETTA</ion-button>
-		<ion-button shape="round" size="large" id="modifica" (click)="modal.dismiss()" [routerLink]="['/combinazione']">MODIFICA</ion-button>
+		<ion-button shape="round" size="large" id="modifica" (click)="modal.dismiss()">ENTRA</ion-button>
+		<!-- <ion-button shape="round" size="large" id="modifica" (click)="modal.dismiss()">ACCETTA</ion-button> -->
+		<!-- <ion-button shape="round" size="large" id="modifica" (click)="modal.dismiss()" [routerLink]="['/combinazione']">MODIFICA</ion-button> -->
 	</div>
 
 </ion-content>

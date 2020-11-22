@@ -153,6 +153,7 @@ export class AppComponent {
     if (diff > 24) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente se borra el contador
       
       localStorage.removeItem('contador');
+      this.events.publish('removeContador');
 
     }else{
 
@@ -162,6 +163,7 @@ export class AppComponent {
         if (d > 24) {
           // console.log('borrar contador')
           localStorage.removeItem('contador');
+          this.events.publish('removeContador');
         }else{
           // localStorage.setItem('contador','1');
         }
@@ -174,6 +176,7 @@ export class AppComponent {
         if (d > 24) {
           // console.log('borrar contador')
           localStorage.removeItem('contador');
+          this.events.publish('removeContador');
         }else{
           // localStorage.setItem('contador','1');
         }
@@ -417,7 +420,7 @@ export class AppComponent {
 
       this.sorteo(puntos,saveHour);
 
-      if (puntos >= 2) {
+      if (puntos >= 0) {
 
         this.numeros.correo = localStorage.getItem('correo'),
         this.numeros.numero = jugada,

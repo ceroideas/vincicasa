@@ -5,8 +5,9 @@ import * as CryptoJS from 'crypto-js';
 import { NgForm } from '@angular/forms';
 import { ComunicacionService } from '../comunicacion.service';
 import { EventsService } from '../services/events.service';
+import { TodayPage } from '../feed/today/today.page';
 import { Router } from  '@angular/router';
-import { MenuController, NavController, AlertController, LoadingController } from  '@ionic/angular';
+import { MenuController, NavController, AlertController, LoadingController, ModalController } from  '@ionic/angular';
 import * as moment from 'moment';
 
 @Component({
@@ -25,7 +26,7 @@ export class HomePage {
   cn:string;
 
   constructor(public nav: NavController, public loading: LoadingController, public alertController: AlertController, private menu: MenuController,
-    private comunicacion: ComunicacionService, private router: Router, public events: EventsService){
+    private comunicacion: ComunicacionService, private router: Router, public events: EventsService, public modal: ModalController){
     this.menu.enable(false);
   }
 
@@ -67,6 +68,15 @@ export class HomePage {
     });
 
     await alert.present();
+  }
+
+  async presentModal()
+  {
+    const modal = await this.modal.create({
+      component: TodayPage,
+      cssClass: "todayModal"
+    });
+    return await modal.present();
   }
   
   saveOnesignal()
@@ -127,11 +137,24 @@ export class HomePage {
               }
               if (data.lastClick) {
                 localStorage.setItem('horaClick', data.lastClick);
+                
+                console.log(moment().diff(moment(data.lastClick),'seconds')/3600);
+
+                if (moment().diff(moment(data.lastClick),'seconds')/3600 <= 24) {
+                  localStorage.setItem('contador','1');
+                }else{
+                  localStorage.removeItem('contador');
+                }
+              }else{
+                  localStorage.removeItem('contador');
+                  localStorage.removeItem('horaClick');
               }
 
               this.saveOnesignal();
 
               this.router.navigateByUrl('/manual');
+
+              this.presentModal();
 
               this.router.navigate(['/manual']);
 
@@ -204,7 +227,7 @@ export class HomePage {
 
               if (contrasenadec.toString() === this.isesion.password) {
 
-                console.log(data, data.datos);
+                // console.log(data, data.datos);
 
                 localStorage.setItem('correo', this.isesion.correo);
                 localStorage.setItem('usuario', JSON.stringify(data));
@@ -222,9 +245,21 @@ export class HomePage {
                 }
                 if (data.lastClick) {
                   localStorage.setItem('horaClick', data.lastClick);
+                  
+                  console.log(moment().diff(moment(data.lastClick),'seconds')/3600);
+
+                  if (moment().diff(moment(data.lastClick),'seconds')/3600 <= 24) {
+                    localStorage.setItem('contador','1');
+                  }else{
+                    localStorage.removeItem('contador');
+                  }
+                }else{
+                    localStorage.removeItem('contador');
                 }
 
                 this.saveOnesignal();
+
+                this.presentModal();
 
                 this.router.navigate(['/feed']);
 

@@ -54,8 +54,11 @@ export class CombinazionePage implements OnInit {
 
   constructor(private service: ComunicacionService, public alert: AlertController, public nav: NavController, public modal: ModalController, public events: EventsService) {
 
+    console.log("contador",this.contador)
+
     this.events.destroy('doRandom');
     this.events.destroy('doCambio');
+    this.events.destroy('removeContador');
 
     this.events.subscribe('doRandom',()=>{
       this.random();
@@ -63,6 +66,9 @@ export class CombinazionePage implements OnInit {
     this.events.subscribe('doCambio',()=>{
       localStorage.setItem('no-menu-return-back','1');
       this.nav.navigateRoot('selezionis');
+    });
+    this.events.subscribe('removeContador',()=>{
+      this.contador = 0;
     });
 
     if (!this.contador || this.contador == undefined) {
@@ -75,28 +81,30 @@ export class CombinazionePage implements OnInit {
 
   }
 
+  days = 0;
   detectDate()
   {
-    let hora = moment();
-    let pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).add(1,'day');
+    let hora = moment().subtract(this.days,'days');
+    let pm8p1 = moment(moment().format('YYYY-MM-DD '+this.hh)).subtract(this.days,'days').add(1,'day');
     let diff = (pm8p1.diff(hora,'seconds'))/3600;
 
     if (diff >= 24) { // si la diferencia entre la hora actual y mañana es mayor a 24 se empieza a contar desde el día anterior a las this.hh hasta hoy a las this.hh
       
       // console.log('día de hoy');
-      this.hoy = moment();
+      this.hoy = moment().subtract(this.days,'days');
       
     }else{ // en caso contrario se cuenta a partir de hoy a las  +this.hhhasta mañana a las this.hh
 
       // console.log('día siguiente');
-      this.hoy = moment().add(1,'day');
+      this.hoy = moment().subtract(this.days,'days').add(1,'day');
 
     }
 
-    // console.log(this.hoy);
 
     this.format = moment(this.hoy).format('YYYY-MM-DD');
     this.hoy = this.hoy.format('DD') + ' ' + this.meses[ this.hoy.format('M')-1 ] + ' ' + this.hoy.format('YYYY');
+
+    console.log(this.hoy);
 
     this.preStart();
   }
@@ -109,11 +117,11 @@ export class CombinazionePage implements OnInit {
 
   async presentModal()
   {
-    const modal = await this.modal.create({
-      component: TodayPage,
-      cssClass: "todayModal"
-    });
-    return await modal.present();
+    // const modal = await this.modal.create({
+    //   component: TodayPage,
+    //   cssClass: "todayModal"
+    // });
+    // return await modal.present();
   }
 
   preStart() {
@@ -148,7 +156,7 @@ export class CombinazionePage implements OnInit {
 
       if (this.hoy != this.fechas[0].fecha) {
 
-        console.log('no fecha')
+        console.log('no fecha',this.hoy)
 
         this.contador = 0;
         this.combinacion = [];
@@ -177,7 +185,7 @@ export class CombinazionePage implements OnInit {
         this.random(true);
 
         if (!localStorage.getItem('last-notification')) {
-          localStorage.setItem('last-notification', moment().format('YYYY-MM-DD HH:mm'));
+          localStorage.setItem('last-notification', moment().subtract(this.days,'days').format('YYYY-MM-DD HH:mm'));
         }
 
         setTimeout(()=>{
@@ -220,7 +228,9 @@ export class CombinazionePage implements OnInit {
 
       if (localStorage.getItem('random')) {
         localStorage.removeItem('random');
-        this.random();
+        if (this.contador == 0) {
+          this.random();
+        }
       }
       
     },1000)
@@ -230,48 +240,51 @@ export class CombinazionePage implements OnInit {
 
   start()
   {
-    let dias = [];
-    let dia = moment(this.format).subtract(0,'day');
-    let limit = moment(this.format).subtract(4,'days');
-    let fechas = JSON.parse(localStorage.getItem('ufechas'));
-    let new_fechas = [];
+    // let dias = [];
+    // let dia = moment(this.format).subtract(0,'day');
+    // let limit = moment(this.format).subtract(4,'days');
+    // let fechas = JSON.parse(localStorage.getItem('ufechas'));
+    // let new_fechas = [];
 
-    while(dia.format('YYYY-MM-DD') != limit.format('YYYY-MM-DD')){
-      dias.push(dia.format('YYYY-MM-DD'));
-      dia.subtract(1,'day');
-    }
+    // while(dia.format('YYYY-MM-DD') != limit.format('YYYY-MM-DD')){
+    //   dias.push(dia.format('YYYY-MM-DD'));
+    //   dia.subtract(1,'day');
+    // }
 
-    // console.log(dias,this.format);
+    // // console.log(dias,this.format);
 
-    for (let i in dias) {
-      let idx = this.fechas.findIndex(x=>x.format==dias[i]);
-      let actual = [];
+    // for (let i in dias) {
+    //   let idx = this.fechas.findIndex(x=>x.format==dias[i]);
+    //   let actual = [];
 
-      if (idx == -1) {
+    //   if (idx == -1) {
 
-        // if (this.incluir) {
-        //   for (let h in this.incluir) {
-        //     actual.push(this.incluir[h]);
-        //   }
-        // }
+    //     // if (this.incluir) {
+    //     //   for (let h in this.incluir) {
+    //     //     actual.push(this.incluir[h]);
+    //     //   }
+    //     // }
 
-        // for (let n = 0; n < (5 - this.incluir.length); n++) {  
-        //   actual.push( this.getRandomArbitrary(1, 55, actual, this.excluir) );
-        // }
+    //     // for (let n = 0; n < (5 - this.incluir.length); n++) {  
+    //     //   actual.push( this.getRandomArbitrary(1, 55, actual, this.excluir) );
+    //     // }
 
-        // actual = actual.sort((a,b)=> a - b);
+    //     // actual = actual.sort((a,b)=> a - b);
 
 
-        // let d:any = moment(dias[i]);
-        // let f = d.format('DD') + ' ' + this.meses[ d.format('M')-1 ] + ' ' + d.format('YYYY');
-        // let temp = {fecha:f,format:dias[i],date: new Date(d).getTime(),combinacion:actual};
+    //     // let d:any = moment(dias[i]);
+    //     // let f = d.format('DD') + ' ' + this.meses[ d.format('M')-1 ] + ' ' + d.format('YYYY');
+    //     // let temp = {fecha:f,format:dias[i],date: new Date(d).getTime(),combinacion:actual};
 
-        // new_fechas.push(temp);
+    //     // new_fechas.push(temp);
 
-      }else{
-        new_fechas.push(fechas[idx]);
-      }
-    }
+    //   }else{
+    //     new_fechas.push(fechas[idx]);
+    //     // this.fechas.splice(idx,1);
+    //   }
+    // }
+
+    // console.log(this.fechas,new_fechas);
  
     // let new_dates = [];
 
@@ -279,7 +292,7 @@ export class CombinazionePage implements OnInit {
     //   new_dates.push(fechas[i]);
     // }
 
-    this.fechas = new_fechas.sort((a,b)=> a - b);
+    this.fechas = this.fechas.sort((a,b)=> a - b);
 
     localStorage.setItem('ufechas',JSON.stringify(this.fechas));
 
@@ -331,14 +344,16 @@ export class CombinazionePage implements OnInit {
     // }
     // this.ultimos = this.ultimos.reverse();
 
-    if (this.combinacion.length == 0) {
+    if (!automatico) {
+      if (this.combinacion.length == 0) {
+        
+        this.contador = 0;
       
-      this.contador = 0;
-    
-    }else{
-      
-      this.contador = 1;
+      }else{
+        
+        this.contador = 1;
 
+      }
     }
 
     this.combinacion = [];
@@ -425,7 +440,7 @@ export class CombinazionePage implements OnInit {
 
     if (this.fechas.length == 5) {
 
-      this.fechas.shift();
+      this.fechas.pop();
       // ultimos.shift();
 
     }
@@ -438,12 +453,12 @@ export class CombinazionePage implements OnInit {
 
       localStorage.removeItem('horaClick');
       localStorage.removeItem('contador');
-      localStorage.setItem('horaAutomatico', moment().format('YYYY-MM-DD HH:mm:ss'));
+      localStorage.setItem('horaAutomatico', moment().subtract(this.days,'days').format('YYYY-MM-DD HH:mm:ss'));
 
     }else{
 
       localStorage.setItem('contador', JSON.stringify(this.contador));
-      localStorage.setItem('horaClick', moment().format('YYYY-MM-DD HH:mm:ss'));
+      localStorage.setItem('horaClick', moment().subtract(this.days,'days').format('YYYY-MM-DD HH:mm:ss'));
       
     }
 

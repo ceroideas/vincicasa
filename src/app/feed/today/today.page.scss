@@ -1,3 +1,6 @@
+ion-content {
+	--offset-top: -16px !important;
+}
 #combinacion, #columna{
 	margin: 0;
 	text-align: center;
@@ -9,7 +12,7 @@
 	position: relative;
 	top: -50%;
 	font-family: 'geometos';
-	font-size: 14px;
+	font-size: 18px;
 }
 .n1, .n2{
 	height: 100%;

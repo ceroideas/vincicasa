@@ -9,10 +9,10 @@ export class PreseleccionPage implements OnInit {
   
   checks = [
   	"<span class='title'> ESEGUI UN DOPPIO PROCESSO DI CALCOLO </span> La combinazione viene riformulata dopo il primo processo.",
-  	"<span class='title'> ESEGUI UN METODO DI RIDUZIONE </span> considera un numero ridotto delle variabili.",
+  	"<span class='title'> ESEGUI UN METODO DI RIDUZIONE </span> Considera un numero ridotto delle variabili.",
   	"<span class='title'> ESTRAPOLA UN SISTEMA </span> Fornisce la combinazione basandosi su un sistema di numeri casuali.",
   	"<span class='title'> SALTA LA FUNZIONE </span> Il processo considera un numero di calcolo più semplice.",
-  	"<span class='title'> VINCOLA LE VARIABILI </span> nel calcolo sono vincolati delle variabili in modo random."
+  	"<span class='title'> VINCOLA LE VARIABILI </span> Nel calcolo sono vincolati delle variabili in modo random."
   ];
 
   checked:any = [];

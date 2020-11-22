@@ -101,17 +101,23 @@ export class EstadisticasPage implements OnInit {
 
     let labels = [];
 
-    for (var i = 0; i <= 50; i++) {
-      if (i%10 == 0) {
-        if (i == 50) {
-          labels.push('45');
-        }else{
-          labels.push(i+'.');
-        }
-      }else{
-        labels.push('');
-      }
-    }
+    labels = ['0','','','','','','','','','','10','','','','','','','','','','20','','','','','','','','','','30','','','','','','','','','','40','','','','','45'];
+
+    // for (var i = 0; i <= 45; i++) {
+    //   if (i%10 == 0) {
+    //     // if (i == 45) {
+    //     //   labels.push('45');
+    //     // }else{
+    //       labels.push(i+'.');
+    //     // }
+    //   }else{
+    //     if (i == 45) {
+    //       labels.push('45');
+    //     }else{
+    //     labels.push('');
+    //     }
+    //   }
+    // }
 
     let MeSeChart = new Chart(canvas, {
             type: 'horizontalBar',
@@ -136,7 +142,7 @@ export class EstadisticasPage implements OnInit {
                         },
                         stacked: true,
                         gridLines: {
-                          display: false,
+                          display: true,
                           color: 'white'
                         }
                     }],
@@ -146,7 +152,7 @@ export class EstadisticasPage implements OnInit {
                         position: "top",
                         ticks:{
                           autoSkip: true,
-                          autoSkipPadding: 10,
+                          autoSkipPadding: 12,
                           fontColor: 'white',
                           fontSize: 14
                         },

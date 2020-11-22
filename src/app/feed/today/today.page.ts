@@ -8,10 +8,11 @@ import { ModalController } from '@ionic/angular';
 })
 export class TodayPage implements OnInit {
 
-  fechas = JSON.parse(localStorage.getItem('ufechas'));
+  // fechas = JSON.parse(localStorage.getItem('ufechas'));
+  user = JSON.parse(localStorage.getItem('usuario'));
 
   constructor(public modal: ModalController) {
-  	this.fechas = this.fechas.sort((a,b)=> b.date - a.date);
+  	// this.fechas = this.fechas.sort((a,b)=> b.date - a.date);
   }
 
   ngOnInit() {
