@@ -292,7 +292,7 @@ export class CombinazionePage implements OnInit {
     //   new_dates.push(fechas[i]);
     // }
 
-    this.fechas = this.fechas.sort((a,b)=> a - b);
+    this.fechas = this.fechas.sort((a,b)=> b.date - a.date);
 
     localStorage.setItem('ufechas',JSON.stringify(this.fechas));
 
@@ -333,6 +333,8 @@ export class CombinazionePage implements OnInit {
   }
 
   random(automatico = false){
+
+    console.log('automatico',automatico);
 
     // if (reverse) {
     //   this.fechas = this.fechas.reverse();
@@ -382,7 +384,7 @@ export class CombinazionePage implements OnInit {
       
       // console.log(this.combinacion);
 
-      return this.random(false);
+      return this.random(automatico);
 
     }
 
