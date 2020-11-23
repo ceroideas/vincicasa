@@ -141,7 +141,6 @@ export class AppComponent {
   programarNotificaciones()
   {
     this.reloj();
-    this.scrapping3();
 
     let horaClick = moment(localStorage.getItem('horaClick'));
     let hora = moment();
@@ -194,6 +193,8 @@ export class AppComponent {
     diff = hora.diff(lastNotification,'seconds')/3600;
     diff2 = (pm8p1.diff(hora, 'seconds'))/3600;
 
+    let verGanadores = false;
+
     console.log(diff);
 
     let date;
@@ -201,7 +202,7 @@ export class AppComponent {
     if (diff > 24 || !diff) { // si la diferencia entre la hora actual y la ultima vez que se hizo clic es mayor a 24 horas, directamente llamo la notificacion
       
       console.log('enviar notificacion directamente')
-      this.verGanadores();
+      verGanadores = true;
 
       if (diff2 >= 24) {
         date = moment(moment().format('YYYY-MM-DD ' + this.hh)).format();
@@ -219,7 +220,7 @@ export class AppComponent {
         let d = pm8.diff(lastNotification,'seconds')/3600;
 
         if (d >= 24) {
-          this.verGanadores();
+          verGanadores = true;
           
           date = moment(moment().format('YYYY-MM-DD ' + this.hh)).format();
           this.notificar(date);
@@ -232,7 +233,7 @@ export class AppComponent {
         let d = pm8p1.diff(lastNotification,'seconds')/3600;
 
         if (d >= 24) {
-          this.verGanadores();
+          verGanadores = true;
           
           date = moment(moment().format('YYYY-MM-DD ' + this.hh)).add(1,'day').format();
           this.notificar(date);
@@ -242,6 +243,8 @@ export class AppComponent {
 
       }
     }
+
+    this.scrapping3(verGanadores);
   }
 
   /**/
@@ -487,7 +490,7 @@ export class AppComponent {
 
   }
 
-  scrapping3(){
+  scrapping3(verGanadores = false){
 
     this.service.tabla3().subscribe((data: any) => {
 
@@ -576,6 +579,12 @@ export class AppComponent {
         localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));
         localStorage.setItem('ganadores', JSON.stringify(ganadores));
         this.scrapping();
+
+        if (verGanadores) {
+          setTimeout(()=>{
+            this.verGanadores();
+          },5000)
+        }
 
     }, Error => {
 

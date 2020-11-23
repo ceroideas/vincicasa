@@ -65,28 +65,30 @@ export class DonaPage implements OnInit {
     this.payPal.init({
 
       PayPalEnvironmentProduction: "",
-      PayPalEnvironmentSandbox: "client id"
+      PayPalEnvironmentSandbox: "AQqESLpygMijp3fD-ES9ZTQ9zjC_DmBT6khWDMfhLQylfpa_pAwIsgHxpYsj8Nyn3DrZG1iEQVuPjRFe"
 
     }).then(() => {
       this.payPal.prepareToRender("PayPalEnvironmentSandbox", new PayPalConfiguration({
 
-        acceptCreditCards: true,
+        // acceptCreditCards: true,
         languageOrLocale: 'it-IT',
-        merchantName: '',
-        merchantPrivacyPolicyURL: '',
-        merchantUserAgreementURL: ''
+        // merchantName: '',
+        // merchantPrivacyPolicyURL: '',
+        // merchantUserAgreementURL: ''
 
       })).then(() => {
 
-        let detalles = new PayPalPaymentDetails(this.monto.toString(), '0.00', '0.00');
-        let pago = new PayPalPayment(this.monto.toString(), 'EUR', '', 'Sale', detalles);
-        this.payPal.renderSinglePaymentUI(pago).then((Response) => {
+        // let detalles = new PayPalPaymentDetails(this.monto.toString(), '0.00', '0.00');
+        let pago = new PayPalPayment(this.monto.toString(), 'EUR', 'Donazione Millionday', 'sale'/*, detalles*/);
+        this.payPal.renderSinglePaymentUI(pago).then(() => {
 
           // this.alerta('Pagamento effettuato con successo');
 
           this.comunicacion.pago(jsono).subscribe((data:any)=>{ 
 
-            this.alerta('Pagamento effettuato con successo');
+            this.alerta('Donazione effettuata con successo');
+
+            this.monto = "";
 
           }, Error => {
 

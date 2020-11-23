@@ -61,6 +61,7 @@
     "card.io.cordova.mobilesdk": "^2.1.0",
     "codelyzer": "^5.1.2",
     "cordova-android": "^9.0.0",
+    "cordova-plugin-admob-free": "^0.27.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^4.0.0",
