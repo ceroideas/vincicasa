@@ -58,7 +58,7 @@ export class DonaPage implements OnInit {
 
     let jsono = {
       correo: this.correo,
-      usuario: this.usuario,
+      usuario: JSON.parse(this.usuario).nombre,
       monto: this.monto
     };
 
