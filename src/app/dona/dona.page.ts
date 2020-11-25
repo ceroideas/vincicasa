@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ComunicacionService } from '../comunicacion.service';
-import { PayPal, PayPalPayment, PayPalConfiguration, PayPalPaymentDetails } from '@ionic-native/paypal/ngx';
+// import { PayPal, PayPalPayment, PayPalConfiguration, PayPalPaymentDetails } from '@ionic-native/paypal/ngx';
 import { MenuController, AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 
@@ -74,7 +74,7 @@ export class DonaPage implements OnInit, AfterViewChecked {
       }
   }
 
-  constructor(private comunicacion: ComunicacionService, private payPal: PayPal, public alertController: AlertController) { }
+  constructor(private comunicacion: ComunicacionService, /*private payPal: PayPal,*/ public alertController: AlertController) { }
 
   ngOnInit() {
     this.comunicacion.changeData(this.usuario);
