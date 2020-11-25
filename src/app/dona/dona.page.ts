@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ComunicacionService } from '../comunicacion.service';
-// import { PayPal, PayPalPayment, PayPalConfiguration, PayPalPaymentDetails } from '@ionic-native/paypal/ngx';
 import { MenuController, AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 

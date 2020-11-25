@@ -8,8 +8,6 @@ import { DonaPageRoutingModule } from './dona-routing.module';
 
 import { DonaPage } from './dona.page';
 
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +15,6 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     IonicModule,
     DonaPageRoutingModule
   ],
-  declarations: [DonaPage],
-  providers: [PayPal]
+  declarations: [DonaPage]
 })
 export class DonaPageModule {}
