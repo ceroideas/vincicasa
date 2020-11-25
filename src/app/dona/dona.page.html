@@ -13,11 +13,27 @@
 		Oppure  puoi semplicemente aiutarci a migliorare: <br> <br> FAI  UNA  DONAZIONE! <br>
 	</label>
 	<br><br>
+
+	<div>
+		
 	<label id="info">QUANTO VUOI DONARE?</label>
 	<span id="monto">
 		<span style="margin: auto;">
-		<input [(ngModel)]="monto" name="monto" type="number" step="0,01" style="background-color: transparent; border: none; width: 50px; text-align: center;"> <span style="color: #50CBE4">€</span>
+		<input [(ngModel)]="monto" name="monto" [disabled]="!addScript" type="number" step="0,01" style="background-color: transparent; border: none; width: 50px; text-align: center;"> <span style="color: #50CBE4">€</span>
 		</span>
 	</span>
-	<ion-button expand="full" size="large" shape="round" id="dona" (click)="comprar()">DONARE</ion-button>
+	<!-- <ion-button expand="full" size="large" [disabled]="!monto" shape="round" id="dona" (click)="comprar()">DONARE</ion-button> -->
+
+	</div>
+	<br>
+	<div id="paypal-checkout-button" [ngStyle]="{'display': monto ? 'block' : 'none'}">
+	</div>
+
+	<!-- <form action="https://www.paypal.com/donate" method="post" target="_top" id="donar">
+		<input type="hidden" name="hosted_button_id" value="SEZBXNU88AQES" />
+		<ion-button expand="full" size="large" onclick="document.getElementById('donar').submit()" shape="round" id="dona">DONARE</ion-button>
+
+		<img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1" />
+	</form> -->
+
 </ion-content>

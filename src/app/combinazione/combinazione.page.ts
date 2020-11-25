@@ -405,7 +405,7 @@ export class CombinazionePage implements OnInit {
       // console.log(2)
 
       // ultimos.push(this.combinacion);
-      let m:any = moment();
+      let m:any = moment(this.format).startOf('day');
 
       this.fechas.push({fecha:this.hoy,format:this.format,date: new Date( m ).getTime(),combinacion:this.combinacion});
 
