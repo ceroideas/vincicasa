@@ -56,7 +56,7 @@ export class DonaPage implements OnInit, AfterViewChecked {
 
           this.comunicacion.pago(jsono).subscribe((data:any)=>{ 
 
-            this.alerta('Donazione effettuata con successo');
+            this.alerta('Donazione effettuata con successo. Grazie.');
 
             this.monto = "";
 
@@ -93,7 +93,7 @@ export class DonaPage implements OnInit, AfterViewChecked {
   async alerta(alerta) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      // header: 'Avvertimento:',
+      header: 'Avviso:',
       subHeader: '',
       message: alerta,
       buttons: ['OK']

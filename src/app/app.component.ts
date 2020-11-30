@@ -15,6 +15,8 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 import { Subscription } from 'rxjs';
 
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -42,7 +44,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     public events: EventsService,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private admobFree: AdMobFree
     ) { 
 
     this.menuCtrl.toggle(); 
@@ -104,6 +107,31 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.initializeOnesignal();
+      let b_id:string;
+
+      if(this.platform.is('ios')){ 
+          b_id = "ca-app-pub-5570278331170402/1530710534";
+      }else{
+          b_id = "ca-app-pub-5570278331170402/4937626592";
+      }
+
+      const bannerConfig: AdMobFreeBannerConfig = {
+        id:b_id,
+       // add your config here
+       // for the sake of this example we will just use the test config
+       isTesting: true,
+       // autoShow: true
+      };
+      this.admobFree.banner.config(bannerConfig);
+
+      this.admobFree.banner.prepare()
+        .then(() => {
+          console.log('showing banner')
+          this.admobFree.banner.show();
+          // banner Ad is ready
+          // if we set autoShow to false, then we will need to call the show method here
+        })
+        .catch(e => console.log('error banner',e));
     });
 
 

@@ -61,7 +61,7 @@ export class HomePage {
   async alerta(alerta) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Advertencia:',
+      header: 'Avviso:',
       subHeader: '',
       message: alerta,
       buttons: ['OK']
@@ -221,7 +221,7 @@ export class HomePage {
               // localStorage.setItem('correo', this.isesion.correo);
               // localStorage.setItem('usuario', JSON.stringify(data));
               // this.router.navigateByUrl('/feed');
-              this.alerta("L'utente non esiste");
+              this.alerta("Nome utente o password errati.");
 
             }else{
 
