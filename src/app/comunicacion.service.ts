@@ -133,4 +133,12 @@ export class ComunicacionService {
     return this.http.post(url, json, {'headers': headers});
   }
 
+  disableAcc(correo) {
+    const url = 'https://axelrace.pythonanywhere.com/disableAcc';
+    const headers = {'Content-type': 'application/json'};
+    const json = JSON.stringify({correo:correo});
+    console.log(json)
+    return this.http.post(url, json, {'headers': headers});
+  }
+
 }

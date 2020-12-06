@@ -20,7 +20,8 @@ import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  styleUrls: ['app.component.scss'],
+  providers: [AdMobFree]
 })
 export class AppComponent {
 
@@ -68,7 +69,7 @@ export class AppComponent {
   async alerta(alerta) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Advertencia:',
+      header: 'Avviso:',
       subHeader: '',
       message: alerta,
       buttons: ['OK']
@@ -95,6 +96,8 @@ export class AppComponent {
     localStorage.removeItem('horaClick');
     localStorage.removeItem('last-notification');
 
+    this.admobFree.banner.hide();
+
     this.nav.navigateRoot('home');
 
   }
@@ -120,14 +123,16 @@ export class AppComponent {
        // add your config here
        // for the sake of this example we will just use the test config
        isTesting: true,
-       // autoShow: true
+       autoShow: false
       };
       this.admobFree.banner.config(bannerConfig);
 
       this.admobFree.banner.prepare()
         .then(() => {
           console.log('showing banner')
-          this.admobFree.banner.show();
+          if (localStorage.getItem('correo')) {
+            this.admobFree.banner.show();
+          }
           // banner Ad is ready
           // if we set autoShow to false, then we will need to call the show method here
         })
@@ -157,6 +162,7 @@ export class AppComponent {
     this.events.destroy('programarNotificaciones');
     this.events.subscribe('programarNotificaciones',()=>{
       this.programarNotificaciones();
+      this.admobFree.banner.show();
     })
 
     if (localStorage.getItem('correo')) {
@@ -686,6 +692,26 @@ export class AppComponent {
       }
 
     });
+  }
+
+  async disableAcc() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      // header: 'Avviso:',
+      // subHeader: '',
+      message: 'Sei sicuro di voler cancellare il tuo account?',
+      buttons: [
+      {text:'Si', handler:()=>{
+        this.service.disableAcc(localStorage.getItem('correo')).subscribe(data=>{
+          this.alerta('Il tuo account è stato cancellato');
+          this.logout();
+        })
+      }},{
+        text:'No'
+      }]
+    });
+
+    await alert.present();
   }
 
 }
