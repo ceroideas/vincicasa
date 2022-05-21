@@ -22,10 +22,10 @@ export class DonaPage implements OnInit, AfterViewChecked {
       size:"large",
       color:"white"
     },
-    env: 'sandbox', // Optional: specify 'sandbox' environment
+    env: 'production', // Optional: specify 'sandbox' environment
     client: {
       sandbox:    'AQqESLpygMijp3fD-ES9ZTQ9zjC_DmBT6khWDMfhLQylfpa_pAwIsgHxpYsj8Nyn3DrZG1iEQVuPjRFe',
-      production: ''
+      production: 'ATV5aWYd1EaX-ghBRJo9J3VODcy0AwQBkJnb7fU3x6Tp1p_7zIauXczkvNZUth8HDiYmLwcMG35D--2U'
     },
     commit: true, // Optional: show a 'Pay Now' button in the checkout flow
     payment: (data, actions) => {
@@ -123,7 +123,7 @@ export class DonaPage implements OnInit, AfterViewChecked {
     //   })).then(() => {
 
     //     // let detalles = new PayPalPaymentDetails(this.monto.toString(), '0.00', '0.00');
-    //     let pago = new PayPalPayment(this.monto.toString(), 'EUR', 'Donazione Millionday', 'sale'/*, detalles*/);
+    //     let pago = new PayPalPayment(this.monto.toString(), 'EUR', 'Donazione VINCICASA', 'sale'/*, detalles*/);
     //     this.payPal.renderSinglePaymentUI(pago).then(() => {
 
     //       // this.alerta('Pagamento effettuato con successo');

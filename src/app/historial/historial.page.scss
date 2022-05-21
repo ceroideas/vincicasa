@@ -1,12 +1,12 @@
 #body, #head{
-	--background: #09B7DA; 
+	--background: #781210; 
 	font-family: 'roboto';
 	font-size: 14px;
 }
 #ue{
 	text-align: center !important;
     color: white;
-    background: #09B7DA;
+    background: #781210;
     font-family: "roboto";
     font-size: 14px;
     position: relative;
@@ -62,7 +62,7 @@
 	margin-bottom: 0%;
 	text-align: center;
 	background: white;
-	color: #09B7DA;
+	color: #781210;
 	ion-col {
 		display: flex;
 	}
@@ -84,7 +84,7 @@
 	width: 90%;
 }
 #resultados{
-	--background: #09B7DA;
+	--background: #781210;
 	width: 90%;
 	margin-left: 5%;
 	border-bottom: 1px solid white; 
@@ -104,7 +104,7 @@
 #estrazioni{
 	width: 90%;
 	height: 20%;
-	--background: #09B7DA;
+	--background: #781210;
 }
 #fecha, #dia, #number{
 	margin: auto;
@@ -119,7 +119,7 @@
 	text-align: left;
 	border: 1px solid white;
 	margin-top: 5%;
-	background: #09B7DA;
+	background: #781210;
 	width: 100%;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -127,7 +127,7 @@
 #dia{
 	color: white;
 	height: 20%;
-	background: #0591AC;
+	background: #cb4441;
 }
 #number{
 	background: white;

@@ -17,11 +17,13 @@ import { Subscription } from 'rxjs';
 
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  providers: [AdMobFree]
+  providers: [AdMobFree, InAppBrowser]
 })
 export class AppComponent {
 
@@ -41,7 +43,7 @@ export class AppComponent {
   }
 
   constructor(/*private localNotifications: LocalNotifications,*/private oneSignal: OneSignal, public nav: NavController, private service: ComunicacionService, public menuCtrl: MenuController,
-    public alertController: AlertController/*, private deeplinks: Deeplinks*/,
+    public alertController: AlertController/*, private deeplinks: Deeplinks*/, private iab: InAppBrowser,
     private platform: Platform,
     private splashScreen: SplashScreen,
     public events: EventsService,
@@ -53,6 +55,12 @@ export class AppComponent {
 
     this.initializeApp();
   }
+
+  // pp()
+  // {
+  //   // const browser = this.iab.create('https://paypal.me/milliondayvincicasa?locale.x=it_IT');
+  //   window.open('https://paypal.me/milliondayvincicasa?locale.x=it_IT','_blank');
+  // }
 
   async error(problema) {
     const alert = await this.alertController.create({
@@ -81,7 +89,7 @@ export class AppComponent {
   simpleNotif() {
     // this.localNotifications.schedule({
     //   id: 1,
-    //   text: 'Benvenuto a Millionday!!',
+    //   text: 'Benvenuto a VINCICASA!!',
     //   data: { secret: 'secret' }
     // });
   }
@@ -122,7 +130,7 @@ export class AppComponent {
         id:b_id,
        // add your config here
        // for the sake of this example we will just use the test config
-       isTesting: true,
+       isTesting: false,
        autoShow: false
       };
       this.admobFree.banner.config(bannerConfig);
@@ -428,14 +436,14 @@ export class AppComponent {
 
       }
 
-      let ganador = JSON.parse(localStorage.getItem('e200')).find(x=>x.progressivo == format);
+      let index = JSON.parse(localStorage.getItem('e200f')).findIndex(x=>x == format);
       let puntos = 0;
 
-      if (!ganador) {
+      if (index == -1) {
         return false;
       }
 
-      ganador = ganador.numeriEstratti;
+      let ganador = JSON.parse(localStorage.getItem('e200n'))[index];
 
       for (let i = 0; i < ganador.length; i++) {
 
@@ -457,7 +465,7 @@ export class AppComponent {
 
       this.sorteo(puntos,saveHour);
 
-      if (puntos >= 0) {
+      if (puntos >= 2) {
 
         this.numeros.correo = localStorage.getItem('correo'),
         this.numeros.numero = jugada,
@@ -530,7 +538,7 @@ export class AppComponent {
 
       console.log(data);
 
-        localStorage.setItem('e200', data[0]);
+       /* localStorage.setItem('e200', data[0]);
         localStorage.setItem('fnumeros', data[1]);
         localStorage.setItem('ifnumeros', data[2]);
 
@@ -611,13 +619,139 @@ export class AppComponent {
         localStorage.setItem('frecuencia', JSON.stringify(frecuencia));
         localStorage.setItem('infrecuentes', JSON.stringify(infrecuentes));
         localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));
+        localStorage.setItem('ganadores', JSON.stringify(ganadores));*/
+
+        for (let i = 1; i >= 7; i++) {
+
+          localStorage.setItem('e200' + i, data[i]);
+          
+        }
+        
+        let json = [];
+
+        for (let i = 0; i < data.length - 1; i++) {
+
+          json[i] = JSON.parse(data[i]);
+
+        }
+  
+        let ganadores = [];
+        let fechas = [];
+        let numeros = [];
+        let arrayn = [];
+        let frecuentes = [];
+        let frecuencia = [];
+        let infrecuentes = [];
+        let infrecuencia = [];
+        let ganador;
+
+        //console.log(data[8]);
+
+        if (JSON.parse(data[8]).dettaglioConcorso.combinazioneVincente.estratti) {
+          ganador = JSON.parse(data[8]).dettaglioConcorso.combinazioneVincente; 
+        }
+
+        for (let x = 0; x < json.length; x++) {
+
+          if (json[x].concorsi) {
+
+            for (let i = json[x].concorsi.length-1; i >= 0; i--) {
+
+              if (json[x].concorsi[i].combinazioneVincente) {
+
+                let obj = json[x].concorsi[i].combinazioneVincente["estratti"];
+                numeros.push(obj); 
+
+              } 
+
+            }
+
+          }
+
+        }
+
+        for (let x = 0; x < json.length; x++) {
+
+          if (json[x].concorsi) {
+
+            for (let i = json[x].concorsi.length-1; i >= 0; i--) {
+
+              if (json[x].concorsi[i].combinazioneVincente) {
+
+                let dato2 = json[x]["concorsi"][i].dataEstrazione;
+
+                // let fechasc = moment().subtract(i, 'd').format('MM');
+                // let fechasc2 = moment().subtract(i, 'd').format('DD');
+                // let obj = dato2 + fechasc + fechasc2;
+                let obj = moment(dato2).format('YYYYMMDD');
+
+                fechas.push(obj); 
+
+              }
+
+            }
+
+          }
+
+        }
+
+        for (let i = 0; i < 4; i++) {
+
+          if (JSON.parse(data[8]).dettaglioConcorso.dettaglioVincite.vincite[i]) {
+
+            ganadores.push(JSON.parse(data[8]).dettaglioConcorso.dettaglioVincite.vincite[i]);
+
+          }
+    
+        }
+
+        /*for (let i = 0; i < 10; i++) {
+
+          let obj = json["frequenti"][i]["numero"];
+
+          frecuentes.push(obj);
+
+        }
+
+        for (let i = 0; i < 10; i++) {
+
+          let obj2 = json["frequenti"][i]["frequenza"];
+
+          frecuencia.push(obj2);
+
+        }
+
+        for (let i = 0; i < 10; i++) {
+
+          let obj = json["ritardatari"][i]["numero"];
+
+          infrecuentes.push(obj);
+
+        }
+
+        for (let i = 0; i < 10; i++) {
+
+          let obj2 = json["ritardatari"][i]["ritardo"];
+
+          infrecuencia.push(obj2);
+
+        }*/
+
+        localStorage.setItem('ganador', JSON.stringify(ganador));
         localStorage.setItem('ganadores', JSON.stringify(ganadores));
+        localStorage.setItem('e200f', JSON.stringify(fechas));
+        localStorage.setItem('e200n', JSON.stringify(numeros));
+         /*localStorage.setItem('frecuentes', JSON.stringify(frecuentes));
+        localStorage.setItem('frecuencia', JSON.stringify(frecuencia));
+       localStorage.setItem('infrecuentes', JSON.stringify(infrecuentes));
+        localStorage.setItem('infrecuencia', JSON.stringify(infrecuencia));*/
+
         this.scrapping();
 
         if (verGanadores) {
           setTimeout(()=>{
             this.verGanadores();
-          },5000)
+          }, 5000)
         }
 
     }, Error => {
@@ -638,7 +772,7 @@ export class AppComponent {
     let meses = ["GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"];
     let days = ["DOMENICA", "SABATO", "VENERDÌ", "GIOVEDÌ", "MERCOLEDÌ", "MARTEDÌ", "LUNEDÌ"];
   
-    for (let i = 0; i <= 7; i++) {
+    for (let i = 0; i < 7; i++) {
       dias.push(data[i]);
       numeros.push(data2[i]);
     }
@@ -660,7 +794,7 @@ export class AppComponent {
 
   initializeOnesignal()
   {
-    this.oneSignal.startInit('0b002b2a-389a-4da8-b37f-1ab653159f38', '201758780281');
+    this.oneSignal.startInit('79f6631f-0337-468b-a5cb-d35103502773', '175206108562');
 
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
@@ -670,8 +804,8 @@ export class AppComponent {
 
     this.oneSignal.handleNotificationOpened().subscribe((jsondata) => {
       // do something when a notification is opened
-      if (jsondata.notification.payload.additionalData.type == 1) {
-        // this.verGanadores();
+      if (jsondata.notification.payload.additionalData.type == 'url') {
+        this.iab.create(jsondata.notification.payload.additionalData.url);
       }
     });
 

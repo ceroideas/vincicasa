@@ -24,6 +24,7 @@ export class HomePage {
   valor = false;
   condiciones = false;
   cn:string;
+  conexion: string = moment().format('YYYY-MM-DD HH:mm:ss');
 
   constructor(public nav: NavController, public loading: LoadingController, public alertController: AlertController, private menu: MenuController,
     private comunicacion: ComunicacionService, private router: Router, public events: EventsService, public modal: ModalController){
@@ -95,7 +96,7 @@ export class HomePage {
   }
 
   registrarse(f: NgForm){
-    if (/*this.condiciones == false || */this.valor == false || this.formulario.correo == undefined || this.cn == undefined || this.formulario.nombre == undefined || this.formulario.fecha == undefined || this.confirmar == undefined || this.formulario.sexo == undefined) {
+    if (/*this.condiciones == false || */this.valor == false || this.formulario.correo == undefined || this.cn == undefined || this.formulario.nombre == undefined/* || this.formulario.fecha == undefined*/ || this.confirmar == undefined) {
       
       this.alerta('tutti i campi sono obbligatori');
 
@@ -106,17 +107,33 @@ export class HomePage {
         const encryptp = CryptoJS.AES.encrypt(this.cn, this.contrasena).toString();
         
         this.formulario.password = encryptp;
-        this.formulario.fecha = moment(this.formulario.fecha).format('YYYY-MM-DD');
+        if (this.formulario.fecha == undefined) {
+          this.formulario.fecha = "";
+        }else{
+          this.formulario.fecha = moment(this.formulario.fecha).format('YYYY-MM-DD');
+        }
         this.formulario.datos = '';
+        this.formulario.conexion = this.conexion;
 
         this.loading.create().then(l => {
 
           l.present();
+
+          if (this.formulario.sexo == undefined) {
+            this.formulario.sexo = '*';
+          }
+
+          // if (this.formulario.fecha == undefined) {
+          //   this.formulario.fecha = '*';
+          // }
+        
           this.comunicacion.registros(this.formulario).subscribe((data:any) => {
             
             l.dismiss();
 
             if (data.respuesta === 'registrado') {
+
+              this.formulario.fecha = undefined;
               
               this.alerta("L'utente esiste già");
 
@@ -150,6 +167,8 @@ export class HomePage {
                   localStorage.removeItem('horaClick');
               }
 
+              this.actualizar();
+
               this.saveOnesignal();
 
               this.router.navigateByUrl('/manual');
@@ -161,6 +180,8 @@ export class HomePage {
 
             }
           }, Error => {
+
+            this.formulario.fecha = undefined;
 
             l.dismiss();
 
@@ -185,6 +206,24 @@ export class HomePage {
     }
   }
 
+  actualizar(){
+
+      let conex = {
+
+                  correo: this.isesion.correo,
+                  conexion: this.conexion
+
+                };
+
+      this.comunicacion.horaconexion(conex).subscribe((data: any) => {
+
+        console.log('Conexion actualizada');}, Error => {
+
+        // return this.actualizar();
+
+      });
+  }
+
   sesion(f: NgForm){
 
     if (this.isesion.correo === 'admin' && this.isesion.password === 'admin12345') {
@@ -200,10 +239,6 @@ export class HomePage {
       }else{
 
         const encryptp = CryptoJS.AES.encrypt(this.isesion.password, this.contrasena).toString();
-        /*const jsono = {
-          correo: this.isesion.correo,
-          password:*/ /*this.isesion.password = encryptp;*/
-       // }
 
         this.loading.create().then(l => {
 
@@ -218,51 +253,52 @@ export class HomePage {
             
             if(data.respuesta === 'nousuario'){
 
-              // localStorage.setItem('correo', this.isesion.correo);
-              // localStorage.setItem('usuario', JSON.stringify(data));
-              // this.router.navigateByUrl('/feed');
               this.alerta("Nome utente o password errati.");
 
             }else{
 
               if (contrasenadec.toString() === this.isesion.password) {
 
-                // console.log(data, data.datos);
-
                 localStorage.setItem('correo', this.isesion.correo);
                 localStorage.setItem('usuario', JSON.stringify(data));
-                if (data.datos != "" && data.datos != "[]") {
-                  localStorage.setItem('ufechas', data.datos);
-                  localStorage.setItem('combinacion', '['+JSON.parse(data.datos)[0].combinacion+']');
-                }
-                // localStorage.setItem('ufechas', data.datos == "" ? "[]" : data.datos);
-                localStorage.setItem('excluidos', data.excluidos != "" ? data.excluidos : "[]");
-                localStorage.setItem('incluidos', data.incluidos != "" ? data.incluidos : "[]");
-                localStorage.setItem('checks', data.reglas != "" ? data.reglas : "[]");
 
-                if (data.lastNotification) {
-                  localStorage.setItem('last-notification', data.lastNotification);
-                }
-                if (data.lastClick) {
-                  localStorage.setItem('horaClick', data.lastClick);
-                  
-                  console.log(moment().diff(moment(data.lastClick),'seconds')/3600);
+              if (data.datos != "" && data.datos != "[]") {
 
-                  if (moment().diff(moment(data.lastClick),'seconds')/3600 <= 24) {
-                    localStorage.setItem('contador','1');
-                  }else{
-                    localStorage.removeItem('contador');
-                  }
+                localStorage.setItem('ufechas', data.datos);
+                localStorage.setItem('combinacion', '['+JSON.parse(data.datos)[0].combinacion+']');
+
+              }
+
+              localStorage.setItem('excluidos', data.excluidos != "" ? data.excluidos : "[]");
+              localStorage.setItem('incluidos', data.incluidos != "" ? data.incluidos : "[]");
+              localStorage.setItem('checks', data.reglas != "" ? data.reglas : "[]");
+
+              if (data.lastNotification) {
+                localStorage.setItem('last-notification', data.lastNotification);
+              }
+              if (data.lastClick) {
+                localStorage.setItem('horaClick', data.lastClick);
+                
+                console.log(moment().diff(moment(data.lastClick),'seconds')/3600);
+
+                if (moment().diff(moment(data.lastClick),'seconds')/3600 <= 24) {
+                  localStorage.setItem('contador','1');
                 }else{
-                    localStorage.removeItem('contador');
+                  localStorage.removeItem('contador');
                 }
+              }else{
+                  localStorage.removeItem('contador');
+              }
 
-                this.saveOnesignal();
+              this.actualizar();
 
-                this.presentModal();
+              this.saveOnesignal();
 
-                this.router.navigate(['/feed']);
+              this.presentModal();
 
+              this.router.navigate(['/feed']);
+
+    
               }else{
                 
                 this.alerta('Le passwords non corrispondono');

@@ -62,7 +62,11 @@ export class AdministracionPage implements OnInit {
 
           dato = json.usuarios[i].fechan;
 
-          fechas.push(moment(dato).format('YYYY-MM-DD').toString());
+          if (dato) {
+            fechas.push(moment(dato).format('YYYY-MM-DD').toString());
+          }else{
+            fechas.push('');
+          }
     
         }
 

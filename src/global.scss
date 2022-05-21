@@ -24,3 +24,35 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.ios {
+	ion-content {
+		ion-toolbar {
+			margin-top: 36px;
+			ion-title {
+				display: inherit;
+			}
+		}
+	}
+}
+
+ion-menu-button {
+	position: absolute !important;
+	left: 8px;
+}
+
+#presentacion {
+	width: 100% !important;
+}
+
+#tools {
+	margin-left: auto !important;
+}
+
+#side-left {
+	left: 0 !important;
+}
+
+.card__top, .card__bottom, .card__back::before, .card__back::after {
+	padding: 0.25em 0 !important;
+}

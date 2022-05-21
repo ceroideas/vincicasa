@@ -9,4 +9,5 @@ export class Registro {
 	excluidos: string;
 	incluidos: string;
 	reglas: string;
+	conexion: string;
 }

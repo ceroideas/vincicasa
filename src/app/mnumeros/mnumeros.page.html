@@ -57,7 +57,7 @@
 					</label>
 				</div>
 			</ion-col>
-			<ion-col class="columna">
+			<!--<ion-col class="columna">
 				<div *ngFor="let numero of numeros6" class="n2">
 					<input type="checkbox" name="" id="numero{{ numero }}" (change)="seleccionar2($event, numero)">
 					<label for="numero{{ numero }}">
@@ -76,7 +76,7 @@
 						</b>
 					</label>
 				</div>
-			</ion-col>
+			</ion-col>-->
 		</ion-row>
 	</div>
 	<div *ngIf="combinacion.length < 5">
@@ -100,7 +100,7 @@
 				<span [ngClass]="colores == 'yellow' ? 'yellow-sp' : ''"></span>
 			</div>
 			<div class="semaphore">
-				<span [ngClass]="colores == 'red' ? 'red-sp' : ''"></span>
+				<span [ngClass]="colores == 'red' || colores == 'red2' ? 'red-sp' : ''"></span>
 			</div>
 
 			<div style="clear: both;"></div>
@@ -111,10 +111,12 @@
 	<h5 style="text-align: center; color: #fff; text-transform: uppercase;" *ngIf="colores == 'yellow'" >combinazione poco probabile</h5>
 	<h5 style="text-align: center; color: #fff; text-transform: uppercase;" *ngIf="colores == 'red'" >combinazione difficilmente probabile</h5>
 
+	<h5 style="text-align: center; color: #fff; text-transform: uppercase;" *ngIf="colores == 'red2'" >combinazione uscita di recente</h5>
+
 	<span style="display: block; text-align: center; color: #fff; font-weight: lighter; font-size: 14px; margin: 8px 0">
 		Per effettuare un'altra verifica <br> de-selezionare e selezionare i numeri
 	</span>
 </ion-content>
 
-<!-- <ion-footer style="background-color: #09B7DA">
+<!-- <ion-footer style="background-color: #781210">
 </ion-footer> -->

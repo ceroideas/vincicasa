@@ -1,22 +1,22 @@
 .toolbar-container, #body, #tools{
-	--background: #09B7DA;
+	--background: #781210;
 	--color: white;
 	font-family: 'geometos';
 	font-size: 12px;
 }
 #tools{
 	--background: transparent;
-	--box-shadow: none;
+	//--box-shadow: none;
 	--color: white;
 	--border-style: transparent;
 	box-shadow: none;
 	margin-left: 1.5%;
 }
 #body{
-	--background: #09B7DA;
+	--background: #781210;
 }
 #menu{
-	background: #09B7DA;
+	background: #781210;
 	color: white;
 	width: 60%;
 	height: 100%;
@@ -62,7 +62,7 @@
 }
 #date{
 	background: white;
-	color: #09B7DA;
+	color: #781210;
 	height: 35px;
 	width: 100px;
 	display: flex;
@@ -72,7 +72,7 @@
 }
 #verifica{
 	--background: white;
-	--color: #09B7DA;
+	--color: #781210;
 	width: 250px;
 	height: 50px;
 	margin: auto;

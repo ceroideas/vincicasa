@@ -15,7 +15,7 @@ export class HistorialPage implements OnInit {
   ganadores: any = JSON.parse(localStorage.getItem('ganadores'));
 
   imports = [
-  "1.000.000€",
+  "500.000€",
       "1.000€",
          "50€",
           "2€"
@@ -24,6 +24,8 @@ export class HistorialPage implements OnInit {
   constructor(private comunicacion: ComunicacionService) { }
 
   ngOnInit() {
+
+    console.log(this.ganadores);
 
     this.comunicacion.changeData(this.usuario);
     this.dias = JSON.parse(localStorage.getItem('dias'));

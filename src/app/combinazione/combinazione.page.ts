@@ -240,57 +240,6 @@ export class CombinazionePage implements OnInit {
 
   start()
   {
-    // let dias = [];
-    // let dia = moment(this.format).subtract(0,'day');
-    // let limit = moment(this.format).subtract(4,'days');
-    // let fechas = JSON.parse(localStorage.getItem('ufechas'));
-    // let new_fechas = [];
-
-    // while(dia.format('YYYY-MM-DD') != limit.format('YYYY-MM-DD')){
-    //   dias.push(dia.format('YYYY-MM-DD'));
-    //   dia.subtract(1,'day');
-    // }
-
-    // // console.log(dias,this.format);
-
-    // for (let i in dias) {
-    //   let idx = this.fechas.findIndex(x=>x.format==dias[i]);
-    //   let actual = [];
-
-    //   if (idx == -1) {
-
-    //     // if (this.incluir) {
-    //     //   for (let h in this.incluir) {
-    //     //     actual.push(this.incluir[h]);
-    //     //   }
-    //     // }
-
-    //     // for (let n = 0; n < (5 - this.incluir.length); n++) {  
-    //     //   actual.push( this.getRandomArbitrary(1, 55, actual, this.excluir) );
-    //     // }
-
-    //     // actual = actual.sort((a,b)=> a - b);
-
-
-    //     // let d:any = moment(dias[i]);
-    //     // let f = d.format('DD') + ' ' + this.meses[ d.format('M')-1 ] + ' ' + d.format('YYYY');
-    //     // let temp = {fecha:f,format:dias[i],date: new Date(d).getTime(),combinacion:actual};
-
-    //     // new_fechas.push(temp);
-
-    //   }else{
-    //     new_fechas.push(fechas[idx]);
-    //     // this.fechas.splice(idx,1);
-    //   }
-    // }
-
-    // console.log(this.fechas,new_fechas);
- 
-    // let new_dates = [];
-
-    // for(let i = 0; i < 4; i++) {
-    //   new_dates.push(fechas[i]);
-    // }
 
     this.fechas = this.fechas.sort((a,b)=> b.date - a.date);
 
@@ -368,7 +317,7 @@ export class CombinazionePage implements OnInit {
     }
 
     for (var i = 0; i < (5 - this.incluir.length); i++) {  
-      this.combinacion.push( this.getRandomArbitrary(1, 55, this.combinacion, this.excluir) );
+      this.combinacion.push( this.getRandomArbitrary(1, 40, this.combinacion, this.excluir) );
     }
 
     this.combinacion = this.combinacion.sort((a,b)=> a - b);
@@ -464,9 +413,9 @@ export class CombinazionePage implements OnInit {
       
     }
 
-    if (this.fechas.length > 1) {
+    // if (this.fechas.length > 1) {
       this.actualizar();
-    }
+    // }
 
     // this.ultimos = ultimos;
 
@@ -576,37 +525,6 @@ export class CombinazionePage implements OnInit {
 
     // console.log('validar',combinazione);
 
-    // pares
-
-    let comp = 0;
-
-    for (var i = 0; i < combinazione.length; i++) {
-      if (combinazione[i]%2 == 0) {
-        comp++;
-      }
-    }
-
-    if (comp==5) {
-      console.log('TODOS SON PARES, Naranja');
-      return this.colores = colores[1];
-    }
-
-    comp = 0;
-
-    for (var i = 0; i < combinazione.length; i++) {
-      if (combinazione[i]%2 == 1) {
-        comp++;
-      }
-    }
-
-    if (comp==5) {
-      console.log('TODOS SON IMPARES, Naranja');
-      return this.colores = colores[1];
-    }
-
-
-    // impares
-
 
     let seguidos = 0;
     let coincidencias = [];
@@ -650,13 +568,41 @@ export class CombinazionePage implements OnInit {
       }
     }
 
-    // console.log(nprimos);
+    console.log(nprimos);
 
     if (nprimos == 5 || seguidos == 3) {
       return this.colores = colores[2];
     }
 
     if (nprimos == 4 || seguidos == 2) {
+      return this.colores = colores[1];
+    }
+
+    // pares
+
+    let comp = 0;
+
+    for (var i = 0; i < combinazione.length; i++) {
+      if (combinazione[i]%2 == 0) {
+        comp++;
+      }
+    }
+
+    if (comp==5) {
+      console.log('TODOS SON PARES, Naranja');
+      return this.colores = colores[1];
+    }
+
+    comp = 0;
+
+    for (var i = 0; i < combinazione.length; i++) {
+      if (combinazione[i]%2 == 1) {
+        comp++;
+      }
+    }
+
+    if (comp==5) {
+      console.log('TODOS SON IMPARES, Naranja');
       return this.colores = colores[1];
     }
 

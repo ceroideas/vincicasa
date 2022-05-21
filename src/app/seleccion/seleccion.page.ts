@@ -9,13 +9,11 @@ import { ComunicacionService } from '../comunicacion.service';
 })
 export class SeleccionPage implements OnInit {
 
-  numeros: any = [1, 8, 15, 22, 29, 36, 43, 50];
-  numeros2: any = [2, 9, 16, 23, 30, 37, 44, 51];
-  numeros3: any = [3, 10, 17, 24, 31, 38, 45, 52];
-  numeros4: any = [4, 11, 18, 25, 32, 39, 46, 53];
-  numeros5: any = [5, 12, 19, 26, 33, 40, 47, 54];
-  numeros6: any = [6, 13, 20, 27, 34, 41, 48, 55];
-  numeros7: any = [7, 14, 21, 28, 35, 42, 49];
+  numeros: any = [1, 6, 11, 16, 21, 26, 31, 36];
+  numeros2: any = [2, 7, 12, 17, 22, 27, 32, 37];
+  numeros3: any = [3, 8, 13, 18, 23, 28, 33, 38];
+  numeros4: any = [4, 9, 14, 19, 24, 29, 34, 39];
+  numeros5: any = [5, 10, 15, 20, 25, 30, 35, 40];
   combinacion: any = [];
   combinazione: any = [];
   final: any = [];

@@ -1,5 +1,5 @@
 .toolbar-container, #body, #tools, #head{
-	--background: #09B7DA;
+	--background: #781210;
 	--color: white;
 	display: flex;
 }
@@ -11,7 +11,7 @@
 	margin-right: 30px;
 }
 [id*="tab-button-tab"], ion-tab-button{
-	background: #297CA8;
+	background: #781210;
 	color: white !important;
 	font-size: 8px;
 	font-family: 'geometos';
@@ -78,7 +78,7 @@
     padding: 10px 16px;
     span{
     	display: inline-block;
-    	color: #09B7DA;
+    	color: #781210;
     	margin: auto;
     	text-align: center;
     	font-size: 14px;
